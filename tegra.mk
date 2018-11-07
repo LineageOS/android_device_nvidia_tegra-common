@@ -35,6 +35,8 @@ TARGET_TEGRA_POWER  ?= aosp
 include device/nvidia/tegra-common/properties.mk
 
 # Overlays
+PRODUCT_ENFORCE_RRO_TARGETS := *
+
 DEVICE_PACKAGE_OVERLAYS += \
     device/nvidia/tegra-common/overlay
 
