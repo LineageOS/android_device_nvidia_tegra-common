@@ -1,0 +1,5 @@
+service vendor.init_tegra /vendor/bin/init_tegra
+    class early_hal
+    user system
+    group system
+    oneshot
