@@ -11,14 +11,3 @@ import /vendor/etc/init/hw/init.tegra.rc
 on post-fs-data
     mount ext4 /dev/block/platform/tegra-sata.0/by-name/FCT /mnt/vendor/factory rw noatime
     restorecon_recursive /mnt/vendor/factory
-
-# create filesystems if necessary
-service setup_fs /system/bin/setup_fs \
-        /dev/block/platform/tegra-sata.0/by-name/UDA \
-        /dev/block/platform/tegra-sata.0/by-name/CAC \
-        /dev/block/platform/tegra-sata.0/by-name/FCT \
-        /dev/block/platform/tegra-sata.0/by-name/RP3
-    class core
-    user root
-    group root
-    oneshot
