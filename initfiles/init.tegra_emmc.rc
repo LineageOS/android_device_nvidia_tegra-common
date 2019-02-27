@@ -6,7 +6,7 @@
 #documentation without an express license agreement from NVIDIA Corporation
 #is strictly prohibited.
 
-import init.tegra.rc
+import /vendor/etc/init/hw/init.tegra.rc
 
 on post-fs-data
     mount ext4 /dev/block/platform/sdhci-tegra.3/by-name/FCT /mnt/factory ro context=u:object_r:factory_file:s0
