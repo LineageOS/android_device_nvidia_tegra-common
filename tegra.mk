@@ -14,6 +14,24 @@
 # limitations under the License.
 #
 
+# Ramdisk
+PRODUCT_PACKAGES += \
+    adbenable \
+    init.comms.rc \
+    init.hdcp.rc \
+    init.none.rc \
+    init.nv_dev_board.usb.rc \
+    init.recovery.nv_dev_board.usb.rc \
+    init.recovery.xusb.configfs.usb.rc \
+    init.sata.configs.rc \
+    init.tegra.rc \
+    init.tegra_emmc.rc \
+    init.tegra_sata.rc \
+    init.xusb.configfs.usb.rc
+
+PRODUCT_COPY_FILES += \
+    system/core/rootdir/init.usb.configfs.rc:$(TARGET_RECOVERY_ROOT_OUT)/init.recovery.usb.configfs.rc
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml \
