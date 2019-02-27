@@ -14,6 +14,11 @@
 # limitations under the License.
 #
 
+# Health
+ifeq ($(TARGET_TEGRA_HEALTH),aosp)
+DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/health.xml
+endif
+
 # TWRP Support
 ifeq ($(WITH_TWRP),true)
 include device/nvidia/tegra-common/twrp.mk
