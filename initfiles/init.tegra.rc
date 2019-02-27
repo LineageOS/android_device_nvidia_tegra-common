@@ -6,11 +6,11 @@
 #documentation without an express license agreement from NVIDIA Corporation
 #is strictly prohibited.
 
-import init.nv_dev_board.usb.rc
-import init.xusb.configfs.usb.rc
-import init.sata.configs.rc
-import init.${ro.boot.modem}.rc
-import init.comms.rc
+import /vendor/etc/init/hw/init.nv_dev_board.usb.rc
+import /vendor/etc/init/hw/init.xusb.configfs.usb.rc
+import /vendor/etc/init/hw/init.sata.configs.rc
+import /vendor/etc/init/hw/init.${ro.boot.modem}.rc
+import /vendor/etc/init/hw/init.comms.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug mode=0755
@@ -83,7 +83,7 @@ on post-fs-data
     mkdir /data/anr 0773 root system
 
 # Set up HDCP
-import init.hdcp.rc
+import /vendor/etc/init/hw/init.hdcp.rc
 
 on boot
 
@@ -146,7 +146,7 @@ on property:init.svc.lkm_loader=stopped
     chmod 0660 /sys/class/ozmo_wpan/ozwpan/bind
 
 # TLK storage service
-import init.tlk.rc
+import /vendor/etc/init/hw/init.tlk.rc
 
 on property:ro.debuggable=1
     # EMC debug interface
@@ -189,7 +189,7 @@ on device-removed-/sys/block/sda
   umount /mnt/media_rw/usbdrive
 
 # unified scaling setup
-import init.nvphsd.rc
+import /vendor/etc/init/hw/init.nvphsd.rc
 
 # Customers should remove this line
-import init.qvs.rc
+import /vendor/etc/init/hw/init.qvs.rc
