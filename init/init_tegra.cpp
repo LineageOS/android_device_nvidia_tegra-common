@@ -55,6 +55,7 @@ void tegra_init::detect_model_boardinfo()
     std::string line, boardinfo, temp;
     bool bi_found = false;
     uint32_t board_id = -1, sku = -1;
+    std::ifstream cvmfile;
 
     // Get model from /proc/cmdline
     std::ifstream file("/proc/cmdline");
@@ -85,7 +86,7 @@ void tegra_init::detect_model_boardinfo()
         if (!std::getline(bistream, temp, ':'))
             return;
         sku = std::stoul(temp, nullptr, 16);
-    } else if (std::ifstream cvmfile("/proc/device-tree/chosen/plugin-manager/cvm"), cvmfile.is_open()) {
+    } else if (cvmfile.open("/proc/device-tree/chosen/plugin-manager/cvm"), cvmfile.is_open()) {
         if (!std::getline(cvmfile, temp, '-'))
             return;
         board_id = std::stoul(temp, nullptr, 10);
