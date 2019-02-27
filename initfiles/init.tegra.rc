@@ -148,6 +148,7 @@ on property:init.svc.lkm_loader=stopped
 
 # TLK storage service
 import /vendor/etc/init/hw/init.tlk.rc
+import /vendor/etc/init/hw/init.tf.rc
 
 on property:ro.debuggable=1
     # EMC debug interface
