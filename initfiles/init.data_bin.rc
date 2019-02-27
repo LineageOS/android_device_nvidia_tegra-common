@@ -1,0 +1,4 @@
+# For use by data binaries
+
+on fs
+        export PATH /sbin:/system/sbin:/system/bin:/system/xbin:/vendor/bin:/vendor/xbin:/odm/bin:/data:/data/lib64:/data/bin
