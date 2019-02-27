@@ -1,0 +1,24 @@
+#Copyright (c) 2013-2018 NVIDIA Corporation.  All Rights Reserved.
+#
+#NVIDIA Corporation and its licensors retain all intellectual property and
+#proprietary rights in and to this software and related documentation.  Any
+#use, reproduction, disclosure or distribution of this software and related
+#documentation without an express license agreement from NVIDIA Corporation
+#is strictly prohibited.
+
+import /vendor/etc/init/hw/init.tegra.rc
+
+on post-fs-data
+    mount ext4 /dev/block/platform/tegra-sata.0/by-name/FCT /mnt/vendor/factory rw noatime
+    restorecon_recursive /mnt/vendor/factory
+
+# create filesystems if necessary
+service setup_fs /system/bin/setup_fs \
+        /dev/block/platform/tegra-sata.0/by-name/UDA \
+        /dev/block/platform/tegra-sata.0/by-name/CAC \
+        /dev/block/platform/tegra-sata.0/by-name/FCT \
+        /dev/block/platform/tegra-sata.0/by-name/RP3
+    class core
+    user root
+    group root
+    oneshot
