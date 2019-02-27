@@ -32,3 +32,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     system/core/rootdir/init.usb.configfs.rc:$(TARGET_COPY_OUT_ROOT)/init.recovery.usb.configfs.rc
+
+# Health HAL
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.0-service

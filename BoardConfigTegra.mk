@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Manifest
+DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifest.xml
+
 # TWRP Support
 ifeq ($(WITH_TWRP),true)
 include device/nvidia/tegra-common/twrp.mk
