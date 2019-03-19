@@ -16,6 +16,8 @@ hardwareName=$(getprop ro.hardware)
 k310=$(cat /proc/version | grep "Linux version 3.10")
 if [ "$k310" != "" ]; then
 	setprop sys.usb.ffs.aio_compat 1
+	setprop persist.adb.nonblocking_ffs 0
+	setprop ro.adb.nonblocking_ffs 0
 	setprop sys.usb.configfs 0
 else
 	setprop sys.usb.configfs 1
