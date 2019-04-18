@@ -8,7 +8,7 @@
 
     # Create HDCP SRM folder and set its permissions
 on post-fs-data
-    setprop hdcp.srm.path       "/etc/hdcpsrm"
+    setprop hdcp.srm.path       "/vendor/etc/hdcpsrm"
     setprop hdcp1x.srm.name     "hdcp1x.srm"
     setprop hdcp2x.srm.name     "hdcp2x.srm"
     setprop hdcp2xtest.srm.name "hdcp2xtest.srm"
