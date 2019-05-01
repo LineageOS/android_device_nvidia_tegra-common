@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Sepolicy
+BOARD_SEPOLICY_DIRS += device/nvidia/tegra-common/sepolicy
+
 # TWRP Support
 ifeq ($(WITH_TWRP),true)
 include device/nvidia/tegra-common/twrp.mk
