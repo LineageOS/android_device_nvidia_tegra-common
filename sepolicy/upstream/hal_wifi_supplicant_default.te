@@ -1,5 +1,4 @@
-#
-# Copyright (C) 2019 The LineageOS Project
+# Copyright (c) 2014-2018, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,22 +11,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-# Health
-ifneq ($(filter $(TARGET_TEGRA_HEALTH), common nobattery),)
-DEVICE_FRAMEWORK_MANIFEST_FILE := system/libhidl/vintfdata/manifest_healthd_exclude.xml
-DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/health.xml
-endif
+# Allow wpa_supplicant to access symlinks created by wifi_loader
+allow hal_wifi_supplicant_default wifi_data_file:lnk_file { getattr read write };
 
-# Sepolicy
-BOARD_SEPOLICY_DIRS += \
-    device/nvidia/tegra-common/sepolicy/upstream
+r_dir_file(hal_wifi_supplicant_default, factory_file)
 
-# TWRP Support
-ifeq ($(WITH_TWRP),true)
-include device/nvidia/tegra-common/twrp.mk
-endif
+# Access to mmc_host
+r_dir_file(hal_wifi_supplicant_default, sysfs_mmc_host)
 
-# Usb
-DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/usb.xml
+# Access to sysfs_netcfg
+r_dir_file(hal_wifi_supplicant_default, sysfs_netcfg)
+
+allow hal_wifi_supplicant_default proc_net_wifi:file rw_file_perms;

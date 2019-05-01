@@ -1,5 +1,4 @@
-#
-# Copyright (C) 2019 The LineageOS Project
+# copyright (c) 2017-2018, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,22 +11,15 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-# Health
-ifneq ($(filter $(TARGET_TEGRA_HEALTH), common nobattery),)
-DEVICE_FRAMEWORK_MANIFEST_FILE := system/libhidl/vintfdata/manifest_healthd_exclude.xml
-DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/health.xml
-endif
+# IMS ipsec daemon
+type imsipsec, domain, coredomain;
+type imsipsec_exec, exec_type, file_type;
 
-# Sepolicy
-BOARD_SEPOLICY_DIRS += \
-    device/nvidia/tegra-common/sepolicy/upstream
+init_daemon_domain(imsipsec)
 
-# TWRP Support
-ifeq ($(WITH_TWRP),true)
-include device/nvidia/tegra-common/twrp.mk
-endif
+allow imsipsec kernel:system module_request;
+allow imsipsec self:key_socket create_socket_perms_no_ioctl;
+allow imsipsec self:capability { net_admin };
 
-# Usb
-DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/usb.xml
+unix_socket_connect(imsipsec, property, init)

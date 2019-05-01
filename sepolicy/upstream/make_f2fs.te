@@ -1,5 +1,4 @@
-#
-# Copyright (C) 2019 The LineageOS Project
+# Copyright (c) 2016, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,22 +11,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-# Health
-ifneq ($(filter $(TARGET_TEGRA_HEALTH), common nobattery),)
-DEVICE_FRAMEWORK_MANIFEST_FILE := system/libhidl/vintfdata/manifest_healthd_exclude.xml
-DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/health.xml
-endif
+type make_f2fs, coredomain;
+type make_f2fs_exec, exec_type, file_type;
 
-# Sepolicy
-BOARD_SEPOLICY_DIRS += \
-    device/nvidia/tegra-common/sepolicy/upstream
+init_daemon_domain(make_f2fs)
 
-# TWRP Support
-ifeq ($(WITH_TWRP),true)
-include device/nvidia/tegra-common/twrp.mk
-endif
-
-# Usb
-DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/usb.xml
+allow make_f2fs block_device:dir search;
+allow make_f2fs userdata_block_device:blk_file rw_file_perms;
