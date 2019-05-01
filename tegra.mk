@@ -46,6 +46,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service
 
+# Shim
+ifeq ($(TARGET_TEGRA_AUDIO),nvaudio)
+PRODUCT_PACKAGES += \
+    libicu_shim
+endif
+
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
