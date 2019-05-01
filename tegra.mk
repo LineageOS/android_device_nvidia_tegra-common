@@ -45,3 +45,7 @@ PRODUCT_COPY_FILES += \
 # Health HAL
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service
+
+# USB
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.0-service
