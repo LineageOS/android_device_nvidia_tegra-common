@@ -1,0 +1,12 @@
+# /mnt/factory
+type factory_file, fs_type, contextmount_type;
+
+# /sys/devices/platform/psy_extcon.*/power_supply/usb/online
+# /sys/devices/platform/psy_extcon.*/power_supply/ac/online
+type sysfs_power_supply, fs_type, sysfs_type;
+
+# /sys/devices/virtual/misc/touch/slowscan_enable
+type sysfs_slowscan, fs_type, sysfs_type;
+
+# /usercalib
+type user_calib_file, file_type, data_file_type, core_data_file_type;
