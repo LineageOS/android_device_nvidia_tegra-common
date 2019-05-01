@@ -1,0 +1,2 @@
+# /dev/touch
+type touch_device, dev_type;
