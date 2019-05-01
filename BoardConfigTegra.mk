@@ -23,3 +23,6 @@ endif
 ifeq ($(WITH_TWRP),true)
 include device/nvidia/tegra-common/twrp.mk
 endif
+
+# Usb
+DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/usb.xml
