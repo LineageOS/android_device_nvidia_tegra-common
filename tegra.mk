@@ -33,6 +33,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     system/core/rootdir/init.usb.configfs.rc:$(TARGET_COPY_OUT_ROOT)/init.recovery.usb.configfs.rc
 
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
+    frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
+
 # Health HAL
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service
+
+# USB
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.0-basic
