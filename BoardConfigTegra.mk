@@ -14,6 +14,11 @@
 # limitations under the License.
 #
 
+# Forced shims
+ifeq ($(TARGET_TEGRA_AUDIO),nvaudio)
+TARGET_LD_SHIM_LIBS += /vendor/lib/hw/audio.primary.tegra.so|libicu_shim.so
+endif
+
 # Sepolicy
 BOARD_SEPOLICY_DIRS += device/nvidia/tegra-common/sepolicy
 
