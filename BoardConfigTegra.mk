@@ -67,6 +67,10 @@ ifneq ($(filter $(TARGET_TEGRA_POWER), aosp lineage),)
 include hardware/nvidia/power/BoardPower.mk
 endif
 
+# Sepolicy
+BOARD_SEPOLICY_DIRS += \
+    device/nvidia/tegra-common/sepolicy/upstream
+
 # TWRP Support
 ifeq ($(WITH_TWRP),true)
 include device/nvidia/tegra-common/twrp.mk
