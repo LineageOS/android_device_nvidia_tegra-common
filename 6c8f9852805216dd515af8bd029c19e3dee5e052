@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "512293b5_9691798b",
+        "filename": "tegra.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2019-05-02T23:06:36Z",
+      "side": 1,
+      "message": "do all tegra devices support wifi direct?",
+      "revId": "6c8f9852805216dd515af8bd029c19e3dee5e052",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e231d15b_4492fdd7",
+        "filename": "tegra.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2019-05-02T23:06:36Z",
+      "side": 1,
+      "message": "molly is going to bitch about this likely -- LE support is hella borked on MRVL cards past 6.0.\n\nDoesn\u0027t dalmore use MRVL too?",
+      "range": {
+        "startLine": 20,
+        "startChar": 48,
+        "endLine": 20,
+        "endChar": 60
+      },
+      "revId": "6c8f9852805216dd515af8bd029c19e3dee5e052",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
