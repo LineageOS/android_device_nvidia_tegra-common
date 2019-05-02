@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d98663d_72e2c012",
+        "filename": "twrp.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2019-05-02T23:02:55Z",
+      "side": 1,
+      "message": "deprecated af afaik.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 23
+      },
+      "revId": "c66d42f5c14e584b30e4e0faeb1025872073e645",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5ccf7b2_2d7e6dab",
+        "filename": "twrp.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2019-05-02T23:02:55Z",
+      "side": 1,
+      "message": "what\u0027s the purpose on this one?",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 17
+      },
+      "revId": "c66d42f5c14e584b30e4e0faeb1025872073e645",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8719aa59_b6564ccf",
+        "filename": "twrp.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2019-05-02T23:02:55Z",
+      "side": 1,
+      "message": "I *think* this is default now",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "c66d42f5c14e584b30e4e0faeb1025872073e645",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2a4d673_2b871395",
+        "filename": "twrp.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2019-05-02T23:02:55Z",
+      "side": 1,
+      "message": "I don\u0027t think this is used anymore either?",
+      "revId": "c66d42f5c14e584b30e4e0faeb1025872073e645",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a60f3f80_09ffe0b1",
+        "filename": "twrp.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2019-05-02T23:02:55Z",
+      "side": 1,
+      "message": "deprecated af",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 18
+      },
+      "revId": "c66d42f5c14e584b30e4e0faeb1025872073e645",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
