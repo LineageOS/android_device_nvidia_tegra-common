@@ -69,7 +69,8 @@ endif
 
 # Sepolicy
 BOARD_SEPOLICY_DIRS += \
-    device/nvidia/tegra-common/sepolicy/upstream
+    device/nvidia/tegra-common/sepolicy/upstream \
+    device/nvidia/tegra-common/sepolicy/lineage
 
 # TWRP Support
 ifeq ($(WITH_TWRP),true)
