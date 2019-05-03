@@ -17,3 +17,9 @@
 (/system)?/vendor/bin/eks2_client	u:object_r:tee_exec:s0
 (/system)?/vendor/bin/ss_status		u:object_r:tee_exec:s0
 (/system)?/vendor/bin/run_ss_status.sh	u:object_r:tee_exec:s0
+
+# Source built HALs
+(/system)?/vendor/bin/hw/android\.hardware\.light@2\.0-service-nvidia      u:object_r:hal_light_default_exec:s0
+(/system)?/vendor/bin/hw/android\.hardware\.memtrack@1\.0-service-nvidia   u:object_r:hal_memtrack_default_exec:s0
+(/system)?/vendor/bin/hw/android\.hardware\.power@1\.0-service-nvidia      u:object_r:hal_power_default_exec:s0
+(/system)?/vendor/bin/hw/android\.hardware\.thermal@1\.0-service-nvidia    u:object_r:hal_thermal_default_exec:s0
