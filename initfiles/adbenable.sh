@@ -23,6 +23,7 @@ fi
 setprop sys.usb.configfs 1
 k310=$(cat /proc/version | grep "Linux version 3.10")
 if [ "$k310" != "" ]; then
+	setprop sys.usb.ffs.aio_compat 1
 	setprop sys.usb.configfs 0
 fi
 
