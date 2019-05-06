@@ -19,6 +19,11 @@ ifeq ($(TARGET_TEGRA_AUDIO),nvaudio)
 TARGET_LD_SHIM_LIBS += /vendor/lib/hw/audio.primary.tegra.so|libicu_shim.so
 endif
 
+# PHS
+ifeq ($(TARGET_TEGRA_PHS),nvphs)
+DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/nvphs/phshal.xml
+endif
+
 # Sepolicy
 BOARD_SEPOLICY_DIRS += device/nvidia/tegra-common/sepolicy
 
