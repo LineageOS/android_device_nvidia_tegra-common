@@ -41,6 +41,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service
 
+# PHS
+ifeq ($(TARGET_TEGRA_PHS),nvphs)
+PRODUCT_PACKAGES += \
+    init.nvphsd.rc \
+    nvphsd_common.conf \
+    nvphsd_setup.sh
+endif
+
 # Shim
 ifeq ($(TARGET_TEGRA_AUDIO),nvaudio)
 PRODUCT_PACKAGES += \
