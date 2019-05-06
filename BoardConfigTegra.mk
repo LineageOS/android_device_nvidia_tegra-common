@@ -14,6 +14,11 @@
 # limitations under the License.
 #
 
+# PHS
+ifeq ($(TARGET_TEGRA_PHS),nvphs)
+DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/nvphs/phshal.xml
+endif
+
 # Sepolicy
 BOARD_SEPOLICY_DIRS += device/nvidia/tegra-common/sepolicy
 
