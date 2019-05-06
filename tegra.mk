@@ -50,6 +50,15 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service.tegra_nobatt
 endif
 
+# PHS
+ifeq ($(TARGET_TEGRA_PHS),nvphs)
+PRODUCT_PACKAGES += \
+    init.nvphsd_setup.rc \
+    nvphsd.rc \
+    nvphsd_common.conf \
+    nvphsd_setup.sh
+endif
+
 # Vendor seccomp policy files for media components:
 PRODUCT_COPY_FILES += \
     device/nvidia/tegra-common/seccomp/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
