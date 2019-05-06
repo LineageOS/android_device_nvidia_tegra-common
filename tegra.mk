@@ -51,6 +51,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service
 
+# PHS
+ifeq ($(TARGET_TEGRA_PHS),nvphs)
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.0-service
+endif
+
 # Shim
 ifeq ($(TARGET_TEGRA_AUDIO),nvaudio)
 PRODUCT_PACKAGES += \
