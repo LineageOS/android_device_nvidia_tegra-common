@@ -14,6 +14,17 @@
 # limitations under the License.
 #
 
+# Dexpreopt
+# Enable dex-preoptimization to speed up first boot sequence
+ifeq ($(HOST_OS),linux)
+  ifneq ($(TARGET_BUILD_VARIANT),eng)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := false
+      WITH_DEXPREOPT := true
+    endif
+  endif
+endif
+
 # Forced shims
 ifeq ($(TARGET_TEGRA_AUDIO),nvaudio)
 TARGET_LD_SHIM_LIBS += /vendor/lib/hw/audio.primary.tegra.so|libicu_shim.so
