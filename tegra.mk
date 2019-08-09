@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# System properties
+include $(LOCAL_PATH)/system_prop.mk
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     adbenable \
@@ -37,6 +40,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
+
+# Graphics
+ifeq ($(TARGET_TEGRA_GPU),drm)
+PRODUCT_PACKAGES += \
+    hwcomposer.drm \
+    gralloc.gbm \
+    libGLES_mesa
+endif
 
 # Health HAL
 PRODUCT_PACKAGES += \
