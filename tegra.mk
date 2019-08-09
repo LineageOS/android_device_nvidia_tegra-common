@@ -50,6 +50,12 @@ PRODUCT_PACKAGES += \
     hwcomposer.drm \
     gralloc.gbm \
     libGLES_mesa
+else ifeq ($(TARGET_TEGRA_GPU),swiftshader)
+PRODUCT_PACKAGES += \
+    libEGL_swiftshader \
+    libGLESv1_CM_swiftshader \
+    libGLESv2_swiftshader \
+    libyuv
 endif
 
 # Health HAL
