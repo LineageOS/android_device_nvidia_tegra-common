@@ -14,6 +14,14 @@
 # limitations under the License.
 #
 
+# Graphics
+ifeq ($(TARGET_TEGRA_GPU),drm)
+BOARD_GPU_DRIVERS         ?= nouveau
+BOARD_USES_DRM_HWCOMPOSER := true
+DEVICE_MANIFEST_FILE      += device/nvidia/tegra-common/manifests/drm.xml
+TARGET_USES_HWC2          := true
+endif
+
 # Health
 ifeq ($(TARGET_TEGRA_HEALTH),aosp)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/health.xml
