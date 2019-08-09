@@ -20,6 +20,8 @@ BOARD_GPU_DRIVERS         ?= nouveau
 BOARD_USES_DRM_HWCOMPOSER := true
 DEVICE_MANIFEST_FILE      += device/nvidia/tegra-common/drm-manifest.xml
 TARGET_USES_HWC2          := true
+else ifeq ($(TARGET_TEGRA_GPU),swiftshader)
+TARGET_USES_HWC2          := true
 endif
 
 # Manifest
