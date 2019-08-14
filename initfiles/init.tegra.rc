@@ -23,6 +23,7 @@ on init
 
     # create directory for mounting calibration partition
     mkdir /mnt/vendor/factory 0666 system system
+    mkdir /mnt/vendor/wifi_config 0666 system system
 
 on fs
 # mount console ramooops
