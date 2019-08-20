@@ -12,6 +12,15 @@
 # Read the Board/Platform name
 hardwareName=$(getprop ro.hardware)
 
+# set sys.usb.configfs as 0 kernel 3.10 and 1 otherwise
+k310=$(cat /proc/version | grep "Linux version 3.10")
+if [ "$k310" != "" ]; then
+	setprop sys.usb.ffs.aio_compat 1
+	setprop sys.usb.configfs 0
+else
+	setprop sys.usb.configfs 1
+fi
+
 # Enable ADB if the "safe mode w/ adb" DT node is present
 usbPortPath=/sys/class/extcon/extcon0/state
 safeModeDTPath=/proc/device-tree/chosen/nvidia,safe_mode_adb
