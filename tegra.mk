@@ -17,6 +17,10 @@
 # System properties
 include $(LOCAL_PATH)/system_prop.mk
 
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    device/nvidia/tegra-common/overlay
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     adbenable \
