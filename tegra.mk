@@ -48,6 +48,25 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
 
+# Audio
+ifeq ($(TARGET_TEGRA_AUDIO),nvaudio)
+PRODUCT_PACKAGES += \
+    a2dp_module_deviceports.xml \
+    a2dp_module_mixports.xml \
+    primary_module_deviceports.xml \
+    primary_module_mixports.xml \
+    r_submix_audio_policy_configuration.xml \
+    usb_module_deviceports.xml \
+    usb_module_mixports.xml \
+    ne_audio_policy_volumes.xml \
+    ne_default_volume_tables.xml
+
+ifeq ($(TARGET_TEGRA_DOLBY),true)
+PRODUCT_PACKAGES += \
+    msd_audio_policy_configuration.xml
+endif
+endif
+
 # Graphics
 ifeq ($(TARGET_TEGRA_GPU),drm)
 PRODUCT_PACKAGES += \

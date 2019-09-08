@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Audio
+USE_XML_AUDIO_POLICY_CONF := 1
+
 # Graphics
 ifeq ($(TARGET_TEGRA_GPU),drm)
 BOARD_GPU_DRIVERS         ?= nouveau
