@@ -26,6 +26,7 @@ DEVICE_PACKAGE_OVERLAYS += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     adbenable \
+    wifi_loader \
     init.comms.rc \
     init.data_bin.rc \
     init.hdcp.rc \
