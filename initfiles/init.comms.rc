@@ -77,6 +77,13 @@ on post-fs-data
 
     start supplicant_log
 
+# bluetooth mac address programming
+service vendor.bt_loader /vendor/bin/bt_loader.sh
+    class main
+    user root
+    group root
+    oneshot
+
 # vendor.wifiloader - set the wifi commchip_id accordingly
 service vendor.wifiloader /vendor/bin/wifi_loader.sh
     class main
