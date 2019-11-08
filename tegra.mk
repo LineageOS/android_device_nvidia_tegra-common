@@ -16,6 +16,9 @@
 
 TARGET_TEGRA_HEALTH ?= aosp
 
+# Enable nvidia framework enhancements if available
+-include vendor/lineage/product/nvidia.mk
+
 # System properties
 include $(LOCAL_PATH)/system_prop.mk
 
