@@ -14,6 +14,11 @@
 # limitations under the License.
 #
 
+# Enable nvidia framework enhancements if available
+ifeq ($(NV_ANDROID_FRAMEWORK_ENHANCEMENTS_AVAILABLE),true)
+NV_ANDROID_FRAMEWORK_ENHANCEMENTS := true
+endif
+
 # System properties
 include $(LOCAL_PATH)/system_prop.mk
 
