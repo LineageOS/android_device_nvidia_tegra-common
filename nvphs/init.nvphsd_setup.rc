@@ -47,4 +47,8 @@ on boot
 # create a folder for phs to store various files
 on post-fs-data
     mkdir /data/vendor/nvphs 0775 system system
+    symlink /data/vendor/nvphs /data/misc/nvphs
     start vendor.nvphsd_setup
+
+on property:init.svc.vendor.nvphsd_setup=*
+    setprop init.svc.nvphsd_setup ${init.svc.vendor.nvphsd_setup}
