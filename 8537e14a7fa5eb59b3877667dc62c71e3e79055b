@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8e48caf_9f12ba82",
+        "filename": "initfiles/lkm_loader.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2019-12-10T19:57:22Z",
+      "side": 1,
+      "message": "ugh I don\u0027t like hardcoding values in a common tree to a codename...",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 37
+      },
+      "revId": "8537e14a7fa5eb59b3877667dc62c71e3e79055b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f317dfc5_8007e060",
+        "filename": "initfiles/lkm_loader.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2019-12-10T19:57:22Z",
+      "side": 1,
+      "message": "why are we not doing this in foster_e init files?",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 45
+      },
+      "revId": "8537e14a7fa5eb59b3877667dc62c71e3e79055b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
