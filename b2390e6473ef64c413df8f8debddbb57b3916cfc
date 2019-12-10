@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1604121_5a3f1dea",
+        "filename": "BoardConfigTegra.mk",
+        "patchSetId": 20
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2019-12-10T20:11:08Z",
+      "side": 1,
+      "message": "as nvphs is tied to tegra, wouldn\u0027t TARGET_PHS make more sense, then set it to nvphs?",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "b2390e6473ef64c413df8f8debddbb57b3916cfc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e43da7e_3978caeb",
+        "filename": "nvphs/nvphsd.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2019-12-10T20:11:08Z",
+      "side": 1,
+      "message": "whitespace",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "b2390e6473ef64c413df8f8debddbb57b3916cfc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39c6cfc0_3ada76a6",
+        "filename": "nvphs/nvphsd.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2019-12-10T20:11:08Z",
+      "side": 1,
+      "message": "here too",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 4
+      },
+      "revId": "b2390e6473ef64c413df8f8debddbb57b3916cfc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
