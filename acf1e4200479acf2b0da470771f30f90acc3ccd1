@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9da73d5c_ce8d4452",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2019-12-10T20:00:55Z",
+      "side": 1,
+      "message": "lulz",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 17
+      },
+      "revId": "acf1e4200479acf2b0da470771f30f90acc3ccd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
