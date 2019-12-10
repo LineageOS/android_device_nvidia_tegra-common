@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b83558f2_4826b01b",
+        "filename": "init/init_tegra.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2019-12-10T19:54:57Z",
+      "side": 1,
+      "message": "do we want to keep twrp support? It doesn\u0027t build in 16.0 or 17.0 rn as is.",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 5
+      },
+      "revId": "7f4ca9d919fd2e6d75dbfd19036f07b6248c93f0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
