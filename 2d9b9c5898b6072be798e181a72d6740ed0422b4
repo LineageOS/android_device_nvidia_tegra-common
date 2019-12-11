@@ -22,6 +22,30 @@
       "revId": "2d9b9c5898b6072be798e181a72d6740ed0422b4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e8d8d8a_1d3c1447",
+        "filename": "initfiles/adbenable.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2019-12-11T00:40:09Z",
+      "side": 1,
+      "message": "Because for a while I was booting both 3.10 and 4.9 on t210 devices. Technically, I still don\u0027t have one of the variants booting 4.9 properly yet. So this was to keep from adding ugly ifeqs to the device tree.",
+      "parentUuid": "8fb9b69a_31644f0e",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "2d9b9c5898b6072be798e181a72d6740ed0422b4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
