@@ -26,6 +26,9 @@ include $(LOCAL_PATH)/system_prop.mk
 DEVICE_PACKAGE_OVERLAYS += \
     device/nvidia/tegra-common/overlay
 
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += device/nvidia/tegra-common
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     adbenable \
