@@ -18,6 +18,9 @@ TARGET_TEGRA_HEALTH ?= aosp
 
 # Enable nvidia framework enhancements if available
 -include vendor/lineage/product/nvidia.mk
+ifeq ($(NV_ANDROID_FRAMEWORK_ENHANCEMENTS),true)
+TARGET_TEGRA_NVACCESSORIES ?= true
+endif
 
 # System properties
 include $(LOCAL_PATH)/system_prop.mk
