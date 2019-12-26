@@ -99,6 +99,13 @@ PRODUCT_PACKAGES += \
     nvphsd_setup.sh
 endif
 
+# Power
+ifeq ($(TARGET_TEGRA_POWER),lineage)
+TARGET_POWERHAL_VARIANT := tegra
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-service-nvidia
+endif
+
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
