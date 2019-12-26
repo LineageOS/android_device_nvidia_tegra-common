@@ -33,6 +33,11 @@ DEVICE_FRAMEWORK_MANIFEST_FILE := system/libhidl/vintfdata/manifest_healthd_excl
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/health.xml
 endif
 
+# Power
+ifeq ($(TARGET_TEGRA_POWER),lineage)
+include hardware/nvidia/power/BoardPower.mk
+endif
+
 # Sepolicy
 BOARD_SEPOLICY_DIRS += \
     device/nvidia/tegra-common/sepolicy/upstream \
