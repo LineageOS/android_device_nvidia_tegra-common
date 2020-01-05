@@ -28,6 +28,7 @@ PRODUCT_PACKAGES += \
     init.tegra.rc \
     init.tegra_emmc.rc \
     init.tegra_sata.rc \
+    init.tegra_sd.rc \
     init.xusb.configfs.usb.rc
 
 PRODUCT_COPY_FILES += \
