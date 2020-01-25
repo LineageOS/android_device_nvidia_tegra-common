@@ -32,6 +32,11 @@ ifeq ($(TARGET_TEGRA_HEALTH),aosp)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/health.xml
 endif
 
+# Omx
+ifeq ($(TARGET_TEGRA_OMX),software)
+DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/omx.xml
+endif
+
 # Power
 ifeq ($(TARGET_TEGRA_POWER),lineage)
 include hardware/nvidia/power/BoardPower.mk
