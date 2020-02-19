@@ -33,6 +33,11 @@ DEVICE_FRAMEWORK_MANIFEST_FILE := system/libhidl/vintfdata/manifest_healthd_excl
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/health.xml
 endif
 
+# Memtrack
+ifeq ($(TARGET_TEGRA_MEMTRACK),lineage)
+include hardware/nvidia/memtrack/BoardMemtrack.mk
+endif
+
 # Omx
 ifeq ($(TARGET_TEGRA_OMX),software)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/omx.xml
