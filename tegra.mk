@@ -95,6 +95,12 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service.tegra_nobatt
 endif
 
+# Memtrack
+ifeq ($(TARGET_TEGRA_MEMTRACK),lineage)
+PRODUCT_PACKAGES += \
+    android.hardware.memtrack@1.0-service-nvidia
+endif
+
 # PHS
 ifeq ($(TARGET_TEGRA_PHS),nvphs)
 PRODUCT_PACKAGES += \
