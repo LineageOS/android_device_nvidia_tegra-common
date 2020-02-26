@@ -22,6 +22,10 @@ endif
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
 
+# fastbootd
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.fastbootd.available=true
+
 # Graphics
 ifeq ($(TARGET_TEGRA_GPU),drm)
 PRODUCT_PROPERTY_OVERRIDES += \

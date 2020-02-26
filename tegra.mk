@@ -129,6 +129,10 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.3-service.clearkey
 
+# fastbootd
+PRODUCT_PACKAGES += \
+    fastbootd
+
 # GMS
 PRODUCT_GMS_CLIENTID_BASE ?= android-nvidia
 
