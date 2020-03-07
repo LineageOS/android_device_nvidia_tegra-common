@@ -22,7 +22,7 @@ else
 fi
 
 # Enable ADB if the "safe mode w/ adb" DT node is present
-usbPortPath=/sys/class/extcon/extcon0/state
+usbPortPath=/sys/class/extcon/extcon3/state
 safeModeDTPath=/proc/device-tree/chosen/nvidia,safe_mode_adb
 deviceModeVal=0x1
 hostModeVal=0x2
