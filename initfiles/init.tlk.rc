@@ -63,11 +63,11 @@ service eks2_client /vendor/bin/eks2_client --eks2_path /vendor/app/eks2/eks2.da
     class main
     oneshot
 
-on post-fs-data && property:ro.vendor.product.config.shipped_with_full_treble=false
+on property:vold.post_fs_data_done=1 && property:ro.vendor.product.config.shipped_with_full_treble=false
     mkdir /data/tlk 0700 system keystore
 
 # Post treble, all vendor data should reside in /data/vendor
-on post-fs-data && property:ro.vendor.product.config.shipped_with_full_treble=true
+on property:vold.post_fs_data_done=1 && property:ro.vendor.product.config.shipped_with_full_treble=true
     mkdir /data/vendor/tlk 0700 system keystore
 
 on post-fs-data
