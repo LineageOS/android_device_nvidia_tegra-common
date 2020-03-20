@@ -52,13 +52,13 @@ on post-fs-data
     # Disable backpressure logic
     setprop debug.sf.disable_backpressure 1
 
+# backlight
+    chown system system /sys/class/backlight/pwm-backlight/brightness
+
 # Set up HDCP
 import /vendor/etc/init/hw/init.hdcp.rc
 
 on boot
-
-# backlight
-    chown system system /sys/class/backlight/pwm-backlight/brightness
 
 # didim
     chown system system /sys/devices/platform/host1x/tegradc.0/smartdimmer/enable
