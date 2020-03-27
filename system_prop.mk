@@ -8,3 +8,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     hwc.drm.device=/dev/dri/card1 \
     drm.gpu.vendor_name=tegra
 endif
+
+# WiFi
+ifeq ($(TARGET_TEGRA_WIFI),bcm)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ap.interface=wlan0 \
+    wifi.direct.interface=p2p-dev-wlan0 \
+    wifi.interface=wlan0
+endif
