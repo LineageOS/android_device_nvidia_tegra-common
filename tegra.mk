@@ -125,8 +125,6 @@ PRODUCT_PACKAGES += \
 
 # Wifi
 ifeq ($(TARGET_TEGRA_WIFI),bcm)
-$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
-
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml
@@ -137,5 +135,7 @@ PRODUCT_PACKAGES += \
     wificond \
     libwpa_client \
     wpa_supplicant \
-    wpa_supplicant.conf
+    wpa_supplicant.conf \
+    p2p_supplicant_overlay.conf \
+    wpa_supplicant_overlay.conf
 endif
