@@ -89,6 +89,22 @@ PRODUCT_PACKAGES += \
 endif
 endif
 
+# Boot Control
+ifeq ($(AB_OTA_UPDATER),true)
+PRODUCT_PACKAGES += \
+    android.hardware.boot@1.0-impl \
+    android.hardware.boot@1.0-service \
+    bootctrl.tegra
+
+PRODUCT_PACKAGES_DEBUG += \
+    bootctrl
+
+PRODUCT_STATIC_BOOT_CONTROL_HAL := \
+    bootctrl.tegra \
+    libcutils \
+    libz
+endif
+
 # Graphics
 ifeq ($(TARGET_TEGRA_GPU),drm)
 PRODUCT_PACKAGES += \
@@ -138,6 +154,18 @@ endif
 PRODUCT_COPY_FILES += \
     device/nvidia/tegra-common/seccomp/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
     device/nvidia/tegra-common/seccomp/mediaextractor.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
+
+# Update Engine
+ifeq ($(AB_OTA_UPDATER),true)
+PRODUCT_PACKAGES += \
+    otapreopt_script \
+    update_engine \
+    update_engine_sideload \
+    update_verifier
+
+PRODUCT_PACKAGES_DEBUG += \
+    update_engine_client
+endif
 
 # USB
 PRODUCT_PACKAGES += \
