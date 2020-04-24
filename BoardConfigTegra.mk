@@ -27,6 +27,11 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 endif
 endif
 
+# Boot Control
+ifeq ($(AB_OTA_UPDATER),true)
+DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/boot.xml
+endif
+
 # Graphics
 ifeq ($(TARGET_TEGRA_GPU),drm)
 BOARD_GPU_DRIVERS         ?= nouveau
