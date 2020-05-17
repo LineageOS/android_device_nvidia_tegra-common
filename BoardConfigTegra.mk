@@ -18,10 +18,13 @@
 USE_XML_AUDIO_POLICY_CONF := 1
 
 # Bluetooth
+ifneq ($(TARGET_TEGRA_BT),)
+BOARD_HAVE_BLUETOOTH := true
+DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/bluetooth.xml
+
 ifeq ($(TARGET_TEGRA_BT),bcm)
-BOARD_HAVE_BLUETOOTH     := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-DEVICE_MANIFEST_FILE     += device/nvidia/tegra-common/manifests/bcm_bluetooth.xml
+endif
 endif
 
 # Graphics
