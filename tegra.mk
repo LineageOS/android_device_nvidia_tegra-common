@@ -127,7 +127,7 @@ PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
 
 # Wifi
-ifeq ($(TARGET_TEGRA_WIFI),bcm)
+ifneq ($(TARGET_TEGRA_WIFI),)
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml

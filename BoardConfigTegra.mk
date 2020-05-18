@@ -62,18 +62,25 @@ endif
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/usb.xml
 
 # Wifi
+ifneq ($(TARGET_TEGRA_WIFI),)
 ifeq ($(TARGET_TEGRA_WIFI),bcm)
-BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
-WPA_SUPPLICANT_VERSION           := VER_0_8_X
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_WLAN_DEVICE                := bcmdhd
-BOARD_HOSTAPD_DRIVER             := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
 WIFI_DRIVER_FW_PATH_STA          := "/vendor/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_AP           := "/vendor/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_P2P          := "/vendor/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_PARAM        := "/data/vendor/wifi/fw_path"
 WIFI_DRIVER_MODULE_ARG           := "iface_name=wlan0"
 WIFI_DRIVER_MODULE_NAME          := "bcmdhd"
-DEVICE_MANIFEST_FILE             += device/nvidia/tegra-common/manifests/bcm_wifi.xml
+else ifeq ($(TARGET_TEGRA_WIFI),rtl8822ce)
+# This driver works with bcm userspace
+BOARD_WLAN_DEVICE                := bcmdhd
+WIFI_DRIVER_MODULE_NAME          := "rtl8822ce"
+endif
+
+BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
+WPA_SUPPLICANT_VERSION           := VER_0_8_X
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+BOARD_HOSTAPD_DRIVER             := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+DEVICE_MANIFEST_FILE             += device/nvidia/tegra-common/manifests/wifi.xml
 endif
