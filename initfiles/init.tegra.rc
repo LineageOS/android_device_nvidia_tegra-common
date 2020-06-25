@@ -48,8 +48,8 @@ on post-fs-data
     # create directory for camera cached data
     mkdir /data/vendor/nvcam 0700 cameraserver camera
 
-    # Disable backpressure logic
-    setprop debug.sf.disable_backpressure 1
+    # Enable backpressure logic
+    setprop debug.sf.enable_gl_backpressure 1
 
 # backlight
     chown system system /sys/class/backlight/pwm-backlight/brightness
