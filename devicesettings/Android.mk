@@ -31,4 +31,14 @@ LOCAL_RESOURCE_DIR := \
 
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
+LOCAL_REQUIRED_MODULES := \
+    privapp-permissions-lineage-displaysettings.xml
+
 include $(BUILD_PACKAGE)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE               := privapp-permissions-lineage-displaysettings.xml
+LOCAL_MODULE_CLASS         := ETC
+LOCAL_SRC_FILES            := permissions/privapp-permissions-lineage-displaysettings.xml
+LOCAL_MODULE_RELATIVE_PATH := permissions
+include $(BUILD_PREBUILT)
