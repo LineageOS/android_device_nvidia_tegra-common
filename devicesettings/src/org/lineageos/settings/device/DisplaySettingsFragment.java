@@ -260,7 +260,7 @@ public class DisplaySettingsFragment extends PreferenceFragment
         ArrayList<String> displayedModes = new ArrayList<String>();
         ArrayList<String> modeIndices = new ArrayList<String>();
 
-        availableModes.forEach((mode) -> displayedModes.add(DisplayUtils.makeModeInfoString(mode)));
+        availableModes.forEach((mode) -> displayedModes.add(DisplayUtils.makeModeInfoString(mode) + " " + DisplayUtils.makeColorInfoString(mode)));
         availableModes.forEach((mode) -> modeIndices.add(String.valueOf(mode.index)));
 
         modesPreference.setEntries(displayedModes.toArray(new CharSequence[displayedModes.size()]));
