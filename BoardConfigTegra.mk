@@ -15,7 +15,7 @@
 #
 
 # Health
-ifeq ($(TARGET_TEGRA_HEALTH),common)
+ifneq ($(filter $(TARGET_TEGRA_HEALTH), common nobattery),)
 DEVICE_FRAMEWORK_MANIFEST_FILE := system/libhidl/vintfdata/manifest_healthd_exclude.xml
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/health.xml
 endif
