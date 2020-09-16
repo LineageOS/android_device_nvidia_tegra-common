@@ -40,4 +40,7 @@ PRODUCT_COPY_FILES += \
 ifeq ($(TARGET_TEGRA_HEALTH),common)
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service.tegra
+else ifeq ($(TARGET_TEGRA_HEALTH),nobattery)
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.0-service.tegra_nobatt
 endif
