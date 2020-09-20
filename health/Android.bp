@@ -1,5 +1,6 @@
 cc_binary {
     name: "android.hardware.health@2.0-service.tegra",
+    vintf_fragments: ["android.hardware.health@2.0-service.xml"],
     defaults: ["hidl_defaults"],
     vendor: true,
     relative_install_path: "hw",
@@ -40,6 +41,7 @@ cc_binary {
 
 cc_binary {
     name: "android.hardware.health@2.0-service.tegra_nobatt",
+    vintf_fragments: ["android.hardware.health@2.0-service.xml"],
     defaults: ["hidl_defaults"],
     vendor: true,
     relative_install_path: "hw",
