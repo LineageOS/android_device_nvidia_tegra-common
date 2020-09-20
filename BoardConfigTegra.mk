@@ -49,12 +49,6 @@ else ifeq ($(TARGET_TEGRA_GPU),swiftshader)
 TARGET_USES_HWC2          := true
 endif
 
-# Health
-ifneq ($(filter $(TARGET_TEGRA_HEALTH), common nobattery),)
-DEVICE_FRAMEWORK_MANIFEST_FILE := system/libhidl/vintfdata/manifest_healthd_exclude.xml
-DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/health.xml
-endif
-
 # Malloc
 MALLOC_SVELTE := true
 
