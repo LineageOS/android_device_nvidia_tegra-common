@@ -52,22 +52,12 @@ endif
 # Malloc
 MALLOC_SVELTE := true
 
-# Memtrack
-ifeq ($(TARGET_TEGRA_MEMTRACK),lineage)
-include hardware/nvidia/memtrack/BoardMemtrack.mk
-endif
-
 # Odm permissions
 TARGET_FS_CONFIG_GEN += device/nvidia/tegra-common/config.fs
 
 # Omx
 ifeq ($(TARGET_TEGRA_OMX),software)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/omx.xml
-endif
-
-# Power
-ifneq ($(filter $(TARGET_TEGRA_POWER), aosp lineage),)
-include hardware/nvidia/power/BoardPower.mk
 endif
 
 # Sepolicy
