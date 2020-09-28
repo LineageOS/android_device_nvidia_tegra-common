@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2018, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2020, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,96 +12,230 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ro.bt.bdaddr_path                   u:object_r:bdaddr_path_prop:s0
 
-sf.lcd_density                   u:object_r:surfaceflinger_prop:s0
-ro.sf.lcd_density                   u:object_r:surfaceflinger_prop:s0
+vendor.sys.vrr.min-refr-per-ns          u:object_r:vrr_prop:s0
 
-sys.vrr.min-refr-per-ns          u:object_r:vrr_prop:s0
+ctl.vendor.consolemode                  u:object_r:system_prop:s0
 
-ctl.consolemode                  u:object_r:system_prop:s0
+ro.vendor.bootanim.preload                 u:object_r:system_prop:s0
 
-ro.bootanim.preload                 u:object_r:system_prop:s0
+# Properties used by hwc
+persist.vendor.tegra.stb.mode           u:object_r:hwc_prop:s0
+persist.vendor.tegra.stb.rotate         u:object_r:hwc_prop:s0
+persist.vendor.tegra.idle.minimum_fps   u:object_r:hwc_prop:s0
+persist.vendor.tegra.hdmi.resolution    u:object_r:hwc_prop:s0
+persist.vendor.tegra.hdmi.range         u:object_r:hwc_prop:s0
+persist.vendor.tegra.hdmi.yuv.444       u:object_r:hwc_prop:s0
+persist.vendor.tegra.hdmi.cec_volume    u:object_r:hwc_prop:s0
+persist.vendor.tegra.panel.rotation     u:object_r:hwc_prop:s0
+persist.vendor.tegra.hdmi.underscan     u:object_r:hwc_prop:s0
+persist.vendor.tegra.hdmi.limit.clock   u:object_r:hwc_prop:s0
+persist.vendor.tegra.hdmi.yuv.enable    u:object_r:hwc_prop:s0
+persist.vendor.tegra.hdmi.colorimetry   u:object_r:hwc_prop:s0
+persist.vendor.tegra.hdmi.all.modes     u:object_r:hwc_prop:s0
+persist.vendor.tegra.hwc.upscale.filter    u:object_r:hwc_prop:s0
+persist.vendor.tegra.hwc.deepisp.detail    u:object_r:hwc_prop:s0
+persist.vendor.tegra.deepisp.fps_max    u:object_r:hwc_prop:s0
+persist.vendor.tegra.hwc.upscale.gfn    u:object_r:hwc_prop:s0
+persist.vendor.tegra.hwc.upscale.modechange.disable   u:object_r:hwc_prop:s0
 
-persist.sys.vold.format_tool     u:object_r:system_prop:s0
-persist.sys.vold.downgrade_usb   u:object_r:system_prop:s0
+persist.vendor.power.brick              u:object_r:factoryhal_prop:s0
 
-persist.tegra.stb.mode           u:object_r:system_prop:s0
-persist.tegra.stb.rotate         u:object_r:system_prop:s0
-persist.tegra.idle.minimum_fps   u:object_r:system_prop:s0
-persist.tegra.hdmi.resolution    u:object_r:system_prop:s0
-persist.tegra.hdmi.range         u:object_r:system_prop:s0
-persist.tegra.hdmi.yuv.444       u:object_r:system_prop:s0
-persist.tegra.hdmi.cec_volume    u:object_r:system_prop:s0
-persist.tegra.sf.enable_TB       u:object_r:system_prop:s0
-persist.tegra.panel.rotation     u:object_r:system_prop:s0
-persist.tegra.hdmi.underscan     u:object_r:system_prop:s0
-persist.tegra.hdmi.limit.clock   u:object_r:system_prop:s0
-persist.tegra.hdmi.yuv.enable    u:object_r:system_prop:s0
-persist.audio.passthrough        u:object_r:system_prop:s0
-persist.audio.upmix              u:object_r:system_prop:s0
-persist.tegra.vsmooth.enable     u:object_r:system_prop:s0
-persist.tegra.hdmi.colorimetry   u:object_r:system_prop:s0
+vendor.phs.therm.cpu_temp               u:object_r:thermal_prop:s0
+vendor.phs.therm.cpu_trip               u:object_r:thermal_prop:s0
+vendor.phs.therm.skin_temp              u:object_r:thermal_prop:s0
+vendor.phs.therm.skin_trip              u:object_r:thermal_prop:s0
+vendor.phs.therm.fan_temp               u:object_r:thermal_prop:s0
+vendor.phs.therm.fan_trip               u:object_r:thermal_prop:s0
 
-persist.power.brick              u:object_r:system_prop:s0
-
-persist.vendor.ts_headset_plug_count    u:object_r:system_prop:s0
-
-phs.therm.cpu_temp               u:object_r:thermal_prop:s0
-phs.therm.cpu_trip               u:object_r:thermal_prop:s0
-phs.therm.skin_temp              u:object_r:thermal_prop:s0
-phs.therm.skin_trip              u:object_r:thermal_prop:s0
-phs.therm.fan_temp               u:object_r:thermal_prop:s0
-phs.therm.fan_trip               u:object_r:thermal_prop:s0
-
-pbc.cfboost.default              u:object_r:pbc_prop:s0
-pbc.gfboost.default              u:object_r:pbc_prop:s0
-
-ro.hardware.gps                     u:object_r:gpsd_prop:s0
-
-# IKEv2 daemon
-ctl.charon                       u:object_r:ctl_charon_prop:s0
-
-# IMS ipsec daemon
-ctl.imsipsec			u:object_r:ctl_imsipsec_prop:s0
-
-# locality properties
-user.language			u:object_r:locality_prop:s0
-user.region			u:object_r:locality_prop:s0
+vendor.pbc.                             u:object_r:pbc_prop:s0
+vendor.sys.pbc.phs.currentpower         u:object_r:pbc_prop:s0
+persist.vendor.sys.pbc.     			u:object_r:pbc_prop:s0
 
 # udc properties
-sys.usb.udc			u:object_r:udc_prop:s0
-sys.usb.controller		u:object_r:udc_prop:s0
-sys.usb.delay			u:object_r:udc_prop:s0
+vendor.sys.usb.udc			u:object_r:udc_prop:s0
+vendor.sys.usb.delay			u:object_r:udc_prop:s0
+ro.vendor.xudc.isochronous.enable	u:object_r:udc_prop:s0
 
-# flynnd property
-sys.flynnd.enable		u:object_r:flynnd_prop:s0
-
-# audio non persistent properties
-audio.				u:object_r:audio_prop:s0
+# audiohal properties
+vendor.audio.                    u:object_r:audiohal_prop:s0
+persist.vendor.audio.            u:object_r:audiohal_prop:s0
+ro.vendor.audio.                 u:object_r:audiohal_ro_prop:s0
 
 #used to enable adb over tcpip on port 5555 from Settings app
-persist.nvda.adb.tcp.enable      u:object_r:system_prop:s0
-persist.nvda.adb.tcp.port        u:object_r:system_prop:s0
-
-# handshake property between system server and vold
-hssv.fw_restart_done            u:object_r:handshake_sys_vold_prop:s0
+persist.vendor.nvda.adb.tcp.enable      u:object_r:system_prop:s0
+persist.vendor.nvda.adb.tcp.port        u:object_r:system_prop:s0
 
 # darcy convertible usb port mode
-persist.convertible.usb.mode     u:object_r:usb_mode_prop:s0
+persist.vendor.convertible.usb.mode     u:object_r:usb_mode_prop:s0
 
-persist.bluetooth.factoryreset u:object_r:bluetooth_prop:s0
+#wifi location based service
+ro.vendor.factory.wifi.lbs		u:object_r:vendor_wifi_prop:s0
+ro.vendor.factory.wifi.lowpower		u:object_r:vendor_wifi_prop:s0
+ro.vendor.factory.wifi			u:object_r:vendor_wifi_prop:s0
+
+persist.vendor.bluetooth.factoryreset u:object_r:bluetooth_prop:s0
 
 # AB OTA properties
-tegra.ota.boot_device		u:object_r:ota_prop:s0
-tegra.ota.gpt_device		u:object_r:ota_prop:s0
-tegra.ota.user_device		u:object_r:ota_prop:s0
+vendor.tegra.ota.boot_device		u:object_r:ota_prop:s0
+vendor.tegra.ota.gpt_device		u:object_r:ota_prop:s0
+vendor.tegra.ota.user_device		u:object_r:ota_prop:s0
 
-# lkm properties
-vendor.lkm.completed      	u:object_r:vendor_lkm_prop:s0
+# hwc properties (compatibility, to deprecate)
+persist.vendor.sys.NV_DISPXRES		u:object_r:hwc_prop:s0
+persist.vendor.sys.NV_DISPYRES		u:object_r:hwc_prop:s0
+vendor.sys.display-colorspace		u:object_r:hwc_prop:s0
+vendor.sys.display-size		u:object_r:hwc_prop:s0
+vendor.sys.hdmi.primary		u:object_r:hwc_prop:s0
+vendor.sys.hwc.hdr.supported		u:object_r:hwc_prop:s0
+vendor.sys.nrdp.hdr.revision		u:object_r:hwc_prop:s0
+vendor.sys.tegra.dpy.rotation		u:object_r:hwc_prop:s0
+vendor.sys.tegra.refresh		u:object_r:hwc_prop:s0
+vendor.sys.ui.resolution.x		u:object_r:hwc_prop:s0
+vendor.sys.ui.resolution.y		u:object_r:hwc_prop:s0
 
-# accessory sku informatio
-factory.accessory.bundleinfo     u:object_r:system_prop:s0
+# hwc properties
+persist.vendor.NV_DISPXRES	u:object_r:hwc_prop:s0
+persist.vendor.NV_DISPYRES	u:object_r:hwc_prop:s0
+vendor.display-colorspace	u:object_r:hwc_prop:s0
+vendor.display-size		u:object_r:hwc_prop:s0
+vendor.tegra.display-size	u:object_r:hwc_prop:s0
+vendor.hdmi.primary		u:object_r:hwc_prop:s0
+vendor.hwc.hdr.supported	u:object_r:hwc_prop:s0
+vendor.nrdp.hdr.revision	u:object_r:hwc_prop:s0
+vendor.tegra.dpy.rotation	u:object_r:hwc_prop:s0
+vendor.tegra.refresh		u:object_r:hwc_prop:s0
+vendor.ui.resolution.x		u:object_r:hwc_prop:s0
+vendor.ui.resolution.y		u:object_r:hwc_prop:s0
 
-#trigger tune gpu min freq
-powerhal.set.gpu.minfreq     u:object_r:system_prop:s0
+vendor.hwc.			u:object_r:hwc_prop:s0
+vendor.nvidia.hwc.		u:object_r:hwc_prop:s0
+
+ro.vendor.sf.override_lcd_density  u:object_r:hwc_prop:s0
+ro.vendor.sf.vrr.enabled           u:object_r:hwc_prop:s0
+ro.vendor.sys.vrr.hdmi             u:object_r:hwc_prop:s0
+vendor.sys.sf.vrr.supported        u:object_r:hwc_prop:s0
+vendor.sys.sf.vrr.active           u:object_r:hwc_prop:s0
+vendor.sys.vrr.apprate             u:object_r:hwc_prop:s0
+vendor.sys.vrr.refreshrate         u:object_r:hwc_prop:s0
+
+# flynnd property
+vendor.flynnd.enable			u:object_r:flynnd_prop:s0
+
+# vendor usb property
+vendor.config.usb			u:object_r:vendor_usb_prop:s0
+
+#vendor powerhal prop
+persist.vendor.didim.enable    u:object_r:powerhal_prop:s0
+persist.vendor.powerhal.low.power.mode    u:object_r:powerhal_prop:s0
+vendor.powerhal.reclaim_compact_mem    u:object_r:powerhal_prop:s0
+
+# NV Power mode
+persist.vendor.sys.NV_POWER_MODE           u:object_r:powerhal_prop:s0
+
+# console logs developer option
+vendor.debug.enable_console_logs	u:object_r:system_prop:s0
+
+# camera property
+vendor.2g_ram_enabled               u:object_r:system_prop:s0
+
+# Gamestreaming properties
+ro.vendor.gamestream.display.optimize u:object_r:gamestreaming_prop:s0
+
+# Graphics properties
+vendor.tegra.			u:object_r:tegra_graphics_prop:s0
+vendor.sys.tegra.		u:object_r:tegra_graphics_prop:s0
+ro.vendor.tegra.		u:object_r:tegra_graphics_prop:s0
+ro.vendor.sys.tegra.		u:object_r:tegra_graphics_prop:s0
+persist.vendor.tegra.		u:object_r:tegra_graphics_prop:s0
+persist.vendor.sys.tegra.	u:object_r:tegra_graphics_prop:s0
+vendor.sys                      u:object_r:tegra_graphics_prop:s0
+persist.vendor.sys              u:object_r:tegra_graphics_prop:s0
+
+# HDCP SRM properties
+vendor.hdcp.srm.			u:object_r:hdcp_srm_prop:s0
+
+# BT HAL property
+ro.vendor.comms.bt.lpm                u:object_r:vendor_bt_prop:s0
+
+# Wifi properties
+ro.vendor.wifi.fw_path_param          u:object_r:vendor_wifi_prop:s0
+ro.vendor.wifi.op_mode_param          u:object_r:vendor_wifi_prop:s0
+
+# For Netflix properties
+ro.vendor.nrdp.                     u:object_r:nrdp_prop:s0
+
+# vendor.debug properties
+vendor.debug.                           u:object_r:vendor_debug_prop:s0
+
+# phs properties
+vendor.phs.                             u:object_r:power_hint_prop:s0
+vendor.sys.phs.                         u:object_r:power_hint_prop:s0
+persist.vendor.phs.                     u:object_r:power_hint_prop:s0
+persist.vendor.sys.phs.                 u:object_r:power_hint_prop:s0
+
+#media vendor properties
+persist.vendor.tegra.vsmooth.enable     u:object_r:mediavndsvc_prop:s0
+
+# camera properties
+vendor.pfix.				u:object_r:vendor_camera_prop:s0
+vendor.camhal.				u:object_r:vendor_camera_prop:s0
+vendor.camera.debug.			u:object_r:vendor_camera_prop:s0
+vendor.nvidia.camera.debug.		u:object_r:vendor_camera_prop:s0
+vendor.camera.dbg.			u:object_r:vendor_camera_prop:s0
+vendor.camera.stress.			u:object_r:vendor_camera_prop:s0
+vendor.camera.control.			u:object_r:vendor_camera_prop:s0
+vendor.camera.ae.			u:object_r:vendor_camera_prop:s0
+vendor.camera-preview-profile		u:object_r:vendor_camera_prop:s0
+vendor.camera.grinder.			u:object_r:vendor_camera_prop:s0
+vendor.hdr.				u:object_r:vendor_camera_prop:s0
+vendor.nv_camtrace_control		u:object_r:vendor_camera_prop:s0
+vendor.nv_camtrace_property		u:object_r:vendor_camera_prop:s0
+persist.vendor.sys.cam.			u:object_r:vendor_camera_prop:s0
+persist.vendor.camera.			u:object_r:vendor_camera_prop:s0
+persist.vendor.tegra.scf.		u:object_r:vendor_camera_prop:s0
+vendor.disable3A			u:object_r:vendor_camera_prop:s0
+vendor.cameraPerformanceTracker		u:object_r:vendor_camera_prop:s0
+vendor.nvcamera.			u:object_r:vendor_camera_prop:s0
+vendor.tegra.nvcamera.			u:object_r:vendor_camera_prop:s0
+
+#nvmedia vendor properties
+persist.vendor.tegra.tvmr.buffer.logs   u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.tvmr.seeking.logs  u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.tvmr.general.logs  u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.tvmr.FFProf.logs   u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.tvmr.dfs.logs      u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.tvmr.deint.logs    u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.VideoStats-Enable  u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.tvmr.input.dump    u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.tvmr.tvmr.dec.prof u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.video.logs         u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.venc.buffer.logs   u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.venc.profile.logs  u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.venc.general.logs  u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.venc.rcstats.logs  u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.venc.rcstats       u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.venc.enc_settings  u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.vp9.semiplanar     u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.venc.cov_enable    u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.meteringPolicy     u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.meteringTime       u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.licenseConsumeTime u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.enable-SxeSMode    u:object_r:nvmedia_prop:s0
+persist.vendor.tegra.cast.on            u:object_r:nvmedia_prop:s0
+
+# Vold properties
+vendor.vold.linktoprimary		u:object_r:vendor_vold_prop:s0
+
+# TEE properties
+persist.vendor.tlk_daemon_fs_reset_required	u:object_r:vendor_tee_prop:s0
+persist.vendor.tlk_daemon_fs_reset_counter	u:object_r:vendor_tee_prop:s0
+persist.vendor.tlk_daemon_fs_block_size	u:object_r:vendor_tee_prop:s0
+persist.vendor.tlk.provisionrequestcount	u:object_r:vendor_tee_prop:s0
+persist.vendor.tlk.provisionresponsecount	u:object_r:vendor_tee_prop:s0
+persist.vendor.tlk.provisionwritecount1		u:object_r:vendor_tee_prop:s0
+persist.vendor.tlk.provisionwritecount2		u:object_r:vendor_tee_prop:s0
+persist.vendor.tlk.provisioncastappdatacount	u:object_r:vendor_tee_prop:s0
+
+# The threshold for Kill settings
+persist.vendor.kill_settings_memory_threshold     u:object_r:system_prop:s0
