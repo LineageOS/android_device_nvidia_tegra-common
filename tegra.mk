@@ -50,6 +50,11 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service.tegra_nobatt
 endif
 
+# Vendor seccomp policy files for media components:
+PRODUCT_COPY_FILES += \
+    device/nvidia/tegra-common/seccomp/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
+    device/nvidia/tegra-common/seccomp/mediaextractor.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
+
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
