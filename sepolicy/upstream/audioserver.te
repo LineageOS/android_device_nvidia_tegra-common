@@ -13,8 +13,7 @@
 # limitations under the License.
 
 set_prop(audioserver, audio_prop)
-
-r_dir_file(audioserver, sysfs)
+get_prop(audioserver, audiohal_ro_prop)
 
 allow audioserver stats_share_file:dir create_dir_perms;
 allow audioserver stats_share_file:file create_file_perms;

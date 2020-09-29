@@ -17,8 +17,7 @@
 #
 type nvphsd, domain, mlstrustedsubject;
 type nvphsd_exec, exec_type, file_type, vendor_file_type;
-type nvphsd_service, service_manager_type;
-type nvphsd_hwservice, hwservice_manager_type, untrusted_app_visible_hwservice;
+type nvphsd_hwservice, hwservice_manager_type;
 
 init_daemon_domain(nvphsd)
 
@@ -27,7 +26,6 @@ not_full_treble(`
     # allow clients to connect to the nvphsd Binder service.
     binder_use(nvphsd)
     binder_service(nvphsd)
-    allow nvphsd nvphsd_service:service_manager add;
 ')
 
 # Allow nvphsd to be used as a service under hwservice manager and to
@@ -56,7 +54,7 @@ allow nvphsd nvphsd_data:file create_file_perms;
 allow nvphsd surfaceflinger_fc:file r_file_perms;
 
 # thermal
-allow nvphsd sysfs_thermal:dir rw_dir_perms;
+allow nvphsd sysfs_thermal:dir r_dir_perms;
 allow nvphsd sysfs_thermal:file rw_file_perms;
 
 # Allow to write to nvfeedback log file

@@ -18,10 +18,10 @@ hal_server_domain(hal_power_tegra, hal_power)
 type hal_power_tegra_exec, exec_type, vendor_file_type, file_type;
 init_daemon_domain(hal_power_tegra)
 
-set_prop(hal_power_tegra, system_prop)
+set_prop(hal_power_tegra, powerhal_prop)
 
 # allow powerhal to use binder
-binder_use(hal_power_tegra)
+hwbinder_use(hal_power_tegra)
 
 # allow powerhal to use phs
 allow_use_phs(hal_power_tegra)

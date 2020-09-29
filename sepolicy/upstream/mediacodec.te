@@ -12,14 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+hal_client_domain(mediacodec, hal_graphics_mempool)
+
 r_dir_file(mediacodec, sysfs)
 r_dir_file(mediacodec, sysfs_soc)
 
 allow mediacodec camera_device:chr_file rw_file_perms;
 allow mediacodec system_file:dir { open read };
 hal_client_domain(mediacodec, hal_power)
-allow mediacodec config_media_file:dir search;
-allow mediacodec config_media_file:file { getattr open read };
 allow_use_phs(mediacodec)
 allow mediacodec nvphsd_hwservice:hwservice_manager find;
 allow mediacodec system_server:fifo_file { append write };

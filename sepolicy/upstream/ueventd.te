@@ -36,3 +36,4 @@ allow ueventd sysfs_input_dev:file rw_file_perms;
 allow ueventd sysfs_input_dev:dir r_dir_perms;
 allow ueventd sysfs_hdmi_audio:file rw_file_perms;
 allow ueventd sysfs_dp_audio:file rw_file_perms;
+r_dir_file(ueventd, cecutil)

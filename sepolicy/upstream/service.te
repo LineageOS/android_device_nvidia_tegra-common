@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-type rpx_service, app_api_service, system_server_service, service_manager_type;
-type nvcpl_app_service, app_api_service, service_manager_type;
-type mossignerd_service, app_api_service, service_manager_type;
-type nv_mapper_service, service_manager_type;
+type rpx_service, app_api_service, service_manager_type;
+type nvcpl_service, app_api_service, service_manager_type;
+type nv_mapper_service, app_api_service, service_manager_type;
+type prcurlservice_vndservice, vndservice_manager_type;

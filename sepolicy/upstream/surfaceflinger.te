@@ -12,9 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+hal_client_domain(surfaceflinger, hal_cplservice)
+
 # Allow writing to ro.sf.lcd_density at boot, so that we can dynamically
 # configure the DPI
-set_prop(surfaceflinger, surfaceflinger_prop)
+get_prop(surfaceflinger, surfaceflinger_prop)
+get_prop(surfaceflinger, hwc_prop)
 # Allow execmem to use fast format/data conversions inside the driver.
 allow surfaceflinger self:process execmem;
 # Allow surfaceflinger to configure smartdimmer and other PMQoS nodes
@@ -48,10 +51,6 @@ allow surfaceflinger surfaceflinger_fc:file create_file_perms;
 
 allow surfaceflinger tegradc_device:chr_file { read ioctl open write };
 
-# Needed to pass in BQL hints to powerhal
-allow surfaceflinger hal_power_hwservice:hwservice_manager find;
-allow surfaceflinger hal_power_tegra:binder call;
-
 allow surfaceflinger self:capability sys_nice;
 
 allow surfaceflinger sysfs_vrr:file rw_file_perms;
@@ -60,10 +59,6 @@ allow surfaceflinger pmqos_device:chr_file rw_file_perms;
 
 # Allow to write to nvfeedback log file
 allow surfaceflinger anr_data_file:file write;
-
-# Allow HWC to write the EDID DB
-allow surfaceflinger hwc_data_file:file {create_file_perms};
-allow surfaceflinger hwc_data_file:dir {create_dir_perms};
 
 # Allow GL to access ptimer_scale_factor
 allow surfaceflinger sysfs_gpu:file r_file_perms;

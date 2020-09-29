@@ -17,9 +17,6 @@ type nvpmodel_exec, exec_type, file_type, vendor_file_type;
 
 init_daemon_domain(nvpmodel)
 
-allow nvpmodel system_data_file:file { getattr read };
-file_type_auto_trans(nvpmodel, system_data_file, nvpmodel_data)
-
 allow nvpmodel sysfs_devices_system_cpu:file rw_file_perms;
 allow nvpmodel sysfs_gpu_freq_limit:file rw_file_perms;
 allow nvpmodel sysfs_gpu_tpc:file rw_file_perms;

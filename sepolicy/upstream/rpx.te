@@ -12,12 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-type rpx, domain;
-app_domain(rpx)
-bluetooth_domain(rpx)
+type rpx_app, domain;
+app_domain(rpx_app)
 
-allow rpx rpx_file:dir rw_dir_perms;
-allow rpx rpx_file:file create_file_perms;
-allow rpx app_api_service:service_manager find;
-allow rpx system_api_service:service_manager find;
-allow rpx system_app_service:service_manager find;
+hal_client_domain(rpx_app, hal_rpx)
+
+allow rpx_app rpx_file:dir rw_dir_perms;
+allow rpx_app rpx_file:file create_file_perms;
