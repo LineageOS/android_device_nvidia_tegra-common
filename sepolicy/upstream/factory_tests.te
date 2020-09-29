@@ -30,12 +30,7 @@ allow factory_tests { storage_file mnt_user_file }:dir search;
 allow factory_tests fuse:dir { write add_name search };
 allow factory_tests fuse:file { create write open append getattr ioctl };
 
-allow factory_tests system_file:file execute_no_trans;
-
 allow factory_tests { gpu_device tee_device }:chr_file rw_file_perms;
 
 allow factory_tests dx_data_file:dir { search write add_name remove_name };
 allow factory_tests dx_data_file:file create_file_perms;
-
-allow factory_tests system_data_file:file { getattr read };
-file_type_auto_trans(factory_tests, system_data_file, dx_data_file)

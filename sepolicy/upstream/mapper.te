@@ -29,7 +29,7 @@ allow mapper power_service:service_manager find;
 allow mapper input_method_service:service_manager find;
 allow mapper surfaceflinger_service:service_manager find;
 allow mapper graphicsstats_service:service_manager find;
-allow mapper nvcpl_app_service:service_manager find;
+allow mapper nvcpl_service:service_manager find;
 allow mapper nvphsd_hwservice:hwservice_manager find;
 allow mapper input_service:service_manager find;
 allow mapper user_service:service_manager find;

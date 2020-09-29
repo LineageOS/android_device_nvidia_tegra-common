@@ -13,10 +13,13 @@
 # limitations under the License.
 
 type hal_graphics_composer_tegra, domain;
+typeattribute hal_graphics_composer_tegra hal_cplservice_client, hal_graphics_mempool_server, hal_graphics_mempool_client, hal_ipprotect_dolby_client, hal_ipprotect_superres_client;
 hal_server_domain(hal_graphics_composer_tegra, hal_graphics_composer)
 
 type hal_graphics_composer_tegra_exec, exec_type, file_type, vendor_file_type;
 init_daemon_domain(hal_graphics_composer_tegra)
+
+allow_use_phs(hal_graphics_composer_tegra)
 
 # Allow hal_graphics_composer_tegra to access tsec
 allow hal_graphics_composer_tegra tsec_device:chr_file rw_file_perms;
@@ -34,7 +37,9 @@ allow hal_graphics_composer_tegra tegradc_device:chr_file { rw_file_perms };
 
 r_dir_file(hal_graphics_composer_tegra, proc_meminfo)
 
-set_prop(hal_graphics_composer_tegra, system_prop)
+set_prop(hal_graphics_composer_tegra, hwc_prop)
+get_prop(hal_graphics_composer_tegra, hwservicemanager_prop)
+set_prop(hal_graphics_composer_tegra, surfaceflinger_prop)
 
 # Allow HWC to write the EDID DB
 allow hal_graphics_composer_tegra hwc_data_file:file {create_file_perms};

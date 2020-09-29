@@ -35,7 +35,6 @@ userdebug_or_eng(`
   allow qvs domain:dir search;
   allow qvs domain:{ file lnk_file } read;
   allow qvs gpu_device:chr_file rw_file_perms;
-  allow qvs self:capability dac_override;
   allow qvs appdomain:dir search;
   allow qvs appdomain:lnk_file read;
   allow qvs sysfs_thermal:dir search;
