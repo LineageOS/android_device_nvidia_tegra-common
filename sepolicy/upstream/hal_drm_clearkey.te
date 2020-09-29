@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2018, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2018, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#  (allow cac_log_dumper logcat_exec_26_0 (file (ioctl read getattr lock execute execute_no_trans open)))
-typeattribute cac_log_dumper vendor_executes_system_violators;
+type hal_drm_clearkey, domain;
+hal_server_domain(hal_drm_clearkey, hal_drm)
 
+type hal_drm_clearkey_exec, file_type, exec_type, vendor_file_type;
+init_daemon_domain(hal_drm_clearkey)

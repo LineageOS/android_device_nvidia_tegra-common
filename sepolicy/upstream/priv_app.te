@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+hal_client_domain(priv_app, hal_cplservice)
+
 allow priv_app storage_stub_file:dir getattr;
 
 allow priv_app system_app_service:service_manager find;

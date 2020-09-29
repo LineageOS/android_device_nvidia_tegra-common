@@ -13,18 +13,13 @@
 # limitations under the License.
 
 type shieldtech_app, domain;
+type shieldtech_lib, file_type, exec_type, vendor_file_type;
 app_domain(shieldtech_app)
+net_domain(shieldtech_app)
 hal_client_domain(shieldtech_app, hal_shieldtech)
-
-allow shieldtech_app app_api_service:service_manager find;
-allow shieldtech_app system_api_service:service_manager find;
-allow shieldtech_app system_app_service:service_manager find;
-allow shieldtech_app surfaceflinger_service:service_manager find;
-allow shieldtech_app mediaserver_service:service_manager find;
+hal_client_domain(shieldtech_app, hal_rpx)
+hal_client_domain(shieldtech_app, hal_cplservice)
 
 # Create /data/anr/traces.txt.
 allow shieldtech_app anr_data_file:dir ra_dir_perms;
 allow shieldtech_app anr_data_file:file create_file_perms;
-
-# Allow shieldtech_app to find nvphsd
-allow shieldtech_app nvphsd_hwservice:hwservice_manager find;

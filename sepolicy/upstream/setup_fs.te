@@ -26,7 +26,6 @@ allow setup_fs setup_fs_exec:file execute_no_trans;
 allow setup_fs block_device:dir search;
 allow setup_fs userdata_block_device:blk_file rw_file_perms;
 allow setup_fs cache_block_device:blk_file rw_file_perms;
-allow setup_fs usercalib_block_device:blk_file rw_file_perms;
 allow setup_fs factorycalib_block_device:blk_file rw_file_perms;
 allow setup_fs proc_sysrq:file rw_file_perms;
 allow setup_fs system_file:file execute_no_trans;

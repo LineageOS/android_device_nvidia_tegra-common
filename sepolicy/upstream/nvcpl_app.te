@@ -12,16 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-type nvcpl_app, domain;
+type nvcpl_app, domain, coredomain;
 app_domain(nvcpl_app)
 
-allow nvcpl_app cvc_data_file:dir r_dir_perms;
-allow nvcpl_app cvc_data_file:file rw_file_perms;
-allow nvcpl_app keylayout_data_file:file create_file_perms;
-allow nvcpl_app keylayout_data_file:dir rw_dir_perms;
+hal_client_domain(nvcpl_app, hal_cplservice)
+hal_client_domain(nvcpl_app, hal_graphics_display)
 
-# Allow nvcpl to read /proc/device-tree/compatible
-r_dir_file(nvcpl_app, proc)
+allow_use_phs(nvcpl_app)
 
 # /dev/constraint_*
 allow nvcpl_app pmqos_device:{ file chr_file } rw_file_perms;
@@ -32,7 +29,7 @@ allow nvcpl_app tegradc_device:chr_file rw_file_perms;
 # allow nvcpl accessing power related dirs/files such as /dev/cpu_freq_min, cpu_freq_max
 allow nvcpl_app device:dir r_dir_perms;
 
-allow nvcpl_app nvcpl_app_service:service_manager add;
+allow nvcpl_app nvcpl_service:service_manager { add find };
 allow nvcpl_app activity_service:service_manager find;
 allow nvcpl_app connectivity_service:service_manager find;
 allow nvcpl_app display_service:service_manager find;
@@ -54,9 +51,6 @@ allow nvcpl_app sysfs_tcp_window_divisor:file rw_file_perms;
 
 allow nvcpl_app sysfs_gpu_freq_limit:file r_file_perms;
 allow nvcpl_app sysfs_devices_system_cpu:file write;
-
-# Allow nvcpl to read from sysfs: /sys/devices/platform/gpu.0/fmax_at_vmin_safe
-r_dir_file(nvcpl_app, sysfs)
 
 # /sys/devices/virtual/thermal/...
 allow nvcpl_app sysfs_thermal:{ file lnk_file } rw_file_perms;

@@ -16,11 +16,6 @@ allow vold fuse_device:chr_file rw_file_perms;
 allow vold sysfs_bus_usb:file rw_file_perms;
 allow vold media_rw_data_file:dir { r_dir_perms mounton };
 
-# Access user calibration block device.
-allow vold usercalib_block_device:blk_file rw_file_perms;
-auditallow vold usercalib_block_device:blk_file rw_file_perms;
-allow vold user_calib_file:dir { getattr open read ioctl };
-
 # Access factory  calibration block device.
 allow vold factorycalib_block_device:blk_file rw_file_perms;
 auditallow vold factorycalib_block_device:blk_file rw_file_perms;
@@ -33,9 +28,6 @@ allow vold system_prop:property_service set;
 
 # vold need to mount cifs fs from remote computer
 allow vold self:capability net_raw;
-
-# hand shake property between system and vold
-set_prop(vold, handshake_sys_vold_prop);
 
 # for filesystems on mnt_media_rw
 allow vold mnt_media_rw_stub_file:dir r_dir_perms;

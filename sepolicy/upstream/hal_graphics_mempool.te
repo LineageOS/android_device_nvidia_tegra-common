@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2018, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2018, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-typeattribute hal_power_tegra binder_in_vendor_violators;
-typeattribute nvphsd binder_in_vendor_violators;
-typeattribute rpx binder_in_vendor_violators;
-typeattribute hubcore binder_in_vendor_violators;
+# HwBinder IPC from client to server, and callbacks
+binder_call(hal_graphics_mempool_client, hal_graphics_mempool_server)
+binder_call(hal_graphics_mempool_server, hal_graphics_mempool_client)
+
+add_hwservice(hal_graphics_mempool_server, hal_graphics_mempool_hwservice)
+allow hal_graphics_mempool_client hal_graphics_mempool_hwservice:hwservice_manager find;

@@ -25,26 +25,11 @@ type gpsd_prop, property_type;
 # For pbc
 type pbc_prop, property_type;
 
-# IKEv2 daemon
-type ctl_charon_prop, property_type;
-
-# IMS ipsec daemon
-type ctl_imsipsec_prop, property_type;
-
-# For locality properties
-type locality_prop, property_type;
-
 # For properties written by adbenable.sh
 type udc_prop, property_type;
 
 # For power_button_recovery
 type power_button_recovery_prop, property_type;
-
-# For ro.bt.bdaddr_path
-type bdaddr_path_prop, property_type;
-
-# For handshake between sytem process and vold
-type handshake_sys_vold_prop, property_type;
 
 # darcy convertible usb port mode
 type usb_mode_prop, property_type;
@@ -52,8 +37,35 @@ type usb_mode_prop, property_type;
 # AB OTA properties
 type ota_prop, property_type;
 
-# lkm properties
-type vendor_lkm_prop, property_type;
-
 # For flynnd
 type flynnd_prop, property_type;
+
+# For audio hal
+type audiohal_prop, property_type;
+type audiohal_ro_prop, property_type;
+
+# hdcp srm location
+type hdcp_srm_prop, property_type;
+
+# Hardware Composer properties
+type hwc_prop, property_type;
+
+# Netflix prop
+type nrdp_prop, property_type;
+
+# For power hal
+type power_hint_prop, property_type;
+type powerhal_prop, property_type;
+
+type vendor_usb_prop, property_type;
+type vendor_camera_prop, property_type;
+type vendor_bt_prop, property_type;
+type nvmedia_prop, property_type;
+type tegra_graphics_prop, property_type;
+type factoryhal_prop, property_type;
+type gamestreaming_prop, property_type;
+type mediavndsvc_prop, property_type;
+type vendor_debug_prop, property_type;
+type vendor_tee_prop, property_type;
+type vendor_vold_prop, property_type;
+type vendor_wifi_prop, property_type;
