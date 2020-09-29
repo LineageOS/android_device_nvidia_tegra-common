@@ -12,19 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-set_prop(system_server, gpsd_prop)
-set_prop(system_server, bdaddr_path_prop)
-set_prop(system_server, handshake_sys_vold_prop)
-
-# Allow system_server read and write gps_data_file
-allow system_server gps_data_file:file rw_file_perms;
-allow system_server gps_data_file:dir rw_dir_perms;
-allow system_server gps_data_file:fifo_file create_file_perms;
-
 # Blake specific
 allow system_server sysfs_bus_usb:file w_file_perms;
 allow system_server sysfs_sound:file r_file_perms;
-allow system_server sysfs_ozmo:dir rw_dir_perms;
+allow system_server sysfs_ozmo:dir r_dir_perms;
 allow system_server sysfs_ozmo:file rw_file_perms;
 allow system_server sysfs_hid:dir r_dir_perms;
 allow system_server sysfs_hid:file rw_file_perms;
@@ -65,15 +56,8 @@ not_full_treble(`
     allow system_server nvs_socket:sock_file create_file_perms;
 ')
 
-# mpu sensor
-allow system_server user_calib_file:dir rw_dir_perms;
-allow system_server user_calib_file:file create_file_perms;
-
 # dc for cec
 allow system_server tegradc_device:chr_file { read ioctl open write };
-
-# locality property
-allow system_server locality_prop:property_service set;
 
 # Write to proc/sys/net/unix/max_dgram_qlen
 allow system_server proc_net:file rw_file_perms;
@@ -82,10 +66,7 @@ allow system_server proc_net:file rw_file_perms;
 allow system_server system_app_service:service_manager find;
 
 # Access nvcpl
-allow system_server nvcpl_app_service:service_manager find;
-
-# hand shake property between system and vold
-allow system_server handshake_sys_vold_prop:property_service set;
+allow system_server nvcpl_service:service_manager find;
 
 # pwm-fan
 allow system_server sysfs_pwm_fan:file r_file_perms;
@@ -115,9 +96,6 @@ allow system_server sysfs_mmc_host:file rw_file_perms;
 # Allow GL to access ptimer_scale_factor
 allow system_server sysfs_gpu:file r_file_perms;
 
-# allow system_server (for camera features) to read files/dirs in /data/camera_config/
-r_dir_file(system_server, camera_config_file)
-
 # allow system_server to access thermal files for Thermal HAL
 allow system_server sysfs_thermal:lnk_file r_file_perms;
 allow system_server sysfs_thermal:dir r_dir_perms;
@@ -127,15 +105,19 @@ allow system_server debugfs:lnk_file read;
 
 allow system_server user_profile_data_file:dir r_dir_perms;
 
-# allow system_server to search keylayout_data_file
-allow system_server keylayout_data_file:dir search;
-
 # pci device sysfs search
 r_dir_file(system_server, sysfs_pci_device)
 
 # Use HALs
 hal_client_domain(system_server, hal_shieldtech)
 hal_client_domain(system_server, hal_flynn)
+hal_client_domain(system_server, hal_rpx)
+hal_client_domain(system_server, hal_cplservice)
+hal_client_domain(system_server, hal_thermalservice)
+hal_client_domain(system_server, hal_factoryservice)
+hal_client_domain(system_server, hal_convertibleport)
+hal_client_domain(system_server, hal_statscollectionproxy)
+hal_client_domain(system_server, hal_graphics_mempool)
 
 # allow system_server to control gpu power knobs
 allow system_server sysfs_gpu_power_knobs:file rw_file_perms;

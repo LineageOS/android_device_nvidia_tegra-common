@@ -54,7 +54,7 @@ allow system_app sysfs_bus_usb:file w_file_perms;
 allow system_app sysfs_sound:{ file lnk_file } r_file_perms;
 allow system_app sysfs_sound:dir r_dir_perms;
 allow system_app sysfs_ozmo:lnk_file read;
-allow system_app sysfs_ozmo:dir rw_dir_perms;
+allow system_app sysfs_ozmo:dir r_dir_perms;
 allow system_app sysfs_ozmo:file rw_file_perms;
 allow system_app sysfs_hid:dir r_dir_perms;
 allow system_app sysfs_hid:file rw_file_perms;
@@ -82,7 +82,6 @@ allow system_app system_app_data_file:lnk_file create_file_perms;
 
 # IKEv2 daemon
 unix_socket_connect(system_app, charon, charon)
-allow system_app ctl_charon_prop:property_service set;
 
 # Gamepad reset
 allow system_app sysfs_gamepad:file rw_file_perms;
@@ -98,7 +97,7 @@ allow system_app sysfs_vrr:file rw_file_perms;
 allow system_app uhid_device:chr_file rw_file_perms;
 
 # usb mode setting for Darcy
-set_prop(system_app, usb_mode_prop);
+get_prop(system_app, usb_mode_prop);
 allow system_app sysfs_usb_convertible:file rw_file_perms;
 allow system_app sysfs_usb_convertible:lnk_file { read write };
 
@@ -148,11 +147,20 @@ allow system_app hal_shieldtech_hwservice:hwservice_manager find;
 # ShieldTech
 allow system_app hal_shieldtech_default:binder call;
 
-# Allow nvcpl to use powerHAL
-hal_client_domain(system_app, hal_power)
-
 # Allow system apps to communicate with Flynn HAL
 hal_client_domain(system_app, hal_flynn)
+
+hal_client_domain(system_app, hal_shieldtech)
+hal_client_domain(system_app, hal_gensysfs)
+hal_client_domain(system_app, hal_rpx)
+hal_client_domain(system_app, hal_graphics_display)
+hal_client_domain(system_app, hal_cplservice)
+hal_client_domain(system_app, hal_thermalservice)
+hal_client_domain(system_app, hal_factoryservice)
+hal_client_domain(system_app, hal_mossigner)
+hal_client_domain(system_app, hal_convertibleport)
+hal_client_domain(system_app, hal_statscollectionproxy)
+hal_client_domain(system_app, hal_mediavndsvc)
 
 # Allow system_app to r/w to downgrade usb3 nodes
 allow system_app sysfs_usb_blacklist:file rw_file_perms;
@@ -162,7 +170,7 @@ allow system_app asec_apk_file:dir r_dir_perms;
 allow system_app asec_apk_file:file r_file_perms;
 
 # Allow system app to get nvcpl service
-allow system_app nvcpl_app_service:service_manager find;
+allow system_app nvcpl_service:service_manager find;
 
 # Allow system_app to talk to nvphsd
 allow system_app nvphsd_hwservice:hwservice_manager find;

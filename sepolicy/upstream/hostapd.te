@@ -13,8 +13,8 @@
 # limitations under the License.
 
 # Allow hostapd to access symlinks created by wifi_loader
-allow hostapd wifi_data_file:lnk_file read;
+allow hal_wifi_hostapd_default wifi_data_file:lnk_file read;
 
 #allow hostapd to access sysfs_netcfg and sysfs_mmc_host
-r_dir_file(hostapd, sysfs_netcfg)
-r_dir_file(hostapd, sysfs_mmc_host)
+r_dir_file(hal_wifi_hostapd_default, sysfs_netcfg)
+r_dir_file(hal_wifi_hostapd_default, sysfs_mmc_host)

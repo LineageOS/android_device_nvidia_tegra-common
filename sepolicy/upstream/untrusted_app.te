@@ -55,15 +55,7 @@ allow untrusted_app hubcore:service_manager find;
 binder_call(untrusted_app, hubcore)
 
 # Allow frameworks to find 'nvcpl' system service; enables app profiles
-allow untrusted_app_25 nvcpl_app_service:service_manager find;
-
-# Allow untrusted_app_25 to talk to nvphsd
-allow untrusted_app_25 nvphsd_hwservice:hwservice_manager find;
-
-# Allow untrusted_app to talk to hwservice_manager.
-# A particular use case is with SmartThings Link device. There is an interaction
-# between SmartThings Link and SmartThings app during firmware update sequence.
-allow untrusted_app nvphsd_hwservice:hwservice_manager find;
+allow untrusted_app_25 nvcpl_service:service_manager find;
 
 # Allow untrusted apps to access oem media files
 r_dir_file(untrusted_app, oem_media_file)

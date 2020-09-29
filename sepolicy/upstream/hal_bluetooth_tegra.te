@@ -20,3 +20,9 @@ init_daemon_domain(hal_bluetooth_tegra)
 
 # allow bluetoothhal to find service through service manager
 allow hal_bluetooth_tegra nvphsd_hwservice:hwservice_manager find;
+
+r_dir_file(hal_bluetooth_tegra, factory_file)
+
+r_dir_file(hal_bluetooth_tegra, mnt_vendor_file)
+
+set_prop(hal_bluetooth_tegra, vendor_bt_prop)

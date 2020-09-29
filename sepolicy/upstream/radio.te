@@ -20,10 +20,3 @@ allow radio mediacodec_service:service_manager find;
 
 # allow to write to nvfeedback.log
 allow radio anr_data_file:file write;
-
-# IMS ipsec daemon
-unix_socket_connect(radio, imsipsec, imsipsec)
-allow radio ctl_imsipsec_prop:property_service set;
-
-# allow m.android.phone to access camera_config files in /data/camera_config
-r_dir_file(radio, camera_config_file)

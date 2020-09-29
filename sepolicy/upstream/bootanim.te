@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+hal_client_domain(bootanim, hal_cplservice)
+
 # Need executable memory to have better performance
 allow bootanim self:process execmem;
 

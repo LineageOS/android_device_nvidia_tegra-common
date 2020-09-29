@@ -6,19 +6,18 @@
 #distribution of this software and related documentation without an express
 #license agreement from NVIDIA Corporation is strictly prohibited.
 
-type cac_log_dumper, domain;
-type cac_log_dumper_exec, exec_type, file_type, vendor_file_type;
+type cac_log_dumper, domain, coredomain;
+type cac_log_dumper_exec, exec_type, file_type;
 
 init_daemon_domain(cac_log_dumper)
+binder_use(cac_log_dumper);
 
 # logcat
 read_logd(cac_log_dumper)
 
 # allow shell
-allow cac_log_dumper vendor_shell_exec:file rx_file_perms;
 allow cac_log_dumper shell_exec:file rx_file_perms;
 # allow accessing toolbox files
-allow cac_log_dumper vendor_toolbox_exec:file rx_file_perms;
 allow cac_log_dumper toolbox_exec:file rx_file_perms;
 
 # write into cac the logs dumped
@@ -27,4 +26,3 @@ allow cac_log_dumper cache_file:file create_file_perms;
 
 # Allow to get kernel log
 allow cac_log_dumper kernel:system syslog_read;
-allow cac_log_dumper kmsg_device:chr_file r_file_perms;

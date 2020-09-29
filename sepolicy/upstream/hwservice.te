@@ -12,7 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-type hal_shieldtech_hwservice, hwservice_manager_type;
+type hal_convertibleport_hwservice, hwservice_manager_type;
+type hal_cplservice_hwservice, hwservice_manager_type;
+type hal_factoryservice_hwservice, hwservice_manager_type;
+type hal_flynn_hwservice, hwservice_manager_type;
 type hal_gensysfs_hwservice,  hwservice_manager_type;
 type hal_graphics_display_hwservice, hwservice_manager_type;
-type hal_flynn_hwservice, hwservice_manager_type;
+type hal_graphics_mempool_hwservice, hwservice_manager_type;
+type hal_hubcore_hwservice, hwservice_manager_type;
+type hal_ipprotect_dolby_hwservice, hwservice_manager_type;
+type hal_ipprotect_superres_hwservice, hwservice_manager_type;
+type hal_mediavndsvc_hwservice, hwservice_manager_type;
+type hal_mossigner_hwservice, hwservice_manager_type;
+type hal_rpx_hwservice, hwservice_manager_type;
+type hal_shieldtech_hwservice, hwservice_manager_type;
+type hal_statscollectionproxy_hwservice, hwservice_manager_type;
+type hal_thermalservice_hwservice, hwservice_manager_type;

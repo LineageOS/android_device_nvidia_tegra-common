@@ -15,6 +15,8 @@
 type hal_camera_tegra, domain;
 hal_server_domain(hal_camera_tegra, hal_camera)
 
+hal_client_domain(hal_camera_tegra, hal_cplservice)
+
 type hal_camera_tegra_exec, exec_type, file_type, vendor_file_type;
 init_daemon_domain(hal_camera_tegra)
 
@@ -39,8 +41,8 @@ allow hal_camera_tegra argus_socket:dir rw_dir_perms;
 allow hal_camera_tegra argus_socket:sock_file create_file_perms;
 
 # allow accessing camera data files
-allow hal_camera_tegra nv_camera_data_file:dir create_dir_perms;
-allow hal_camera_tegra nv_camera_data_file:file create_file_perms;
+allow hal_camera_tegra nvcam_data_file:dir create_dir_perms;
+allow hal_camera_tegra nvcam_data_file:file create_file_perms;
 
 # camerahal searches through sysfs, so we need to allow it to search all dirs
 r_dir_file(hal_camera_tegra, sysfs_type)
