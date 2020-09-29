@@ -16,3 +16,4 @@ type hal_shieldtech_hwservice, hwservice_manager_type;
 type hal_gensysfs_hwservice,  hwservice_manager_type;
 type hal_graphics_display_hwservice, hwservice_manager_type;
 type hal_flynn_hwservice, hwservice_manager_type;
+type hal_mossigner_hwservice, hwservice_manager_type;

@@ -13,7 +13,7 @@
 # limitations under the License.
 
 type cecutil, domain;
-type cecutil_exec, exec_type, file_type;
+type cecutil_exec, exec_type, vendor_file_type;
 
 init_daemon_domain(cecutil)
 allow cecutil tegracec_device:chr_file { rwx_file_perms ioctl };

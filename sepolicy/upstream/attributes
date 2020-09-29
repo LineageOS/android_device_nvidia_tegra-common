@@ -16,10 +16,25 @@
 # Attribute declarations
 #
 
-# HAL Shieldtech
-attribute hal_shieldtech;
-attribute hal_shieldtech_client;
-attribute hal_shieldtech_server;
+# HAL Convertible Port
+attribute hal_convertibleport;
+attribute hal_convertibleport_client;
+attribute hal_convertibleport_server;
+
+# HAL CPL Service
+attribute hal_cplservice;
+attribute hal_cplservice_client;
+attribute hal_cplservice_server;
+
+# HAL Factory Service
+attribute hal_factoryservice;
+attribute hal_factoryservice_client;
+attribute hal_factoryservice_server;
+
+# HAL Flynn
+attribute hal_flynn;
+attribute hal_flynn_client;
+attribute hal_flynn_server;
 
 # HAL GenSysfs
 attribute hal_gensysfs;
@@ -31,7 +46,52 @@ attribute hal_graphics_display;
 attribute hal_graphics_display_server;
 attribute hal_graphics_display_client;
 
-# HAL Flynn
-attribute hal_flynn;
-attribute hal_flynn_client;
-attribute hal_flynn_server;
+# HAL Graphics Mempool
+attribute hal_graphics_mempool;
+attribute hal_graphics_mempool_client;
+attribute hal_graphics_mempool_server;
+
+# HAL Hubcore
+attribute hal_hubcore;
+attribute hal_hubcore_client;
+attribute hal_hubcore_server;
+
+# HAL IP Protect Dolby
+attribute hal_ipprotect_dolby;
+attribute hal_ipprotect_dolby_client;
+attribute hal_ipprotect_dolby_server;
+
+# HAL IP Protect SuperRes
+attribute hal_ipprotect_superres;
+attribute hal_ipprotect_superres_client;
+attribute hal_ipprotect_superres_server;
+
+# HAL Media Vendor Service
+attribute hal_mediavndsvc;
+attribute hal_mediavndsvc_client;
+attribute hal_mediavndsvc_server;
+
+# HAL MOS Signer
+attribute hal_mossigner;
+attribute hal_mossigner_client;
+attribute hal_mossigner_server;
+
+# HAL RPX
+attribute hal_rpx;
+attribute hal_rpx_client;
+attribute hal_rpx_server;
+
+# HAL Shieldtech
+attribute hal_shieldtech;
+attribute hal_shieldtech_client;
+attribute hal_shieldtech_server;
+
+# HAL Stats Collection Proxy
+attribute hal_statscollectionproxy;
+attribute hal_statscollectionproxy_client;
+attribute hal_statscollectionproxy_server;
+
+# HAL Thermal Service
+attribute hal_thermalservice;
+attribute hal_thermalservice_client;
+attribute hal_thermalservice_server;

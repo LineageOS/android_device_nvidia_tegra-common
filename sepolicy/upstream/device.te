@@ -19,7 +19,7 @@ type quadd_device, dev_type;
 type quadd_auth_device, dev_type;
 
 # /dev/hidraw[0-9]
-type hidraw_device, dev_type;
+type hidraw_device, dev_type, mlstrustedobject;
 
 # Tsec device
 type tsec_device, dev_type, mlstrustedobject;
@@ -33,9 +33,6 @@ type tegracec_device, dev_type;
 
 # /dev/block/mmcblk0rpmb
 type rpmb_block_device, dev_type;
-
-# User calibration partion(UCB) block device
-type usercalib_block_device, dev_type;
 
 # Bootloader partition block device
 type bootloader_block_device, dev_type;

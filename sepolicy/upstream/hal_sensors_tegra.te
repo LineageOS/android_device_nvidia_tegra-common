@@ -22,7 +22,7 @@ init_daemon_domain(hal_sensors_tegra)
 allow hal_sensors_tegra nvs_socket:dir rw_dir_perms;
 allow hal_sensors_tegra nvs_socket:sock_file { unlink create read write };
 
-allow hal_sensors_tegra sysfs_nvi2c:dir rw_dir_perms;
+allow hal_sensors_tegra sysfs_nvi2c:dir r_dir_perms;
 allow hal_sensors_tegra sysfs_nvi2c:file rw_file_perms;
 
 #allow sensor hal to read/write iio devices
