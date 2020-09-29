@@ -18,11 +18,9 @@ genfscon proc /bluetooth/sleep/lpm		u:object_r:proc_bluetooth_writable:s0
 genfscon proc "/device-tree/chosen/nvidia,bluetooth-mac"		u:object_r:proc_bluetooth_mac:s0
 genfscon proc /device-tree/bcmdhd_pcie_wlan/status			u:object_r:proc_bcmdhd_pcie:s0
 genfscon proc /device-tree/brcmfmac_pcie_wlan/status			u:object_r:proc_brcmfmac_pcie:s0
-genfscon fuseblk / 				u:object_r:fuseblk:s0
 genfscon ntfs /					u:object_r:ntfs:s0
 genfscon cifs /					u:object_r:fuse:s0
 genfscon proc /task_weight			u:object_r:proc_taskweight:s0
-genfscon proc /version				u:object_r:proc_version:s0
 genfscon proc /device-tree/chosen/plugin-manager/tnspec/id		u:object_r:proc_tnspec:s0
 genfscon proc /device-tree/chosen/plugin-manager/tnspec/config		u:object_r:proc_tnspec:s0
 genfscon proc /sys/net/ipv4/conf/wlan0/drop_unicast_in_l2_multicast	u:object_r:proc_net_wifi:s0

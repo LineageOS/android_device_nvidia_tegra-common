@@ -27,7 +27,7 @@ allowxperm charon self:udp_socket ioctl { SIOCSIFMTU SIOCSIFFLAGS };
 
 allow charon self:tun_socket create_socket_perms_no_ioctl;
 allow charon self:netlink_route_socket nlmsg_write;
-allow charon self:capability { net_admin kill setuid chown dac_override };
+allow charon self:capability { net_admin kill setuid chown };
 
 allow charon system_file:dir r_dir_perms;
 allow charon system_file:file rx_file_perms;

@@ -17,8 +17,9 @@ type pbc_exec, exec_type, file_type, vendor_file_type;
 
 init_daemon_domain(pbc)
 
-set_prop(pbc, system_prop)
 set_prop(pbc, pbc_prop)
+
+r_dir_file(pbc, sysfs_device_platform)
 
 allow pbc sysfs_devices_system_cpu:file rw_file_perms;
 allow pbc pmqos_device:chr_file rw_file_perms;

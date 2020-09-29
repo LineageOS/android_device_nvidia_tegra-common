@@ -14,9 +14,9 @@
 
 # allow backlight HAL to adjust lcd panel brightness
 allow hal_light_default sysfs_class_backlight:file  rw_file_perms;
-allow hal_light_default sysfs_class_backlight:dir  rw_dir_perms;
+allow hal_light_default sysfs_class_backlight:dir  r_dir_perms;
 
 # allow backlight HAL to read/write below backlight I2C bus node
 # e.x /sys/devices/(*).i2c/i2c-(*)/backlight/pwm-backlight/brightness
 allow hal_light_default sysfs_nvi2c:file  rw_file_perms;
-allow hal_light_default sysfs_nvi2c:dir  rw_dir_perms;
+allow hal_light_default sysfs_nvi2c:dir  r_dir_perms;

@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-r_dir_file(domain, sysfs_bus_usb)
-r_dir_file(domain, sysfs_tegra_info)
-r_dir_file(domain, sysfs_tegrafuse_aid)
+r_dir_file(domain -isolated_app, sysfs_bus_usb)
+r_dir_file(domain -isolated_app, sysfs_tegra_info)
+r_dir_file(domain -isolated_app, sysfs_tegrafuse_aid)
 
 # Allow all domains to read surfacefinger property
 get_prop(domain, surfaceflinger_prop)
@@ -23,10 +23,11 @@ get_prop(domain, surfaceflinger_prop)
 allow domain debugfs_clock:dir search;
 allow domain debugfs_edp:dir search;
 
-allow domain proc_version:file r_file_perms;
+allow { domain -isolated_app -ephemeral_app -untrusted_app -untrusted_app_25 -untrusted_app_27 -untrusted_v2_app -mediaprovider } proc_version:file r_file_perms;
 allow domain rootfs:lnk_file getattr;
 
 # Allow domains to search debugfs_nvmap directory
 # This is required as every new nvmap client added searches in
 # handles_by_pid directory and creates entry if not present.
 allow domain debugfs_nvmap:dir search;
+

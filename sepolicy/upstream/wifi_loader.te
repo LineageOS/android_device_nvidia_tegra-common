@@ -15,49 +15,39 @@
 # wifi_loader - wifi loader which modifies /data/misc/wifi/*
 type wifi_loader, domain;
 type wifi_loader_exec, exec_type, file_type, vendor_file_type;
+type wifi_vendor_data_file, file_type, data_file_type;
 
 init_daemon_domain(wifi_loader)
-set_prop(wifi_loader, system_prop)
 
 allow wifi_loader vendor_shell_exec:file rx_file_perms;
 not_full_treble(`allow wifi_loader shell_exec:file rx_file_perms;')
 allow wifi_loader vendor_toolbox_exec:file rx_file_perms;
 not_full_treble(`allow wifi_loader toolbox_exec:file rx_file_perms;')
 allow wifi_loader wifi_loader_exec:file { execute_no_trans open };
-allow wifi_loader wifi_data_file:{ file lnk_file } create_file_perms;
-allow wifi_loader wifi_data_file:dir rw_dir_perms;
-allow wifi_loader bluetooth_data_file:dir w_dir_perms;
-allow wifi_loader bluetooth_data_file:lnk_file create_file_perms;
-allow wifi_loader gps_data_file:dir w_dir_perms;
-allow wifi_loader gps_data_file:lnk_file create_file_perms;
+allow wifi_loader wifi_vendor_data_file:{ file lnk_file } create_file_perms;
+allow wifi_loader wifi_vendor_data_file:dir rw_dir_perms;
 allow wifi_loader { device hci_attach_dev gps_device }:chr_file { setattr getattr };
 allow wifi_loader devpts:chr_file rw_file_perms;
 allow wifi_loader kernel:system module_request;
-allow wifi_loader self:capability { net_admin dac_override chown sys_module fowner fsetid };
+allow wifi_loader self:capability { net_admin chown sys_module fowner fsetid };
 allow wifi_loader sysfs_wifi:file r_file_perms;
 allow wifi_loader system_file:file execute_no_trans;
 allow wifi_loader proc_wmem_default_writable:file w_file_perms;
 allow wifi_loader proc_wmem_max_writable:file w_file_perms;
 
 # create symlink for wifihal based on chip
-allow wifi_loader wifi_data_file:dir rw_dir_perms;
-allow wifi_loader wifi_data_file:file { create_file_perms unlink };
-allow wifi_loader wifi_data_file:lnk_file { create_file_perms unlink };
+allow wifi_loader wifi_vendor_data_file:dir rw_dir_perms;
+allow wifi_loader wifi_vendor_data_file:file { create_file_perms unlink };
+allow wifi_loader wifi_vendor_data_file:lnk_file { create_file_perms unlink };
 
 allow wifi_loader sysfs_brcmfmac_pcie:file r_file_perms;
 allow wifi_loader sysfs_brcmfmac_fwpath:file { getattr setattr };
-
-# Bluedroid log
-allow wifi_loader bluetooth_log_file:dir { write search add_name };
-allow wifi_loader bluetooth_log_file:file create_file_perms;
 
 # Allow wifi_loader to read a custom MAC address from /mnt/factory/<wifi>
 r_dir_file(wifi_loader, factory_file)
 
 r_dir_file(wifi_loader, sysfs_mmc_host)
 r_dir_file(wifi_loader, sysfs_pci_device)
-
-type_transition wifi_loader wifi_data_file:sock_file wpa_socket;
 
 allow wifi_loader tmpfs:dir r_dir_perms;
 
