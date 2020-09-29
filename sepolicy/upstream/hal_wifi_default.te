@@ -15,13 +15,9 @@
 # allow default hal to access wifi vendor firmware file
 allow hal_wifi_default vendor_firmware_wifi_file:file r_file_perms;
 allow hal_wifi_default sysfs_brcmfmac_fwpath:file rw_file_perms;
-allow hal_wifi_default wifi_data_file:lnk_file read;
 
 # allow kernel to read WiFi firmware
 allow kernel vendor_firmware_wifi_file:file r_file_perms;
 
 #Allow access to file /mnt/factory/wifi/wifi_mac.txt
 r_dir_file(hal_wifi_default, factory_file)
-
-#Allow access to wifi data partion
-r_dir_file(hal_wifi_default, wifi_data_file)

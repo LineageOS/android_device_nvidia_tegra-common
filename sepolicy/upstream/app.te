@@ -14,11 +14,7 @@
 
 allow_use_phs(appdomain)
 
-not_full_treble(`
-    allow { appdomain -isolated_app } nvphsd_service:service_manager find;
-')
-
-allow appdomain sysfs_gpu:file r_file_perms;
+allow { appdomain -ephemeral_app -isolated_app } sysfs_gpu:file r_file_perms;
 allow appdomain sysfs_mmc_host:dir search;
 
 # Access external card

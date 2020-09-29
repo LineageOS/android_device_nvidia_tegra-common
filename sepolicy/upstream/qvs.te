@@ -15,27 +15,24 @@
 
 # qvs: this file is used by qvs applications to have
 # permission to run on boot.
-type qvs_exec, file_type, exec_type;
+type qvs_exec, file_type, exec_type, vendor_file_type;
 
 userdebug_or_eng(`
-  type qvs, domain, vendor_executes_system_violators;
+  type qvs, domain, data_between_core_and_vendor_violators;
   permissive qvs;
   init_daemon_domain(qvs)
   #qvs entry file is a shell script
-  allow qvs shell_exec:file rx_file_perms;
+  allow qvs vendor_shell_exec:file rx_file_perms;
   #allow execution of qvs application from /system/bin
   allow qvs system_file:file rx_file_perms;
   #allow pseudo tty
   allow qvs devpts:chr_file rw_file_perms;
-  #Transition into zygote domain, if zygote_exe is found.
-  domain_auto_trans(qvs, zygote_exec, zygote)
   allow qvs self:process setcurrent;
   allow qvs su:process dyntransition;
   allow zygote qvs:fd use;
   allow qvs domain:dir search;
   allow qvs domain:{ file lnk_file } read;
   allow qvs gpu_device:chr_file rw_file_perms;
-  allow qvs self:capability dac_override;
   allow qvs appdomain:dir search;
   allow qvs appdomain:lnk_file read;
   allow qvs sysfs_thermal:dir search;

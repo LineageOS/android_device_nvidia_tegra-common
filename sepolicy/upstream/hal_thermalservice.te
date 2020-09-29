@@ -12,10 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-type cecutil, domain;
-type cecutil_exec, file_type, exec_type, vendor_file_type;
+type hal_thermalservice_default, domain;
+hal_server_domain(hal_thermalservice_default, hal_thermalservice)
 
-init_daemon_domain(cecutil)
-allow cecutil tegracec_device:chr_file { rwx_file_perms ioctl };
-allow cecutil cecutil_exec:file ioctl;
-allow cecutil vendor_file:file rx_file_perms;
+type hal_thermalservice_default_exec, file_type, exec_type, vendor_file_type;
+init_daemon_domain(hal_thermalservice_default)
+
+# HwBinder IPC from client to server, and callbacks
+binder_call(hal_thermalservice_client, hal_thermalservice_server)
+binder_call(hal_thermalservice_server, hal_thermalservice_client)
+
+add_hwservice(hal_thermalservice_server, hal_thermalservice_hwservice)
+allow hal_thermalservice_client hal_thermalservice_hwservice:hwservice_manager find;

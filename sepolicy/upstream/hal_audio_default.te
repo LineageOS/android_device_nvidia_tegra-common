@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-set_prop(hal_audio_default, audio_prop)
+hal_client_domain(hal_audio_default, hal_ipprotect_dolby)
 
-allow hal_audio_default stats_share_file:dir create_dir_perms;
-allow hal_audio_default stats_share_file:file create_file_perms;
+set_prop(hal_audio_default, audiohal_prop)
+get_prop(hal_audio_default, audiohal_ro_prop)
 
 allow hal_audio_default halaudio_data_file:dir create_dir_perms;
 allow hal_audio_default halaudio_data_file:file create_file_perms;

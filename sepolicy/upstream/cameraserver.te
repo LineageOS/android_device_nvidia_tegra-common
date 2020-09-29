@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+get_prop(cameraserver, vendor_camera_prop)
+
 # cameraserver wants to access nvmap through libEGL.so
 allow cameraserver gpu_device:chr_file rw_file_perms;
 
@@ -23,6 +25,3 @@ allow cameraserver anr_data_file:file write;
 
 # cameraserver wants to access libnvgr.so through libvulkan.so
 allow cameraserver same_process_hal_file:file { execute getattr open read };
-
-# allow cameraserver to read files/dirs in /data/camera_config/
-r_dir_file(cameraserver, camera_config_file)

@@ -12,10 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-type cecutil, domain;
-type cecutil_exec, file_type, exec_type, vendor_file_type;
+type hal_usb_tegra, domain;
+hal_server_domain(hal_usb_tegra, hal_usb)
 
-init_daemon_domain(cecutil)
-allow cecutil tegracec_device:chr_file { rwx_file_perms ioctl };
-allow cecutil cecutil_exec:file ioctl;
-allow cecutil vendor_file:file rx_file_perms;
+type hal_usb_tegra_exec, file_type, exec_type, vendor_file_type;
+init_daemon_domain(hal_usb_tegra)

@@ -12,10 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-type cecutil, domain;
-type cecutil_exec, file_type, exec_type, vendor_file_type;
+type hal_mediavndsvc_default, domain;
+hal_server_domain(hal_mediavndsvc_default, hal_mediavndsvc)
 
-init_daemon_domain(cecutil)
-allow cecutil tegracec_device:chr_file { rwx_file_perms ioctl };
-allow cecutil cecutil_exec:file ioctl;
-allow cecutil vendor_file:file rx_file_perms;
+type hal_mediavndsvc_default_exec, file_type, exec_type, vendor_file_type;
+init_daemon_domain(hal_mediavndsvc_default)
+
+# HwBinder IPC from client to server, and callbacks
+binder_call(hal_mediavndsvc_client, hal_mediavndsvc_server)
+binder_call(hal_mediavndsvc_server, hal_mediavndsvc_client)
+
+add_hwservice(hal_mediavndsvc_server, hal_mediavndsvc_hwservice)
+allow hal_mediavndsvc_client hal_mediavndsvc_hwservice:hwservice_manager find;
