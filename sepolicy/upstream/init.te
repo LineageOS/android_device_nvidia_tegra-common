@@ -17,7 +17,6 @@ allow init sysfs_nvi2c:lnk_file read;
 
 allow init functionfs:dir mounton;
 allow init pstorefs:dir mounton;
-allow init user_calib_file:dir mounton;
 allow init rpx_file:dir mounton;
 allow init factory_file:dir mounton;
 

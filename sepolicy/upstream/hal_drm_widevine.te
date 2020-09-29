@@ -1,4 +1,4 @@
-# copyright (c) 2017-2018, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2018, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,14 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# IMS ipsec daemon
-type imsipsec, domain, coredomain;
-type imsipsec_exec, exec_type, file_type;
+type hal_drm_widevine, domain;
+hal_server_domain(hal_drm_widevine, hal_drm)
 
-init_daemon_domain(imsipsec)
-
-allow imsipsec kernel:system module_request;
-allow imsipsec self:key_socket create_socket_perms_no_ioctl;
-allow imsipsec self:capability { net_admin };
-
-unix_socket_connect(imsipsec, property, init)
+type hal_drm_widevine_exec, file_type, exec_type, vendor_file_type;
+init_daemon_domain(hal_drm_widevine)

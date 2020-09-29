@@ -17,4 +17,4 @@ allow installd fuse:dir r_dir_perms;
 
 allow installd factory_file:filesystem quotaget;
 
-dontaudit installd self:capability sys_admin;
+dontaudit installd self:capability { dac_read_search sys_admin };

@@ -12,10 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Camera data files
-allow mediaserver nv_camera_data_file:dir create_dir_perms;
-allow mediaserver nv_camera_data_file:file create_file_perms;
-
 # audio stats files
 allow mediaserver stats_share_file:dir create_dir_perms;
 allow mediaserver stats_share_file:file create_file_perms;
@@ -66,12 +62,3 @@ allow mediaserver camera_device:chr_file rw_file_perms;
 
 # Allow mediaserver to search /storage
 allow mediaserver storage_file:dir search;
-
-# Allow mediaserver (for media_profile.xml) to read files/dirs in /data/camera_config/
-r_dir_file(mediaserver, camera_config_file)
-
-# Allow mediaserver (for media_codecs.xml and media_codecs_performance.xml) to read /data/media_config
-r_dir_file(mediaserver, config_media_file)
-
-# Allow tee_device access for Vudu DRM
-allow mediaserver tee_device:chr_file { read write open ioctl };

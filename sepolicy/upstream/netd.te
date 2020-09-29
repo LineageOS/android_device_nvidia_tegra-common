@@ -27,7 +27,7 @@ allow netd sysfs_wifi:file w_file_perms;
 allow netd kernel:system module_request;
 
 # Allow netd to create globalAlert in xt_quota
-allow netd proc_net:dir ra_dir_perms;
+allow netd proc_net:dir r_dir_perms;
 # Allow netd to create globalAlert file
 allow netd proc_net:file create_file_perms;
 
