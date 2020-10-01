@@ -16,4 +16,3 @@ binder_call(hal_graphics_display_client, hal_graphics_display_server)
 binder_call(hal_graphics_display_server, hal_graphics_display_client)
 
 add_hwservice(hal_graphics_display_server, hal_graphics_display_hwservice)
-allow hal_graphics_display_client hal_graphics_display_hwservice:hwservice_manager find;

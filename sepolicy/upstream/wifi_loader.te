@@ -31,7 +31,6 @@ allow wifi_loader devpts:chr_file rw_file_perms;
 allow wifi_loader kernel:system module_request;
 allow wifi_loader self:capability { net_admin chown sys_module fowner fsetid };
 allow wifi_loader sysfs_wifi:file r_file_perms;
-allow wifi_loader system_file:file execute_no_trans;
 allow wifi_loader proc_wmem_default_writable:file w_file_perms;
 allow wifi_loader proc_wmem_max_writable:file w_file_perms;
 

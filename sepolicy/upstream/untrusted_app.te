@@ -18,7 +18,6 @@ allow untrusted_app_25 tsec_device:chr_file rw_file_perms;
 
 # Allow untrusted apps to access tegrafuse AID node
 allow untrusted_app_25 sysfs_tegrafuse_aid:file { open read };
-allow untrusted_app_25 vendor_file:file read;
 
 # Access to read SOC family
 r_dir_file(untrusted_app, sysfs_soc)
@@ -51,7 +50,6 @@ dontauditxperm untrusted_app self:udp_socket ioctl SIOCGIFHWADDR;
 # Allow untrusted_app to access hubcore. In this case, we have the
 # SmartThings app from the playstore which needs to access the
 # service published through hubcore.
-allow untrusted_app hubcore:service_manager find;
 binder_call(untrusted_app, hubcore)
 
 # Allow frameworks to find 'nvcpl' system service; enables app profiles

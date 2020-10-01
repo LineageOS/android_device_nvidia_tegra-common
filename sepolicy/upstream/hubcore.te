@@ -25,9 +25,6 @@ wakelock_use(hubcore)
 hwbinder_use(hubcore)
 get_prop(hubcore, net_dns_prop)
 
-# hubcore needs access to /dev/ttyACMx to talk to the link radio
-allow hubcore radio_device:chr_file rw_file_perms;
-
 # hubcore has its data files tagged with hubcore_data_file context which reside
 # under /data/misc/smartthings. This grants its permissions for that
 allow hubcore hubcore_data_file:dir create_dir_perms;
@@ -38,9 +35,6 @@ allow hubcore proc_net:file rw_file_perms;
 allow hubcore self:capability { net_raw net_admin };
 allow hubcore self:packet_socket create_socket_perms_no_ioctl;
 allowxperm hubcore self:udp_socket ioctl { priv_sock_ioctls };
-
-# Allow access to TEE
-allow hubcore tee_device:chr_file { read write open ioctl };
 
 # Allow access to usb_devices. Note: usb host library on android tries
 # to open the top level /dev/ node as part of its inotify. Unfortunately,

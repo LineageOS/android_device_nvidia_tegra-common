@@ -47,8 +47,6 @@ allow hal_graphics_composer_tegra hwc_data_file:dir {create_dir_perms};
 # allow /dev to allow adf to search for /dev/adf*
 allow hal_graphics_composer_tegra device:dir r_dir_perms;
 
-allow hal_graphics_composer_tegra hal_graphics_composer_hwservice:service_manager add;
-
 set_prop(hal_graphics_composer_tegra, surfaceflinger_prop)
 
 # for accessing nvhdcp1 device
@@ -64,7 +62,6 @@ allow hal_graphics_composer_tegra mediacodec:fd use;
 
 # Graphics Display HAL
 hal_server_domain(hal_graphics_composer_tegra, hal_graphics_display)
-allow hal_graphics_composer_tegra hal_graphics_display_hwservice:service_manager add;
 
 hal_client_domain(hal_graphics_composer_tegra, hal_cplservice)
 hal_client_domain(hal_graphics_composer_tegra, hal_graphics_mempool)

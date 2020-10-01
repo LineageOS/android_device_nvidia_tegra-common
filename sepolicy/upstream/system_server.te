@@ -87,9 +87,6 @@ allow system_server bluetooth_log_file:file rw_file_perms;
 allow system_server self:capability sys_module;
 auditallow system_server self:capability sys_module;
 
-# Dont audit system_server accessing dex2oat
-dontaudit system_server dex2oat_exec:file execute;
-
 r_dir_file(system_server, sysfs_mmc_host)
 allow system_server sysfs_mmc_host:file rw_file_perms;
 
@@ -99,9 +96,6 @@ allow system_server sysfs_gpu:file r_file_perms;
 # allow system_server to access thermal files for Thermal HAL
 allow system_server sysfs_thermal:lnk_file r_file_perms;
 allow system_server sysfs_thermal:dir r_dir_perms;
-
-# debugfs
-allow system_server debugfs:lnk_file read;
 
 allow system_server user_profile_data_file:dir r_dir_perms;
 
