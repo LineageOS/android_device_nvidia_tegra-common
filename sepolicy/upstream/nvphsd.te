@@ -91,7 +91,7 @@ not_full_treble(`
     allow nvphsd self:netlink_socket create_socket_perms_no_ioctl;
 
     # /dev/socket/nvphsd
-    allow nvphsd nvphsd_socket:unix_stream_socket rw_stream_socket_perms;
+    allow nvphsd nvphsd_socket:unix_stream_socket rw_stream_socket_perms_no_ioctl;
 ')
 
 # write to /proc/task_weight

@@ -70,7 +70,7 @@ allow surfaceflinger ashmem_device:chr_file execute;
 ')
 
 # Allow SF access to VRR properties
-allow surfaceflinger vrr_prop:file { r_file_perms };
+allow surfaceflinger vrr_prop:file { r_file_perms_no_ioctl };
 
 # Allow SF access to mediacodec
 allow surfaceflinger mediacodec:fd use;

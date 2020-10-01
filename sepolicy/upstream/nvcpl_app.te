@@ -37,7 +37,6 @@ allow nvcpl_app network_management_service:service_manager find;
 allow nvcpl_app sensorservice_service:service_manager find;
 allow nvcpl_app user_service:service_manager find;
 allow nvcpl_app power_service:service_manager find;
-allow nvcpl_app hal_power_hwservice:hwservice_manager find;
 allow nvcpl_app mount_service:service_manager find;
 allow nvcpl_app content_service:service_manager find;
 allow nvcpl_app device_identifiers_service:service_manager find;

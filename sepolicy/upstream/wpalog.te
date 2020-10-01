@@ -23,7 +23,6 @@ allow wpalog vendor_shell_exec:file rx_file_perms;
 not_full_treble(`allow wpalog shell_exec:file rx_file_perms;')
 allow wpalog vendor_toolbox_exec:file rx_file_perms;
 not_full_treble(`allow wpalog toolbox_exec:file rx_file_perms;')
-allow wpalog system_file:file execute_no_trans;
 allow wpalog wifi_vendor_data_file:dir { search add_name write };
 allow wpalog wifi_vendor_data_file:file create_file_perms;
 allow wpalog self:capability { fowner chown };

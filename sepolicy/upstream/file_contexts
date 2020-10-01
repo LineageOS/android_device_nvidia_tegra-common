@@ -270,7 +270,6 @@
 (/system)?/vendor/bin/pbc2		u:object_r:pbc_exec:s0
 (/system)?/vendor/bin/pbc		u:object_r:pbc_exec:s0
 (/system)?/vendor/bin/prcurlservice		u:object_r:prcurlservice_exec:s0
-(/system)?/vendor/bin/qvs_post_boot.sh		u:object_r:qvs_exec:s0
 (/system)?/vendor/bin/run_ss_status.sh		u:object_r:tee_exec:s0
 (/system)?/vendor/bin/ss_status		u:object_r:tee_exec:s0
 (/system)?/vendor/bin/start_flynnd.sh		u:object_r:start_flynnd_exec:s0

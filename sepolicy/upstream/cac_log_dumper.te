@@ -7,7 +7,7 @@
 #license agreement from NVIDIA Corporation is strictly prohibited.
 
 type cac_log_dumper, domain, coredomain;
-type cac_log_dumper_exec, exec_type, file_type;
+type cac_log_dumper_exec, exec_type, file_type, system_file_type;
 
 init_daemon_domain(cac_log_dumper)
 binder_use(cac_log_dumper);

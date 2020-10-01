@@ -56,6 +56,3 @@ allow init proc_wmem_max_writable:file write;
 # allow init to format block after flash
 allow init cache_block_device:blk_file w_file_perms;
 allow init userdata_block_device:blk_file w_file_perms;
-
-# allow init to hold wakelocks
-wakelock_use(init)

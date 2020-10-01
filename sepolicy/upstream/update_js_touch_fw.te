@@ -20,7 +20,6 @@ init_daemon_domain(update_js_touch_fw)
 
 domain_auto_trans(update_js_touch_fw, gpload_exec, gpload)
 domain_auto_trans(update_js_touch_fw, ctload_exec, ctload)
-allow update_js_touch_fw system_file:file execute_no_trans;
 allow update_js_touch_fw vendor_shell_exec:file { read open execute };
 not_full_treble(`allow update_js_touch_fw shell_exec:file rx_file_perms;')
 allow update_js_touch_fw input_device:dir search;

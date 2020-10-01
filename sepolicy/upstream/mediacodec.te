@@ -17,7 +17,6 @@ hal_client_domain(mediacodec, hal_graphics_mempool)
 r_dir_file(mediacodec, sysfs)
 r_dir_file(mediacodec, sysfs_soc)
 
-allow mediacodec camera_device:chr_file rw_file_perms;
 allow mediacodec system_file:dir { open read };
 hal_client_domain(mediacodec, hal_power)
 allow_use_phs(mediacodec)

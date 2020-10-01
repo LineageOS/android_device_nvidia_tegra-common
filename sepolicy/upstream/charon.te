@@ -14,14 +14,13 @@
 
 # IKEv2 key management daemon
 type charon, domain, coredomain;
-type charon_exec, exec_type, file_type;
+type charon_exec, exec_type, file_type, system_file_type;
 
 init_daemon_domain(charon)
 
 net_domain(charon)
 
 allow charon tun_device:chr_file rw_file_perms;
-allow charon radio_device:chr_file rw_file_perms;
 
 allowxperm charon self:udp_socket ioctl { SIOCSIFMTU SIOCSIFFLAGS };
 

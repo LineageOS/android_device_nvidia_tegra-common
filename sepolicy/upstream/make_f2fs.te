@@ -18,4 +18,4 @@ type make_f2fs_exec, exec_type, file_type;
 init_daemon_domain(make_f2fs)
 
 allow make_f2fs block_device:dir search;
-allow make_f2fs userdata_block_device:blk_file rw_file_perms;
+allow make_f2fs userdata_block_device:blk_file rw_file_perms_no_ioctl;

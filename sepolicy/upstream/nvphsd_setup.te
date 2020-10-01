@@ -24,7 +24,6 @@ allow nvphsd_setup self:capability { chown fowner fsetid };
 set_prop(nvphsd_setup, thermal_prop)
 
 # file access
-allow nvphsd_setup system_file:file x_file_perms;
 allow nvphsd_setup vendor_shell_exec:file rx_file_perms;
 not_full_treble(`allow nvphsd_setup shell_exec:file rx_file_perms;')
 allow nvphsd_setup vendor_toolbox_exec:file rx_file_perms;

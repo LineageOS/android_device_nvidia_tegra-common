@@ -23,7 +23,6 @@ not_full_treble(`allow adb_enable shell_exec:file rx_file_perms;')
 allow adb_enable vendor_toolbox_exec:file rx_file_perms;
 not_full_treble(`allow adb_enable toolbox_exec:file rx_file_perms;')
 
-allow adb_enable system_file:file execute_no_trans;
 allow adb_enable configfs:dir search;
 allow adb_enable configfs:file r_file_perms;
 

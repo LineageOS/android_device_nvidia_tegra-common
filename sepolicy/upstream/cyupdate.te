@@ -18,9 +18,7 @@ type cyupdate_exec, exec_type, file_type, vendor_file_type;
 init_daemon_domain(cyupdate)
 
 allow cyupdate vendor_shell_exec:file rx_file_perms;
-allow cyupdate system_file:file execute_no_trans;
 allow cyupdate cyupdate_exec:file execute_no_trans;
-allow cyupdate i2c_device:chr_file rw_file_perms;
 allow cyupdate sysfs_nvi2c:{ file lnk_file } rw_file_perms;
 allow cyupdate sysfs_nvi2c:dir r_dir_perms;
 allow cyupdate self:capability { net_admin chown sys_module fowner fsetid };
