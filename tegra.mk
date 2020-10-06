@@ -104,6 +104,13 @@ PRODUCT_PACKAGES += \
     nvphsd_setup.sh
 endif
 
+# Power
+ifeq ($(TARGET_TEGRA_POWER),lineage)
+TARGET_POWERHAL_VARIANT := tegra
+PRODUCT_PACKAGES += \
+    vendor.nvidia.hardware.power@1.0-service
+endif
+
 # Vendor seccomp policy files for media components:
 PRODUCT_COPY_FILES += \
     device/nvidia/tegra-common/seccomp/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
