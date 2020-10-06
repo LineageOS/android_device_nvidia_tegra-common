@@ -66,6 +66,10 @@ ifeq ($(TARGET_TEGRA_POWER),lineage)
 include hardware/nvidia/power/BoardPower.mk
 endif
 
+# SELinux
+BOARD_SEPOLICY_DIRS += \
+    device/nvidia/tegra-common/sepolicy/upstream
+
 # TWRP Support
 ifeq ($(WITH_TWRP),true)
 include device/nvidia/tegra-common/twrp.mk
