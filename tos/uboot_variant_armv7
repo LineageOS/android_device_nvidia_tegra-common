@@ -1,0 +1,2 @@
+CONFIG_ANDROID_BOOT_IMAGE=y
+CONFIG_BOOTCOMMAND="setenv staging 0x98000000; setenv fdt_addr 0x97000000; mmc dev 0; part start mmc 0 DTB fdt_start; part size mmc 0 DTB fdt_size; mmc read $fdt_addr $fdt_start $fdt_size; fdt addr $fdt_addr; fdt rm /firmware/trusted-foundations; fdt get value hardware /firmware/android hardware; setenv bootargs gpt androidboot.hardware=$hardware; part start mmc 0 LNX lnx_start; part size mmc 0 LNX lnx_size; mmc read $staging $lnx_start $lnx_size; bootm $staging $staging $fdt_addr;"
