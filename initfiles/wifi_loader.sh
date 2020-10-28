@@ -77,9 +77,12 @@ fi
 if [ "`cat /proc/device-tree/brcmfmac_pcie_wlan/status`" = "okay" ]; then
        ln -sf /sys/module/brcmfmac/parameters/alternative_fw_path /data/vendor/wifi/fw_path
        ln -sf /sys/module/brcmfmac/parameters/alternative_fw_path /data/vendor/wifi/op_mode
-else
+elif [ "`cat /proc/device-tree/bcmdhd_wlan/status`" = "okay" ]; then
        ln -sf /sys/module/bcmdhd/parameters/firmware_path /data/vendor/wifi/fw_path
        ln -sf /sys/module/bcmdhd/parameters/op_mode /data/vendor/wifi/op_mode
+else
+       touch /data/vendor/wifi/fw_path
+       touch /data/vendor/wifi/op_mode
 fi
        chmod 0660 /data/vendor/wifi/fw_path
        chmod 0660 /data/vendor/wifi/op_mode
