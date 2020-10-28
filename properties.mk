@@ -59,3 +59,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.direct.interface=p2p-dev-wlan0 \
     wifi.interface=wlan0
 endif
+
+# Zygote
+PRODUCT_PROPERTY_OVERRIDES += \
+    zygote.critical_window.minute=10
