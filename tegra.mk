@@ -88,7 +88,8 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0-impl
 else ifeq ($(TARGET_TEGRA_BT),btlinux)
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0-service.btlinux
+    android.hardware.bluetooth@1.0-service.btlinux \
+    android.hardware.bluetooth@1.0-service.btlinux-tegra.rc
 endif
 endif
 
