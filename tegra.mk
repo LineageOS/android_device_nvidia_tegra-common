@@ -144,7 +144,7 @@ PRODUCT_PACKAGES += \
 endif
 
 # Power
-ifeq ($(TARGET_TEGRA_POWER),lineage)
+ifneq ($(filter $(TARGET_TEGRA_POWER), aosp lineage),)
 TARGET_POWERHAL_VARIANT := tegra
 PRODUCT_PACKAGES += \
     vendor.nvidia.hardware.power@1.0-service

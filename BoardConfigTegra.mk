@@ -63,7 +63,7 @@ DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/omx.xml
 endif
 
 # Power
-ifeq ($(TARGET_TEGRA_POWER),lineage)
+ifneq ($(filter $(TARGET_TEGRA_POWER), aosp lineage),)
 include hardware/nvidia/power/BoardPower.mk
 endif
 
