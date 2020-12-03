@@ -183,6 +183,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_GMS_CLIENTID_BASE ?= android-nvidia
 
 # Graphics
+ifneq ($(TARGET_TEGRA_GPU),)
+PRODUCT_PACKAGES += \
+    disable_configstore
+endif
 ifeq ($(TARGET_TEGRA_GPU),drm)
 PRODUCT_SOONG_NAMESPACES += external/mesa3d
 PRODUCT_PACKAGES += \
