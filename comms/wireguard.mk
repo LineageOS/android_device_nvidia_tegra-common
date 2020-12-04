@@ -34,7 +34,7 @@ KERNEL_OUT := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ
 $(_wireguard_ko): $(KERNEL_OUT)/arch/$(KERNEL_ARCH)/boot/$(BOARD_KERNEL_IMAGE_NAME)
 	@mkdir -p $(dir $@)
 	@cp -R $(WIREGUARD_PATH)/src/* $(_wireguard_intermediates)/
-	$(hide) +$(MAKE) $(KERNEL_MAKE_FLAGS) -C $(KERNEL_OUT) ARCH=$(TARGET_ARCH) $(KERNEL_CROSS_COMPILE) M=$(_wireguard_intermediates) modules
+	$(hide) +$(KERNEL_MAKE_CMD) $(PATH_OVERRIDE) $(KERNEL_MAKE_FLAGS) -C $(KERNEL_OUT) ARCH=$(TARGET_ARCH) $(KERNEL_CROSS_COMPILE) M=$(BUILD_TOP)/$(_wireguard_intermediates) modules
 	$(KERNEL_TOOLCHAIN_PATH)strip --strip-unneeded $@; \
 	cp $@ $(KERNEL_MODULES_OUT)/lib/modules; \
 
