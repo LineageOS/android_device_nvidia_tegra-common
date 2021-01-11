@@ -17,23 +17,20 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE               := p2p_supplicant_overlay.conf
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := p2p_supplicant_overlay.conf
-LOCAL_VENDOR_MODULE        := true
+
+LOCAL_MODULE               := p2p_supplicant.conf
 LOCAL_MODULE_RELATIVE_PATH := wifi
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := wpa_supplicant_overlay.conf
 LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := wpa_supplicant_overlay.conf
 LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := wifi
-include $(BUILD_PREBUILT)
 
-include $(LOCAL_PATH)/p2p_supplicant.mk
+_p2p_supplicant_conf_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),$(LOCAL_MODULE))
+_p2p_supplicant_conf := $(_p2p_supplicant_conf_intermediates)/$(LOCAL_MODULE)
+_wpa_supplicant_conf_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),wpa_supplicant.conf)
+_wpa_supplicant_conf := $(_wpa_supplicant_conf_intermediates)/wpa_supplicant.conf
 
-ifneq ("$(wildcard kernel/nvidia/wireguard)","")
-include $(LOCAL_PATH)/wireguard.mk
-endif
+$(_p2p_supplicant_conf): $(_wpa_supplicant_conf)
+	@mkdir -p $(dir $@)
+	@cp $(_wpa_supplicant_conf) $@
+	@cp  $@ $(TARGET_OUT_VENDOR_ETC)/$(LOCAL_MODULE_RELATIVE_PATH)/
+
+include $(BUILD_SYSTEM)/base_rules.mk
