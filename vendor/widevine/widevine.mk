@@ -15,8 +15,11 @@
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-service \
     android.hardware.drm@1.0-impl \
-    android.hardware.drm@1.2-service.clearkey \
-    android.hardware.drm@1.1-service.widevine
+    android.hardware.drm@1.3-service.clearkey \
+    android.hardware.drm@1.3-service.widevine
+
+PRODUCT_COPY_FILES += \
+    $(OUT_DIR)/target/product/$(LINEAGE_BUILD)/system/lib/libprotobuf-cpp-lite.so:$(TARGET_COPY_OUT_VENDOR)/lib/libprotobuf-cpp-lite-3.9.1.so
 
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
