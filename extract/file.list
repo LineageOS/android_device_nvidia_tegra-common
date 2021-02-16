@@ -247,7 +247,7 @@ stock-t210	vendor/lib/libtsec_wrapper.so		common/security/lib/libtsec_wrapper.so
 stock-t210	vendor/lib/libnvsi_ll_2.so		common/security/lib/libnvsi_ll_2.so
 
 # Widevine
-stock-t210	vendor/bin/hw/android.hardware.drm@1.1-service.widevine	common/widevine/bin32/hw/android.hardware.drm@1.1-service.widevine
+stock-t210	vendor/bin/hw/android.hardware.drm@1.3-service.widevine	common/widevine/bin32/hw/android.hardware.drm@1.3-service.widevine
 stock-t210	vendor/lib64/mediadrm/libwvdrmengine.so			common/widevine/lib64/mediadrm/libwvdrmengine.so
 stock-t210	vendor/lib/mediadrm/libwvdrmengine.so			common/widevine/lib/mediadrm/libwvdrmengine.so
 stock-t210	vendor/lib/libwvhidl.so					common/widevine/lib/libwvhidl.so
