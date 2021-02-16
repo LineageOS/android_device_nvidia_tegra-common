@@ -38,6 +38,14 @@ ifeq ($(TARGET_TEGRA_AUDIO),nvaudio)
 TARGET_LD_SHIM_LIBS += /$(TARGET_COPY_OUT_VENDOR)/lib/hw/audio.primary.tegra.so|/system/lib/libprocessgroup.so \
                        /$(TARGET_COPY_OUT_VENDOR)/lib/hw/sound_trigger.primary.tegra.so|/system/lib/libprocessgroup.so
 endif
+ifeq ($(TARGET_TEGRA_KEYSTORE),nvkeystore)
+TARGET_LD_SHIM_LIBS += /$(TARGET_COPY_OUT_VENDOR)/lib/hw/gatekeeper.tlk.tegra.so|/$(TARGET_COPY_OUT_VENDOR)/lib/libgatekeeper-v29.so \
+                       /$(TARGET_COPY_OUT_VENDOR)/lib/hw/gatekeeper.trusty.tegra.so|/$(TARGET_COPY_OUT_VENDOR)/lib/libgatekeeper-v29.so
+ifeq ($(TARGET_ARCH),arm64)
+TARGET_LD_SHIM_LIBS += /$(TARGET_COPY_OUT_VENDOR)/lib64/hw/gatekeeper.tlk.tegra.so|/$(TARGET_COPY_OUT_VENDOR)/lib64/libgatekeeper-v29.so \
+                       /$(TARGET_COPY_OUT_VENDOR)/lib64/hw/gatekeeper.trusty.tegra.so|/$(TARGET_COPY_OUT_VENDOR)/lib64/libgatekeeper-v29.so
+endif
+endif
 
 # Graphics
 ifeq ($(TARGET_TEGRA_GPU),drm)
