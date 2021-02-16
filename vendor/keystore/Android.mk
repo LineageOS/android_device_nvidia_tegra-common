@@ -14,6 +14,7 @@
 
 LOCAL_PATH := $(call my-dir)
 COMMON_KEYSTORE_PATH := ../../../../../vendor/nvidia/common/keystore
+VNDK_29_PATH := ../../../../../prebuilts/vndk/v29
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := android.hardware.keymaster@3.0-service.tegra
@@ -41,6 +42,8 @@ LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_REQUIRED_MODULES     := libgatekeeper-v29
+LOCAL_ALLOW_UNDEFINED_SYMBOLS := true
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
@@ -54,6 +57,8 @@ LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_REQUIRED_MODULES     := libgatekeeper-v29
+LOCAL_ALLOW_UNDEFINED_SYMBOLS := true
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
@@ -67,4 +72,21 @@ LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := hw
+include $(BUILD_NVIDIA_COMMON_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE               := libgatekeeper-v29
+ifeq ($(TARGET_ARCH),arm64)
+LOCAL_SRC_FILES_32         := $(VNDK_29_PATH)/arm64/arch-arm-armv8-a/shared/vndk-core/libgatekeeper.so
+LOCAL_SRC_FILES_64         := $(VNDK_29_PATH)/arm64/arch-arm64-armv8-a/shared/vndk-core/libgatekeeper.so
+else ifeq ($(TARGET_ARCH),arm)
+LOCAL_SRC_FILES_32         := $(VNDK_29_PATH)/arm/arch-arm-armv7-a-neon/shared/vndk-core/libgatekeeper.so
+endif
+LOCAL_MULTILIB             := both
+LOCAL_MODULE_SUFFIX        := .so
+LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS          := optional
+LOCAL_MODULE_OWNER         := google
+LOCAL_VENDOR_MODULE        := true
+LOCAL_CHECK_ELF_FILES      := false
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
