@@ -16,11 +16,11 @@ LOCAL_PATH := $(call my-dir)
 COMMON_WIDEVINE_PATH := ../../../../../vendor/nvidia/common/widevine
 
 include $(CLEAR_VARS)
-LOCAL_MODULE               := android.hardware.drm@1.1-service.widevine
+LOCAL_MODULE               := android.hardware.drm@1.3-service.widevine
 LOCAL_VINTF_FRAGMENTS      := android.hardware.drm@1.0-service.xml
-LOCAL_SRC_FILES_32         := $(COMMON_WIDEVINE_PATH)/bin32/hw/android.hardware.drm@1.1-service.widevine
+LOCAL_SRC_FILES_32         := $(COMMON_WIDEVINE_PATH)/bin32/hw/android.hardware.drm@1.3-service.widevine
 LOCAL_MULTILIB             := 32
-LOCAL_INIT_RC              := etc/init/android.hardware.drm@1.1-service.widevine.rc
+LOCAL_INIT_RC              := etc/init/android.hardware.drm@1.3-service.widevine.rc
 LOCAL_MODULE_CLASS         := EXECUTABLES
 LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
@@ -37,17 +37,6 @@ LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
 LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
-include $(BUILD_NVIDIA_COMMON_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := libwvdrmengine
-LOCAL_SRC_FILES_32         := $(COMMON_WIDEVINE_PATH)/lib/mediadrm/libwvdrmengine.so
-LOCAL_SRC_FILES_64         := $(COMMON_WIDEVINE_PATH)/lib64/mediadrm/libwvdrmengine.so
-LOCAL_MULTILIB             := both
-LOCAL_MODULE_SUFFIX        := .so
-LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
-LOCAL_MODULE_TAGS          := optional
-LOCAL_MODULE_OWNER         := nvidia
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := mediadrm
-include $(BUILD_NVIDIA_COMMON_PREBUILT)
+LOCAL_SHARED_LIBRARIES     := android.hardware.drm@1.0 android.hardware.drm@1.1 android.hardware.drm@1.2 android.hardware.drm@1.3 android.hidl.memory@1.0 libbase libc++ libc libcrypto libdl libhidlbase libhidlmemory liblog libm libprotobuf-cpp-lite libutils
+LOCAL_CHECK_ELF_FILES      := false
+include $(BUILD_PREBUILT)
