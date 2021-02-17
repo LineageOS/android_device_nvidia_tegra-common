@@ -64,6 +64,7 @@ LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_SHARED_LIBRARIES     := libprocessgroup
 LOCAL_REQUIRED_MODULES     := libnvvisualizer
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
@@ -77,6 +78,7 @@ LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_SHARED_LIBRARIES     := libprocessgroup
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
