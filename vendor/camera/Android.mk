@@ -14,6 +14,7 @@
 
 LOCAL_PATH := $(call my-dir)
 COMMON_CAMERA_PATH := ../../../../../vendor/nvidia/common/camera
+VNDK_29_PATH := ../../../../../prebuilts/vndk/v29
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := vendor.nvidia.hardware.camera.provider@2.4-service
@@ -46,6 +47,8 @@ LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_CHECK_ELF_FILES      := false
+LOCAL_SHARED_LIBRARIES     := libGLESv2 libbinder libc++ libc libcamera_metadata libcutils libdl libhardware libhardware_legacy libjpeg liblog libm libnvcam_imageencoder libnvcamlog libnvcpl libnvddk_2d_v2 libnvgr libnvmm libnvmm_camera_v3 libnvmm_utils libnvodm_imager libnvos libnvrm libnvrm_graphics libnvscf libnvtvmr libpower libsensorndkbridge libui libutils
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
@@ -134,6 +137,8 @@ LOCAL_MODULE_TARGET_ARCH   := arm64
 LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
+LOCAL_CHECK_ELF_FILES      := false
+LOCAL_SHARED_LIBRARIES     := libEGL libc++ libc libdl liblog libm libnvcam_imageencoder libnvcamerautils libnvddk_vic libnvfnetstorehdfx libnvmm_utils libnvos libnvrm libnvrm_graphics libnvscf libprotobuf-cpp-lv29 vendor.nvidia.hardware.camera.argus.service@1.0-impl
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
@@ -266,6 +271,7 @@ LOCAL_MODULE_TARGET_ARCH   := arm64
 LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
+LOCAL_ALLOW_UNDEFINED_SYMBOLS := true
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
@@ -288,6 +294,8 @@ LOCAL_MODULE_TARGET_ARCH   := arm64
 LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
+LOCAL_CHECK_ELF_FILES      := false
+LOCAL_SHARED_LIBRARIES     := libEGL libGLESv2 libbinder libc++ libc libcuda libcutils libdl libm libnvcamerautils libnvcamlog libnvddk_vic libnvisp libnvisp_v3 libnvmm_camera_v3 libnvmm_utils libnvodm_imager libnvos libnvphs libnvrm libnvrm_graphics libnvtvmr libnvvicsi_v3 libprotobuf-cpp-lv29 libsensorndkbridge libsync libutils
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
@@ -300,3 +308,21 @@ LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE               := libprotobuf-cpp-lv29
+ifeq ($(TARGET_ARCH),arm64)
+LOCAL_SRC_FILES_32         := $(VNDK_29_PATH)/arm64/arch-arm-armv8-a/shared/vndk-core/libprotobuf-cpp-lite.so
+LOCAL_SRC_FILES_64         := $(VNDK_29_PATH)/arm64/arch-arm64-armv8-a/shared/vndk-core/libprotobuf-cpp-lite.so
+else ifeq ($(TARGET_ARCH),arm)
+LOCAL_SRC_FILES_32         := $(VNDK_29_PATH)/arm/arch-arm-armv7-a-neon/shared/vndk-core/libprotobuf-cpp-lite.so
+endif
+LOCAL_MULTILIB             := both
+LOCAL_MODULE_SUFFIX        := .so
+LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS          := optional
+LOCAL_MODULE_OWNER         := google
+LOCAL_VENDOR_MODULE        := true
+LOCAL_CHECK_ELF_FILES      := false
+include $(BUILD_NVIDIA_COMMON_PREBUILT)
+endif
