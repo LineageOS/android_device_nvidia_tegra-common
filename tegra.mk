@@ -138,6 +138,12 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-service-nvidia
 endif
 
+# OMX
+ifeq ($(TARGET_TEGRA_OMX),software)
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.stagefright.ccodec=0
+endif
+
 # PHS
 ifeq ($(TARGET_TEGRA_PHS),nvphs)
 PRODUCT_PACKAGES += \
