@@ -1,0 +1,308 @@
+# Audio
+stock-t210	system/system/app/NvAudioSvc/NvAudioSvc.apk		common/audio/app/NvAudioSvc.apk
+stock-t210	vendor/app/DolbyAudioService/DolbyAudioService.apk	common/audio/app/DolbyAudioService.apk
+stock-t210	vendor/bin/hw/android.hardware.audio@4.0-service-msd	common/audio/bin32/hw/android.hardware.audio@4.0-service-msd
+stock-t210	vendor/lib/hw/audio.primary.tegra.so			common/audio/lib/hw/audio.primary.tegra.so
+stock-foster	vendor/lib/hw/audio.primary.tegra.so			common/audio/lib/hw/audio.primary.tegra.nodolby.so
+stock-t210	vendor/lib/hw/sound_trigger.primary.tegra.so		common/audio/lib/hw/sound_trigger.primary.tegra.so
+stock-t210	vendor/lib/soundfx/libnvvisualizer.so			common/audio/lib/soundfx/libnvvisualizer.so
+stock-t210	vendor/lib/libim501.so					common/audio/lib/libim501.so
+stock-t210	vendor/lib/libnvaudiofx.so				common/audio/lib/libnvaudiofx.so
+stock-t210	vendor/lib/libnvoice.so					common/audio/lib/libnvoice.so
+stock-t210	vendor/lib/cp_pgm_one_dap_lib.so			common/audio/lib/cp_pgm_one_dap_lib.so
+stock-t210	vendor/lib/cp_pgm_two_dap_lib.so			common/audio/lib/cp_pgm_two_dap_lib.so
+stock-t210	vendor/lib/cp_sys_one_dap_lib.so			common/audio/lib/cp_sys_one_dap_lib.so
+stock-t210	vendor/lib/cp_sys_two_dap_lib.so			common/audio/lib/cp_sys_two_dap_lib.so
+stock-t210	vendor/lib/ddp_enc_lib_ac3.so				common/audio/lib/ddp_enc_lib_ac3.so
+stock-t210	vendor/lib/ddp_enc_lib_eac3.so				common/audio/lib/ddp_enc_lib_eac3.so
+stock-t210	vendor/lib/ddp_udc_lib.so				common/audio/lib/ddp_udc_lib.so
+stock-t210	vendor/lib/dp_dap_lib.so				common/audio/lib/dp_dap_lib.so
+stock-t210	vendor/lib/vendor.dolby.ms12@1.0.so			common/audio/lib/vendor.dolby.ms12@1.0.so
+
+# Camera
+stock-t210	vendor/bin/vendor.nvidia.hardware.camera.provider@2.4-service		common/camera/bin64/vendor.nvidia.hardware.camera.provider@2.4-service
+stock-t210	vendor/lib64/vendor.nvidia.hardware.camera.argus.service@1.0-impl.so	common/camera/lib64/vendor.nvidia.hardware.camera.argus.service@1.0-impl.so
+stock-t210	vendor/lib64/vendor.nvidia.hardware.camera.argus.service@1.0.so		common/camera/lib64/vendor.nvidia.hardware.camera.argus.service@1.0.so
+stock-t210	vendor/lib64/vendor.nvidia.hardware.camera.device@3.2-impl.so		common/camera/lib64/vendor.nvidia.hardware.camera.device@3.2-impl.so
+stock-t210	vendor/lib64/vendor.nvidia.hardware.camera.device@3.2.so		common/camera/lib64/vendor.nvidia.hardware.camera.device@3.2.so
+stock-t210	vendor/lib64/vendor.nvidia.hardware.camera.provider@2.4-impl.so		common/camera/lib64/vendor.nvidia.hardware.camera.provider@2.4-impl.so
+stock-t210	vendor/lib64/vendor.nvidia.hardware.camera.provider@2.4.so		common/camera/lib64/vendor.nvidia.hardware.camera.provider@2.4.so
+stock-t210	vendor/etc/model_frontal.xml						common/camera/etc/model_frontal.xml
+stock-t210	vendor/lib64/hw/camera.tegra.so						common/camera/lib64/hw/camera.tegra.so
+stock-t210	vendor/lib64/libnvmm_camera_v3.so					common/camera/lib64/libnvmm_camera_v3.so
+stock-t210	vendor/lib64/libnvargus.so						common/camera/lib64/libnvargus.so
+stock-t210	vendor/lib64/libnvargus_socketserver.so					common/camera/lib64/libnvargus_socketserver.so
+stock-t210	vendor/lib64/libnvscf.so						common/camera/lib64/libnvscf.so
+stock-t210	vendor/lib64/libnvodm_imager.so						common/camera/lib64/libnvodm_imager.so
+stock-t210	vendor/lib64/libnvcamlog.so						common/camera/lib64/libnvcamlog.so
+stock-t210	vendor/lib64/libnvcam_imageencoder.so					common/camera/lib64/libnvcam_imageencoder.so
+stock-t210	vendor/lib64/libnvcameratools.so					common/camera/lib64/libnvcameratools.so
+stock-t210	vendor/lib64/libnvcamerautils.so					common/camera/lib64/libnvcamerautils.so
+stock-t210	vendor/lib64/libnvfnet.so						common/camera/lib64/libnvfnet.so
+stock-t210	vendor/lib64/libnvfnetstorehdfx.so					common/camera/lib64/libnvfnetstorehdfx.so
+stock-t210	vendor/lib64/libnvisp.so						common/camera/lib64/libnvisp.so
+stock-t210	vendor/lib64/libnvisp_v3.so						common/camera/lib64/libnvisp_v3.so
+stock-t210	vendor/lib64/libnvvicsi_v3.so						common/camera/lib64/libnvvicsi_v3.so
+stock-t210	vendor/lib64/libnvcamv4l2.so						common/camera/lib64/libnvcamv4l2.so
+stock-t210	vendor/lib64/libnvcspline.so						common/camera/lib64/libnvcspline.so
+
+# Common
+stock-t210	vendor/lib64/libnvos.so	common/common/lib64/libnvos.so
+stock-t210	vendor/lib/libnvos.so	common/common/lib/libnvos.so
+
+# HDMI CEC
+stock-t210	vendor/lib64/hw/hdmi_cec.tegra.so	common/hdmi/lib64/hw/hdmi_cec.tegra.so
+stock-t210	vendor/lib/hw/hdmi_cec.tegra.so		common/hdmi/lib/hw/hdmi_cec.tegra.so
+
+# Keymaster
+stock-t210	vendor/bin/hw/android.hardware.keymaster@3.0-service.tegra	common/keystore/bin64/hw/android.hardware.keymaster@3.0-service.tegra
+stock-sif	vendor/bin/hw/android.hardware.keymaster@3.0-service.tegra	common/keystore/bin32/hw/android.hardware.keymaster@3.0-service.tegra
+stock-t210	vendor/lib64/hw/gatekeeper.tlk.tegra.so				common/keystore/lib64/hw/gatekeeper.tlk.tegra.so
+stock-t210	vendor/lib64/hw/gatekeeper.trusty.tegra.so			common/keystore/lib64/hw/gatekeeper.trusty.tegra.so
+stock-t210	vendor/lib64/hw/keystore.v0.tegra.so				common/keystore/lib64/hw/keystore.v0.tegra.so
+stock-t210	vendor/lib/hw/gatekeeper.tlk.tegra.so				common/keystore/lib/hw/gatekeeper.tlk.tegra.so
+stock-t210	vendor/lib/hw/gatekeeper.trusty.tegra.so			common/keystore/lib/hw/gatekeeper.trusty.tegra.so
+stock-t210	vendor/lib/hw/keystore.v0.tegra.so				common/keystore/lib/hw/keystore.v0.tegra.so
+
+# IPProtect (Dolby)
+stock-t210	vendor/bin/hw/vendor.nvidia.hardware.ipprotect@1.0-service	common/ipprotect/bin64/hw/vendor.nvidia.hardware.ipprotect@1.0-service
+stock-sif	vendor/bin/hw/vendor.nvidia.hardware.ipprotect@1.0-service	common/ipprotect/bin32/hw/vendor.nvidia.hardware.ipprotect@1.0-service
+stock-t210	vendor/lib64/vendor.nvidia.hardware.ipprotect@1.0.so		common/ipprotect/lib64/vendor.nvidia.hardware.ipprotect@1.0.so
+stock-t210	vendor/lib/vendor.nvidia.hardware.ipprotect@1.0.so		common/ipprotect/lib/vendor.nvidia.hardware.ipprotect@1.0.so
+
+# Memtrack
+stock-t210	vendor/lib/hw/memtrack.tegra.so		common/memtrack/lib/hw/memtrack.tegra.so
+stock-t210	vendor/lib64/hw/memtrack.tegra.so	common/memtrack/lib64/hw/memtrack.tegra.so
+
+# NvCPL
+stock-t210	system/system/app/NvCPLSvc/NvCPLSvc.apk					common/nvcpl/app/NvCPLSvc/NvCPLSvc.apk
+stock-t210	vendor/bin/hw/vendor.nvidia.hardware.cpl.service@1.0-service		common/nvcpl/bin64/hw/vendor.nvidia.hardware.cpl.service@1.0-service
+stock-sif	vendor/bin/hw/vendor.nvidia.hardware.cpl.service@1.0-service		common/nvcpl/bin32/hw/vendor.nvidia.hardware.cpl.service@1.0-service
+stock-t210	vendor/lib64/vendor.nvidia.hardware.cpl.service@1.0.so			common/nvcpl/lib64/vendor.nvidia.hardware.cpl.service@1.0.so
+stock-t210	vendor/lib64/vendor.nvidia.hardware.cpl.tools@1.0.so			common/nvcpl/lib64/vendor.nvidia.hardware.cpl.tools@1.0.so
+stock-t210	vendor/lib64/vendor.nvidia.hardware.cpl.interfacecb@1.0.so		common/nvcpl/lib64/vendor.nvidia.hardware.cpl.interfacecb@1.0.so
+stock-t210	vendor/lib/vendor.nvidia.hardware.cpl.service@1.0.so			common/nvcpl/lib/vendor.nvidia.hardware.cpl.service@1.0.so
+stock-t210	vendor/lib/vendor.nvidia.hardware.cpl.tools@1.0.so			common/nvcpl/lib/vendor.nvidia.hardware.cpl.tools@1.0.so
+stock-t210	system/system/lib/vendor.nvidia.hardware.cpl.interfacecb@1.0.so		common/nvcpl/lib/vendor.nvidia.hardware.cpl.interfacecb@1.0.so
+stock-t210	system/system/lib64/libnvcontrol_jni.so					common/nvcpl/lib64/libnvcontrol_jni.so
+stock-t210	vendor/lib64/libnvcpl_vendor.so						common/nvcpl/lib64/libnvcpl_vendor.so
+stock-sif	system/system/lib/libnvcontrol_jni.so					common/nvcpl/lib/libnvcontrol_jni.so
+stock-t210	vendor/lib/libnvcpl_vendor.so						common/nvcpl/lib/libnvcpl_vendor.so
+stock-t210	system/system/lib64/libnvcpl.so						common/nvcpl/system/lib64/libnvcpl.so
+stock-t210	system/system/lib64/libnvcpl_vendor.so					common/nvcpl/system/lib64/libnvcpl_vendor.so
+stock-t210	system/system/lib64/vendor.nvidia.hardware.cpl.service@1.0.so		common/nvcpl/system/lib64/vendor.nvidia.hardware.cpl.service@1.0.so
+stock-t210	system/system/lib64/vendor.nvidia.hardware.cpl.tools@1.0.so		common/nvcpl/system/lib64/vendor.nvidia.hardware.cpl.tools@1.0.so
+stock-t210	system/system/lib64/vendor.nvidia.hardware.cpl.interfacecb@1.0.so	common/nvcpl/system/lib64/vendor.nvidia.hardware.cpl.interfacecb@1.0.so
+stock-t210	system/system/lib/libnvcpl.so						common/nvcpl/system/lib/libnvcpl.so
+stock-t210	system/system/lib/libnvcpl_vendor.so					common/nvcpl/system/lib/libnvcpl_vendor.so
+stock-t210	system/system/lib/vendor.nvidia.hardware.cpl.service@1.0.so		common/nvcpl/system/lib/vendor.nvidia.hardware.cpl.service@1.0.so
+stock-t210	system/system/lib/vendor.nvidia.hardware.cpl.tools@1.0.so		common/nvcpl/system/lib/vendor.nvidia.hardware.cpl.tools@1.0.so
+stock-t210	system/system/lib/vendor.nvidia.hardware.cpl.interfacecb@1.0.so		common/nvcpl/system/lib/vendor.nvidia.hardware.cpl.interfacecb@1.0.so
+
+# NVGPU
+stock-t210	vendor/lib64/vendor.nvidia.hardware.graphics.mempool@1.0.so		common/nvgpu/lib64/vendor.nvidia.hardware.graphics.mempool@1.0.so
+stock-sif	vendor/lib/vendor.nvidia.hardware.graphics.mempool@1.0.so		common/nvgpu/lib/vendor.nvidia.hardware.graphics.mempool@1.0.so
+stock-t210	vendor/bin/hw/vendor.nvidia.hardware.graphics.composer@2.0-service	common/nvgpu/bin64/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
+stock-foster	vendor/bin/hw/vendor.nvidia.hardware.graphics.composer@2.0-service	common/nvgpu/bin64/hw/vendor.nvidia.hardware.graphics.composer@2.0-service.nodolby
+stock-sif	vendor/bin/hw/vendor.nvidia.hardware.graphics.composer@2.0-service	common/nvgpu/bin32/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
+stock-t210	vendor/lib64/vendor.nvidia.hardware.graphics.composer@2.0-impl.so	common/nvgpu/lib64/vendor.nvidia.hardware.graphics.composer@2.0-impl.so
+stock-t210	vendor/lib64/vendor.nvidia.hardware.graphics.display@1.0-impl.so	common/nvgpu/lib64/vendor.nvidia.hardware.graphics.display@1.0-impl.so
+stock-t210	vendor/lib64/vendor.nvidia.hardware.graphics.mempool@1.0-impl.so	common/nvgpu/lib64/vendor.nvidia.hardware.graphics.mempool@1.0-impl.so
+stock-sif	vendor/lib/vendor.nvidia.hardware.graphics.composer@2.0-impl.so		common/nvgpu/lib/vendor.nvidia.hardware.graphics.composer@2.0-impl.so
+stock-sif	vendor/lib/vendor.nvidia.hardware.graphics.display@1.0-impl.so		common/nvgpu/lib/vendor.nvidia.hardware.graphics.display@1.0-impl.so
+stock-sif	vendor/lib/vendor.nvidia.hardware.graphics.mempool@1.0-impl.so		common/nvgpu/lib/vendor.nvidia.hardware.graphics.mempool@1.0-impl.so
+stock-t210	vendor/lib64/hw/gralloc.tegra.so					common/nvgpu/lib64/hw/gralloc.tegra.so
+stock-t210	vendor/lib64/hw/vulkan.tegra.so						common/nvgpu/lib64/hw/vulkan.tegra.so
+stock-t210	vendor/lib/hw/gralloc.tegra.so						common/nvgpu/lib/hw/gralloc.tegra.so
+stock-t210	vendor/lib/hw/vulkan.tegra.so						common/nvgpu/lib/hw/vulkan.tegra.so
+stock-t210	vendor/lib64/egl/libEGL_tegra.so					common/nvgpu/lib64/egl/libEGL_tegra.so
+stock-t210	vendor/lib64/egl/libGLESv1_CM_tegra.so					common/nvgpu/lib64/egl/libGLESv1_CM_tegra.so
+stock-t210	vendor/lib64/egl/libGLESv2_tegra.so					common/nvgpu/lib64/egl/libGLESv2_tegra.so
+stock-t210	vendor/lib64/libdolbycontrol.so						common/nvgpu/lib64/libdolbycontrol.so
+stock-t210	vendor/lib64/libglcore.so						common/nvgpu/lib64/libglcore.so
+stock-t210	vendor/lib64/libmempoollocal.so						common/nvgpu/lib64/libmempoollocal.so
+stock-t210	vendor/lib64/libnvblit.so						common/nvgpu/lib64/libnvblit.so
+stock-t210	vendor/lib64/libnvddk_2d_v2.so						common/nvgpu/lib64/libnvddk_2d_v2.so
+stock-t210	vendor/lib64/libnvddk_vic.so						common/nvgpu/lib64/libnvddk_vic.so
+stock-t210	vendor/lib64/libnvglsi.so						common/nvgpu/lib64/libnvglsi.so
+stock-t210	vendor/lib64/libnvgr.so							common/nvgpu/lib64/libnvgr.so
+stock-t210	vendor/lib64/libnvhwcomposer.so						common/nvgpu/lib64/libnvhwcomposer.so
+stock-foster	vendor/lib64/libnvhwcomposer.so						common/nvgpu/lib64/libnvhwcomposer.nodolby.so
+stock-t210	vendor/lib64/libnvidia-glvkspirv.so					common/nvgpu/lib64/libnvidia-glvkspirv.so
+stock-t210	vendor/lib64/libnvidia-ptxjitcompiler.so				common/nvgpu/lib64/libnvidia-ptxjitcompiler.so
+stock-t210	vendor/lib64/libnvrmapi_tegra.so					common/nvgpu/lib64/libnvrmapi_tegra.so
+stock-t210	vendor/lib64/libnvrm_gpu.so						common/nvgpu/lib64/libnvrm_gpu.so
+stock-t210	vendor/lib64/libnvrm_graphics.so					common/nvgpu/lib64/libnvrm_graphics.so
+stock-t210	vendor/lib64/libnvrm.so							common/nvgpu/lib64/libnvrm.so
+stock-t210	vendor/lib64/libnvrmvkif.so						common/nvgpu/lib64/libnvrmvkif.so
+stock-t210	vendor/lib64/libnvwsi.so						common/nvgpu/lib64/libnvwsi.so
+stock-t210	vendor/lib64/libnvcolorutil.so						common/nvgpu/lib64/libnvcolorutil.so
+stock-t210	vendor/lib64/libnvdc.so							common/nvgpu/lib64/libnvdc.so
+stock-t210	vendor/lib64/libnvimp.so						common/nvgpu/lib64/libnvimp.so
+stock-t210	vendor/lib64/libcuda.so							common/nvgpu/lib64/libcuda.so
+stock-t210	vendor/lib64/libnvidia-fatbinaryloader.so				common/nvgpu/lib64/libnvidia-fatbinaryloader.so
+stock-t210	vendor/lib/egl/libEGL_tegra.so						common/nvgpu/lib/egl/libEGL_tegra.so
+stock-t210	vendor/lib/egl/libGLESv1_CM_tegra.so					common/nvgpu/lib/egl/libGLESv1_CM_tegra.so
+stock-t210	vendor/lib/egl/libGLESv2_tegra.so					common/nvgpu/lib/egl/libGLESv2_tegra.so
+stock-sif	vendor/lib/libdolbycontrol.so						common/nvgpu/lib/libdolbycontrol.so
+stock-t210	vendor/lib/libglcore.so							common/nvgpu/lib/libglcore.so
+stock-sif	vendor/lib/libmempoollocal.so						common/nvgpu/lib/libmempoollocal.so
+stock-t210	vendor/lib/libnvblit.so							common/nvgpu/lib/libnvblit.so
+stock-t210	vendor/lib/libnvddk_2d_v2.so						common/nvgpu/lib/libnvddk_2d_v2.so
+stock-t210	vendor/lib/libnvddk_vic.so						common/nvgpu/lib/libnvddk_vic.so
+stock-t210	vendor/lib/libnvglsi.so							common/nvgpu/lib/libnvglsi.so
+stock-t210	vendor/lib/libnvgr.so							common/nvgpu/lib/libnvgr.so
+stock-sif	vendor/lib/libnvhwcomposer.so						common/nvgpu/lib/libnvhwcomposer.so
+stock-t210	vendor/lib/libnvidia-glvkspirv.so					common/nvgpu/lib/libnvidia-glvkspirv.so
+stock-t210	vendor/lib/libnvidia-ptxjitcompiler.so					common/nvgpu/lib/libnvidia-ptxjitcompiler.so
+stock-t210	vendor/lib/libnvrmapi_tegra.so						common/nvgpu/lib/libnvrmapi_tegra.so
+stock-t210	vendor/lib/libnvrm_gpu.so						common/nvgpu/lib/libnvrm_gpu.so
+stock-t210	vendor/lib/libnvrm_graphics.so						common/nvgpu/lib/libnvrm_graphics.so
+stock-t210	vendor/lib/libnvrm.so							common/nvgpu/lib/libnvrm.so
+stock-t210	vendor/lib/libnvrmvkif.so						common/nvgpu/lib/libnvrmvkif.so
+stock-t210	vendor/lib/libnvwsi.so							common/nvgpu/lib/libnvwsi.so
+stock-t210	vendor/lib/libnvcolorutil.so						common/nvgpu/lib/libnvcolorutil.so
+stock-t210	vendor/lib/libnvdc.so							common/nvgpu/lib/libnvdc.so
+stock-t210	vendor/lib/libnvimp.so							common/nvgpu/lib/libnvimp.so
+stock-t210	vendor/lib/libcuda.so							common/nvgpu/lib/libcuda.so
+stock-t210	vendor/lib/libnvidia-fatbinaryloader.so					common/nvgpu/lib/libnvidia-fatbinaryloader.so
+
+# NVMM
+stock-t210	vendor/lib/libnvomxilclient.so		common/nvmm/lib/libnvomxilclient.so
+stock-t210	vendor/lib/libnvomx.so			common/nvmm/lib/libnvomx.so
+stock-t210	vendor/lib/libnvmm_audio.so		common/nvmm/lib/libnvmm_audio.so
+stock-t210	vendor/lib/libnvmm_contentpipe.so	common/nvmm/lib/libnvmm_contentpipe.so
+stock-t210	vendor/lib/libnvmmlite_audio.so		common/nvmm/lib/libnvmmlite_audio.so
+stock-t210	vendor/lib/libnvmmlite_image.so		common/nvmm/lib/libnvmmlite_image.so
+stock-t210	vendor/lib/libnvmmlite.so		common/nvmm/lib/libnvmmlite.so
+stock-t210	vendor/lib/libnvmmlite_msaudio.so	common/nvmm/lib/libnvmmlite_msaudio.so
+stock-t210	vendor/lib/libnvmmlite_utils.so		common/nvmm/lib/libnvmmlite_utils.so
+stock-t210	vendor/lib/libnvmmlite_video.so		common/nvmm/lib/libnvmmlite_video.so
+stock-t210	vendor/lib/libnvmm_parser.so		common/nvmm/lib/libnvmm_parser.so
+stock-t210	vendor/lib/libnvmm.so			common/nvmm/lib/libnvmm.so
+stock-t210	vendor/lib/libnvmm_msaudio.so		common/nvmm/lib/libnvmm_msaudio.so
+stock-t210	vendor/lib/libnvmm_utils.so		common/nvmm/lib/libnvmm_utils.so
+stock-t210	vendor/lib/libnvmm_writer.so		common/nvmm/lib/libnvmm_writer.so
+stock-t210	vendor/lib/libnvmedia.so		common/nvmm/lib/libnvmedia.so
+stock-t210	vendor/lib/libnvtvmr.so			common/nvmm/lib/libnvtvmr.so
+stock-t210	vendor/lib/libnvtnr.so			common/nvmm/lib/libnvtnr.so
+stock-t210	vendor/lib/libnvparser.so		common/nvmm/lib/libnvparser.so
+stock-t210	vendor/lib/libnvavp.so			common/nvmm/lib/libnvavp.so
+stock-t210	vendor/lib/libstagefrighthw.so		common/nvmm/lib/libstagefrighthw.so
+stock-t210	vendor/lib64/libnvomx.so		common/nvmm/lib64/libnvomx.so
+stock-t210	vendor/lib64/libnvmm_contentpipe.so	common/nvmm/lib64/libnvmm_contentpipe.so
+stock-t210	vendor/lib64/libnvmmlite_image.so	common/nvmm/lib64/libnvmmlite_image.so
+stock-t210	vendor/lib64/libnvmmlite.so		common/nvmm/lib64/libnvmmlite.so
+stock-t210	vendor/lib64/libnvmmlite_utils.so	common/nvmm/lib64/libnvmmlite_utils.so
+stock-t210	vendor/lib64/libnvmmlite_video.so	common/nvmm/lib64/libnvmmlite_video.so
+stock-t210	vendor/lib64/libnvmm_parser.so		common/nvmm/lib64/libnvmm_parser.so
+stock-t210	vendor/lib64/libnvmm.so			common/nvmm/lib64/libnvmm.so
+stock-t210	vendor/lib64/libnvmm_utils.so		common/nvmm/lib64/libnvmm_utils.so
+stock-t210	vendor/lib64/libnvmedia.so		common/nvmm/lib64/libnvmedia.so
+stock-t210	vendor/lib64/libnvtvmr.so		common/nvmm/lib64/libnvtvmr.so
+stock-t210	vendor/lib64/libnvtnr.so		common/nvmm/lib64/libnvtnr.so
+stock-t210	vendor/lib64/libnvparser.so		common/nvmm/lib64/libnvparser.so
+stock-t210	vendor/lib64/libnvavp.so		common/nvmm/lib64/libnvavp.so
+
+# NvPHS
+stock-t210	vendor/lib/vendor.nvidia.hardware.phs@1.0.so		common/nvphs/lib/vendor.nvidia.hardware.phs@1.0.so
+stock-t210	vendor/lib64/vendor.nvidia.hardware.phs@1.0.so		common/nvphs/lib64/vendor.nvidia.hardware.phs@1.0.so
+stock-t210	vendor/lib/vendor.nvidia.hardware.phs@1.0-impl.so	common/nvphs/lib/vendor.nvidia.hardware.phs@1.0-impl.so
+stock-t210	vendor/lib64/vendor.nvidia.hardware.phs@1.0-impl.so	common/nvphs/lib64/vendor.nvidia.hardware.phs@1.0-impl.so
+stock-t210	vendor/lib64/libnvgov_boot.so				common/nvphs/lib64/libnvgov_boot.so
+stock-t210	vendor/lib64/libnvgov_camera.so				common/nvphs/lib64/libnvgov_camera.so
+stock-t210	vendor/lib64/libnvgov_force.so				common/nvphs/lib64/libnvgov_force.so
+stock-t210	vendor/lib64/libnvgov_generic.so			common/nvphs/lib64/libnvgov_generic.so
+stock-t210	vendor/lib64/libnvgov_gpucompute.so			common/nvphs/lib64/libnvgov_gpucompute.so
+stock-t210	vendor/lib64/libnvgov_graphics.so			common/nvphs/lib64/libnvgov_graphics.so
+stock-t210	vendor/lib64/libnvgov_il.so				common/nvphs/lib64/libnvgov_il.so
+stock-t210	vendor/lib64/libnvgov_spincircle.so			common/nvphs/lib64/libnvgov_spincircle.so
+stock-t210	vendor/lib64/libnvgov_tbc.so				common/nvphs/lib64/libnvgov_tbc.so
+stock-t210	vendor/lib64/libnvgov_ui.so				common/nvphs/lib64/libnvgov_ui.so
+stock-t210	vendor/lib64/libnvphs.so				common/nvphs/lib64/libnvphs.so
+stock-t210	vendor/lib64/libnvphsd.so				common/nvphs/lib64/libnvphsd.so
+stock-t210	vendor/lib/libnvgov_boot.so				common/nvphs/lib/libnvgov_boot.so
+stock-t210	vendor/lib/libnvgov_camera.so				common/nvphs/lib/libnvgov_camera.so
+stock-t210	vendor/lib/libnvgov_force.so				common/nvphs/lib/libnvgov_force.so
+stock-t210	vendor/lib/libnvgov_generic.so				common/nvphs/lib/libnvgov_generic.so
+stock-t210	vendor/lib/libnvgov_gpucompute.so			common/nvphs/lib/libnvgov_gpucompute.so
+stock-t210	vendor/lib/libnvgov_graphics.so				common/nvphs/lib/libnvgov_graphics.so
+stock-t210	vendor/lib/libnvgov_il.so				common/nvphs/lib/libnvgov_il.so
+stock-t210	vendor/lib/libnvgov_spincircle.so			common/nvphs/lib/libnvgov_spincircle.so
+stock-t210	vendor/lib/libnvgov_tbc.so				common/nvphs/lib/libnvgov_tbc.so
+stock-t210	vendor/lib/libnvgov_ui.so				common/nvphs/lib/libnvgov_ui.so
+stock-t210	vendor/lib/libnvphs.so					common/nvphs/lib/libnvphs.so
+stock-t210	vendor/lib/libnvphsd.so					common/nvphs/lib/libnvphsd.so
+
+# PBC
+stock-sif	vendor/bin/pbc2			common/pbc/bin32/pbc2
+stock-t210	vendor/bin/pbc2			common/pbc/bin64/pbc2
+stock-t210	vendor/lib64/hw/pbc2.tegra.so	common/pbc/lib64/hw/pbc2.tegra.so
+stock-t210	vendor/lib/hw/pbc2.tegra.so	common/pbc/lib/hw/pbc2.tegra.so
+
+# Power
+stock-sif	vendor/bin/hw/vendor.nvidia.hardware.power@1.0-service	common/power/bin32/hw/vendor.nvidia.hardware.power@1.0-service
+stock-t210	vendor/bin/hw/vendor.nvidia.hardware.power@1.0-service	common/power/bin64/hw/vendor.nvidia.hardware.power@1.0-service
+stock-t210	vendor/lib64/hw/powerhal.tegra.so			common/power/lib64/hw/powerhal.tegra.so
+stock-t210	vendor/lib/hw/powerhal.tegra.so				common/power/lib/hw/powerhal.tegra.so
+
+# Security
+stock-sif	vendor/bin/eks2_client			common/security/bin32/eks2_client
+stock-sif	vendor/bin/ss_status			common/security/bin32/ss_status
+stock-sif	vendor/bin/tlk_daemon			common/security/bin32/tlk_daemon
+stock-t210	vendor/bin/eks2_client			common/security/bin64/eks2_client
+stock-t210	vendor/bin/ss_status			common/security/bin64/ss_status
+stock-t210	vendor/bin/tlk_daemon			common/security/bin64/tlk_daemon
+stock-t210	vendor/bin/run_ss_status.sh		common/security/bin/run_ss_status.sh
+stock-t210	vendor/etc/hdcpsrm/hdcp1x.srm		common/security/etc/hdcpsrm/hdcp1x.srm
+stock-t210	vendor/etc/hdcpsrm/hdcp2x.srm		common/security/etc/hdcpsrm/hdcp2x.srm
+stock-t210	vendor/etc/hdcpsrm/hdcp2xtest.srm	common/security/etc/hdcpsrm/hdcp2xtest.srm
+stock-t210	vendor/lib64/libtlk_secure_hdcp_up.so	common/security/lib64/libtlk_secure_hdcp_up.so
+stock-t210	vendor/lib64/libtsechdcp.so		common/security/lib64/libtsechdcp.so
+stock-t210	vendor/lib64/libtsec_wrapper.so		common/security/lib64/libtsec_wrapper.so
+stock-t210	vendor/lib64/libnvsi_ll_2.so		common/security/lib64/libnvsi_ll_2.so
+stock-t210	vendor/lib/libtlk_secure_hdcp_up.so	common/security/lib/libtlk_secure_hdcp_up.so
+stock-t210	vendor/lib/libtsechdcp.so		common/security/lib/libtsechdcp.so
+stock-t210	vendor/lib/libtsec_wrapper.so		common/security/lib/libtsec_wrapper.so
+stock-t210	vendor/lib/libnvsi_ll_2.so		common/security/lib/libnvsi_ll_2.so
+
+# Widevine
+stock-t210	vendor/bin/hw/android.hardware.drm@1.1-service.widevine	common/widevine/bin32/hw/android.hardware.drm@1.1-service.widevine
+stock-t210	vendor/lib64/mediadrm/libwvdrmengine.so			common/widevine/lib64/mediadrm/libwvdrmengine.so
+stock-t210	vendor/lib/mediadrm/libwvdrmengine.so			common/widevine/lib/mediadrm/libwvdrmengine.so
+stock-t210	vendor/lib/libwvhidl.so					common/widevine/lib/libwvhidl.so
+
+l4t-t194	Linux_for_Tegra/bootloader/tegraflash.py		common/tegraflash/tegraflash.py
+l4t-t194	Linux_for_Tegra/bootloader/tegraflash_internal.py	common/tegraflash/tegraflash_internal.py
+l4t-t194	Linux_for_Tegra/bootloader/sw_memcfg_overlay.pl		common/tegraflash/sw_memcfg_overlay.pl
+l4t-t210	Linux_for_Tegra/bootloader/tegrabct			common/tegraflash/tegrabct
+l4t-t194	Linux_for_Tegra/bootloader/tegrabct_v2			common/tegraflash/tegrabct_v2
+l4t-t210	Linux_for_Tegra/bootloader/tegradevflash		common/tegraflash/tegradevflash
+l4t-t194	Linux_for_Tegra/bootloader/tegradevflash_v2		common/tegraflash/tegradevflash_v2
+l4t-t210	Linux_for_Tegra/bootloader/tegrahost			common/tegraflash/tegrahost
+l4t-t194	Linux_for_Tegra/bootloader/tegrahost_v2			common/tegraflash/tegrahost_v2
+l4t-t210	Linux_for_Tegra/bootloader/tegraparser			common/tegraflash/tegraparser
+l4t-t194	Linux_for_Tegra/bootloader/tegraparser_v2		common/tegraflash/tegraparser_v2
+l4t-t210	Linux_for_Tegra/bootloader/tegrarcm			common/tegraflash/tegrarcm
+l4t-t194	Linux_for_Tegra/bootloader/tegrarcm_v2			common/tegraflash/tegrarcm_v2
+l4t-t210	Linux_for_Tegra/bootloader/tegrasign			common/tegraflash/tegrasign
+l4t-t194	Linux_for_Tegra/bootloader/tegrasign_v2			common/tegraflash/tegrasign_v2
+
+# Wireless
+# Realtek
+l4t-t194	drivers/lib/firmware/rtl8822cu_config		common/realtek/rtl8822cu/rtl8822cu_config
+l4t-t194	drivers/lib/firmware/rtl8822cu_fw		common/realtek/rtl8822cu/rtl8822cu_fw
+l4t-t194	drivers/lib/firmware/rtl8822_setting.bin	common/realtek/rtl8822cu/rtl8822_setting.bin
+
+# BCM Bluetooth Patchfiles
+nv-tegra-t210	3rdparty/bcmbinaries/bcm43241/bluetooth/AB113_BCM43241B0_0012_Azurewave_AW-AH691_TEST.HCD	common/bcm_firmware/bcm43241/AB113_BCM43241B0_0012_Azurewave_AW-AH691_TEST.HCD
+nv-tegra-t210	3rdparty/bcmbinaries/bcm43341/bluetooth/BCM43341B0_002.001.014.0008.0011.hcd			common/bcm_firmware/bcm43341/BCM43341B0_002.001.014.0008.0011.hcd
+nv-tegra-t210	3rdparty/cypress/bcm4354a1/bluetooth/BCM4350C0.hcd						common/bcm_firmware/bcm4354/BCM4350C0.hcd
+nv-tegra-t210	3rdparty/cypress/bcm4356a3/bluetooth/BCM4356A3.hcd						common/bcm_firmware/bcm4356/BCM4356A3.hcd
+
+# BCM Wifi Firmware
+nv-tegra-t210	3rdparty/bcmbinaries/bcm43241/wlan/sdio-ag-pno-p2p-proptxstatus-dmatxrc-rxov-pktfilter-keepalive-aoe-vsdb-wapi-wl11d-sr-srvsdb-opt1.bin							common/bcm_firmware/bcm43241/sdio-ag-pno-p2p-proptxstatus-dmatxrc-rxov-pktfilter-keepalive-aoe-vsdb-wapi-wl11d-sr-srvsdb-opt1.bin
+nv-tegra-t210	3rdparty/bcmbinaries/bcm43341/wlan/sdio-ag-pno-p2p-proptxstatus-dmatxrc-rxov-pktfilter-keepalive-aoe-sr-wapi-wl11d.bin									common/bcm_firmware/bcm43341/sdio-ag-pno-p2p-proptxstatus-dmatxrc-rxov-pktfilter-keepalive-aoe-sr-wapi-wl11d.bin
+nv-tegra-t210	3rdparty/cypress/bcm4354a1/wlan/atv/sdio-ag-p2p-pno-aoe-pktfilter-keepalive-sr-mchan-pktctx-proptxstatus-ampduhostreorder-lpc-pwropt-txbf-wl11u-mfp-tdls-ltecx-wfds-mchandump-atv.bin	common/bcm_firmware/bcm4354/sdio-ag-p2p-pno-aoe-pktfilter-keepalive-sr-mchan-pktctx-proptxstatus-ampduhostreorder-lpc-pwropt-txbf-wl11u-mfp-tdls-ltecx-wfds-mchandump-atv.bin
+nv-tegra-t210	3rdparty/cypress/bcm4356a3/wlan/fw_4356a3_prod.bin																	common/bcm_firmware/bcm4356/fw_4356a3_prod.bin
+nv-tegra-t210	3rdparty/cypress/bcm4356a3/wlan/brcmfmac4356-pcie.bin																	common/bcm_firmware/bcm4356/brcmfmac4356-pcie.bin
