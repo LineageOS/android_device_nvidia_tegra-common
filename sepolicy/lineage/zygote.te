@@ -1,0 +1,2 @@
+allow zygote hwc_prop:file {getattr open read};
+
