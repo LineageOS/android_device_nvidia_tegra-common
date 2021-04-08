@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Proc nodes
+/proc/sys/vm/min_free_kbytes                                                     u:object_r:proc_min_free_kbytes:s0
+
 # Source built HALs
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service-nvidia      u:object_r:hal_light_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.health@2\.0-service\.tegra     u:object_r:hal_health_default_exec:s0
