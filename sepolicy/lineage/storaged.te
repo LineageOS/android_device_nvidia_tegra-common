@@ -1,1 +1,1 @@
-allow storaged init:binder call;
+allow storaged init:binder {call transfer};
