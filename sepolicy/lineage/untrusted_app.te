@@ -1,2 +1,5 @@
 # netflix (and others)
 allow untrusted_app hwc_prop:file r_file_perms;
+
+# TVWidget
+allow untrusted_app net_dns_prop:file r_file_perms;
