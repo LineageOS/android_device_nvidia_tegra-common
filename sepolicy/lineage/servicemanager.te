@@ -1,0 +1,1 @@
+allow servicemanager same_process_hal_file:file r_file_perms;
