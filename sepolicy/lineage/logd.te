@@ -1,0 +1,2 @@
+allow logd same_process_hal_file:file r_file_perms;
+
