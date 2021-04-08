@@ -1,12 +1,12 @@
 # tvsettings
-allow system_app hwc_prop:file r_file_perms;
+allow system_app hwc_prop:file read;
 allow system_app selinuxfs:file r_file_perms;
 
-allow system_app netd:binder call;
-allow system_app storaged:binder call;
+#allow system_app netd:binder call;
+#allow system_app storaged:binder call;
 allow system_app wificond:binder call;
 
-allow system_app apexd_prop:file r_file_perms;
-allow system_app audiohal_prop:file r_file_perms;
-allow system_app audiohal_ro_prop:file r_file_perms;
-allow system_app tegra_graphics_prop:file r_file_perms;
+allow system_app apexd_prop:file read;
+allow system_app audiohal_prop:file read;
+allow system_app audiohal_ro_prop:file read;
+allow system_app tegra_graphics_prop:file read;
