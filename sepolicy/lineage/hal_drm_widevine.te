@@ -1,0 +1,2 @@
+allow hal_drm_widevine mediadrm_vendor_data_file:file rw_file_perms;
+
