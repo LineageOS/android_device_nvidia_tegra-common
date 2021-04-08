@@ -1,0 +1,1 @@
+allow nvphsd hwc_prop:file {getattr open read};
