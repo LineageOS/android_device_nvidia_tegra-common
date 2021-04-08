@@ -1,0 +1,1 @@
+allow storaged init:binder call;
