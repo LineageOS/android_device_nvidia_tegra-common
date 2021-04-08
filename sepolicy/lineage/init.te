@@ -3,3 +3,5 @@ allow init mediadrmserver:binder call;
 allow init self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
 
 allow init sysfs_power_supply:file r_file_perms;
+
+allow init hal_health_default_exec:file execute;
