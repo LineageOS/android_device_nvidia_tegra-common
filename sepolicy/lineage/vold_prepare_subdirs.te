@@ -1,0 +1,2 @@
+allow vold_prepare_subdirs same_process_hal_file:file r_file_perms;
+
