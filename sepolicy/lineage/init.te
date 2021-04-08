@@ -1,1 +1,4 @@
+allow init mediadrmserver:binder call;
+
 allow init self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
+
