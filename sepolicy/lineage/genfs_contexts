@@ -1,0 +1,2 @@
+# Proc nodes
+genfscon proc /proc/sys/vm/min_free_kbytes                                                     u:object_r:proc_min_free_kbytes:s0
