@@ -14,6 +14,7 @@
 
 # Source built HALs
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service-nvidia      u:object_r:hal_light_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.health@2\.0-service\.tegra     u:object_r:hal_health_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.memtrack@1\.0-service-nvidia   u:object_r:hal_memtrack_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.power@1\.0-service-nvidia      u:object_r:hal_power_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.thermal@1\.0-service-nvidia    u:object_r:hal_thermal_default_exec:s0
