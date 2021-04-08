@@ -1,0 +1,2 @@
+allow hal_graphics_allocator_default hwc_prop:file {getattr open read};
+
