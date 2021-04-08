@@ -1,2 +1,5 @@
 allow priv_app hwc_prop:file {getattr open read};
 
+# MediaShell
+allow priv_app proc_net:file r_file_perms;
+
