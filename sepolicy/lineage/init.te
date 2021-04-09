@@ -2,6 +2,7 @@ allow init mediadrmserver:binder call;
 
 allow init self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
 
+allow init sysfs_board:lnk_file r_file_perms;
 allow init sysfs_block:lnk_file r_file_perms;
 allow init sysfs_power_supply:file r_file_perms;
 allow init proc_wmem_max_writable:file r_file_perms;
