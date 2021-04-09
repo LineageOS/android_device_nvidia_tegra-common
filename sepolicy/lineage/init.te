@@ -7,6 +7,7 @@ allow init sysfs_block:lnk_file r_file_perms;
 allow init sysfs_board:file r_file_perms;
 allow init sysfs_board:lnk_file r_file_perms;
 allow init sysfs_power_supply:file r_file_perms;
+allow init sysfs_usermodehelper:file r_file_perms;
 allow init proc_wmem_max_writable:file r_file_perms;
 
 allow init hal_health_default_exec:file execute;
