@@ -16,6 +16,7 @@
 /data/tlk/ss/010000000000000a                                                    u:object_r:tlk_data_file:s0
 
 # Proc nodes
+/proc/sys/kernel/printk                                                          u:object_r:proc_kernel:s0
 /proc/sys/vm/min_free_kbytes                                                     u:object_r:proc_min_free_kbytes:s0
 /proc/sys/vm/legacy_va_layout                                                    u:object_r:proc_legacy_va_layout:s0
 
