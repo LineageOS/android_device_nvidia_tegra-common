@@ -1,3 +1,7 @@
 # Proc nodes
 genfscon proc /proc/sys/vm/legacy_va_layout                                                    u:object_r:proc_legacy_va_layout:s0
 genfscon proc /proc/sys/vm/min_free_kbytes                                                     u:object_r:proc_min_free_kbytes:s0
+
+# Sysfs nodes
+genfscon sysfs /sys/firmware/devicetree/base/chosen/proc-board/id                              u:object_r:sysfs_board:s0
+
