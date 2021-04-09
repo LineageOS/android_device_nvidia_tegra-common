@@ -1,2 +1,12 @@
 allow lkm_loader sysfs_wlan_fwpath:file r_file_perms;
 
+
+allow lkm_loader vendor_shell_exec:file rx_file_perms;
+allow lkm_loader vendor_toolbox_exec:file rx_file_perms;
+
+# Allow insmod
+allow lkm_loader self:capability sys_module;
+allow lkm_loader system_file:system module_load;
+
+allow lkm_loader vendor_file:system module_load;
+
