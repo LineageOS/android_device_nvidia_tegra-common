@@ -1,0 +1,2 @@
+allow zygote tegra_graphics_prop:file r_file_perms;
+
