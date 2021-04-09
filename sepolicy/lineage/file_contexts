@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Data files - TEE
+/data/tlk/ss/010000000000000a                                                    u:object_r:tlk_data_file:s0
+
 # Proc nodes
 /proc/sys/vm/min_free_kbytes                                                     u:object_r:proc_min_free_kbytes:s0
 
