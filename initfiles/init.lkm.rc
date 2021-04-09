@@ -13,7 +13,7 @@
 service vendor.lkm_loader /vendor/bin/lkm_loader.sh
     class main
     user root
-    group root
+    group root system
     oneshot
     disabled
 
