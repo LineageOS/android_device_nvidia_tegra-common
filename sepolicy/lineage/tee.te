@@ -1,3 +1,6 @@
 # TLK - /data/tlk/ss/010000000000000a
 allow tee tlk_data_file:blk_file {getattr read};
 allow tee tlk_data_file:file {getattr read write};
+
+allow tee rpmb_block_device:blk_file {ioctl r_file_perms};
+
