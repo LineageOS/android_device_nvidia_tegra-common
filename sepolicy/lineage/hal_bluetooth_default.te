@@ -1,0 +1,2 @@
+allow hal_bluetooth_default factory_file:file r_file_perms;
+
