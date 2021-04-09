@@ -1,0 +1,2 @@
+allow hal_camera_tegra tegra_graphics_prop:file {getattr open read};
+
