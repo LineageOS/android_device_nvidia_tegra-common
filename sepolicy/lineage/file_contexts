@@ -21,6 +21,7 @@
 
 # BCM Wi-Fi
 /sys/firmware/devicetree/base/bcmdhd_wlan/status                                 u:object_r:sysfs_wlan_fwpath:s0
+/sys/firmware/devicetree/base/chosen/proc-board/id                               u:object_r:sysfs_board:s0
 
 # Source built HALs
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service-nvidia      u:object_r:hal_light_default_exec:s0
