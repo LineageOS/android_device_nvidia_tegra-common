@@ -17,5 +17,15 @@ service vendor.lkm_loader /vendor/bin/lkm_loader.sh
     oneshot
     disabled
 
+service vendor.lkm_loader_early /vendor/bin/lkm_loader.sh early
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
 on property:init.svc.vendor.lkm_loader=stopped
+    restorecon_recursive /sys
+
+on property:init.svc.vendor.lkm_loader_early=stopped
     restorecon_recursive /sys
