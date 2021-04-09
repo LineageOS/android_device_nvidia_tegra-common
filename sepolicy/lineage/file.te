@@ -1,3 +1,4 @@
+type proc_kernel, proc_type, fs_type;
 type proc_legacy_va_layout, proc_type, fs_type;
 type proc_min_free_kbytes, proc_type, fs_type;
 
