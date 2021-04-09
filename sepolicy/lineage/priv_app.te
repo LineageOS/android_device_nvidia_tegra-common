@@ -1,3 +1,5 @@
+allow priv_app hal_memtrack_default:binder call;
+
 allow priv_app hwc_prop:file {getattr open read};
 
 allow priv_app proc_interrupts:file r_file_perms;
