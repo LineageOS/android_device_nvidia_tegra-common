@@ -1,2 +1,4 @@
 allow bootanim hwc_prop:file read;
+allow bootanim tegra_graphics_prop:file {getattr open read};
+allow bootanim vendor_debug_prop:file {getattr open read};
 
