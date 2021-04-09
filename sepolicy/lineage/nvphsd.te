@@ -2,3 +2,6 @@ allow nvphsd hwc_prop:file {getattr open read};
 allow nvphsd powerhal_prop:file {getattr open read};
 allow nvphsd power_hint_prop:file {getattr open read};
 
+allow nvphsd sysfs_device_platform:dir r_dir_perms;
+allow nvphsd sysfs_device_platform:file r_file_perms;
+allow nvphsd sysfs_device_platform:lnk_file r_file_perms;
