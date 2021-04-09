@@ -1,2 +1,4 @@
+set_prop(adb_enable, vendor_usb_prop)
+
 allow adb_enable proc_version:file r_file_perms;
 allow adb_enable vendor_file:file execute_no_trans;
