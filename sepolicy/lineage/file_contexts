@@ -12,6 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Data files - TEE
+/data/ss(/.*)?                                                                   u:object_r:tlk_data_file:s0
+/data/tlk(/.*)?                                                                  u:object_r:tlk_data_file:s0
+
 # Source built HALs
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service-nvidia      u:object_r:hal_light_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.health@2\.0-service\.tegra     u:object_r:hal_health_default_exec:s0
