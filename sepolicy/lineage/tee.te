@@ -1,0 +1,2 @@
+# TLK - /data/tlk/ss/010000000000000a
+allow tee tlk_data_file:file rw_file_perms;
