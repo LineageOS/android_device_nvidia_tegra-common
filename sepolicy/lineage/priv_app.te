@@ -1,6 +1,9 @@
 allow priv_app hwc_prop:file {getattr open read};
 
 allow priv_app proc_interrupts:file r_file_perms;
+allow priv_app sysfs_block:dir r_dir_perms;
+allow priv_app sysfs_block:file r_file_perms;
+allow priv_app sysfs_block:lnk_file r_file_perms;
 
 # MediaShell
 allow priv_app proc_net:file r_file_perms;
