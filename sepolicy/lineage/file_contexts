@@ -17,7 +17,7 @@
 
 # Proc nodes
 /proc/sys/vm/min_free_kbytes                                                     u:object_r:proc_min_free_kbytes
-
+/proc/sys/vm/legacy_va_layout                                                    u:object_r:proc_legacy_va_layout
 # BCM Wi-Fi
 /sys/firmware/devicetree/base/bcmdhd_wlan/status                                 u:object_r:sysfs_wlan_fwpath
 
