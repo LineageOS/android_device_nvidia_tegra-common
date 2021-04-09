@@ -1,0 +1,2 @@
+allow nvphsd power_hint_prop:file r_file_perms;
+
