@@ -1,1 +1,4 @@
+type tlk_data_file, file_type, data_file_type, core_data_file_type;
+
 type proc_min_free_kbytes, proc_type, fs_type;
+
