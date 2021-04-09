@@ -1,5 +1,6 @@
 allow nvphsd cgroup:file {getattr open read};
 
+allow nvphsd pbc_prop:file {getattr open read};
 allow nvphsd powerhal_prop:file {getattr open read};
 allow nvphsd power_hint_prop:file {getattr open read};
 
