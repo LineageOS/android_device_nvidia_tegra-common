@@ -1,4 +1,5 @@
 # Proc nodes
+genfscon proc /proc/bus/pci/devices                                                            u:object_r:proc_pci:s0
 genfscon proc /proc/sys/kernel/printk                                                          u:object_r:proc_kernel:s0
 genfscon proc /proc/sys/vm/legacy_va_layout                                                    u:object_r:proc_legacy_va_layout:s0
 genfscon proc /proc/sys/vm/min_free_kbytes                                                     u:object_r:proc_min_free_kbytes:s0
