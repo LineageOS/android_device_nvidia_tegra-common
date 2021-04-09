@@ -5,5 +5,7 @@ allow vendor_init proc_extra_free_kbytes:file rw_file_perms;
 allow vendor_init proc_kernel:file rw_file_perms;
 allow vendor_init proc_min_free_kbytes:file rw_file_perms;
 allow vendor_init proc_legacy_va_layout:file rw_file_perms;
+allow vendor_init sysfs_block:file r_file_perms;
+allow vendor_init sysfs_block:lnk_file r_file_perms;
 allow vendor_init sysfs_usermodehelper:file r_file_perms;
 
