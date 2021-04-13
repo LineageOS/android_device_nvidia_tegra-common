@@ -1,0 +1,5 @@
+allow hal_audio_default sysfs_hda_map:dir r_dir_perms;
+allow hal_audio_default sysfs_hda_map:file r_file_perms;
+allow hal_audio_default sysfs_device_platform:dir r_dir_perms;
+allow hal_audio_default sysfs_device_platform:file r_file_perms;
+
