@@ -222,6 +222,11 @@ void tegra_init::set_properties()
     property_set("ro.product.model",  chosen_device->model);
 }
 
+tegra_init::boot_dev_type tegra_init::get_boot_dev_type()
+{
+	return chosen_device->boot_dev;
+}
+
 std::string tegra_init::get_model()
 {
 	return chosen_device->name;
