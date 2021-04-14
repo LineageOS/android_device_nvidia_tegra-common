@@ -40,6 +40,7 @@ class tegra_init {
         void recovery_links(std::map<std::string,std::string> parts);
         void recovery_links(std::vector<std::string> parts);
 
+	boot_dev_type get_boot_dev_type();
 	std::string get_model();
 	bool is_model(std::string name);
 	bool is_model(uint16_t board_id, uint16_t sku);
