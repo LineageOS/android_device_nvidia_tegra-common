@@ -98,17 +98,12 @@ endif
 # Boot Control
 ifeq ($(AB_OTA_UPDATER),true)
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.0-impl \
     android.hardware.boot@1.0-service \
-    bootctrl.tegra
+    android.hardware.boot@1.0-impl.nvidia \
+    android.hardware.boot@1.0-impl.nvidia.recovery
 
 PRODUCT_PACKAGES_DEBUG += \
     bootctrl
-
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.tegra \
-    libcutils \
-    libz
 endif
 
 # Graphics
