@@ -1,0 +1,6 @@
+[
+ {
+   "repository": "android_device_nvidia_sepolicy",
+   "target_path": "device/nvidia/sepolicy"
+ }
+]

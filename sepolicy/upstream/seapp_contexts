@@ -1,6 +1,0 @@
-user=_app seinfo=platform domain=dolby_audio_app name=com.dolby.android.audio.service type=app_data_file levelFrom=all
-user=_app domain=rpx_app seinfo=platform name=com.nvidia.shieldtech.rpx type=app_data_file
-user=_app domain=shieldtech_app seinfo=platform name=com.nvidia.shield.welcome type=app_data_file levelFrom=user
-user=_app domain=shieldtech_app seinfo=platform name=com.nvidia.blakepairing type=app_data_file levelFrom=all
-user=_app domain=shieldtech_app seinfo=platform name=com.nvidia.avsync type=app_data_file levelFrom=all
-user=system domain=factory_tests_app seinfo=platform name=com.nvidia.factorysyschecker type=system_app_data_file
