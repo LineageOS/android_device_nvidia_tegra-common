@@ -60,11 +60,6 @@ ifeq ($(TARGET_TEGRA_OMX),software)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/omx.xml
 endif
 
-# Sepolicy
-BOARD_SEPOLICY_DIRS += \
-    device/nvidia/tegra-common/sepolicy/upstream \
-    device/nvidia/tegra-common/sepolicy/lineage
-
 # TWRP Support
 ifeq ($(WITH_TWRP),true)
 include device/nvidia/tegra-common/twrp.mk
@@ -96,3 +91,5 @@ BOARD_HOSTAPD_DRIVER             := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 DEVICE_MANIFEST_FILE             += device/nvidia/tegra-common/manifests/wifi.xml
 endif
+
+include device/nvidia/sepolicy/sepolicy.mk
