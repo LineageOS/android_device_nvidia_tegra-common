@@ -20,6 +20,6 @@ else ifneq ("$(LOCAL_SRC_FILES_64)","")
 NVIDIA_SRC_FILES := $(shell (echo $(LOCAL_SRC_FILES_64) |cut -d/ -f10-))
 endif
 
-ifeq ("$(wildcard vendor/nvidia/$(TARGET_TEGRA_DEVICE)/$(notdir $(LOCAL_PATH))/$(NVIDIA_SRC_FILES))","")
+ifeq ("$(wildcard vendor/nvidia/$(TARGET_DEVICE)/$(notdir $(LOCAL_PATH))/$(NVIDIA_SRC_FILES))","")
 include $(BUILD_NVIDIA_PREBUILT)
 endif
