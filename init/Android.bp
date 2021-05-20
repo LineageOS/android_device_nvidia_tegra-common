@@ -31,25 +31,3 @@ cc_library_static {
         },
     },
 }
-
-cc_binary {
-    name: "init_tegra",
-    vendor: true,
-    init_rc: ["init_tegra.rc"],
-    srcs: [
-        "init_tegra_vendor.cpp",
-        "vendor_tegra.cpp",
-    ],
-    shared_libs: [
-        "libcutils",
-        "liblog",
-    ],
-
-    product_variables: {
-        lineage: {
-            target_init_vendor_lib: {
-                whole_static_libs: ["%s_vendor"],
-            },
-        },
-    },
-}
