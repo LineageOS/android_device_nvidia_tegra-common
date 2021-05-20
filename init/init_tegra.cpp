@@ -4,7 +4,6 @@
 #include <android-base/logging.h>
 
 #include "init_tegra.h"
-#include "vendor_init.h"
 
 #include <byteswap.h>
 #include <unistd.h>
@@ -274,4 +273,15 @@ tegra_init::tegra_init(std::vector<devices> devicelist) : tegra_devices(deviceli
     } else {
         LOG(ERROR) << "tegra_init: could not detect model, aborting";
     }
+}
+
+// Wrapper for omni style vendor init
+extern void vendor_load_properties(void);
+namespace android {
+namespace init {
+    void vendor_load_properties()
+    {
+        ::vendor_load_properties();
+    }
+}
 }
