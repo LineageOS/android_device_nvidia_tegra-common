@@ -15,7 +15,6 @@
 #
 
 # Audio
-USE_XML_AUDIO_POLICY_CONF := 1
 TARGET_EXCLUDES_AUDIOFX := true
 
 # Bluetooth
