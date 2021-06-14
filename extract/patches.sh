@@ -22,5 +22,13 @@ function chmod_tegraflash() {
     find ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash -type f -exec chmod 755 {} \;
 }
 
+# Nvos is a vendor lib while nvcontrol_jni is a system lib, thus the build system errors due to treble rules.
+# Nvos isn't actually used, so the lib can be replaced with any random thing that matches the length.
+function patch_nvcontrol() {
+  sed -i 's/libnvos.so/libjpeg.so/' ${LINEAGE_ROOT}/${OUTDIR}/common/nvcpl/lib64/libnvcontrol_jni.so
+  sed -i 's/libnvos.so/libjpeg.so/' ${LINEAGE_ROOT}/${OUTDIR}/common/nvcpl/lib/libnvcontrol_jni.so
+}
+
 fetch_bcm4356_patchfile;
 chmod_tegraflash;
+patch_nvcontrol;
