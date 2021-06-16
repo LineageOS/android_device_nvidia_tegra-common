@@ -63,26 +63,15 @@ service eks2_client /vendor/bin/eks2_client --eks2_path /vendor/app/eks2/eks2.da
     class main
     oneshot
 
-on property:vold.post_fs_data_done=1 && property:ro.vendor.product.config.shipped_with_full_treble=false
-    mkdir /data/tlk 0700 system keystore
-
 # Post treble, all vendor data should reside in /data/vendor
-on property:vold.post_fs_data_done=1 && property:ro.vendor.product.config.shipped_with_full_treble=true
-    mkdir /data/vendor/tlk 0700 system keystore
-
 on post-fs-data
     mkdir /data/vendor/ss 0700 system keystore
+    mkdir /data/vendor/tlk 0700 system keystore
 
 # Post treble, all vendor data should reside in /data/vendor
-on property:ro.boot.secureos=tlk && property:ro.vendor.product.config.shipped_with_full_treble=true
+on property:ro.boot.secureos=tlk
     start tlk_daemon
     start ss_status
-
-# Support legacy platforms not supporting full treble so that no migration
-# is required for devices on the field
-on property:ro.boot.secureos=tlk && property:ro.vendor.product.config.shipped_with_full_treble=false
-    start tlk_daemon_non_treble
-    start ss_status_non_treble
 
 on property:ro.boot.secureos=trusty
     start storageproxyd
