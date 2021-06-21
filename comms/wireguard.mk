@@ -26,6 +26,7 @@ LOCAL_MODULE_RELATIVE_PATH := modules
 LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
 LOCAL_MULTILIB             := 32
 LOCAL_VENDOR_MODULE        := true
+LOCAL_REQUIRED_MODULES     := wireguard.rc
 
 _wireguard_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),$(LOCAL_MODULE))
 _wireguard_ko := $(_wireguard_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)

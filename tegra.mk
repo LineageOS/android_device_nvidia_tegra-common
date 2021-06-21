@@ -200,6 +200,5 @@ endif
 
 ifeq ($(TARGET_TEGRA_WIREGUARD),compat)
 PRODUCT_PACKAGES += \
-    wireguard \
-    wireguard.rc
+    wireguard
 endif
