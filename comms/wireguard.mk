@@ -30,11 +30,12 @@ LOCAL_VENDOR_MODULE        := true
 _wireguard_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),$(LOCAL_MODULE))
 _wireguard_ko := $(_wireguard_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
 KERNEL_OUT := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ
+KERNEL_OUT_RELATIVE := ../../KERNEL_OBJ
 
 $(_wireguard_ko): $(KERNEL_OUT)/arch/$(KERNEL_ARCH)/boot/$(BOARD_KERNEL_IMAGE_NAME)
 	@mkdir -p $(dir $@)
 	@cp -R $(WIREGUARD_PATH)/src/* $(_wireguard_intermediates)/
-	$(hide) +$(KERNEL_MAKE_CMD) $(PATH_OVERRIDE) $(KERNEL_MAKE_FLAGS) -C $(KERNEL_OUT) ARCH=$(TARGET_ARCH) $(KERNEL_CROSS_COMPILE) M=$(BUILD_TOP)/$(_wireguard_intermediates) modules
+	$(hide) +$(KERNEL_MAKE_CMD) $(PATH_OVERRIDE) $(KERNEL_MAKE_FLAGS) -C $(_wireguard_intermediates) ARCH=$(TARGET_ARCH) $(KERNEL_CROSS_COMPILE) KERNELDIR=$(KERNEL_OUT_RELATIVE) module
 	$(KERNEL_TOOLCHAIN_PATH)strip --strip-unneeded $@; \
 	cp $@ $(KERNEL_MODULES_OUT)/lib/modules; \
 
