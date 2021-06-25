@@ -72,9 +72,6 @@ DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/usb.xml
 ifneq ($(TARGET_TEGRA_WIFI),)
 ifeq ($(TARGET_TEGRA_WIFI),bcm)
 BOARD_WLAN_DEVICE                := bcmdhd
-WIFI_DRIVER_FW_PATH_STA          := "/vendor/firmware/fw_bcmdhd.bin"
-WIFI_DRIVER_FW_PATH_AP           := "/vendor/firmware/fw_bcmdhd.bin"
-WIFI_DRIVER_FW_PATH_P2P          := "/vendor/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_PARAM        := "/data/vendor/wifi/fw_path"
 WIFI_DRIVER_MODULE_ARG           := "iface_name=wlan0"
 WIFI_DRIVER_MODULE_NAME          := "bcmdhd"
