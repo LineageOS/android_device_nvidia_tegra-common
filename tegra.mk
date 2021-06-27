@@ -20,7 +20,7 @@ TARGET_TEGRA_HEALTH ?= common
 -include vendor/lineage/product/nvidia.mk
 
 # System properties
-include $(LOCAL_PATH)/system_prop.mk
+include device/nvidia/tegra-common/system_prop.mk
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
