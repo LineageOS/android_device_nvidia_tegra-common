@@ -3,7 +3,6 @@
       package="org.lineageos.settings.device"
       android:sharedUserId="android.uid.system">
 
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
 
     <uses-sdk
@@ -17,16 +16,6 @@
         android:defaultToDeviceProtectedStorage="true"
         android:directBootAware="true"
         android:persistent="true">
-
-        <service android:name=".DisplayService"
-            android:enabled="true"/>
-
-        <receiver android:name=".BootCompletedReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </receiver>
 
         <provider
             android:name=".DeviceSettingsSearchIndexablesProvider"
