@@ -19,9 +19,6 @@ package org.lineageos.settings.device;
 import android.os.RemoteException;
 import android.util.Log;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -34,22 +31,6 @@ import vendor.nvidia.hardware.graphics.display.V1_0.INvDisplay;
 
 public class DisplayUtils {
     private static final String TAG = DisplayUtils.class.getSimpleName();
-
-    public static void setInternalDisplayState(boolean state) {
-        Log.d(TAG, "setInternalDisplayState: " + String.valueOf(state));
-        try {
-            FileOutputStream enableFile = new FileOutputStream("/sys/bus/platform/devices/tegradc.0/enable");
-            byte[] buf = new byte[2];
-
-            buf[0] = (byte) (state ? '1' : '0');
-            buf[1] = '\n';
-
-            enableFile.write(buf);
-            enableFile.close();
-        } catch (IOException e) {
-            Log.w(TAG, "Failed to write display state");
-        }
-    }
 
     public static HashMap<String, Integer> makeUidMap(INvDisplay displayService) {
         HashMap<String, Integer> uidMap = new HashMap<String, Integer>();
