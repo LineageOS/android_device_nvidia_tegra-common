@@ -149,17 +149,20 @@ bool tegra_init::detect_model()
 
 void tegra_init::set_fingerprints(build_version fp_version)
 {
-    property_set("ro.build.fingerprint", ("NVIDIA/" + chosen_device->name + "/" +
-                                          chosen_device->device + ":" +
-                                          fp_version.android_version + "/" +
-                                          fp_version.android_release + "/" +
-                                          fp_version.nvidia_version +
-                                          ":user/release-keys").c_str());
-    property_set("ro.build.description", (chosen_device->name + "-user " +
-                                          fp_version.android_version + " " +
-                                          fp_version.android_release + " " +
-                                          fp_version.nvidia_version +
-                                          " release-keys").c_str());
+    property_set("ro.build.fingerprint",
+                 ("NVIDIA/" + chosen_device->name + "/" +
+                  chosen_device->device + ":" +
+                  fp_version.android_version + "/" +
+                  fp_version.android_release + "/" +
+                  fp_version.nvidia_version +
+                  ":user/release-keys").c_str());
+    property_set("ro.system.build.fingerprint",
+                 ("NVIDIA/" + chosen_device->name + "/" +
+                  chosen_device->device + ":" +
+                  fp_version.android_version + "/" +
+                  fp_version.android_release + "/" +
+                  fp_version.nvidia_version +
+                  ":user/release-keys").c_str());
 }
 
 void tegra_init::make_symlinks(std::map<std::string,std::string> paths)
@@ -220,6 +223,10 @@ void tegra_init::set_properties()
     property_set("ro.build.product",  chosen_device->device);
     property_set("ro.product.device", chosen_device->device);
     property_set("ro.product.model",  chosen_device->model);
+
+    property_set("ro.product.system.name",   chosen_device->name);
+    property_set("ro.product.system.device", chosen_device->device);
+    property_set("ro.product.system.model",  chosen_device->model);
 }
 
 tegra_init::boot_dev_type tegra_init::get_boot_dev_type()
