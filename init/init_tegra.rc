@@ -3,3 +3,18 @@ service vendor.init_tegra /vendor/bin/init_tegra
     user system
     group system
     oneshot
+
+on property:ro.vendor.lineage.tegra.first_api_level=*
+    setprop ro.product.first_api_level ${ro.vendor.lineage.tegra.first_api_level}
+
+on property:ro.vendor.lineage.tegra.name=*
+    setprop ro.product.vendor.name ${ro.vendor.lineage.tegra.name}
+
+on property:ro.vendor.lineage.tegra.device=*
+    setprop ro.product.vendor.device ${ro.vendor.lineage.tegra.device}
+
+on property:ro.vendor.lineage.tegra.model=*
+    setprop ro.product.vendor.model ${ro.vendor.lineage.tegra.model}
+
+on property:ro.vendor.lineage.tegra.fingerprint=*
+    setprop ro.vendor.build.fingerprint ${ro.vendor.lineage.tegra.fingerprint}
