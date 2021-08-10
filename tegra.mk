@@ -106,6 +106,9 @@ PRODUCT_PACKAGES_DEBUG += \
     bootctrl
 endif
 
+# GMS
+PRODUCT_GMS_CLIENTID_BASE ?= android-nvidia
+
 # Graphics
 ifeq ($(TARGET_TEGRA_GPU),drm)
 PRODUCT_PACKAGES += \
