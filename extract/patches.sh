@@ -29,6 +29,12 @@ function patch_nvcontrol() {
   sed -i 's/libnvos.so/libjpeg.so/' ${LINEAGE_ROOT}/${OUTDIR}/common/nvcpl/lib/libnvcontrol_jni.so
 }
 
+# BUP tries to write the output file to cwd, let's instead use the already referenced env path var 'OUT'
+function patch_bup() {
+  sed -i 's/payload_obj.outfile/os.path.join(os.environ.get("OUT"), payload_obj.outfile)/' ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/BUP_generator.py
+}
+
 fetch_bcm4356_patchfile;
 chmod_tegraflash;
 patch_nvcontrol;
+patch_bup;
