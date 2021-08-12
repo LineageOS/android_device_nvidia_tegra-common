@@ -295,6 +295,10 @@ l4t-t210	Linux_for_Tegra/bootloader/tegrarcm			common/tegraflash/tegrarcm
 l4t-t194	Linux_for_Tegra/bootloader/tegrarcm_v2			common/tegraflash/tegrarcm_v2
 l4t-t210	Linux_for_Tegra/bootloader/tegrasign			common/tegraflash/tegrasign
 l4t-t194	Linux_for_Tegra/bootloader/tegrasign_v2			common/tegraflash/tegrasign_v2
+l4t-t194	Linux_for_Tegra/bootloader/tegrasign_v3.py		common/tegraflash/tegrasign_v3.py
+l4t-t194	Linux_for_Tegra/bootloader/tegrasign_v3_internal.py	common/tegraflash/tegrasign_v3_internal.py
+l4t-t194	Linux_for_Tegra/bootloader/tegrasign_v3_util.py		common/tegraflash/tegrasign_v3_util.py
+l4t-t194	Linux_for_Tegra/bootloader/tegraopenssl			common/tegraflash/tegraopenssl
 
 # Wireless
 # Realtek
