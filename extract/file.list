@@ -272,6 +272,7 @@ stock-t210	vendor/lib64/mediadrm/libwvdrmengine.so			common/widevine/lib64/media
 stock-t210	vendor/lib/mediadrm/libwvdrmengine.so			common/widevine/lib/mediadrm/libwvdrmengine.so
 stock-t210	vendor/lib/libwvhidl.so					common/widevine/lib/libwvhidl.so
 
+l4t-t194	Linux_for_Tegra/bootloader/BUP_generator.py		common/tegraflash/BUP_generator.py
 l4t-t194	Linux_for_Tegra/bootloader/tegraflash.py		common/tegraflash/tegraflash.py
 l4t-t194	Linux_for_Tegra/bootloader/tegraflash_internal.py	common/tegraflash/tegraflash_internal.py
 l4t-t194	Linux_for_Tegra/bootloader/sw_memcfg_overlay.pl		common/tegraflash/sw_memcfg_overlay.pl
