@@ -35,6 +35,12 @@ function patch_bup() {
   sed -i "s/e\['outfile'\]/os.path.join\(out_path,e\['outfile'\]\)/" ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/nvblob_v2
 }
 
+# tegrasign_v3 tries to write the output file to its local dir, let's instead write to cwd
+function patch_tegrasign_v3() {
+  sed -i "s|current_dir_path + '/|'|" ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/tegrasign_v3_internal.py
+  sed -i "/current_dir_path/d" ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/tegrasign_v3_internal.py
+}
+
 # Fetch bootloader logos and verity images from nv-tegra
 function fetch_bmps() {
   NV_TEGRA_URL="https://nv-tegra.nvidia.com/gitweb/?p=tegra/prebuilts-device-nvidia.git;hb=rel-30-r2-partner;a=blob;f=platform/t210/assets/bmp"
@@ -52,4 +58,5 @@ fetch_bcm4356_patchfile;
 chmod_tegraflash;
 patch_nvcontrol;
 patch_bup;
+patch_tegrasign_v3;
 fetch_bmps;
