@@ -34,7 +34,21 @@ function patch_bup() {
   sed -i 's/payload_obj.outfile/os.path.join(os.environ.get("OUT"), payload_obj.outfile)/' ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/BUP_generator.py
 }
 
+# Fetch bootloader logos and verity images from nv-tegra
+function fetch_bmps() {
+  NV_TEGRA_URL="https://nv-tegra.nvidia.com/gitweb/?p=tegra/prebuilts-device-nvidia.git;hb=rel-30-r2-partner;a=blob;f=platform/t210/assets/bmp"
+  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/BMP
+  wget ${NV_TEGRA_URL}/nvidia1080.bmp -O ${LINEAGE_ROOT}/${OUTDIR}/common/BMP/nvidia1080.bmp
+  wget ${NV_TEGRA_URL}/verity_orange_continue_1080.bmp -O ${LINEAGE_ROOT}/${OUTDIR}/common/BMP/verity_orange_continue_1080.bmp
+  wget ${NV_TEGRA_URL}/verity_orange_pause_1080.bmp -O ${LINEAGE_ROOT}/${OUTDIR}/common/BMP/verity_orange_pause_1080.bmp
+  wget ${NV_TEGRA_URL}/verity_red_continue_1080.bmp -O ${LINEAGE_ROOT}/${OUTDIR}/common/BMP/verity_red_continue_1080.bmp
+  wget ${NV_TEGRA_URL}/verity_red_pause_1080.bmp -O ${LINEAGE_ROOT}/${OUTDIR}/common/BMP/verity_red_pause_1080.bmp
+  wget ${NV_TEGRA_URL}/verity_yellow_continue_1080.bmp -O ${LINEAGE_ROOT}/${OUTDIR}/common/BMP/verity_yellow_continue_1080.bmp
+  wget ${NV_TEGRA_URL}/verity_yellow_pause_1080.bmp -O ${LINEAGE_ROOT}/${OUTDIR}/common/BMP/verity_yellow_pause_1080.bmp
+}
+
 fetch_bcm4356_patchfile;
 chmod_tegraflash;
 patch_nvcontrol;
 patch_bup;
+fetch_bmps;
