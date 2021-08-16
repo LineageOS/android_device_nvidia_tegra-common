@@ -17,14 +17,14 @@ bt_fct_file="/mnt/vendor/factory/bluetooth/bt_mac.txt"
 
 if [ -e $bt_dtb_file ] ; then
 
-    cat $bt_dtb_file | grep "[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]"
+    cat $bt_dtb_file | toybox_vendor grep "[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]:[0-9A-Fa-f][0-9A-Fa-f]"
 
     # Check if the contents of device-tree/nct/bt represent a correct mac address
     if [ $? -eq 0 ] ; then
-        setprop ro.bt.bdaddr_path "${bt_dtb_file}"
+        setprop ro.vendor.bt.bdaddr_path "${bt_dtb_file}"
     else
-        setprop ro.bt.bdaddr_path "${bt_fct_file}"
+        setprop ro.vendor.bt.bdaddr_path "${bt_fct_file}"
     fi
 else
-    setprop ro.bt.bdaddr_path "${bt_fct_file}"
+    setprop ro.vendor.bt.bdaddr_path "${bt_fct_file}"
 fi

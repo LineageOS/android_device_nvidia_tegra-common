@@ -84,6 +84,9 @@ service vendor.bt_loader /vendor/bin/bt_loader.sh
     group root
     oneshot
 
+on property:ro.vendor.bt.bdaddr_path=*
+    setprop ro.bt.bdaddr_path ${ro.vendor.bt.bdaddr_path}
+
 # vendor.wifiloader - set the wifi commchip_id accordingly
 service vendor.wifiloader /vendor/bin/wifi_loader.sh
     class main
