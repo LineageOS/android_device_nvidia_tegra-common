@@ -1,4 +1,5 @@
 nv-tegra-t210	https://nv-tegra.nvidia.com/gitweb/?p=tegra/prebuilts-licensed-binary-tlk-t210.git;a=blob_plain;f=extract-nv-bins.sh;hb=c84a4130e416b4182c752a343c8c11e622dc2e72		git	prebuilt/t210/target/product/t210
+nv-tegra-t210-rel24	https://nv-tegra.nvidia.com/gitweb/?p=tegra/prebuilts-licensed-binary-tlk-t210.git;a=blob_plain;f=extract-nv-bins.sh;hb=380abc390d5611c789623ae836d78cd3dbd7cdac	git	prebuilt/t210/target/product/t210
 stock-t210	http://developer.download.nvidia.com/mobile/shield/ROM/SHIELD_ATV_2019/8.2.3/nv-recovery-image-shield-2019-pro-atv-8.2.3.zip							nv-recovery
 stock-foster	http://developer.download.nvidia.com/mobile/shield/ROM/SHIELD_ATV/8.2.3/nv-recovery-image-shield-2015-pro-atv-8.2.3.zip								nv-recovery
 stock-sif	http://developer.download.nvidia.com/mobile/shield/ROM/SHIELD_ATV_2019/8.2.3/nv-recovery-image-shield-2019-atv-8.2.3.zip							nv-recovery-ota

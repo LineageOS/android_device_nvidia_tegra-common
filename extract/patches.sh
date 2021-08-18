@@ -32,6 +32,7 @@ function patch_nvcontrol() {
 # BUP tries to write the output file to cwd, let's instead use the already referenced env path var 'OUT'
 function patch_bup() {
   sed -i 's/payload_obj.outfile/os.path.join(os.environ.get("OUT"), payload_obj.outfile)/' ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/BUP_generator.py
+  sed -i "s/e\['outfile'\]/os.path.join\(out_path,e\['outfile'\]\)/" ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/nvblob_v2
 }
 
 # Fetch bootloader logos and verity images from nv-tegra

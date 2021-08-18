@@ -226,6 +226,10 @@ function copy_files() {
                     extrapath="prebuilt/t210"
                 elif [[ ${source} != "${source/model_frontal/}" ]]; then
                     extrapath=""
+                elif [[ ${source} != "${source/linux-x86/}" ]]; then
+                    extrapath="prebuilt/t210"
+                elif [[ ${source} != "${source/tnspec/}" ]]; then
+                    extrapath=""
                 fi;
 
                 cp ${TMPDIR}/extract/${sname}/${extrapath}/${source} ${LINEAGE_ROOT}/${OUTDIR}/${dest};
