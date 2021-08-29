@@ -41,4 +41,6 @@
     <!-- Should the pinner service pin the Camera application? -->
     <bool name="config_pinnerCameraApp">true</bool>
 
+     <!-- AOSP WFD -->
+    <bool name="config_enableWifiDisplay">true</bool>
 </resources>
