@@ -41,6 +41,7 @@
     <!-- Should the pinner service pin the Camera application? -->
     <bool name="config_pinnerCameraApp">true</bool>
 
+<<<<<<< HEAD   (527874 flash_packages: Fix interface detection in helper script)
     <!-- List of files pinned by the Pinner Service with the JIT Zygote boot image b/119800099 -->
     <string-array translatable="false" name="config_jitzygoteBootImagePinnerServiceFiles">
         <item>"/system/framework/framework.jar"</item>
@@ -52,4 +53,8 @@
         <item>"/system/lib64/libsurfaceflinger.so"</item>
     </string-array>
 
+=======
+     <!-- AOSP WFD -->
+    <bool name="config_enableWifiDisplay">true</bool>
+>>>>>>> CHANGE (b4ee5a overlay: Enable Wi-Fi Display)
 </resources>
