@@ -170,6 +170,7 @@ stock-t210	vendor/lib/libnvidia-fatbinaryloader.so					common/nvgpu/lib/libnvidi
 # NVMM
 stock-t210	vendor/lib/libnvomxilclient.so		common/nvmm/lib/libnvomxilclient.so
 stock-t210	vendor/lib/libnvomx.so			common/nvmm/lib/libnvomx.so
+stock-foster	vendor/lib/libnvomx.so			common/nvmm/lib/libnvomx.nodolby.so
 stock-t210	vendor/lib/libnvmm_audio.so		common/nvmm/lib/libnvmm_audio.so
 stock-t210	vendor/lib/libnvmm_contentpipe.so	common/nvmm/lib/libnvmm_contentpipe.so
 stock-t210	vendor/lib/libnvmmlite_audio.so		common/nvmm/lib/libnvmmlite_audio.so
@@ -178,6 +179,7 @@ stock-t210	vendor/lib/libnvmmlite.so		common/nvmm/lib/libnvmmlite.so
 stock-t210	vendor/lib/libnvmmlite_msaudio.so	common/nvmm/lib/libnvmmlite_msaudio.so
 stock-t210	vendor/lib/libnvmmlite_utils.so		common/nvmm/lib/libnvmmlite_utils.so
 stock-t210	vendor/lib/libnvmmlite_video.so		common/nvmm/lib/libnvmmlite_video.so
+stock-foster	vendor/lib/libnvmmlite_video.so		common/nvmm/lib/libnvmmlite_video.nodolby.so
 stock-t210	vendor/lib/libnvmm_parser.so		common/nvmm/lib/libnvmm_parser.so
 stock-t210	vendor/lib/libnvmm.so			common/nvmm/lib/libnvmm.so
 stock-t210	vendor/lib/libnvmm_msaudio.so		common/nvmm/lib/libnvmm_msaudio.so
@@ -189,12 +191,15 @@ stock-t210	vendor/lib/libnvtnr.so			common/nvmm/lib/libnvtnr.so
 stock-t210	vendor/lib/libnvparser.so		common/nvmm/lib/libnvparser.so
 stock-t210	vendor/lib/libnvavp.so			common/nvmm/lib/libnvavp.so
 stock-t210	vendor/lib/libstagefrighthw.so		common/nvmm/lib/libstagefrighthw.so
+stock-foster	vendor/lib/libstagefrighthw.so		common/nvmm/lib/libstagefrighthw.nodolby.so
 stock-t210	vendor/lib64/libnvomx.so		common/nvmm/lib64/libnvomx.so
+stock-foster	vendor/lib64/libnvomx.so		common/nvmm/lib64/libnvomx.nodolby.so
 stock-t210	vendor/lib64/libnvmm_contentpipe.so	common/nvmm/lib64/libnvmm_contentpipe.so
 stock-t210	vendor/lib64/libnvmmlite_image.so	common/nvmm/lib64/libnvmmlite_image.so
 stock-t210	vendor/lib64/libnvmmlite.so		common/nvmm/lib64/libnvmmlite.so
 stock-t210	vendor/lib64/libnvmmlite_utils.so	common/nvmm/lib64/libnvmmlite_utils.so
 stock-t210	vendor/lib64/libnvmmlite_video.so	common/nvmm/lib64/libnvmmlite_video.so
+stock-foster	vendor/lib64/libnvmmlite_video.so	common/nvmm/lib64/libnvmmlite_video.nodolby.so
 stock-t210	vendor/lib64/libnvmm_parser.so		common/nvmm/lib64/libnvmm_parser.so
 stock-t210	vendor/lib64/libnvmm.so			common/nvmm/lib64/libnvmm.so
 stock-t210	vendor/lib64/libnvmm_utils.so		common/nvmm/lib64/libnvmm_utils.so
