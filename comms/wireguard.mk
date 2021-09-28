@@ -20,13 +20,11 @@ WIREGUARD_PATH := $(BUILD_TOP)/kernel/nvidia/wireguard
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE               := wireguard
-LOCAL_MODULE_SUFFIX        := .ko
-LOCAL_MODULE_RELATIVE_PATH := modules
-LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
-LOCAL_MULTILIB             := 32
-LOCAL_VENDOR_MODULE        := true
-LOCAL_REQUIRED_MODULES     := wireguard.rc
+LOCAL_MODULE           := wireguard
+LOCAL_MODULE_SUFFIX    := .ko
+LOCAL_MODULE_CLASS     := ETC
+LOCAL_MODULE_PATH      := $(TARGET_OUT_VENDOR)/lib/modules
+LOCAL_REQUIRED_MODULES := wireguard.rc
 
 _wireguard_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),$(LOCAL_MODULE))
 _wireguard_ko := $(_wireguard_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
@@ -37,7 +35,6 @@ $(_wireguard_ko): $(KERNEL_OUT)/arch/$(KERNEL_ARCH)/boot/$(BOARD_KERNEL_IMAGE_NA
 	@mkdir -p $(dir $@)
 	@cp -R $(WIREGUARD_PATH)/src/* $(_wireguard_intermediates)/
 	$(hide) +$(KERNEL_MAKE_CMD) $(PATH_OVERRIDE) $(KERNEL_MAKE_FLAGS) -C $(_wireguard_intermediates) ARCH=$(TARGET_ARCH) $(KERNEL_CROSS_COMPILE) KERNELDIR=$(KERNEL_OUT_RELATIVE) module
-	$(KERNEL_TOOLCHAIN_PATH)strip --strip-unneeded $@; \
-	cp $@ $(KERNEL_MODULES_OUT)/lib/modules; \
+	$(KERNEL_TOOLCHAIN_PATH)strip --strip-unneeded $@;
 
 include $(BUILD_SYSTEM)/base_rules.mk
