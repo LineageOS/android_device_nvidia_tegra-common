@@ -16,6 +16,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
+ifeq ($(TARGET_PREBUILT_KERNEL),)
 WIREGUARD_PATH := $(BUILD_TOP)/kernel/nvidia/wireguard
 
 include $(CLEAR_VARS)
@@ -38,3 +39,4 @@ $(_wireguard_ko): $(KERNEL_OUT)/arch/$(KERNEL_ARCH)/boot/$(BOARD_KERNEL_IMAGE_NA
 	$(KERNEL_TOOLCHAIN_PATH)strip --strip-unneeded $@;
 
 include $(BUILD_SYSTEM)/base_rules.mk
+endif
