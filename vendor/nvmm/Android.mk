@@ -210,7 +210,8 @@ LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
 LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
-LOCAL_REQUIRED_MODULES     := libnvmm_audio libnvmm_msaudio libnvmm_parser libnvmm_writer libnvmmlite_audio libnvmmlite_image libnvmmlite_msaudio libnvmmlite_video
+LOCAL_REQUIRED_MODULES     := libnvmm_parser libnvmmlite_image libnvmmlite_video
+LOCAL_REQUIRED_MODULES_arm := libnvmm_audio libnvmm_msaudio libnvmm_writer libnvmmlite_audio libnvmmlite_msaudio
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
