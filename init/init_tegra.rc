@@ -1,8 +1,11 @@
 service vendor.init_tegra /vendor/bin/init_tegra
-    class early_hal
     user system
     group system
     oneshot
+    disabled
+
+on post-fs
+    start vendor.init_tegra
 
 on property:ro.vendor.lineage.tegra.first_api_level=*
     setprop ro.product.first_api_level ${ro.vendor.lineage.tegra.first_api_level}
