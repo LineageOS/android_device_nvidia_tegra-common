@@ -51,19 +51,20 @@ function get_interfaces()
 }
 
 # Get board info from the module eeprom
-function get_moduleinfo()
+function get_eeprominfo()
 {
-  MODCMD=
-  if [ "${TARGET_TEGRA_VERSION}" == "t210" -o "${TARGET_TEGRA_VERSION}" == "t210nano" ]; then
-    MODCMD="dump eeprom boardinfo eeprom_boardinfo.bin";
-  else
-    MODCMD="dump eeprom boardinfo eeprom_boardinfo.bin; reboot recovery";
+  local EEPROMCMD="dump eeprom boardinfo eeprom_boardinfo.bin";
+  if [ "${1}" == "true" ]; then
+    EEPROMCMD+="; dump eeprom baseinfo eeprom_baseinfo.bin";
+  fi;
+  if [ "${TARGET_TEGRA_VERSION}" == "t194" -o "${TARGET_TEGRA_VERSION}" == "t194nx" ]; then
+    EEPROMCMD+="; reboot recovery";
   fi;
 
   tegraflash.py \
-    "${FLASH_CMD_BASIC[@]}" \
+    "${FLASH_CMD_EEPROM[@]}" \
     --instance ${INTERFACE} \
-    --cmd "${MODCMD}" \
+    --cmd "${EEPROMCMD}" \
     > /dev/null;
 
   if [ ! -f eeprom_boardinfo.bin ]; then
@@ -80,100 +81,63 @@ function get_moduleinfo()
   MODULEINFO[version]=$(dd if=eeprom_boardinfo.bin bs=1 skip=35 count=3 status=none);
 
   rm eeprom_boardinfo.bin;
+
+  if [ "${1}" == "true" ]; then
+    if [ ! -f eeprom_baseinfo.bin ]; then
+      CARRIERINFO[boardid]="";
+      return;
+    fi;
+
+    CARRIERINFO[assetnum]=$(dd if=eeprom_baseinfo.bin bs=1 skip=74 count=15 status=none |tr -dc '[[:print:]]');
+    CARRIERINFO[boardid]=$((16#$(dd if=eeprom_baseinfo.bin bs=1 skip=4 count=2 status=none |xxd -p |tac -rs .. |tr -d '\n')));
+    CARRIERINFO[sku]=$((16#$(dd if=eeprom_baseinfo.bin bs=1 skip=6 count=2 status=none |xxd -p |tac -rs .. |tr -d '\n')));
+    CARRIERINFO[fab]=$((16#$(dd if=eeprom_baseinfo.bin bs=1 skip=8 count=1 status=none |xxd -p)));
+    CARRIERINFO[revmaj]=$((16#$(dd if=eeprom_baseinfo.bin bs=1 skip=9 count=1 status=none |xxd -p)));
+    CARRIERINFO[revmin]=$((16#$(dd if=eeprom_baseinfo.bin bs=1 skip=10 count=1 status=none |xxd -p)));
+    CARRIERINFO[version]=$(dd if=eeprom_baseinfo.bin bs=1 skip=35 count=3 status=none);
+
+    rm eeprom_baseinfo.bin;
+  fi;
 }
 
-# Get board info from the carrier board eeprom
-# This functionality is not available from tegraflash on t210
-function get_carrierinfo()
-{
-  if [ "${TARGET_TEGRA_VERSION}" == "t210" -o "${TARGET_TEGRA_VERSION}" == "t210nano" ]; then
-    return 0;
-  fi;
-
-  tegraflash.py \
-    "${FLASH_CMD_FULL[@]}" \
-    --instance ${INTERFACE} \
-    --cmd "dump eeprom baseinfo eeprom_baseinfo.bin; reboot recovery" \
-    > /dev/null;
-
-  if [ ! -f eeprom_baseinfo.bin ]; then
-    CARRIERINFO[boardid]="";
-    return;
-  fi;
-
-  CARRIERINFO[assetnum]=$(dd if=eeprom_baseinfo.bin bs=1 skip=74 count=15 status=none |tr -dc '[[:print:]]');
-  CARRIERINFO[boardid]=$((16#$(dd if=eeprom_baseinfo.bin bs=1 skip=4 count=2 status=none |xxd -p |tac -rs .. |tr -d '\n')));
-  CARRIERINFO[sku]=$((16#$(dd if=eeprom_baseinfo.bin bs=1 skip=6 count=2 status=none |xxd -p |tac -rs .. |tr -d '\n')));
-  CARRIERINFO[fab]=$((16#$(dd if=eeprom_baseinfo.bin bs=1 skip=8 count=1 status=none |xxd -p)));
-  CARRIERINFO[revmaj]=$((16#$(dd if=eeprom_baseinfo.bin bs=1 skip=9 count=1 status=none |xxd -p)));
-  CARRIERINFO[revmin]=$((16#$(dd if=eeprom_baseinfo.bin bs=1 skip=10 count=1 status=none |xxd -p)));
-  CARRIERINFO[version]=$(dd if=eeprom_carrierinfo.bin bs=1 skip=35 count=3 status=none);
-
-  rm eeprom_baseinfo.bin;
-}
-
-# Find device matching given module board id.
-function check_module_compatibility()
+# Find device matching given module and carrier board ids.
+function check_compatibility()
 {
   local MODULEID=${1};
+  local CARRIERID=${2};
   local TEMPVERSION=;
 
-  echo "Checking module compatibility.";
+  local CHECKBASEINFO="false";
+  if [ ! -z "${CARRIERID}" ]; then
+    CHECKBASEINFO="true";
+  fi;
+
+  # t210 rcm applet cannot fetch carrier board eeprom, attempts to do so return the modulue eeprom silently
+  # t194 nx cannot fetch carrier board eeprom due to bug that will not be fixed per
+  #  https://forums.developer.nvidia.com/t/xavier-nx-apx-carrier-board-eeprom-read/191908/3
+  # So even if a carrier board id is supplied, ignore it on these socs
+  if [ "${TARGET_TEGRA_VERSION}" = "t210" -o "${TARGET_TEGRA_VERSION}" = "t210nano" -o "${TARGET_TEGRA_VERSION}" = "t194nx" ]; then
+    CHECKBASEINFO="false";
+  fi;
+
+  echo "Checking compatibility.";
 
   declare -A INTERFACES_COPY;
   for key in "${!AVAILABLE_INTERFACES[@]}"; do
     INTERFACES_COPY["$key"]="${AVAILABLE_INTERFACES["$key"]}";
   done;
 
-  for intf in "${INTERFACES_COPY[@]}"; do
-    INTERFACE=${intf};
+  for intfnum in "${!INTERFACES_COPY[@]}"; do
+    INTERFACE=${INTERFACES_COPY[$intfnum]};
+    get_eeprominfo "${CHECKBASEINFO}";
+    unset 'INTERFACE'
 
-    get_moduleinfo;
-    if [ "${MODULEINFO[boardid]}" = "${MODULEID}" ]; then
-      if [ -z ${TEMPVERSION} ]; then
-        TEMPVERSION="${MODULEINFO[version]}";
-      elif [ "${MODULEINFO[version]}" != "${TEMPVERSION}" ]; then
-        echo "Multiple devices with incompatible module versions found in RCM mode. Please disconnect one and try again.";
-        return -1;
-      fi;
-    else
-      AVAILABLE_INTERFACES=( "${AVAILABLE_INTERFACES[@]/$intf}" );
+    if [ "${MODULEINFO[boardid]}" != "${MODULEID}" ]; then
+      unset "AVAILABLE_INTERFACES[$intfnum]";
+    elif [ "${CHECKBASEINFO}" = "true" -a "${CARRIERINFO[boardid]}" != "${CARRIERID}" ]; then
+      unset "AVAILABLE_INTERFACES[$intfnum]";
     fi;
   done;
-
-  if [ ${#AVAILABLE_INTERFACES[@]} -eq 0 ]; then
-    echo "No compatible devices found.";
-    return -1;
-  fi;
-
-  return 0;
-}
-
-# Find device matching given carrier board id.
-function check_carrier_compatibility()
-{
-  local CARRIERID=${1};
-
-  if [ "${TARGET_TEGRA_VERSION}" != "t210" -o "${TARGET_TEGRA_VERSION}" != "t210nano" ] &&
-     [ -n "${CARRIERID}" ]; then
-    echo "Checking carrier board compatibility.";
-
-    declare -A INTERFACES_COPY;
-    for key in "${!AVAILABLE_INTERFACES[@]}"; do
-      INTERFACES_COPY["$key"]="${AVAILABLE_INTERFACES["$key"]}";
-    done;
-
-    for intf in "${INTERFACES_COPY[@]}"; do
-      INTERFACE=${intf};
-
-      get_carrierinfo;
-      if [ "${CARRIERINFO[boardid]}" != "${CARRIERID}" ]; then
-        AVAILABLE_INTERFACES=( "${AVAILABLE_INTERFACES[@]/$intf}" );
-      fi;
-    done;
-  else
-    echo "Checking carrier board info not supported. Continuing assuming success.";
-  fi;
 
   if [ ${#AVAILABLE_INTERFACES[@]} -eq 0 ]; then
     echo "No compatible devices found.";
@@ -186,5 +150,22 @@ function check_carrier_compatibility()
   fi;
 
   INTERFACE="${AVAILABLE_INTERFACES[0]}";
+  return 0;
+}
+
+# Compatibility functions for older flash pacakges
+function check_module_compatibility()
+{
+  export FLASH_CMD_EEPROM=("${FLASH_CMD_BASIC[@]}")
+  echo "WARNING: Checking module compatibility individually is deprecated"
+  echo "Please convert to unified check_compatibility"
+  check_compatibility "${1}" "";
+  return $?;
+}
+
+function check_carrier_compatibility()
+{
+  echo "WARNING: Checking carrier compatibility indivually is no longer supported"
+  echo "Continuing assuming success"
   return 0;
 }
