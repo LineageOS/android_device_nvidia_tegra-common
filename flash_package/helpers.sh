@@ -120,10 +120,11 @@ function check_module_compatibility()
     INTERFACES_COPY["$key"]="${AVAILABLE_INTERFACES["$key"]}";
   done;
 
-  for intf in "${INTERFACES_COPY[@]}"; do
-    INTERFACE=${intf};
-
+  for intfnum in "${!INTERFACES_COPY[@]}"; do
+    INTERFACE=${INTERFACES_COPY[$intfnum]};
     get_moduleinfo;
+    unset 'INTERFACE'
+
     if [ "${MODULEINFO[boardid]}" = "${MODULEID}" ]; then
       if [ -z ${TEMPVERSION} ]; then
         TEMPVERSION="${MODULEINFO[version]}";
@@ -132,7 +133,7 @@ function check_module_compatibility()
         return -1;
       fi;
     else
-      AVAILABLE_INTERFACES=( "${AVAILABLE_INTERFACES[@]/$intf}" );
+      unset "AVAILABLE_INTERFACES[$intfnum]";
     fi;
   done;
 
@@ -158,12 +159,13 @@ function check_carrier_compatibility()
       INTERFACES_COPY["$key"]="${AVAILABLE_INTERFACES["$key"]}";
     done;
 
-    for intf in "${INTERFACES_COPY[@]}"; do
-      INTERFACE=${intf};
-
+    for intfnum in "${!INTERFACES_COPY[@]}"; do
+      INTERFACE=${INTERFACES_COPY[$intfnum]};
       get_carrierinfo;
+      unset 'INTERFACE'
+
       if [ "${CARRIERINFO[boardid]}" != "${CARRIERID}" ]; then
-        AVAILABLE_INTERFACES=( "${AVAILABLE_INTERFACES[@]/$intf}" );
+        unset "AVAILABLE_INTERFACES[$intfnum]";
       fi;
     done;
   else
