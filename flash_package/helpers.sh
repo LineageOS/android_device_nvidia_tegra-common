@@ -12,6 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+if [ "$EUID" -ne 0 ]; then
+  echo "Flash scripts must be run as root";
+  exit -1;
+fi;
+
 declare -A APXPRODUCT;
 APXPRODUCT[t210]=7721;
 APXPRODUCT[t210nano]=7f21;
