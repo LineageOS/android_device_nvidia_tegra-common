@@ -35,6 +35,13 @@ function patch_bup() {
   sed -i "s/e\['outfile'\]/os.path.join\(out_path,e\['outfile'\]\)/" ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/nvblob_v2
 }
 
+# Tegraflash does a few invalid comparisons, caught by newer versions of py3
+function patch_tegraflash() {
+  sed -i 's/if sig_type is not "zerosbk"/if sig_type != "zerosbk"/' ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/tegraflash_internal.py
+  sed -i 's/if sig_type is "oem-rsa"/if sig_type == "oem-rsa"/' ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/tegraflash_internal.py
+  sed -i 's/while count is not 0/while count != 0/' ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/tegraflash_internal.py
+}
+
 # tegrasign_v3 tries to write the output file to its local dir, let's instead write to cwd
 function patch_tegrasign_v3() {
   sed -i "s|current_dir_path + '/|'|" ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/tegrasign_v3_internal.py
@@ -58,5 +65,6 @@ fetch_bcm4356_patchfile;
 chmod_tegraflash;
 patch_nvcontrol;
 patch_bup;
+patch_tegraflash;
 patch_tegrasign_v3;
 fetch_bmps;
