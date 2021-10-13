@@ -70,6 +70,13 @@ function patch_bup() {
   sed -i "s/e\['outfile'\]/os.path.join\(out_path,e\['outfile'\]\)/" ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/nvblob_v2
 }
 
+# Tegraflash does a few invalid comparisons, caught by newer versions of py3
+function patch_tegraflash() {
+  sed -i 's/if sig_type is not "zerosbk"/if sig_type != "zerosbk"/' ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/tegraflash_internal.py
+  sed -i 's/if sig_type is "oem-rsa"/if sig_type == "oem-rsa"/' ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/tegraflash_internal.py
+  sed -i 's/while count is not 0/while count != 0/' ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/tegraflash_internal.py
+}
+
 # Fetch bootloader logos and verity images from nv-tegra
 function fetch_bmps() {
   NV_TEGRA_URL="https://nv-tegra.nvidia.com/gitweb/?p=tegra/prebuilts-device-nvidia.git;hb=rel-30-r2-partner;a=blob;f=platform/t210/assets/bmp"
@@ -88,4 +95,5 @@ chmod_tegraflash;
 patch_nvcontrol;
 patch_nvgpu;
 patch_bup;
+patch_tegraflash;
 fetch_bmps;
