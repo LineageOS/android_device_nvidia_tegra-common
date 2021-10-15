@@ -16,6 +16,14 @@
 
 LOCAL_PATH := $(call my-dir)
 
+ifneq ($(filter bcm, $(TARGET_TEGRA_BT)),)
+BT_IMPL_SYMLINK := $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/android.hardware.bluetooth@1.0-impl.so
+$(BT_IMPL_SYMLINK): $(LOCAL_INSTALLED_MODULE)
+	$(hide) ln -sf ./hw/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(BT_IMPL_SYMLINK)
+endif
+
 include $(CLEAR_VARS)
 LOCAL_MODULE               := android.hardware.bluetooth@1.0-service.btlinux-tegra.rc
 LOCAL_MODULE_CLASS         := ETC
