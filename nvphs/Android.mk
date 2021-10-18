@@ -19,10 +19,9 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 LOCAL_MODULE               := nvphsd
 LOCAL_SRC_FILES            := nvphsd.c
-LOCAL_SHARED_LIBRARIES     := libc libdl
+LOCAL_SHARED_LIBRARIES     := libc libdl libnvphsd
 LOCAL_MODULE_CLASS         := EXECUTABLES
 LOCAL_VENDOR_MODULE        := true
-LOCAL_REQUIRED_MODULES     := libnvphsd libnvphs
 include $(BUILD_EXECUTABLE)
 
 include $(CLEAR_VARS)
