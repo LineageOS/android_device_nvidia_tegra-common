@@ -77,6 +77,12 @@ function patch_tegraflash() {
   sed -i 's/while count is not 0/while count != 0/' ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/tegraflash_internal.py
 }
 
+# Patch tx2 xusb firmware to fix issues with usb hubs. Sourced from:
+# https://forums.developer.nvidia.com/t/xbox-360-controller-through-usb-hub-broken-in-jetpack-4-x-works-in-jetpack-3-x-not-enough-host-c/110621/2
+function patch_tx2_xusb() {
+  git -C ${LINEAGE_ROOT}/${OUTDIR} apply ${LINEAGE_ROOT}/device/nvidia/tegra-common/extract/tx2_xusb.patch
+}
+
 # Fetch bootloader logos and verity images from nv-tegra
 function fetch_bmps() {
   NV_TEGRA_URL="https://nv-tegra.nvidia.com/gitweb/?p=tegra/prebuilts-device-nvidia.git;hb=rel-30-r2-partner;a=blob;f=platform/t210/assets/bmp"
@@ -96,4 +102,5 @@ patch_nvcontrol;
 patch_nvgpu;
 patch_bup;
 patch_tegraflash;
+patch_tx2_xusb;
 fetch_bmps;
