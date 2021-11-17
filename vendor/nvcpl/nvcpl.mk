@@ -17,19 +17,3 @@ COMMON_NVCPL_PATH := vendor/nvidia/common/nvcpl
 PRODUCT_PACKAGES += \
     NvCPLSvc \
     vendor.nvidia.hardware.cpl.service@1.0-service
-
-PRODUCT_COPY_FILES += \
-    $(COMMON_NVCPL_PATH)/system/lib/vendor.nvidia.hardware.cpl.interfacecb@1.0.so:$(TARGET_COPY_OUT_SYSTEM)/lib/vendor.nvidia.hardware.cpl.interfacecb@1.0.so \
-    $(COMMON_NVCPL_PATH)/system/lib/vendor.nvidia.hardware.cpl.service@1.0.so:$(TARGET_COPY_OUT_SYSTEM)/lib/vendor.nvidia.hardware.cpl.service@1.0.so \
-    $(COMMON_NVCPL_PATH)/system/lib/vendor.nvidia.hardware.cpl.tools@1.0.so:$(TARGET_COPY_OUT_SYSTEM)/lib/vendor.nvidia.hardware.cpl.tools@1.0.so \
-    $(COMMON_NVCPL_PATH)/system/lib/libnvcpl.so:$(TARGET_COPY_OUT_SYSTEM)/lib/libnvcpl.so \
-    $(COMMON_NVCPL_PATH)/system/lib/libnvcpl_vendor.so:$(TARGET_COPY_OUT_SYSTEM)/lib/libnvcpl_vendor.so
-
-ifeq ($(TARGET_SUPPORTS_64_BIT_APPS),true)
-PRODUCT_COPY_FILES += \
-    $(COMMON_NVCPL_PATH)/system/lib64/vendor.nvidia.hardware.cpl.interfacecb@1.0.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/vendor.nvidia.hardware.cpl.interfacecb@1.0.so \
-    $(COMMON_NVCPL_PATH)/system/lib64/vendor.nvidia.hardware.cpl.service@1.0.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/vendor.nvidia.hardware.cpl.service@1.0.so \
-    $(COMMON_NVCPL_PATH)/system/lib64/vendor.nvidia.hardware.cpl.tools@1.0.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/vendor.nvidia.hardware.cpl.tools@1.0.so \
-    $(COMMON_NVCPL_PATH)/system/lib64/libnvcpl.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libnvcpl.so \
-    $(COMMON_NVCPL_PATH)/system/lib64/libnvcpl_vendor.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libnvcpl_vendor.so
-endif
