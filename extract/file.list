@@ -2,8 +2,8 @@
 stock-t210	system/system/app/NvAudioSvc/NvAudioSvc.apk		common/audio/app/NvAudioSvc.apk
 stock-t210	vendor/app/DolbyAudioService/DolbyAudioService.apk	common/audio/app/DolbyAudioService.apk
 stock-t210	vendor/bin/hw/android.hardware.audio@4.0-service-msd	common/audio/bin32/hw/android.hardware.audio@4.0-service-msd
-stock-t210	vendor/lib/hw/audio.primary.tegra.so			common/audio/lib/hw/audio.primary.tegra.so
-stock-foster	vendor/lib/hw/audio.primary.tegra.so			common/audio/lib/hw/audio.primary.tegra.nodolby.so
+stock-t210	vendor/lib/hw/audio.primary.tegra.so			common/audio/lib/hw/audio.primary.tegra.dolby.so
+stock-foster	vendor/lib/hw/audio.primary.tegra.so			common/audio/lib/hw/audio.primary.tegra.so
 stock-t210	vendor/lib/hw/sound_trigger.primary.tegra.so		common/audio/lib/hw/sound_trigger.primary.tegra.so
 stock-t210	vendor/lib/soundfx/libnvvisualizer.so			common/audio/lib/soundfx/libnvvisualizer.so
 stock-t210	vendor/lib/libim501.so					common/audio/lib/libim501.so
@@ -79,9 +79,9 @@ stock-sif	system/system/lib/libnvcontrol_jni.so				common/nvcpl/lib/libnvcontrol
 stock-t210	vendor/lib/libnvcpl_vendor.so					common/nvcpl/lib/libnvcpl_vendor.so
 
 # NVGPU
-stock-t210	vendor/bin/hw/vendor.nvidia.hardware.graphics.composer@2.0-service	common/nvgpu/bin64/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
-stock-foster	vendor/bin/hw/vendor.nvidia.hardware.graphics.composer@2.0-service	common/nvgpu/bin64/hw/vendor.nvidia.hardware.graphics.composer@2.0-service.nodolby
-stock-sif	vendor/bin/hw/vendor.nvidia.hardware.graphics.composer@2.0-service	common/nvgpu/bin32/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
+stock-t210	vendor/bin/hw/vendor.nvidia.hardware.graphics.composer@2.0-service	common/nvgpu/bin64/hw/vendor.nvidia.hardware.graphics.composer@2.0-service.dolby
+stock-foster	vendor/bin/hw/vendor.nvidia.hardware.graphics.composer@2.0-service	common/nvgpu/bin64/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
+stock-sif	vendor/bin/hw/vendor.nvidia.hardware.graphics.composer@2.0-service	common/nvgpu/bin32/hw/vendor.nvidia.hardware.graphics.composer@2.0-service.dolby
 stock-t210	vendor/lib64/vendor.nvidia.hardware.graphics.composer@2.0-impl.so	common/nvgpu/lib64/vendor.nvidia.hardware.graphics.composer@2.0-impl.so
 stock-t210	vendor/lib64/vendor.nvidia.hardware.graphics.display@1.0-impl.so	common/nvgpu/lib64/vendor.nvidia.hardware.graphics.display@1.0-impl.so
 stock-t210	vendor/lib64/vendor.nvidia.hardware.graphics.mempool@1.0-impl.so	common/nvgpu/lib64/vendor.nvidia.hardware.graphics.mempool@1.0-impl.so
@@ -103,8 +103,8 @@ stock-t210	vendor/lib64/libnvddk_2d_v2.so						common/nvgpu/lib64/libnvddk_2d_v2
 stock-t210	vendor/lib64/libnvddk_vic.so						common/nvgpu/lib64/libnvddk_vic.so
 stock-t210	vendor/lib64/libnvglsi.so						common/nvgpu/lib64/libnvglsi.so
 stock-t210	vendor/lib64/libnvgr.so							common/nvgpu/lib64/libnvgr.so
-stock-t210	vendor/lib64/libnvhwcomposer.so						common/nvgpu/lib64/libnvhwcomposer.so
-stock-foster	vendor/lib64/libnvhwcomposer.so						common/nvgpu/lib64/libnvhwcomposer.nodolby.so
+stock-t210	vendor/lib64/libnvhwcomposer.so						common/nvgpu/lib64/libnvhwcomposer.dolby.so
+stock-foster	vendor/lib64/libnvhwcomposer.so						common/nvgpu/lib64/libnvhwcomposer.so
 stock-t210	vendor/lib64/libnvidia-glvkspirv.so					common/nvgpu/lib64/libnvidia-glvkspirv.so
 stock-t210	vendor/lib64/libnvidia-ptxjitcompiler.so				common/nvgpu/lib64/libnvidia-ptxjitcompiler.so
 stock-t210	vendor/lib64/libnvrmapi_tegra.so					common/nvgpu/lib64/libnvrmapi_tegra.so
@@ -129,7 +129,7 @@ stock-t210	vendor/lib/libnvddk_2d_v2.so						common/nvgpu/lib/libnvddk_2d_v2.so
 stock-t210	vendor/lib/libnvddk_vic.so						common/nvgpu/lib/libnvddk_vic.so
 stock-t210	vendor/lib/libnvglsi.so							common/nvgpu/lib/libnvglsi.so
 stock-t210	vendor/lib/libnvgr.so							common/nvgpu/lib/libnvgr.so
-stock-sif	vendor/lib/libnvhwcomposer.so						common/nvgpu/lib/libnvhwcomposer.so
+stock-sif	vendor/lib/libnvhwcomposer.so						common/nvgpu/lib/libnvhwcomposer.dolby.so
 stock-t210	vendor/lib/libnvidia-glvkspirv.so					common/nvgpu/lib/libnvidia-glvkspirv.so
 stock-t210	vendor/lib/libnvidia-ptxjitcompiler.so					common/nvgpu/lib/libnvidia-ptxjitcompiler.so
 stock-t210	vendor/lib/libnvrmapi_tegra.so						common/nvgpu/lib/libnvrmapi_tegra.so
@@ -146,8 +146,8 @@ stock-t210	vendor/lib/libnvidia-fatbinaryloader.so					common/nvgpu/lib/libnvidi
 
 # NVMM
 stock-t210	vendor/lib/libnvomxilclient.so		common/nvmm/lib/libnvomxilclient.so
-stock-t210	vendor/lib/libnvomx.so			common/nvmm/lib/libnvomx.so
-stock-foster	vendor/lib/libnvomx.so			common/nvmm/lib/libnvomx.nodolby.so
+stock-t210	vendor/lib/libnvomx.so			common/nvmm/lib/libnvomx.dolby.so
+stock-foster	vendor/lib/libnvomx.so			common/nvmm/lib/libnvomx.so
 stock-t210	vendor/lib/libnvmm_audio.so		common/nvmm/lib/libnvmm_audio.so
 stock-t210	vendor/lib/libnvmm_contentpipe.so	common/nvmm/lib/libnvmm_contentpipe.so
 stock-t210	vendor/lib/libnvmmlite_audio.so		common/nvmm/lib/libnvmmlite_audio.so
@@ -155,8 +155,8 @@ stock-t210	vendor/lib/libnvmmlite_image.so		common/nvmm/lib/libnvmmlite_image.so
 stock-t210	vendor/lib/libnvmmlite.so		common/nvmm/lib/libnvmmlite.so
 stock-t210	vendor/lib/libnvmmlite_msaudio.so	common/nvmm/lib/libnvmmlite_msaudio.so
 stock-t210	vendor/lib/libnvmmlite_utils.so		common/nvmm/lib/libnvmmlite_utils.so
-stock-t210	vendor/lib/libnvmmlite_video.so		common/nvmm/lib/libnvmmlite_video.so
-stock-foster	vendor/lib/libnvmmlite_video.so		common/nvmm/lib/libnvmmlite_video.nodolby.so
+stock-t210	vendor/lib/libnvmmlite_video.so		common/nvmm/lib/libnvmmlite_video.dolby.so
+stock-foster	vendor/lib/libnvmmlite_video.so		common/nvmm/lib/libnvmmlite_video.so
 stock-t210	vendor/lib/libnvmm_parser.so		common/nvmm/lib/libnvmm_parser.so
 stock-t210	vendor/lib/libnvmm.so			common/nvmm/lib/libnvmm.so
 stock-t210	vendor/lib/libnvmm_msaudio.so		common/nvmm/lib/libnvmm_msaudio.so
@@ -167,16 +167,16 @@ stock-t210	vendor/lib/libnvtvmr.so			common/nvmm/lib/libnvtvmr.so
 stock-t210	vendor/lib/libnvtnr.so			common/nvmm/lib/libnvtnr.so
 stock-t210	vendor/lib/libnvparser.so		common/nvmm/lib/libnvparser.so
 stock-t210	vendor/lib/libnvavp.so			common/nvmm/lib/libnvavp.so
-stock-t210	vendor/lib/libstagefrighthw.so		common/nvmm/lib/libstagefrighthw.so
-stock-foster	vendor/lib/libstagefrighthw.so		common/nvmm/lib/libstagefrighthw.nodolby.so
-stock-t210	vendor/lib64/libnvomx.so		common/nvmm/lib64/libnvomx.so
-stock-foster	vendor/lib64/libnvomx.so		common/nvmm/lib64/libnvomx.nodolby.so
+stock-t210	vendor/lib/libstagefrighthw.so		common/nvmm/lib/libstagefrighthw.dolby.so
+stock-foster	vendor/lib/libstagefrighthw.so		common/nvmm/lib/libstagefrighthw.so
+stock-t210	vendor/lib64/libnvomx.so		common/nvmm/lib64/libnvomx.dolby.so
+stock-foster	vendor/lib64/libnvomx.so		common/nvmm/lib64/libnvomx.so
 stock-t210	vendor/lib64/libnvmm_contentpipe.so	common/nvmm/lib64/libnvmm_contentpipe.so
 stock-t210	vendor/lib64/libnvmmlite_image.so	common/nvmm/lib64/libnvmmlite_image.so
 stock-t210	vendor/lib64/libnvmmlite.so		common/nvmm/lib64/libnvmmlite.so
 stock-t210	vendor/lib64/libnvmmlite_utils.so	common/nvmm/lib64/libnvmmlite_utils.so
-stock-t210	vendor/lib64/libnvmmlite_video.so	common/nvmm/lib64/libnvmmlite_video.so
-stock-foster	vendor/lib64/libnvmmlite_video.so	common/nvmm/lib64/libnvmmlite_video.nodolby.so
+stock-t210	vendor/lib64/libnvmmlite_video.so	common/nvmm/lib64/libnvmmlite_video.dolby.so
+stock-foster	vendor/lib64/libnvmmlite_video.so	common/nvmm/lib64/libnvmmlite_video.so
 stock-t210	vendor/lib64/libnvmm_parser.so		common/nvmm/lib64/libnvmm_parser.so
 stock-t210	vendor/lib64/libnvmm.so			common/nvmm/lib64/libnvmm.so
 stock-t210	vendor/lib64/libnvmm_utils.so		common/nvmm/lib64/libnvmm_utils.so

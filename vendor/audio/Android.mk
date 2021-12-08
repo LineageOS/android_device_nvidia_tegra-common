@@ -52,9 +52,9 @@ include $(BUILD_NVIDIA_COMMON_PREBUILT)
 include $(CLEAR_VARS)
 LOCAL_MODULE               := audio.primary.tegra
 ifeq ($(TARGET_TEGRA_DOLBY),true)
-LOCAL_SRC_FILES            := $(COMMON_AUDIO_PATH)/lib/hw/audio.primary.tegra.so
+LOCAL_SRC_FILES            := $(COMMON_AUDIO_PATH)/lib/hw/audio.primary.tegra.dolby.so
 else
-LOCAL_SRC_FILES            := $(COMMON_AUDIO_PATH)/lib/hw/audio.primary.tegra.nodolby.so
+LOCAL_SRC_FILES            := $(COMMON_AUDIO_PATH)/lib/hw/audio.primary.tegra.so
 LOCAL_VINTF_FRAGMENTS      := android.hardware.audio@2.0-service.xml
 endif
 LOCAL_MODULE_SUFFIX        := .so

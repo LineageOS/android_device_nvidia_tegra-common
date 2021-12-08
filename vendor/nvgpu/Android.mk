@@ -18,14 +18,16 @@ COMMON_NVGPU_PATH := ../../../../../vendor/nvidia/common/nvgpu
 include $(CLEAR_VARS)
 LOCAL_MODULE               := vendor.nvidia.hardware.graphics.composer@2.0-service
 LOCAL_VINTF_FRAGMENTS      := vendor.nvidia.hardware.graphics.composer@2.0-service.xml
-LOCAL_SRC_FILES_32         := $(COMMON_NVGPU_PATH)/bin32/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
 ifeq ($(TARGET_TEGRA_DOLBY),true)
-LOCAL_SRC_FILES_64         := $(COMMON_NVGPU_PATH)/bin64/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
-LOCAL_INIT_RC              := etc/init/vendor.nvidia.hardware.graphics.composer@2.0-service.rc
+LOCAL_SRC_FILES_32         := $(COMMON_NVGPU_PATH)/bin32/hw/vendor.nvidia.hardware.graphics.composer@2.0-service.dolby
+LOCAL_SRC_FILES_64         := $(COMMON_NVGPU_PATH)/bin64/hw/vendor.nvidia.hardware.graphics.composer@2.0-service.dolby
+LOCAL_INIT_RC              := etc/init/vendor.nvidia.hardware.graphics.composer@2.0-service.dolby.rc
 LOCAL_VINTF_FRAGMENTS      += vendor.nvidia.hardware.graphics.mempool@1.0.xml
 else
-LOCAL_SRC_FILES_64         := $(COMMON_NVGPU_PATH)/bin64/hw/vendor.nvidia.hardware.graphics.composer@2.0-service.nodolby
-LOCAL_INIT_RC              := etc/init/vendor.nvidia.hardware.graphics.composer@2.0-service.nodolby.rc
+# 32-bit non-dolby binary doesn't exist, but this needs to be here for parsing purposes
+LOCAL_SRC_FILES_32         := $(COMMON_NVGPU_PATH)/bin32/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
+LOCAL_SRC_FILES_64         := $(COMMON_NVGPU_PATH)/bin64/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
+LOCAL_INIT_RC              := etc/init/vendor.nvidia.hardware.graphics.composer@2.0-service.rc
 endif
 LOCAL_MULTILIB             := first
 LOCAL_MODULE_CLASS         := EXECUTABLES
@@ -201,12 +203,14 @@ include $(BUILD_NVIDIA_COMMON_PREBUILT)
 include $(CLEAR_VARS)
 LOCAL_MODULE               := libnvhwcomposer
 LOCAL_REQUIRED_MODULES     := libcuda
-LOCAL_SRC_FILES_32         := $(COMMON_NVGPU_PATH)/lib/libnvhwcomposer.so
 ifeq ($(TARGET_TEGRA_DOLBY),true)
-LOCAL_SRC_FILES_64         := $(COMMON_NVGPU_PATH)/lib64/libnvhwcomposer.so
+LOCAL_SRC_FILES_32         := $(COMMON_NVGPU_PATH)/lib/libnvhwcomposer.dolby.so
+LOCAL_SRC_FILES_64         := $(COMMON_NVGPU_PATH)/lib64/libnvhwcomposer.dolby.so
 LOCAL_REQUIRED_MODULES     += libdolbycontrol
 else
-LOCAL_SRC_FILES_64         := $(COMMON_NVGPU_PATH)/lib64/libnvhwcomposer.nodolby.so
+# 32-bit non-dolby binary doesn't exist, but this needs to be here for parsing purposes
+LOCAL_SRC_FILES_32         := $(COMMON_NVGPU_PATH)/lib/libnvhwcomposer.so
+LOCAL_SRC_FILES_64         := $(COMMON_NVGPU_PATH)/lib64/libnvhwcomposer.so
 endif
 LOCAL_MULTILIB             := first
 LOCAL_MODULE_SUFFIX        := .so
