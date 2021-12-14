@@ -27,6 +27,15 @@
         </interface>
     </hal>
     <hal format="hidl">
+        <name>vendor.nvidia.hardware.graphics.mempool</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>INvMemPool</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
         <name>vendor.nvidia.hardware.graphics.display</name>
         <transport>hwbinder</transport>
         <version>1.0</version>

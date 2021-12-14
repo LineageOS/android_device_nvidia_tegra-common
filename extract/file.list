@@ -78,9 +78,8 @@ stock-sif	system/system/lib/libnvcontrol_jni.so				common/nvcpl/lib/libnvcontrol
 stock-t210	vendor/lib/libnvcpl_vendor.so					common/nvcpl/lib/libnvcpl_vendor.so
 
 # NVGPU
-stock-t210	vendor/bin/hw/vendor.nvidia.hardware.graphics.composer@2.0-service	common/nvgpu/bin64/hw/vendor.nvidia.hardware.graphics.composer@2.0-service.dolby
-stock-foster	vendor/bin/hw/vendor.nvidia.hardware.graphics.composer@2.0-service	common/nvgpu/bin64/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
-stock-sif	vendor/bin/hw/vendor.nvidia.hardware.graphics.composer@2.0-service	common/nvgpu/bin32/hw/vendor.nvidia.hardware.graphics.composer@2.0-service.dolby
+stock-t210	vendor/bin/hw/vendor.nvidia.hardware.graphics.composer@2.0-service	common/nvgpu/bin64/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
+stock-sif	vendor/bin/hw/vendor.nvidia.hardware.graphics.composer@2.0-service	common/nvgpu/bin32/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
 stock-t210	vendor/lib64/vendor.nvidia.hardware.graphics.composer@2.0-impl.so	common/nvgpu/lib64/vendor.nvidia.hardware.graphics.composer@2.0-impl.so
 stock-t210	vendor/lib64/vendor.nvidia.hardware.graphics.display@1.0-impl.so	common/nvgpu/lib64/vendor.nvidia.hardware.graphics.display@1.0-impl.so
 stock-t210	vendor/lib64/vendor.nvidia.hardware.graphics.mempool@1.0-impl.so	common/nvgpu/lib64/vendor.nvidia.hardware.graphics.mempool@1.0-impl.so
@@ -107,16 +106,21 @@ stock-foster	vendor/lib64/libnvhwcomposer.so						common/nvgpu/lib64/libnvhwcomp
 stock-t210	vendor/lib64/libnvidia-glvkspirv.so					common/nvgpu/lib64/libnvidia-glvkspirv.so
 stock-t210	vendor/lib64/libnvidia-ptxjitcompiler.so				common/nvgpu/lib64/libnvidia-ptxjitcompiler.so
 stock-t210	vendor/lib64/libnvrmapi_tegra.so					common/nvgpu/lib64/libnvrmapi_tegra.so
+stock-t210	vendor/lib64/libnvrm_chip.so						common/nvgpu/lib64/libnvrm_chip.so
 stock-t210	vendor/lib64/libnvrm_gpu.so						common/nvgpu/lib64/libnvrm_gpu.so
-stock-t210	vendor/lib64/libnvrm_graphics.so					common/nvgpu/lib64/libnvrm_graphics.so
-stock-t210	vendor/lib64/libnvrm.so							common/nvgpu/lib64/libnvrm.so
+stock-t210	vendor/lib64/libnvrm_host1x.so						common/nvgpu/lib64/libnvrm_host1x.so
+stock-t210	vendor/lib64/libnvrm_mem.so						common/nvgpu/lib64/libnvrm_mem.so
+stock-t210	vendor/lib64/libnvrm_stream.so						common/nvgpu/lib64/libnvrm_stream.so
+stock-t210	vendor/lib64/libnvrm_surface.so						common/nvgpu/lib64/libnvrm_surface.so
+stock-t210	vendor/lib64/libnvrm_sync.so						common/nvgpu/lib64/libnvrm_sync.so
 stock-t210	vendor/lib64/libnvrmvkif.so						common/nvgpu/lib64/libnvrmvkif.so
 stock-t210	vendor/lib64/libnvwsi.so						common/nvgpu/lib64/libnvwsi.so
 stock-t210	vendor/lib64/libnvcolorutil.so						common/nvgpu/lib64/libnvcolorutil.so
 stock-t210	vendor/lib64/libnvdc.so							common/nvgpu/lib64/libnvdc.so
 stock-t210	vendor/lib64/libnvimp.so						common/nvgpu/lib64/libnvimp.so
 stock-t210	vendor/lib64/libcuda.so							common/nvgpu/lib64/libcuda.so
-stock-t210	vendor/lib64/libnvidia-fatbinaryloader.so				common/nvgpu/lib64/libnvidia-fatbinaryloader.so
+stock-t210	vendor/lib64/libnvcucompat.so						common/nvgpu/lib64/libnvcucompat.so
+stock-t210	vendor/lib64/libnvsocsys.so						common/nvgpu/lib64/libnvsocsys.so
 stock-t210	vendor/lib/egl/libEGL_tegra.so						common/nvgpu/lib/egl/libEGL_tegra.so
 stock-t210	vendor/lib/egl/libGLESv1_CM_tegra.so					common/nvgpu/lib/egl/libGLESv1_CM_tegra.so
 stock-t210	vendor/lib/egl/libGLESv2_tegra.so					common/nvgpu/lib/egl/libGLESv2_tegra.so
@@ -132,16 +136,21 @@ stock-sif	vendor/lib/libnvhwcomposer.so						common/nvgpu/lib/libnvhwcomposer.do
 stock-t210	vendor/lib/libnvidia-glvkspirv.so					common/nvgpu/lib/libnvidia-glvkspirv.so
 stock-t210	vendor/lib/libnvidia-ptxjitcompiler.so					common/nvgpu/lib/libnvidia-ptxjitcompiler.so
 stock-t210	vendor/lib/libnvrmapi_tegra.so						common/nvgpu/lib/libnvrmapi_tegra.so
+stock-t210	vendor/lib/libnvrm_chip.so						common/nvgpu/lib/libnvrm_chip.so
 stock-t210	vendor/lib/libnvrm_gpu.so						common/nvgpu/lib/libnvrm_gpu.so
-stock-t210	vendor/lib/libnvrm_graphics.so						common/nvgpu/lib/libnvrm_graphics.so
-stock-t210	vendor/lib/libnvrm.so							common/nvgpu/lib/libnvrm.so
+stock-t210	vendor/lib/libnvrm_host1x.so						common/nvgpu/lib/libnvrm_host1x.so
+stock-t210	vendor/lib/libnvrm_mem.so						common/nvgpu/lib/libnvrm_mem.so
+stock-t210	vendor/lib/libnvrm_stream.so						common/nvgpu/lib/libnvrm_stream.so
+stock-t210	vendor/lib/libnvrm_surface.so						common/nvgpu/lib/libnvrm_surface.so
+stock-t210	vendor/lib/libnvrm_sync.so						common/nvgpu/lib/libnvrm_sync.so
 stock-t210	vendor/lib/libnvrmvkif.so						common/nvgpu/lib/libnvrmvkif.so
 stock-t210	vendor/lib/libnvwsi.so							common/nvgpu/lib/libnvwsi.so
 stock-t210	vendor/lib/libnvcolorutil.so						common/nvgpu/lib/libnvcolorutil.so
 stock-t210	vendor/lib/libnvdc.so							common/nvgpu/lib/libnvdc.so
 stock-t210	vendor/lib/libnvimp.so							common/nvgpu/lib/libnvimp.so
 stock-t210	vendor/lib/libcuda.so							common/nvgpu/lib/libcuda.so
-stock-t210	vendor/lib/libnvidia-fatbinaryloader.so					common/nvgpu/lib/libnvidia-fatbinaryloader.so
+stock-t210	vendor/lib/libnvcucompat.so						common/nvgpu/lib/libnvcucompat.so
+stock-t210	vendor/lib/libnvsocsys.so						common/nvgpu/lib/libnvsocsys.so
 
 # NVMM
 stock-t210	vendor/lib/libnvomxilclient.so		common/nvmm/lib/libnvomxilclient.so
@@ -168,6 +177,7 @@ stock-t210	vendor/lib/libnvparser.so		common/nvmm/lib/libnvparser.so
 stock-t210	vendor/lib/libnvavp.so			common/nvmm/lib/libnvavp.so
 stock-t210	vendor/lib/libstagefrighthw.so		common/nvmm/lib/libstagefrighthw.dolby.so
 stock-foster	vendor/lib/libstagefrighthw.so		common/nvmm/lib/libstagefrighthw.so
+stock-t210	vendor/lib/libnvdla_runtime.so		common/nvmm/lib/libnvdla_runtime.so
 stock-t210	vendor/lib64/libnvomx.so		common/nvmm/lib64/libnvomx.dolby.so
 stock-foster	vendor/lib64/libnvomx.so		common/nvmm/lib64/libnvomx.so
 stock-t210	vendor/lib64/libnvmm_contentpipe.so	common/nvmm/lib64/libnvmm_contentpipe.so
@@ -184,6 +194,7 @@ stock-t210	vendor/lib64/libnvtvmr.so		common/nvmm/lib64/libnvtvmr.so
 stock-t210	vendor/lib64/libnvtnr.so		common/nvmm/lib64/libnvtnr.so
 stock-t210	vendor/lib64/libnvparser.so		common/nvmm/lib64/libnvparser.so
 stock-t210	vendor/lib64/libnvavp.so		common/nvmm/lib64/libnvavp.so
+stock-t210	vendor/lib64/libnvdla_runtime.so	common/nvmm/lib64/libnvdla_runtime.so
 
 # NvPHS
 stock-t210	vendor/lib/vendor.nvidia.hardware.phs@1.0-impl.so	common/nvphs/lib/vendor.nvidia.hardware.phs@1.0-impl.so

@@ -28,6 +28,18 @@ LOCAL_VENDOR_MODULE        := true
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
+LOCAL_MODULE               := libnvdla_runtime
+LOCAL_SRC_FILES_32         := $(COMMON_NVMM_PATH)/lib/libnvdla_runtime.so
+LOCAL_SRC_FILES_64         := $(COMMON_NVMM_PATH)/lib64/libnvdla_runtime.so
+LOCAL_MULTILIB             := both
+LOCAL_MODULE_SUFFIX        := .so
+LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS          := optional
+LOCAL_MODULE_OWNER         := nvidia
+LOCAL_VENDOR_MODULE        := true
+include $(BUILD_NVIDIA_COMMON_PREBUILT)
+
+include $(CLEAR_VARS)
 LOCAL_MODULE               := libnvmedia
 LOCAL_SRC_FILES_32         := $(COMMON_NVMM_PATH)/lib/libnvmedia.so
 LOCAL_SRC_FILES_64         := $(COMMON_NVMM_PATH)/lib64/libnvmedia.so
