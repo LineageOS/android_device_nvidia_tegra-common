@@ -16,5 +16,4 @@ PRODUCT_PACKAGES += \
     vendor.nvidia.hardware.camera.provider@2.4-service \
     camera.tegra \
     libnvargus \
-    libnvargus_socketserver \
     model_frontal.xml
