@@ -6,5 +6,5 @@
 # documentation without an express license agreement from NVIDIA Corporation
 # is strictly prohibited.
 
-on init
-  setprop ro.radio.noril true
+on boot
+    setprop ro.radio.noril true

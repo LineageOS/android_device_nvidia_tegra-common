@@ -1,4 +1,4 @@
-#Copyright (c) 2011-2019, NVIDIA Corporation.  All Rights Reserved.
+#Copyright (c) 2011-2021, NVIDIA Corporation.  All Rights Reserved.
 #
 #NVIDIA Corporation and its licensors retain all intellectual property and
 #proprietary rights in and to this software and related documentation.  Any
@@ -19,6 +19,9 @@ on boot
 
     chown system bluetooth /mnt/vendor/wifi_config/ts_config.conf
     chown system bluetooth /mnt/vendor/wifi_config/jarvis_config.conf
+
+    chown wifi wifi /mnt/vendor/factory/wifi/wifi_mac.txt
+    chmod 0644 /mnt/vendor/factory/wifi/wifi_mac.txt
 
     # Wifi firmware reload path
     chown wifi wifi /sys/module/bcmdhd/parameters/firmware_path
@@ -59,8 +62,10 @@ on property:init.svc.vendor.lkm_loader=stopped
 
     chmod 0660 /sys/module/brcmfmac/parameters/alternative_fw_path
     chown wifi wifi /sys/module/brcmfmac/parameters/alternative_fw_path
-
 on fs
+    # limit size of BT snoop logs
+    setprop persist.bluetooth.btsnoopsize 0x7D00
+
     # Increase rmem_max for 4k GS
     write /proc/sys/net/core/rmem_max 1048576
     write /proc/sys/net/ipv4/neigh/default/ucast_solicit 6

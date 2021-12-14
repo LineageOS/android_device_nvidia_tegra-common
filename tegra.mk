@@ -35,7 +35,6 @@ PRODUCT_PACKAGES += \
     bt_loader \
     wifi_loader \
     init.comms.rc \
-    init.data_bin.rc \
     init.hdcp.rc \
     init.none.rc \
     init.nv_dev_board.usb.rc \

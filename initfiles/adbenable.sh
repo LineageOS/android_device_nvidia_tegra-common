@@ -1,6 +1,6 @@
 #!/vendor/bin/sh
 #
-# Copyright (c) 2015-2018 NVIDIA Corporation.  All rights reserved.
+# Copyright (c) 2015-2019 NVIDIA Corporation.  All rights reserved.
 #
 # NVIDIA Corporation and its licensors retain all intellectual property
 # and proprietary rights in and to this software, related documentation
@@ -24,7 +24,7 @@ else
 fi
 
 # Enable ADB if the "safe mode w/ adb" DT node is present
-usbPortPath=/sys/class/extcon/extcon3/state
+usbPortPath=/sys/class/extcon/extcon0/state
 safeModeDTPath=/proc/device-tree/chosen/nvidia,safe_mode_adb
 deviceModeVal=0x1
 hostModeVal=0x2
@@ -38,24 +38,31 @@ if [[ $? -eq 0 ]]; then # Safe Mode w/ ADB
 
 	# Append adb to the usb config in normal boot mode
 	currConfig=$(getprop persist.sys.usb.config)
+	config=$(getprop sys.usb.config)
 	if [[ -z $currConfig ]]; then
-		setprop vendor.config.usb adb
+		vendorConfig=adb
 	elif [[ $currConfig != *"adb"* ]]; then
-		setprop vendor.config.usb $currConfig,adb
+		vendorConfig=$currConfig,adb
 	else
-		setprop vendor.config.usb $currConfig
+		vendorConfig=$currConfig
+	fi
+	if [[ ${config:-empty} != $vendorConfig ]]; then
+		setprop vendor.config.usb $vendorConfig
 	fi
 else # All other Modes
 	# Init the USB to default mode only for Darcy SKUs
 	if [[ $hardwareName = *"darcy"* ]]; then
-		if [[ $(getprop persist.vendor.convertible.usb.mode) == "host" ]]; then
+		if [[ $(getprop persist.convertible.usb.mode) == "host" ]]; then
 			echo $hostModeVal > $usbPortPath
 		fi
 	fi
 
 	# Assign the persistent USB config; if it exists
 	currConfig=$(getprop persist.sys.usb.config)
+	config=$(getprop sys.usb.config)
 	if [[ ! -z "$currConfig" ]]; then
-		setprop vendor.config.usb $currConfig
+		if [[ ${config:-empty} != "$currConfig" ]]; then
+			setprop vendor.config.usb $currConfig
+		fi
 	fi
 fi
