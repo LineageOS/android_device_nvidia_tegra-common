@@ -93,17 +93,6 @@ LOCAL_VENDOR_MODULE        := true
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE               := libnvargus_socketserver
-LOCAL_SRC_FILES            := $(COMMON_CAMERA_PATH)/lib64/libnvargus_socketserver.so
-LOCAL_MODULE_SUFFIX        := .so
-LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
-LOCAL_MODULE_TARGET_ARCH   := arm64
-LOCAL_MODULE_TAGS          := optional
-LOCAL_MODULE_OWNER         := nvidia
-LOCAL_VENDOR_MODULE        := true
-include $(BUILD_NVIDIA_COMMON_PREBUILT)
-
-include $(CLEAR_VARS)
 LOCAL_MODULE               := libnvcam_imageencoder
 LOCAL_SRC_FILES            := $(COMMON_CAMERA_PATH)/lib64/libnvcam_imageencoder.so
 LOCAL_MODULE_SUFFIX        := .so
