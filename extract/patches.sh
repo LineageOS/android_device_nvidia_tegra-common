@@ -29,41 +29,6 @@ function patch_nvcontrol() {
   sed -i 's/libnvos.so/libjpeg.so/' ${LINEAGE_ROOT}/${OUTDIR}/common/nvcpl/lib/libnvcontrol_jni.so
 }
 
-# 32-bit nvgpu uses several intrinsics that got moved around in Q, so they need shimmed
-function patch_nvgpu() {
-  sed -i 's/liblog.so/libgol.so/' ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/egl/libEGL_tegra.so
-  sed -i 's/liblog.so/libgol.so/' ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libglcore.so
-  sed -i 's/liblog.so/libgol.so/' ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libnvglsi.so
-  sed -i 's/liblog.so/libgol.so/' ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libnvidia-fatbinaryloader.so
-  sed -i 's/liblog.so/libgol.so/' ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libnvidia-glvkspirv.so
-  sed -i 's/liblog.so/libgol.so/' ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libnvidia-ptxjitcompiler.so
-  sed -i 's/liblog.so/libgol.so/' ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libnvrmapi_tegra.so
-
-  sed -i 's/__aeabi_uldivmod/s_aeabi_uldivmod/' ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/egl/libEGL_tegra.so
-
-  sed -i 's/__aeabi_ldivmod/s_aeabi_ldivmod/'   ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libglcore.so
-  sed -i 's/__aeabi_uldivmod/s_aeabi_uldivmod/' ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libglcore.so
-
-  sed -i 's/__aeabi_uldivmod/s_aeabi_uldivmod/' ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libnvglsi.so
-
-  sed -i 's/__aeabi_ldivmod/s_aeabi_ldivmod/'   ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libnvidia-fatbinaryloader.so
-  sed -i 's/__aeabi_uldivmod/s_aeabi_uldivmod/' ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libnvidia-fatbinaryloader.so
-
-  sed -i 's/__aeabi_d2lz/s_aeabi_d2lz/'                     ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libnvidia-glvkspirv.so
-  sed -i 's/__aeabi_d2ulz/s_aeabi_d2ulz/'                   ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libnvidia-glvkspirv.so
-  sed -i 's/__aeabi_l2d/s_aeabi_l2d/'                       ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libnvidia-glvkspirv.so
-  sed -i 's/__aeabi_ul2d/s_aeabi_ul2d/'                     ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libnvidia-glvkspirv.so
-  sed -i 's/__aeabi_ldivmod/s_aeabi_ldivmod/'               ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libnvidia-glvkspirv.so
-  sed -i 's/__aeabi_uldivmod/s_aeabi_uldivmod/'             ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libnvidia-glvkspirv.so
-  sed -i 's/__aeabi_unwind_cpp_pr0/s_aeabi_unwind_cpp_pr0/' ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libnvidia-glvkspirv.so
-  sed -i 's/__aeabi_unwind_cpp_pr1/s_aeabi_unwind_cpp_pr1/' ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libnvidia-glvkspirv.so
-
-  sed -i 's/__aeabi_ldivmod/s_aeabi_ldivmod/'   ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libnvidia-ptxjitcompiler.so
-  sed -i 's/__aeabi_uldivmod/s_aeabi_uldivmod/' ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libnvidia-ptxjitcompiler.so
-
-  sed -i 's/__aeabi_uldivmod/s_aeabi_uldivmod/' ${LINEAGE_ROOT}/${OUTDIR}/common/nvgpu/lib/libnvrmapi_tegra.so
-}
-
 # BUP tries to write the output file to cwd, let's instead use the already referenced env path var 'OUT'
 # Since 32.6, BUP changed the version field format, however BMP blobs still require the previous version string
 function patch_bup() {
@@ -101,7 +66,6 @@ function fetch_bmps() {
 fetch_bcm4356_patchfile;
 chmod_tegraflash;
 patch_nvcontrol;
-patch_nvgpu;
 patch_bup;
 patch_tegraflash;
 patch_tegrasign_v3;
