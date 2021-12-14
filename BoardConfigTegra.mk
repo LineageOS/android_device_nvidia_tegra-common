@@ -33,12 +33,6 @@ ifeq ($(AB_OTA_UPDATER),true)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/boot.xml
 endif
 
-# Forced shims
-ifeq ($(TARGET_TEGRA_AUDIO),nvaudio)
-TARGET_LD_SHIM_LIBS += /$(TARGET_COPY_OUT_VENDOR)/lib/hw/audio.primary.tegra.so|/system/lib/libprocessgroup.so \
-                       /$(TARGET_COPY_OUT_VENDOR)/lib/hw/sound_trigger.primary.tegra.so|/system/lib/libprocessgroup.so
-endif
-
 # Graphics
 ifeq ($(TARGET_TEGRA_GPU),drm)
 BOARD_GPU_DRIVERS         ?= nouveau
