@@ -61,8 +61,10 @@ PRODUCT_PACKAGES += \
     a2dp_module_deviceports.xml \
     a2dp_module_mixports.xml \
     primary_module_deviceports.xml \
+    primary_module_deviceports_tv.xml \
     primary_module_mixports.xml \
     r_submix_audio_policy_configuration.xml \
+    surround_sound_configuration_5_0.xml \
     usb_module_deviceports.xml \
     usb_module_mixports.xml \
     ne_audio_policy_volumes.xml \
