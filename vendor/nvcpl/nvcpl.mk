@@ -16,4 +16,5 @@ COMMON_NVCPL_PATH := vendor/nvidia/common/nvcpl
 
 PRODUCT_PACKAGES += \
     NvCPLSvc \
-    vendor.nvidia.hardware.cpl.service@1.0-service
+    vendor.nvidia.hardware.cpl.service@1.0-service \
+    vendor.nvidia.hardware.cpl.service_common@1.0-service
