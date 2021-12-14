@@ -67,13 +67,15 @@ stock-t210	vendor/lib/hw/memtrack.tegra.so		common/memtrack/lib/hw/memtrack.tegr
 stock-t210	vendor/lib64/hw/memtrack.tegra.so	common/memtrack/lib64/hw/memtrack.tegra.so
 
 # NvCPL
-stock-t210	system/system/app/NvCPLSvc/NvCPLSvc.apk				common/nvcpl/app/NvCPLSvc/NvCPLSvc.apk
-stock-t210	vendor/bin/hw/vendor.nvidia.hardware.cpl.service@1.0-service	common/nvcpl/bin64/hw/vendor.nvidia.hardware.cpl.service@1.0-service
-stock-sif	vendor/bin/hw/vendor.nvidia.hardware.cpl.service@1.0-service	common/nvcpl/bin32/hw/vendor.nvidia.hardware.cpl.service@1.0-service
-stock-t210	system/system/lib64/libnvcontrol_jni.so				common/nvcpl/lib64/libnvcontrol_jni.so
-stock-t210	vendor/lib64/libnvcpl_vendor.so					common/nvcpl/lib64/libnvcpl_vendor.so
-stock-sif	system/system/lib/libnvcontrol_jni.so				common/nvcpl/lib/libnvcontrol_jni.so
-stock-t210	vendor/lib/libnvcpl_vendor.so					common/nvcpl/lib/libnvcpl_vendor.so
+stock-t210	system/system/app/NvCPLSvc/NvCPLSvc.apk					common/nvcpl/app/NvCPLSvc/NvCPLSvc.apk
+stock-t210	vendor/bin/hw/vendor.nvidia.hardware.cpl.service@1.0-service		common/nvcpl/bin64/hw/vendor.nvidia.hardware.cpl.service@1.0-service
+stock-sif	vendor/bin/hw/vendor.nvidia.hardware.cpl.service@1.0-service		common/nvcpl/bin32/hw/vendor.nvidia.hardware.cpl.service@1.0-service
+stock-t210	vendor/bin/hw/vendor.nvidia.hardware.cpl.service_common@1.0-service	common/nvcpl/bin64/hw/vendor.nvidia.hardware.cpl.service_common@1.0-service
+stock-sif	vendor/bin/hw/vendor.nvidia.hardware.cpl.service_common@1.0-service	common/nvcpl/bin32/hw/vendor.nvidia.hardware.cpl.service_common@1.0-service
+stock-t210	system/system/lib64/libnvcontrol_jni.so					common/nvcpl/lib64/libnvcontrol_jni.so
+stock-t210	vendor/lib64/libnvcpl_vendor.so						common/nvcpl/lib64/libnvcpl_vendor.so
+stock-sif	system/system/lib/libnvcontrol_jni.so					common/nvcpl/lib/libnvcontrol_jni.so
+stock-t210	vendor/lib/libnvcpl_vendor.so						common/nvcpl/lib/libnvcpl_vendor.so
 
 # NVGPU
 stock-t210	vendor/bin/hw/vendor.nvidia.hardware.graphics.composer@2.0-service	common/nvgpu/bin64/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
