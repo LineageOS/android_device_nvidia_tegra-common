@@ -55,10 +55,8 @@ stock-t210	vendor/lib/hw/hdmi_cec.tegra.so		common/hdmi/lib/hw/hdmi_cec.tegra.so
 stock-t210	vendor/bin/hw/android.hardware.keymaster@3.0-service.tegra	common/keystore/bin64/hw/android.hardware.keymaster@3.0-service.tegra
 stock-sif	vendor/bin/hw/android.hardware.keymaster@3.0-service.tegra	common/keystore/bin32/hw/android.hardware.keymaster@3.0-service.tegra
 stock-t210	vendor/lib64/hw/gatekeeper.tlk.tegra.so				common/keystore/lib64/hw/gatekeeper.tlk.tegra.so
-stock-t210	vendor/lib64/hw/gatekeeper.trusty.tegra.so			common/keystore/lib64/hw/gatekeeper.trusty.tegra.so
 stock-t210	vendor/lib64/hw/keystore.v0.tegra.so				common/keystore/lib64/hw/keystore.v0.tegra.so
 stock-t210	vendor/lib/hw/gatekeeper.tlk.tegra.so				common/keystore/lib/hw/gatekeeper.tlk.tegra.so
-stock-t210	vendor/lib/hw/gatekeeper.trusty.tegra.so			common/keystore/lib/hw/gatekeeper.trusty.tegra.so
 stock-t210	vendor/lib/hw/keystore.v0.tegra.so				common/keystore/lib/hw/keystore.v0.tegra.so
 
 # IPProtect (Dolby)

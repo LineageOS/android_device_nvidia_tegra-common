@@ -44,19 +44,6 @@ LOCAL_MODULE_RELATIVE_PATH := hw
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE               := gatekeeper.trusty.tegra
-LOCAL_SRC_FILES_32         := $(COMMON_KEYSTORE_PATH)/lib/hw/gatekeeper.trusty.tegra.so
-LOCAL_SRC_FILES_64         := $(COMMON_KEYSTORE_PATH)/lib64/hw/gatekeeper.trusty.tegra.so
-LOCAL_MULTILIB             := both
-LOCAL_MODULE_SUFFIX        := .so
-LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
-LOCAL_MODULE_TAGS          := optional
-LOCAL_MODULE_OWNER         := nvidia
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := hw
-include $(BUILD_NVIDIA_COMMON_PREBUILT)
-
-include $(CLEAR_VARS)
 LOCAL_MODULE               := keystore.v0.tegra
 LOCAL_SRC_FILES_32         := $(COMMON_KEYSTORE_PATH)/lib/hw/keystore.v0.tegra.so
 LOCAL_SRC_FILES_64         := $(COMMON_KEYSTORE_PATH)/lib64/hw/keystore.v0.tegra.so
