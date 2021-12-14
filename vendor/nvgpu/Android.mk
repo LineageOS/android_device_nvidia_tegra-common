@@ -330,7 +330,9 @@ LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
 LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
-include $(BUILD_NVIDIA_COMMON_PREBUILT)
+LOCAL_CHECK_ELF_FILES      := false
+LOCAL_SHARED_LIBRARIES     := libcutils libutils liblog libnvos libhardware libnvrm_surface libnvrm_mem libnvgr android.hardware.graphics.common@1.2 android.hardware.graphics.common-ndk_platform libnativewindow libc++ libc libm libdl
+include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := libnvwsi
