@@ -2,7 +2,7 @@
     <hal format="hidl">
         <name>android.hardware.audio</name>
         <transport>hwbinder</transport>
-        <version>4.0</version>
+        <version>6.0</version>
         <interface>
             <name>IDevicesFactory</name>
             <instance>default</instance>
@@ -12,7 +12,7 @@
     <hal format="hidl">
         <name>android.hardware.audio.effect</name>
         <transport>hwbinder</transport>
-        <version>4.0</version>
+        <version>6.0</version>
         <interface>
             <name>IEffectsFactory</name>
             <instance>default</instance>
@@ -28,9 +28,18 @@
         </interface>
     </hal>
     <hal format="hidl">
-        <name>vendor.dolby.ms12</name>
+        <name>vendor.dolby.audio.measurement</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
+        <interface>
+            <name>ILatencyReporter</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.dolby.ms12</name>
+        <transport>hwbinder</transport>
+        <version>1.2</version>
         <interface>
             <name>IMs12</name>
             <instance>default</instance>

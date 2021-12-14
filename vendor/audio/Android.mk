@@ -36,26 +36,26 @@ LOCAL_VENDOR_MODULE        := true
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE               := android.hardware.audio@4.0-service-msd
-LOCAL_SRC_FILES_32         := $(COMMON_AUDIO_PATH)/bin32/hw/android.hardware.audio@4.0-service-msd
+LOCAL_MODULE               := android.hardware.audio@6.0-service-msd
+LOCAL_SRC_FILES_32         := $(COMMON_AUDIO_PATH)/bin32/hw/android.hardware.audio@6.0-service-msd
 LOCAL_MULTILIB             := 32
-LOCAL_INIT_RC              := etc/init/android.hardware.audio@4.0-service-msd.rc
-LOCAL_VINTF_FRAGMENTS      := android.hardware.audio@4.0-service-msd.xml
+LOCAL_INIT_RC              := etc/init/android.hardware.audio@6.0-service-msd.rc
 LOCAL_MODULE_CLASS         := EXECUTABLES
 LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := hw
-LOCAL_REQUIRED_MODULES     := cp_pgm_one_dap_lib cp_pgm_two_dap_lib cp_sys_one_dap_lib cp_sys_two_dap_lib ddp_enc_lib_ac3 ddp_enc_lib_eac3 ddp_udc_lib dp_dap_lib
+LOCAL_REQUIRED_MODULES     := cp_pgm_one_dap_lib cp_pgm_two_dap_lib cp_sys_one_dap_lib cp_sys_two_dap_lib ddp_enc_lib_ac3 ddp_enc_lib_eac3 ddp_udc_lib_ac3 ddp_udc_lib_ec3 dp_dap_lib
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := audio.primary.tegra
 ifeq ($(TARGET_TEGRA_DOLBY),true)
 LOCAL_SRC_FILES            := $(COMMON_AUDIO_PATH)/lib/hw/audio.primary.tegra.dolby.so
+LOCAL_VINTF_FRAGMENTS      := android.hardware.audio.service.msd.xml
 else
 LOCAL_SRC_FILES            := $(COMMON_AUDIO_PATH)/lib/hw/audio.primary.tegra.so
-LOCAL_VINTF_FRAGMENTS      := android.hardware.audio@2.0-service.xml
+LOCAL_VINTF_FRAGMENTS      := android.hardware.audio.service.xml
 endif
 LOCAL_MODULE_SUFFIX        := .so
 LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
@@ -157,8 +157,19 @@ LOCAL_VENDOR_MODULE        := true
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE               := ddp_udc_lib
-LOCAL_SRC_FILES            := $(COMMON_AUDIO_PATH)/lib/ddp_udc_lib.so
+LOCAL_MODULE               := ddp_udc_lib_ac3
+LOCAL_SRC_FILES            := $(COMMON_AUDIO_PATH)/lib/ddp_udc_lib_ac3.so
+LOCAL_MODULE_SUFFIX        := .so
+LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
+LOCAL_MODULE_TARGET_ARCH   := arm
+LOCAL_MODULE_TAGS          := optional
+LOCAL_MODULE_OWNER         := nvidia
+LOCAL_VENDOR_MODULE        := true
+include $(BUILD_NVIDIA_COMMON_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE               := ddp_udc_lib_ec3
+LOCAL_SRC_FILES            := $(COMMON_AUDIO_PATH)/lib/ddp_udc_lib_ec3.so
 LOCAL_MODULE_SUFFIX        := .so
 LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
 LOCAL_MODULE_TARGET_ARCH   := arm

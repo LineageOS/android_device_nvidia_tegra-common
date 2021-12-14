@@ -1,7 +1,7 @@
 # Audio
 stock-t210	system/system/app/NvAudioSvc/NvAudioSvc.apk		common/audio/app/NvAudioSvc.apk
 stock-t210	vendor/app/DolbyAudioService/DolbyAudioService.apk	common/audio/app/DolbyAudioService.apk
-stock-t210	vendor/bin/hw/android.hardware.audio@4.0-service-msd	common/audio/bin32/hw/android.hardware.audio@4.0-service-msd
+stock-t210	vendor/bin/hw/android.hardware.audio@6.0-service-msd	common/audio/bin32/hw/android.hardware.audio@6.0-service-msd
 stock-t210	vendor/lib/hw/audio.primary.tegra.so			common/audio/lib/hw/audio.primary.tegra.dolby.so
 stock-foster	vendor/lib/hw/audio.primary.tegra.so			common/audio/lib/hw/audio.primary.tegra.so
 stock-t210	vendor/lib/hw/sound_trigger.primary.tegra.so		common/audio/lib/hw/sound_trigger.primary.tegra.so
@@ -15,7 +15,8 @@ stock-t210	vendor/lib/cp_sys_one_dap_lib.so			common/audio/lib/cp_sys_one_dap_li
 stock-t210	vendor/lib/cp_sys_two_dap_lib.so			common/audio/lib/cp_sys_two_dap_lib.so
 stock-t210	vendor/lib/ddp_enc_lib_ac3.so				common/audio/lib/ddp_enc_lib_ac3.so
 stock-t210	vendor/lib/ddp_enc_lib_eac3.so				common/audio/lib/ddp_enc_lib_eac3.so
-stock-t210	vendor/lib/ddp_udc_lib.so				common/audio/lib/ddp_udc_lib.so
+stock-t210	vendor/lib/ddp_udc_lib_ac3.so				common/audio/lib/ddp_udc_lib_ac3.so
+stock-t210	vendor/lib/ddp_udc_lib_ec3.so				common/audio/lib/ddp_udc_lib_ec3.so
 stock-t210	vendor/lib/dp_dap_lib.so				common/audio/lib/dp_dap_lib.so
 
 # Camera
