@@ -116,7 +116,14 @@ function fetch_sources() {
             fileext="tbz2";
         fi;
 
-        wget ${url} -O ${TMPDIR}/downloads/${sname}.${fileext};
+        if [ "$1" != "download" -a -f "$1/$(echo ${url} |awk -F/ '{ print $NF }')" ]; then
+            cp "$1/$(echo ${url} |awk -F/ '{ print $NF }')" ${TMPDIR}/downloads/${sname}.${fileext};
+        elif [ "$1" != "download" -a -f "$1/${sname}.${fileext}" ]; then
+            cp "$1/${sname}.${fileext}" ${TMPDIR}/downloads/${sname}.${fileext};
+        fi;
+        if [ ! -f ${TMPDIR}/downloads/${sname}.${fileext} ]; then
+            wget ${url} -O ${TMPDIR}/downloads/${sname}.${fileext};
+        fi;
 
         if [ "${type}" == "git" ]; then
             tail -n +$(($(grep -an "^\s*__START_TGZ_FILE__" ${TMPDIR}/downloads/${sname}.sh \
@@ -296,7 +303,7 @@ function extract() {
         VENDOR_STATE=1
     fi
 
-    fetch_sources;
+    fetch_sources $SRC;
     copy_files;
     do_patches;
 }
