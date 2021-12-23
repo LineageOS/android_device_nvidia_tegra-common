@@ -18,6 +18,10 @@ stock-t210	vendor/lib/ddp_enc_lib_eac3.so				common/audio/lib/ddp_enc_lib_eac3.s
 stock-t210	vendor/lib/ddp_udc_lib_ac3.so				common/audio/lib/ddp_udc_lib_ac3.so
 stock-t210	vendor/lib/ddp_udc_lib_ec3.so				common/audio/lib/ddp_udc_lib_ec3.so
 stock-t210	vendor/lib/dp_dap_lib.so				common/audio/lib/dp_dap_lib.so
+stock-sif	system/system/lib/libaptX_encoder.so			common/audio/lib/libaptX_encoder.so
+stock-sif	system/system/lib/libaptXHD_encoder.so			common/audio/lib/libaptXHD_encoder.so
+stock-t210	system/system/lib64/libaptX_encoder.so			common/audio/lib64/libaptX_encoder.so
+stock-t210	system/system/lib64/libaptXHD_encoder.so		common/audio/lib64/libaptXHD_encoder.so
 
 # Camera
 stock-t210	vendor/bin/vendor.nvidia.hardware.camera.provider@2.4-service		common/camera/bin64/vendor.nvidia.hardware.camera.provider@2.4-service

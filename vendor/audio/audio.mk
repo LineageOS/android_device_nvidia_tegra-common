@@ -36,3 +36,9 @@ PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-service-msd \
     DolbyAudioService
 endif
+
+ifeq ($(TARGET_TEGRA_APTX),true)
+PRODUCT_PACKAGES += \
+    libaptX_encoder \
+    libaptXHD_encoder
+endif
