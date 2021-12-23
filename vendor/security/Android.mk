@@ -64,7 +64,6 @@ LOCAL_SRC_FILES_32         := $(COMMON_SECURITY_PATH)/bin32/eks2_client
 LOCAL_SRC_FILES_64         := $(COMMON_SECURITY_PATH)/bin64/eks2_client
 LOCAL_MULTILIB             := first
 LOCAL_MODULE_CLASS         := EXECUTABLES
-LOCAL_MODULE_TARGET_ARCH   := arm64
 LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
