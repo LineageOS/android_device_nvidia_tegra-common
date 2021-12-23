@@ -222,3 +222,27 @@ LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := soundfx
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE               := libaptX_encoder
+LOCAL_SRC_FILES_32         := $(COMMON_AUDIO_PATH)/lib/libaptX_encoder.so
+LOCAL_SRC_FILES_64         := $(COMMON_AUDIO_PATH)/lib64/libaptX_encoder.so
+LOCAL_MULTILIB             := both
+LOCAL_MODULE_SUFFIX        := .so
+LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS          := optional
+LOCAL_MODULE_OWNER         := nvidia
+LOCAL_VENDOR_MODULE        := true
+include $(BUILD_NVIDIA_COMMON_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE               := libaptXHD_encoder
+LOCAL_SRC_FILES_32         := $(COMMON_AUDIO_PATH)/lib/libaptXHD_encoder.so
+LOCAL_SRC_FILES_64         := $(COMMON_AUDIO_PATH)/lib64/libaptXHD_encoder.so
+LOCAL_MULTILIB             := both
+LOCAL_MODULE_SUFFIX        := .so
+LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS          := optional
+LOCAL_MODULE_OWNER         := nvidia
+LOCAL_VENDOR_MODULE        := true
+include $(BUILD_NVIDIA_COMMON_PREBUILT)

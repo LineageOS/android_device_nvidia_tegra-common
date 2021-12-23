@@ -50,6 +50,12 @@ function patch_tegrasign_v3() {
   sed -i "/current_dir_path/d" ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/tegrasign_v3_internal.py
 }
 
+# 64-bit aptX libraries have wrong soname
+function patch_aptx() {
+  ${LINEAGE_ROOT}/prebuilts/extract-tools/linux-x86/bin/patchelf-0_9 --set-soname libaptX_encoder.so ${LINEAGE_ROOT}/${OUTDIR}/common/audio/lib64/libaptX_encoder.so
+  ${LINEAGE_ROOT}/prebuilts/extract-tools/linux-x86/bin/patchelf-0_9 --set-soname libaptXHD_encoder.so ${LINEAGE_ROOT}/${OUTDIR}/common/audio/lib64/libaptXHD_encoder.so
+}
+
 # Fetch bootloader logos and verity images from nv-tegra
 function fetch_bmps() {
   NV_TEGRA_URL="https://nv-tegra.nvidia.com/gitweb/?p=tegra/prebuilts-device-nvidia.git;hb=rel-30-r2-partner;a=blob;f=platform/t210/assets/bmp"
@@ -69,4 +75,5 @@ patch_nvcontrol;
 patch_bup;
 patch_tegraflash;
 patch_tegrasign_v3;
+patch_aptx;
 fetch_bmps;
