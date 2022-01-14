@@ -29,18 +29,6 @@ LOCAL_VENDOR_MODULE        := true
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE               := libphs
-LOCAL_SRC_FILES_32         := $(COMMON_NVPHS_PATH)/lib/libnvphs.so
-LOCAL_SRC_FILES_64         := $(COMMON_NVPHS_PATH)/lib64/libnvphs.so
-LOCAL_MULTILIB             := both
-LOCAL_MODULE_SUFFIX        := .so
-LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
-LOCAL_MODULE_TAGS          := optional
-LOCAL_MODULE_OWNER         := nvidia
-LOCAL_VENDOR_MODULE        := true
-include $(BUILD_NVIDIA_COMMON_PREBUILT)
-
-include $(CLEAR_VARS)
 LOCAL_MODULE               := libnvphs
 LOCAL_SRC_FILES_32         := $(COMMON_NVPHS_PATH)/lib/libnvphs.so
 LOCAL_SRC_FILES_64         := $(COMMON_NVPHS_PATH)/lib64/libnvphs.so
