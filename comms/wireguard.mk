@@ -35,7 +35,7 @@ KERNEL_OUT_RELATIVE := ../../KERNEL_OBJ
 $(_wireguard_ko): $(KERNEL_OUT)/arch/$(KERNEL_ARCH)/boot/$(BOARD_KERNEL_IMAGE_NAME)
 	@mkdir -p $(dir $@)
 	@cp -R $(WIREGUARD_PATH)/src/* $(_wireguard_intermediates)/
-	$(hide) +$(KERNEL_MAKE_CMD) $(PATH_OVERRIDE) $(KERNEL_MAKE_FLAGS) -C $(_wireguard_intermediates) ARCH=$(TARGET_ARCH) $(KERNEL_CROSS_COMPILE) KERNELDIR=$(KERNEL_OUT_RELATIVE) module
+	$(hide) +$(KERNEL_MAKE_CMD) $(PATH_OVERRIDE) $(KERNEL_MAKE_FLAGS) -C $(_wireguard_intermediates) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) KERNELDIR=$(KERNEL_OUT_RELATIVE) module
 	$(KERNEL_TOOLCHAIN_PATH)strip --strip-unneeded $@;
 
 include $(BUILD_SYSTEM)/base_rules.mk
