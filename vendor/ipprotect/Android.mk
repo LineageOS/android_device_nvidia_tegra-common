@@ -28,15 +28,3 @@ LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := hw
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := vendor.nvidia.hardware.ipprotect@1.0
-LOCAL_SRC_FILES_32         := $(COMMON_IPPROTECT_PATH)/lib/vendor.nvidia.hardware.ipprotect@1.0.so
-LOCAL_SRC_FILES_64         := $(COMMON_IPPROTECT_PATH)/lib64/vendor.nvidia.hardware.ipprotect@1.0.so
-LOCAL_MULTILIB             := both
-LOCAL_MODULE_SUFFIX        := .so
-LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
-LOCAL_MODULE_TAGS          := optional
-LOCAL_MODULE_OWNER         := nvidia
-LOCAL_VENDOR_MODULE        := true
-include $(BUILD_NVIDIA_COMMON_PREBUILT)

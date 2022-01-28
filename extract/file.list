@@ -17,16 +17,12 @@ stock-t210	vendor/lib/ddp_enc_lib_ac3.so				common/audio/lib/ddp_enc_lib_ac3.so
 stock-t210	vendor/lib/ddp_enc_lib_eac3.so				common/audio/lib/ddp_enc_lib_eac3.so
 stock-t210	vendor/lib/ddp_udc_lib.so				common/audio/lib/ddp_udc_lib.so
 stock-t210	vendor/lib/dp_dap_lib.so				common/audio/lib/dp_dap_lib.so
-stock-t210	vendor/lib/vendor.dolby.ms12@1.0.so			common/audio/lib/vendor.dolby.ms12@1.0.so
 
 # Camera
 stock-t210	vendor/bin/vendor.nvidia.hardware.camera.provider@2.4-service		common/camera/bin64/vendor.nvidia.hardware.camera.provider@2.4-service
 stock-t210	vendor/lib64/vendor.nvidia.hardware.camera.argus.service@1.0-impl.so	common/camera/lib64/vendor.nvidia.hardware.camera.argus.service@1.0-impl.so
-stock-t210	vendor/lib64/vendor.nvidia.hardware.camera.argus.service@1.0.so		common/camera/lib64/vendor.nvidia.hardware.camera.argus.service@1.0.so
 stock-t210	vendor/lib64/vendor.nvidia.hardware.camera.device@3.2-impl.so		common/camera/lib64/vendor.nvidia.hardware.camera.device@3.2-impl.so
-stock-t210	vendor/lib64/vendor.nvidia.hardware.camera.device@3.2.so		common/camera/lib64/vendor.nvidia.hardware.camera.device@3.2.so
 stock-t210	vendor/lib64/vendor.nvidia.hardware.camera.provider@2.4-impl.so		common/camera/lib64/vendor.nvidia.hardware.camera.provider@2.4-impl.so
-stock-t210	vendor/lib64/vendor.nvidia.hardware.camera.provider@2.4.so		common/camera/lib64/vendor.nvidia.hardware.camera.provider@2.4.so
 stock-t210	vendor/etc/model_frontal.xml						common/camera/etc/model_frontal.xml
 stock-t210	vendor/lib64/hw/camera.tegra.so						common/camera/lib64/hw/camera.tegra.so
 stock-t210	vendor/lib64/libnvmm_camera_v3.so					common/camera/lib64/libnvmm_camera_v3.so
@@ -67,8 +63,6 @@ stock-t210	vendor/lib/hw/keystore.v0.tegra.so				common/keystore/lib/hw/keystore
 # IPProtect (Dolby)
 stock-t210	vendor/bin/hw/vendor.nvidia.hardware.ipprotect@1.0-service	common/ipprotect/bin64/hw/vendor.nvidia.hardware.ipprotect@1.0-service
 stock-sif	vendor/bin/hw/vendor.nvidia.hardware.ipprotect@1.0-service	common/ipprotect/bin32/hw/vendor.nvidia.hardware.ipprotect@1.0-service
-stock-t210	vendor/lib64/vendor.nvidia.hardware.ipprotect@1.0.so		common/ipprotect/lib64/vendor.nvidia.hardware.ipprotect@1.0.so
-stock-t210	vendor/lib/vendor.nvidia.hardware.ipprotect@1.0.so		common/ipprotect/lib/vendor.nvidia.hardware.ipprotect@1.0.so
 
 # Memtrack
 stock-t210	vendor/lib/hw/memtrack.tegra.so		common/memtrack/lib/hw/memtrack.tegra.so
@@ -85,8 +79,6 @@ stock-sif	system/system/lib/libnvcontrol_jni.so				common/nvcpl/lib/libnvcontrol
 stock-t210	vendor/lib/libnvcpl_vendor.so					common/nvcpl/lib/libnvcpl_vendor.so
 
 # NVGPU
-stock-t210	vendor/lib64/vendor.nvidia.hardware.graphics.mempool@1.0.so		common/nvgpu/lib64/vendor.nvidia.hardware.graphics.mempool@1.0.so
-stock-sif	vendor/lib/vendor.nvidia.hardware.graphics.mempool@1.0.so		common/nvgpu/lib/vendor.nvidia.hardware.graphics.mempool@1.0.so
 stock-t210	vendor/bin/hw/vendor.nvidia.hardware.graphics.composer@2.0-service	common/nvgpu/bin64/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
 stock-foster	vendor/bin/hw/vendor.nvidia.hardware.graphics.composer@2.0-service	common/nvgpu/bin64/hw/vendor.nvidia.hardware.graphics.composer@2.0-service.nodolby
 stock-sif	vendor/bin/hw/vendor.nvidia.hardware.graphics.composer@2.0-service	common/nvgpu/bin32/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
@@ -195,8 +187,6 @@ stock-t210	vendor/lib64/libnvparser.so		common/nvmm/lib64/libnvparser.so
 stock-t210	vendor/lib64/libnvavp.so		common/nvmm/lib64/libnvavp.so
 
 # NvPHS
-stock-t210	vendor/lib/vendor.nvidia.hardware.phs@1.0.so		common/nvphs/lib/vendor.nvidia.hardware.phs@1.0.so
-stock-t210	vendor/lib64/vendor.nvidia.hardware.phs@1.0.so		common/nvphs/lib64/vendor.nvidia.hardware.phs@1.0.so
 stock-t210	vendor/lib/vendor.nvidia.hardware.phs@1.0-impl.so	common/nvphs/lib/vendor.nvidia.hardware.phs@1.0-impl.so
 stock-t210	vendor/lib64/vendor.nvidia.hardware.phs@1.0-impl.so	common/nvphs/lib64/vendor.nvidia.hardware.phs@1.0-impl.so
 stock-t210	vendor/lib64/libnvgov_boot.so				common/nvphs/lib64/libnvgov_boot.so

@@ -203,17 +203,6 @@ LOCAL_VENDOR_MODULE        := true
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE               := vendor.dolby.ms12@1.0
-LOCAL_SRC_FILES            := $(COMMON_AUDIO_PATH)/lib/vendor.dolby.ms12@1.0.so
-LOCAL_MODULE_SUFFIX        := .so
-LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
-LOCAL_MODULE_TARGET_ARCH   := arm
-LOCAL_MODULE_TAGS          := optional
-LOCAL_MODULE_OWNER         := nvidia
-LOCAL_VENDOR_MODULE        := true
-include $(BUILD_NVIDIA_COMMON_PREBUILT)
-
-include $(CLEAR_VARS)
 LOCAL_MODULE               := libnvvisualizer
 LOCAL_SRC_FILES            := $(COMMON_AUDIO_PATH)/lib/soundfx/libnvvisualizer.so
 LOCAL_MODULE_SUFFIX        := .so
