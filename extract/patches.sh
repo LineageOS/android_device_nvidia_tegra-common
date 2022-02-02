@@ -65,9 +65,11 @@ function patch_nvgpu() {
 }
 
 # BUP tries to write the output file to cwd, let's instead use the already referenced env path var 'OUT'
+# Since 32.6, BUP changed the version field format, however BMP blobs still require the previous version string
 function patch_bup() {
   sed -i 's/payload_obj.outfile/os.path.join(os.environ.get("OUT"), payload_obj.outfile)/' ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/BUP_generator.py
   sed -i "s/e\['outfile'\]/os.path.join\(out_path,e\['outfile'\]\)/" ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/nvblob_v2
+  sed -i 's/self.gen_version/0x00020000 if args.blob_type == "bmp" else self.gen_version/' ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/BUP_generator.py
 }
 
 # Tegraflash does a few invalid comparisons, caught by newer versions of py3
