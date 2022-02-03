@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3ab8529_1b6dd27e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-02-03T06:09:38Z",
+      "side": 1,
+      "message": "Verified using bmp blob on porg and jetson_cv. Both the android and l4t cboots fail to boot when the bmp blob has the new style version, but work with only reverting to the old version number.",
+      "revId": "19c4651d049da0d53acc345d37445244715ed70c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
