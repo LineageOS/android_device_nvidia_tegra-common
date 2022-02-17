@@ -42,9 +42,6 @@ else ifeq ($(TARGET_TEGRA_GPU),swiftshader)
 TARGET_USES_HWC2          := true
 endif
 
-# Malloc
-MALLOC_SVELTE := true
-
 # Odm permissions
 TARGET_FS_CONFIG_GEN += device/nvidia/tegra-common/config.fs
 
