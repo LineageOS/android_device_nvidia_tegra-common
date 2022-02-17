@@ -191,6 +191,13 @@ void tegra_init::set_fingerprints(build_version fp_version)
                   fp_version.android_release + "/" +
                   fp_version.nvidia_version +
                   ":user/release-keys").c_str());
+    property_set("ro.build.description",
+                 (chosen_device->name + "-user " +
+                  fp_version.android_version + " " +
+                  fp_version.android_release + " " +
+                  fp_version.nvidia_version + " " +
+                  chosen_device->device + " " +
+                  "release-keys").c_str());
 }
 
 void tegra_init::make_symlinks(std::map<std::string,std::string> paths)
