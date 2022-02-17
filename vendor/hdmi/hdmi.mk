@@ -22,6 +22,5 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hdmi.device_type=4 \
-    ro.hdmi.one_touch_play_on_home=0 \
     persist.sys.hdmi.keep_awake=0 \
     ro.hdmi.wake_on_hotplug=0
