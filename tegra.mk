@@ -19,8 +19,8 @@ TARGET_TEGRA_HEALTH ?= common
 # Enable nvidia framework enhancements if available
 -include vendor/lineage/product/nvidia.mk
 
-# System properties
-include device/nvidia/tegra-common/system_prop.mk
+# Properties
+include device/nvidia/tegra-common/properties.mk
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
