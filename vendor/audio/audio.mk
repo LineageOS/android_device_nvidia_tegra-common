@@ -14,13 +14,11 @@
 
 PRODUCT_PACKAGES += \
     android.hardware.audio.service \
-    android.hardware.audio.effect@2.0-service \
     android.hardware.audio@6.0 \
     android.hardware.audio@6.0-impl \
     android.hardware.audio.common@6.0 \
     android.hardware.audio.common@6.0-util \
     android.hardware.audio.effect@6.0-impl \
-    android.hardware.bluetooth.a2dp@1.0-impl \
     android.hardware.bluetooth.audio@2.0-impl \
     audio.a2dp.default \
     audio.bluetooth.default \
