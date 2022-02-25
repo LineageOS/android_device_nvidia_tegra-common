@@ -1,0 +1,26 @@
+on post-fs-data
+    mkdir /data/vendor/nvpmodel 0774 system system
+
+service vendor.nvpmodel_boot /vendor/bin/l4t/nvpmodel -w 1 -o android --boot -f ${ro.vendor.lineage.tegra.nvpmodel.config}
+    setenv LD_LIBRARY_PATH /vendor/lib64/l4t
+    class main
+    user system
+    group system
+    disabled
+    oneshot
+    stdio_to_kmsg
+
+on property:sys.boot_completed=1 && property:ro.vendor.lineage.tegra.nvpmodel.config=*
+    start vendor.nvpmodel_boot
+
+service vendor.nvpmodel /vendor/bin/l4t/nvpmodel -o android -m ${persist.vendor.lineage.tegra.nvpmodel.mode}
+    setenv LD_LIBRARY_PATH /vendor/lib64/l4t
+    class main
+    user system
+    group system
+    disabled
+    oneshot
+    stdio_to_kmsg
+
+on property:init.svc.vendor.nvpmodel_boot=stopped && property:persist.vendor.lineage.tegra.nvpmodel.mode=*
+    start vendor.nvpmodel
