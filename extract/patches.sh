@@ -60,6 +60,35 @@ function fetch_aptx() {
   wget ${FLAME_SYSTEM_EXT_URL}/lib64/libaptXHD_encoder.so -O ${LINEAGE_ROOT}/${OUTDIR}/common/audio/lib64/libaptXHD_encoder.so
 }
 
+function fetch_l4t_deps() {
+  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/l4t/bin64
+  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/l4t/lib64
+  LOCALTMPDIR=$(mktemp -d)
+  pushd ${LOCALTMPDIR}
+  wget http://ports.ubuntu.com/pool/main/g/glibc/libc6_2.31-0ubuntu9_arm64.deb
+  ar x libc6_2.31-0ubuntu9_arm64.deb data.tar.xz
+  tar -xf data.tar.xz ./lib/aarch64-linux-gnu/ld-2.31.so ./lib/aarch64-linux-gnu/libc-2.31.so
+  cp lib/aarch64-linux-gnu/ld-2.31.so ${LINEAGE_ROOT}/${OUTDIR}/common/l4t/bin64/ld-linux-aarch64.so.1
+  cp lib/aarch64-linux-gnu/libc-2.31.so ${LINEAGE_ROOT}/${OUTDIR}/common/l4t/lib64/libc.so.6
+  popd
+  rm -rf ${LOCALTMPDIR}
+}
+
+# Kludge l4t nvpmodel into running on android
+function patch_nvpmodel() {
+  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/nvpmodel/bin64
+  LOCALTMPDIR=$(mktemp -d)
+  pushd ${LOCALTMPDIR}
+  ar x ${LINEAGE_ROOT}/${OUTDIR}/common/nvpmodel/nvidia-l4t-nvpmodel_arm64.deb data.tar.zst
+  tar -xf data.tar.zst ./usr/sbin/nvpmodel
+  cp usr/sbin/nvpmodel ${LINEAGE_ROOT}/${OUTDIR}/common/nvpmodel/bin64/nvpmodel
+  popd
+  rm -rf ${LOCALTMPDIR}
+  rm ${LINEAGE_ROOT}/${OUTDIR}/common/nvpmodel/nvidia-l4t-nvpmodel_arm64.deb
+  ${LINEAGE_ROOT}/prebuilts/extract-tools/linux-x86/bin/patchelf-0_9 --set-interpreter /vendor/bin/l4t/ld-linux-aarch64.so.1 ${LINEAGE_ROOT}/${OUTDIR}/common/nvpmodel/bin64/nvpmodel
+  sed -i "s|/var/lib|/odm/etc|g" ${LINEAGE_ROOT}/${OUTDIR}/common/nvpmodel/bin64/nvpmodel
+}
+
 # Fetch bootloader logos and verity images from nv-tegra
 function fetch_bmps() {
   NV_TEGRA_URL="https://nv-tegra.nvidia.com/gitweb/?p=tegra/prebuilts-device-nvidia.git;hb=rel-30-r2-partner;a=blob;f=platform/t210/assets/bmp"
@@ -80,4 +109,6 @@ patch_bup;
 patch_tegraflash;
 patch_tegrasign_v3;
 fetch_aptx;
+fetch_l4t_deps;
+patch_nvpmodel;
 fetch_bmps;
