@@ -309,3 +309,6 @@ nv-tegra-t210	3rdparty/bcmbinaries/bcm43341/wlan/sdio-ag-pno-p2p-proptxstatus-dm
 stock-t210	vendor/firmware/fw_bcmdhd.bin														common/bcm_firmware/bcm4354/sdio-ag-p2p-pno-aoe-pktfilter-keepalive-sr-mchan-pktctx-proptxstatus-ampduhostreorder-lpc-pwropt-txbf-wl11u-mfp-tdls-ltecx-wfds-mchandump-atv.bin
 nv-tegra-t210	3rdparty/cypress/bcm4356a3/wlan/fw_4356a3_prod.bin											common/bcm_firmware/bcm4356/fw_4356a3_prod.bin
 stock-t210	vendor/firmware/brcmfmac4356-pcie.bin											common/bcm_firmware/bcm4356/brcmfmac4356-pcie.bin
+
+# NvPModel
+l4t-t194	Linux_for_Tegra/nv_tegra/l4t_deb_packages/nvidia-l4t-nvpmodel_35.1.0-20220810203728_arm64.deb	common/nvpmodel/nvidia-l4t-nvpmodel_arm64.deb
