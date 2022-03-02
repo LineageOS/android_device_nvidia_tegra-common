@@ -16,6 +16,24 @@
       "message": "tegra-common is not atv specific, so why should the pins be tailored for atv? Also, technically foster is supposed to support web cams, per the atv cts. Though, that wouldn\u0027t use camera2, granted. But tegra-common should be able to support mobile targets with a camera.",
       "revId": "35e2a28e0f313de2ca6b80005f723cc0c16d1c7d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4d7a125_3d1e66da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-03-02T16:57:00Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "2a5ead0c_6fa528b8",
+      "revId": "35e2a28e0f313de2ca6b80005f723cc0c16d1c7d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
