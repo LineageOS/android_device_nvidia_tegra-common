@@ -49,6 +49,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     gralloc.gbm.device=/dev/dri/renderD129 \
     hwc.drm.device=/dev/dri/card1 \
     drm.gpu.vendor_name=tegra
+else ifeq ($(TARGET_TEGRA_GPU),swiftshader)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware.gralloc=minigbm \
+    ro.hardware.hwcomposer=drm_minigbm \
+    ro.hardware.egl=angle \
+    ro.hardware.vulkan=pastel \
+    ro.gfx.angle.supported=true
 endif
 
 # LMKD
