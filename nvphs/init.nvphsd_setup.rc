@@ -7,7 +7,7 @@
 #is strictly prohibited.
 
 # unified scaling setup
-service vendor.nvphsd_setup /system/vendor/bin/nvphsd_setup.sh
+service vendor.nvphsd_setup /vendor/bin/nvphsd_setup.sh
     class main
     user root
     group root
