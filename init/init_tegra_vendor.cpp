@@ -90,9 +90,6 @@ void tegra_init::make_symlinks(std::map<std::string,std::string> paths)
         symlink(key.c_str(), value.c_str());
 }
 
-void tegra_init::recovery_links(std::map<std::string, std::string> parts) {}
-void tegra_init::recovery_links(std::vector<std::string> parts) {}
-
 void tegra_init::set_properties()
 {
     if (chosen_device == NULL) return;
@@ -103,11 +100,6 @@ void tegra_init::set_properties()
     property_set("ro.vendor.lineage.tegra.name",   chosen_device->name);
     property_set("ro.vendor.lineage.tegra.device", chosen_device->device);
     property_set("ro.vendor.lineage.tegra.model",  chosen_device->model);
-}
-
-tegra_init::boot_dev_type tegra_init::get_boot_dev_type()
-{
-	return chosen_device->boot_dev;
 }
 
 std::string tegra_init::get_model()

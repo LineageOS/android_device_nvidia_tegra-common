@@ -206,44 +206,6 @@ void tegra_init::make_symlinks(std::map<std::string,std::string> paths)
         symlink(key.c_str(), value.c_str());
 }
 
-void tegra_init::recovery_links(std::map<std::string,std::string> parts)
-{
-    std::string int_path;
-
-    if (chosen_device == NULL) return;
-
-    switch (chosen_device->boot_dev) {
-        case boot_dev_type::EMMC:
-            symlink("/etc/twrp.fstab.emmc", "/etc/twrp.fstab");
-	    int_path = "sdhci-tegra.3";
-	    break;
-
-	case boot_dev_type::SATA:
-            symlink("/etc/twrp.fstab.sata", "/etc/twrp.fstab");
-	    int_path = "tegra-sata.0";
-	    break;
-
-        case boot_dev_type::SD:
-            symlink("/etc/twrp.fstab.sd", "/etc/twrp.fstab");
-	    int_path = "sdhci-tegra.0";
-	    break;
-    }
-
-    // Symlink paths for unified ROM installs.
-    for(auto const& [key, value]: parts)
-        symlink(("/dev/block/platform/" + int_path + "/by-name/" + key).c_str(), ("/dev/block/" + value).c_str());
-}
-
-void tegra_init::recovery_links(std::vector<std::string> parts)
-{
-    std::map<std::string,std::string> new_parts;
-
-    for(auto const& part: parts)
-        new_parts.emplace(part, part);
-
-    recovery_links(new_parts);
-}
-
 void tegra_init::set_properties()
 {
     if (chosen_device == NULL) return;
@@ -274,11 +236,6 @@ void tegra_init::set_properties()
     property_set("ro.product.system_ext.name",   chosen_device->name);
     property_set("ro.product.system_ext.device", chosen_device->device);
     property_set("ro.product.system_ext.model",  chosen_device->model);
-}
-
-tegra_init::boot_dev_type tegra_init::get_boot_dev_type()
-{
-	return chosen_device->boot_dev;
 }
 
 std::string tegra_init::get_model()
