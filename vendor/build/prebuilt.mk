@@ -17,4 +17,5 @@ LOCAL_SHARED_LIBRARIES += $(shell (basename -s .so `$(GCC_HOST_BINARIES)/objdump
 LOCAL_SHARED_LIBRARIES += $(shell (basename -s .so `$(GCC_HOST_BINARIES)/objdump -x $(LOCAL_PATH)/$(LOCAL_SRC_FILES_32) 2>/dev/null |grep NEEDED` 2>/dev/null |grep -v ^NEEDED$ |tr '\n' ' '))
 LOCAL_SHARED_LIBRARIES += $(shell (basename -s .so `$(GCC_HOST_BINARIES)/objdump -x $(LOCAL_PATH)/$(LOCAL_SRC_FILES_64) 2>/dev/null |grep NEEDED` 2>/dev/null |grep -v ^NEEDED$ |tr '\n' ' '))
 
+LOCAL_STRIP_MODULE := false
 include $(BUILD_PREBUILT)
