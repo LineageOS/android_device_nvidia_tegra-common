@@ -35,7 +35,7 @@ EDK2_TOOLCHAIN     := GCC5
 EDK2_ARCH          := AARCH64
 EDK2_TARGET        := JetsonAndroid
 
-TOOLCHAIN_VARS := CLANG_HOST_BIN=$(abspath $(dir $(KERNEL_MAKE_CMD)))/ CXX=llvm CLANG_BIN=$(TARGET_KERNEL_CLANG_PATH)/bin/ CLANG38_BIN=$(TARGET_KERNEL_CLANG_PATH)/bin/ EXTRA_LDFLAGS="-fuse-ld=lld" CLANG38_$(EDK2_ARCH)_PREFIX=$(TARGET_KERNEL_CLANG_PATH)/bin/llvm- GCC_HOST_BIN=$(abspath $(dir $(KERNEL_MAKE_CMD)))/ GCC5_$(EDK2_ARCH)_PREFIX=$(KERNEL_TOOLCHAIN)/$(KERNEL_TOOLCHAIN_PREFIX) DTCPP_PREFIX=$(KERNEL_TOOLCHAIN)/$(KERNEL_TOOLCHAIN_PREFIX)
+TOOLCHAIN_VARS := CLANG_HOST_BIN=$(abspath $(dir $(KERNEL_MAKE_CMD)))/ CC=$(TARGET_KERNEL_CLANG_PATH)/bin/clang CXX=$(TARGET_KERNEL_CLANG_PATH)/bin/clang++ AS=$(TARGET_KERNEL_CLANG_PATH)/bin/clang AR=$(TARGET_KERNEL_CLANG_PATH)/bin/llvm-ar LD=$(TARGET_KERNEL_CLANG_PATH)/bin/llvm-ld CLANG_BIN=$(TARGET_KERNEL_CLANG_PATH)/bin/ GCC_HOST_BIN=$(abspath $(dir $(KERNEL_MAKE_CMD)))/ GCC5_$(EDK2_ARCH)_PREFIX=$(KERNEL_TOOLCHAIN)/$(KERNEL_TOOLCHAIN_PREFIX) DTCPP_PREFIX=$(KERNEL_TOOLCHAIN)/$(KERNEL_TOOLCHAIN_PREFIX)
 
 define edk2_rule
 	echo "got $1 - $2"
@@ -56,6 +56,13 @@ define edk2_rule
 		export $(TOOLCHAIN_VARS) && \
 		source $(abspath $(dir $1))/edk2/edksetup.sh && \
 		$(KERNEL_MAKE_CMD) -C $(abspath $(dir $1))/edk2/BaseTools && \
+		PYTHONPATH=$$PYTHONPATH:$(abspath $(dir $1))/edk2-nvidia-lineage/Silicon/NVIDIA/scripts/Kconfiglib \
+			KCONFIG_CONFIG=$(abspath $(dir $1))/edk2-nvidia-lineage/.config \
+			$(abspath $(dir $1))/edk2-nvidia-lineage/Silicon/NVIDIA/scripts/Kconfiglib/defconfig.py \
+			--kconfig $(abspath $(dir $1))/edk2-nvidia/Platform/NVIDIA/Kconfig \
+			$(abspath $(dir $1))/edk2-nvidia-lineage/Platform/NVIDIA/$(EDK2_TARGET)/$(EDK2_TARGET).defconfig && \
+		sed 's/"//g' $(abspath $(dir $1))/edk2-nvidia-lineage/.config > $(abspath $(dir $1))/edk2-nvidia-lineage/config.dsc.inc && \
+		sed -E -i 's/^CONFIG_([^=]*)=$$/# CONFIG_\1 is not set/' $(abspath $(dir $1))/edk2-nvidia-lineage/config.dsc.inc && \
 		$(abspath $(dir $1))/edk2/BaseTools/BinWrappers/PosixLike/build -q -a $(EDK2_ARCH) -t $(EDK2_TOOLCHAIN) \
 			-p $(abspath $(dir $1))/edk2-nvidia-lineage/Platform/NVIDIA/$(EDK2_TARGET)/$(EDK2_TARGET).dsc -b $(EDK2_BUILD_TYPE) \
 			$2 -DEDK2_PKCS7_INC=$(EDK2_PKCS7_INC) -DBUILD_PROJECT_TYPE=EDK2 -DBUILD_DATE_TIME="$(shell date '+%Y-%m-%dT%H:%M:%S+00:00')" \
@@ -74,7 +81,7 @@ _tianocore_bin := $(_tianocore_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFF
 
 $(_tianocore_bin): $(DTC_HOST)
 	$(call edk2_rule,$@)
-	@python $(dir $@)/edk2-nvidia/Silicon/NVIDIA/Tools/FormatUefiBinary.py $(dir $@)/Build/$(EDK2_TARGET)/$(EDK2_BUILD_TYPE)_$(EDK2_TOOLCHAIN)/FV/UEFI_NS.Fv $@
+	@python $(dir $@)/edk2-nvidia/Silicon/NVIDIA/edk2nv/FormatUefiBinary.py $(dir $@)/Build/$(EDK2_TARGET)/$(EDK2_BUILD_TYPE)_$(EDK2_TOOLCHAIN)/FV/UEFI_NS.Fv $@
 
 include $(BUILD_SYSTEM)/base_rules.mk
 
@@ -84,35 +91,3 @@ INSTALLED_TIANOCORE_DTBO_TARGETS := $(TIANOCORE_DTBO_TARGETS:%=$(PRODUCT_OUT)/%)
 $(INSTALLED_TIANOCORE_DTBO_TARGETS): $(PRODUCT_OUT)/tianocore.bin
 	echo -e ${CL_GRN}"Copying individual tianocore DTBOs"${CL_RST}
 	cp $(@F:%.dtbo=$(_tianocore_intermediates)/Build/$(EDK2_TARGET)/$(EDK2_BUILD_TYPE)_$(EDK2_TOOLCHAIN)/$(EDK2_ARCH)/Silicon/NVIDIA/Tegra/DeviceTree/DeviceTree/OUTPUT/%.dtb) $@
-
-include $(CLEAR_VARS)
-
-LOCAL_MODULE        := AndroidLauncher-recovery
-LOCAL_MODULE_SUFFIX := .efi
-LOCAL_MODULE_CLASS  := EXECUTABLES
-LOCAL_MODULE_PATH   := $(PRODUCT_OUT)
-
-_androidlauncher-recovery_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),$(LOCAL_MODULE))
-_androidlauncher-recovery_bin := $(_androidlauncher-recovery_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
-
-$(_androidlauncher-recovery_bin):
-	$(call edk2_rule,$@,-DBOOT_TO_RECOVERY -m $(abspath $(dir $@))/edk2-nvidia-lineage/Silicon/NVIDIA/Application/AndroidLauncher/AndroidLauncher.inf)
-	@cp $(dir $@)/Build/$(EDK2_TARGET)/$(EDK2_BUILD_TYPE)_$(EDK2_TOOLCHAIN)/$(EDK2_ARCH)/AndroidLauncher.efi $@
-
-include $(BUILD_SYSTEM)/base_rules.mk
-
-include $(CLEAR_VARS)
-
-LOCAL_MODULE               := AndroidLauncher
-LOCAL_MODULE_SUFFIX        := .efi
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_MODULE_RELATIVE_PATH := firmware
-
-_androidlauncher_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),$(LOCAL_MODULE))
-_androidlauncher_bin := $(_androidlauncher_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
-
-$(_androidlauncher_bin): $(PRODUCT_OUT)/tianocore.bin $(INSTALLED_TIANOCORE_DTBO_TARGETS)
-	@mkdir -p $(dir $@)
-	@cp $(_tianocore_intermediates)/Build/$(EDK2_TARGET)/$(EDK2_BUILD_TYPE)_$(EDK2_TOOLCHAIN)/$(EDK2_ARCH)/$(notdir $@) $@
-
-include $(BUILD_SYSTEM)/base_rules.mk
