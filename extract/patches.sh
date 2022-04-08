@@ -37,17 +37,18 @@ function patch_bup() {
   sed -i 's/self.gen_version/0x00020000 if args.blob_type == "bmp" else self.gen_version/' ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/BUP_generator.py
 }
 
-# Tegraflash does a few invalid comparisons, caught by newer versions of py3
+# Tegraflash in 35.1 broke t210 support
 function patch_tegraflash() {
-  sed -i 's/if sig_type is not "zerosbk"/if sig_type != "zerosbk"/' ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/tegraflash_internal.py
-  sed -i 's/if sig_type is "oem-rsa"/if sig_type == "oem-rsa"/' ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/tegraflash_internal.py
-  sed -i 's/while count is not 0/while count != 0/' ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/tegraflash_internal.py
+  patch --no-backup-if-mismatch -d ${LINEAGE_ROOT}/${OUTDIR} -p1 < ${LINEAGE_ROOT}/device/nvidia/tegra-common/extract/tegraflash-t210.patch
 }
 
 # tegrasign_v3 tries to write the output file to its local dir, let's instead write to cwd
+# Remove dependency on yaml as it's not available in the aosp python prebuilts
 function patch_tegrasign_v3() {
   sed -i "s|current_dir_path + '/|'|" ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/tegrasign_v3_internal.py
   sed -i "/current_dir_path/d" ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/tegrasign_v3_internal.py
+
+  patch --no-backup-if-mismatch -d ${LINEAGE_ROOT}/${OUTDIR} -p1 < ${LINEAGE_ROOT}/device/nvidia/tegra-common/extract/tegrasign.patch
 }
 
 # aptX libraries from stock t210 crash when opening an audio stream
