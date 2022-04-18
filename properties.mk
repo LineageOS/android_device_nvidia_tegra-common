@@ -21,6 +21,17 @@ PRODUCT_PROPERTY_OVERRIDES += \
     drm.gpu.vendor_name=tegra
 endif
 
+# USB
+ifneq ($(filter $(TARGET_TEGRA_KERNEL), 3.4 3.10),)
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.usb.ffs.aio_compat=1 \
+    persist.adb.nonblocking_ffs=0 \
+    ro.adb.nonblocking_ffs=0
+else
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.lineage.tegra.configfs=1
+endif
+
 # WiFi
 ifneq ($(TARGET_TEGRA_WIFI),)
 PRODUCT_PROPERTY_OVERRIDES += \
