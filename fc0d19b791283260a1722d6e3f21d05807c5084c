@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0766a338_f3fcd14a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-04-20T00:29:24Z",
+      "side": 1,
+      "message": "Verified on shieldtablet, loki_e, foster, and quill. Legacy adb is noticeably more stable in recovery after the rc cleanup.",
+      "revId": "fc0d19b791283260a1722d6e3f21d05807c5084c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
