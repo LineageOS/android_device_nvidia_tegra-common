@@ -42,6 +42,16 @@ else ifeq ($(TARGET_TEGRA_GPU),swiftshader)
 TARGET_USES_HWC2          := true
 endif
 
+ifeq ($(TARGET_TEGRA_KEYSTORE),nvkeystore)
+ifeq ($(TARGET_SUPPORTS_64_BIT_APPS),true)
+TARGET_LD_SHIM_LIBS += \
+  /vendor/bin/hw/android.hardware.keymaster@3.0-service.tegra|/vendor/lib64/libkeymaster_shim.so
+else
+TARGET_LD_SHIM_LIBS += \
+  /vendor/bin/hw/android.hardware.keymaster@3.0-service.tegra|/vendor/lib/libkeymaster_shim.so
+endif
+endif
+
 # Odm permissions
 TARGET_FS_CONFIG_GEN += device/nvidia/tegra-common/config.fs
 
