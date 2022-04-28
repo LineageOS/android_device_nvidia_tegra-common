@@ -31,7 +31,6 @@ PRODUCT_SOONG_NAMESPACES += device/nvidia/tegra-common
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    adbenable \
     bt_loader \
     wifi_loader \
     init.comms.rc \

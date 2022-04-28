@@ -33,6 +33,7 @@ service adb_enable /vendor/bin/adbenable.sh
     user root
     group root
     oneshot
+    disabled
 
 on property:sys.usb.config=none && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/os_desc/use 0
