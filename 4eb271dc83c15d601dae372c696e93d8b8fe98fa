@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b32bc811_84e2e060",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-05-04T00:08:30Z",
+      "side": 1,
+      "message": "Verified on porg, the only soon to be shipping device affected by this.",
+      "revId": "4eb271dc83c15d601dae372c696e93d8b8fe98fa",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
