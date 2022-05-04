@@ -31,3 +31,20 @@ $(_atf_bin):
 	@cp $(dir $@)/tegra/$(TARGET_TEGRA_VERSION)/release/bl31.bin $@
 
 include $(BUILD_SYSTEM)/base_rules.mk
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE        := bl31-trusty
+LOCAL_MODULE_SUFFIX := .bin
+LOCAL_MODULE_CLASS  := EXECUTABLES
+LOCAL_MODULE_PATH   := $(PRODUCT_OUT)
+
+_atf_trusty_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),$(LOCAL_MODULE))
+_atf_trusty_bin := $(_atf_trusty_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
+
+$(_atf_trusty_bin):
+	@mkdir -p $(dir $@)
+	$(hide) +$(KERNEL_MAKE_CMD) $(ATF_CROSS_COMPILE) -C $(ATF_PATH) $(ATF_PARAMS) BUILD_BASE=$(abspath $(_atf_trusty_intermediates)) PLAT=tegra TARGET_SOC=$(TARGET_TEGRA_VERSION) SPD=trusty bl31
+	@cp $(dir $@)/tegra/$(TARGET_TEGRA_VERSION)/release/bl31.bin $@
+
+include $(BUILD_SYSTEM)/base_rules.mk

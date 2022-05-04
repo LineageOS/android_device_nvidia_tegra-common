@@ -16,6 +16,7 @@ LOCAL_PATH := $(call my-dir)
 
 include $(LOCAL_PATH)/atf.mk
 include $(LOCAL_PATH)/edk2.mk
+include $(LOCAL_PATH)/trusty.mk
 include $(LOCAL_PATH)/tos.mk
 ifneq ($(TARGET_TEGRA_UBOOT_CONFIG),)
 include $(LOCAL_PATH)/u-boot.mk
