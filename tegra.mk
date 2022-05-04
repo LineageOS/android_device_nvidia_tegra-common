@@ -297,6 +297,10 @@ PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service.software \
     android.hardware.keymaster@3.0-impl \
     android.hardware.keymaster@3.0-service
+else ifeq ($(TARGET_TEGRA_TOS),trusty)
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper-service.trusty \
+    android.hardware.security.keymint-service.trusty
 endif
 
 # Update Engine
