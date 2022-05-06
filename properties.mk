@@ -5,7 +5,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     bluetooth.profile.a2dp.source.enabled?=true \
     bluetooth.profile.avrcp.target.enabled?=true \
     bluetooth.profile.bas.client.enabled?=true \
-    bluetooth.profile.csip.set_coordinator.enabled?=true \
     bluetooth.profile.gatt.enabled?=true \
     bluetooth.profile.hfp.ag.enabled?=true \
     bluetooth.profile.hid.device.enabled?=true \
