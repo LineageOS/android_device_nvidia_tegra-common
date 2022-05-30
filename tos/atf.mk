@@ -28,7 +28,7 @@ _atf_bin := $(_atf_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
 
 $(_atf_bin):
 	@mkdir -p $(dir $@)
-	$(hide) +$(KERNEL_MAKE_CMD) $(KERNEL_CROSS_COMPILE) CLANG_CCDIR=$(TARGET_KERNEL_CLANG_PATH)/bin/ CC=$(TARGET_KERNEL_CLANG_PATH)/bin/clang -C $(ATF_PATH) BUILD_BASE=../../$(_atf_intermediates) PLAT=tegra TARGET_SOC=$(TARGET_TEGRA_VERSION) bl31
+	$(hide) +$(KERNEL_MAKE_CMD) $(KERNEL_CROSS_COMPILE) CLANG_CCDIR=$(TARGET_KERNEL_CLANG_PATH)/bin/ CC=$(TARGET_KERNEL_CLANG_PATH)/bin/clang -C $(ATF_PATH) BUILD_BASE=$(abspath $(_atf_intermediates)) PLAT=tegra TARGET_SOC=$(TARGET_TEGRA_VERSION) bl31
 	@cp $(dir $@)/tegra/$(TARGET_TEGRA_VERSION)/release/bl31.bin $@
 
 include $(BUILD_SYSTEM)/base_rules.mk
