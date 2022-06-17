@@ -54,8 +54,6 @@ PRODUCT_COPY_FILES += \
 # Audio
 ifeq ($(TARGET_TEGRA_AUDIO),nvaudio)
 PRODUCT_PACKAGES += \
-    a2dp_module_deviceports.xml \
-    a2dp_module_mixports.xml \
     primary_module_deviceports.xml \
     primary_module_deviceports_tv.xml \
     primary_module_mixports.xml \
@@ -65,6 +63,10 @@ PRODUCT_PACKAGES += \
     usb_module_mixports.xml \
     ne_audio_policy_volumes.xml \
     ne_default_volume_tables.xml
+
+PRODUCT_COPY_FILES += \
+    frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_in_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml
 
 ifeq ($(TARGET_TEGRA_DOLBY),true)
 PRODUCT_PACKAGES += \
