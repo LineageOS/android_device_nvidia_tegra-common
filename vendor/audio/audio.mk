@@ -36,6 +36,10 @@ PRODUCT_PACKAGES += \
 endif
 
 ifeq ($(TARGET_TEGRA_APTX),true)
+ifeq ($(TARGET_ARCH),arm)
+$(error AptX on Armv7 is not supported)
+endif
+
 PRODUCT_PACKAGES += \
     libaptX_encoder \
     libaptXHD_encoder
