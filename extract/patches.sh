@@ -50,10 +50,13 @@ function patch_tegrasign_v3() {
   sed -i "/current_dir_path/d" ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/tegrasign_v3_internal.py
 }
 
-# 64-bit aptX libraries have wrong soname
-function patch_aptx() {
-  ${LINEAGE_ROOT}/prebuilts/extract-tools/linux-x86/bin/patchelf-0_9 --set-soname libaptX_encoder.so ${LINEAGE_ROOT}/${OUTDIR}/common/audio/lib64/libaptX_encoder.so
-  ${LINEAGE_ROOT}/prebuilts/extract-tools/linux-x86/bin/patchelf-0_9 --set-soname libaptXHD_encoder.so ${LINEAGE_ROOT}/${OUTDIR}/common/audio/lib64/libaptXHD_encoder.so
+# aptX libraries from stock t210 crash when opening an audio stream
+# Source from Pixel 4 instead
+function fetch_aptx() {
+  FLAME_SYSTEM_EXT_URL="https://dumps.tadiphone.dev/dumps/google/flame/-/raw/flame-user-11-RQ2A.210305.006-7119741-release-keys/system_ext"
+  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/audio/lib64
+  wget ${FLAME_SYSTEM_EXT_URL}/lib64/libaptX_encoder.so -O ${LINEAGE_ROOT}/${OUTDIR}/common/audio/lib64/libaptX_encoder.so
+  wget ${FLAME_SYSTEM_EXT_URL}/lib64/libaptXHD_encoder.so -O ${LINEAGE_ROOT}/${OUTDIR}/common/audio/lib64/libaptXHD_encoder.so
 }
 
 # Fetch bootloader logos and verity images from nv-tegra
@@ -75,5 +78,5 @@ patch_nvcontrol;
 patch_bup;
 patch_tegraflash;
 patch_tegrasign_v3;
-patch_aptx;
+fetch_aptx;
 fetch_bmps;
