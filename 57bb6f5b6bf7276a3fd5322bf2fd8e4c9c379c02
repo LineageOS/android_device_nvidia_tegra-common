@@ -16,6 +16,23 @@
       "message": "Verified on darcy using a Linux laptop as an aptX sink",
       "revId": "57bb6f5b6bf7276a3fd5322bf2fd8e4c9c379c02",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03a2a410_94cb7ec3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2022-06-18T01:22:22Z",
+      "side": 1,
+      "message": "Both aptX and aptX-HD works on icosa",
+      "revId": "57bb6f5b6bf7276a3fd5322bf2fd8e4c9c379c02",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
