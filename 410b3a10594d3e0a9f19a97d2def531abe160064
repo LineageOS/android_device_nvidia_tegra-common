@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30d53508_44680c97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-06-18T01:09:45Z",
+      "side": 1,
+      "message": "Fixes weirdness when 32-bit and 64-bit libs have differing dependencies",
+      "revId": "410b3a10594d3e0a9f19a97d2def531abe160064",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
