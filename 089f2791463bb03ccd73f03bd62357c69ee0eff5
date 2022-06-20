@@ -16,6 +16,23 @@
       "message": "Everything works on icosa",
       "revId": "089f2791463bb03ccd73f03bd62357c69ee0eff5",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c99e68c_2b8514c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2022-06-20T17:40:56Z",
+      "side": 1,
+      "message": "Note: You need this in your device specific tree https://github.com/SebaUbuntu/android_device_nintendo_icosa_sr/commit/1b23151875394ee6a6b9631ec3d6fdfe58189c8e",
+      "revId": "089f2791463bb03ccd73f03bd62357c69ee0eff5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
