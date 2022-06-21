@@ -33,6 +33,23 @@
       "message": "Note: You need this in your device specific tree https://github.com/SebaUbuntu/android_device_nintendo_icosa_sr/commit/1b23151875394ee6a6b9631ec3d6fdfe58189c8e",
       "revId": "089f2791463bb03ccd73f03bd62357c69ee0eff5",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a497965_0cdc7bd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-06-21T21:03:53Z",
+      "side": 1,
+      "message": "Chain verified on darcy",
+      "revId": "089f2791463bb03ccd73f03bd62357c69ee0eff5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
