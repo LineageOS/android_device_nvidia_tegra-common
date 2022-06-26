@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f4c0254_99b4e30f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-06-26T06:51:57Z",
+      "side": 1,
+      "message": "Fixes build breakage on shieldtablet.",
+      "revId": "1a1d372e613659c7094fb3d6cdc4987fb640f4bc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
