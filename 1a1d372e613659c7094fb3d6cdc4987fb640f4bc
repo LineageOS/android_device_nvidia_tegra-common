@@ -39,6 +39,30 @@
       },
       "revId": "1a1d372e613659c7094fb3d6cdc4987fb640f4bc",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d58f81ab_d7385a15",
+        "filename": "vendor/audio/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-06-26T15:32:29Z",
+      "side": 1,
+      "message": "Probably could, since I already do this for a couple non-dolby nvgpu libs, it\u0027s at least consistent. If someone wants to do a cleanup, it can be in a followup change.",
+      "parentUuid": "c2ae12cd_5963d84e",
+      "range": {
+        "startLine": 229,
+        "startChar": 30,
+        "endLine": 229,
+        "endChar": 73
+      },
+      "revId": "1a1d372e613659c7094fb3d6cdc4987fb640f4bc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
