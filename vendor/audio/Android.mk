@@ -225,6 +225,8 @@ include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := libaptX_encoder
+# 32-bit binary doesn't exist, but this needs to be here for parsing purposes
+LOCAL_SRC_FILES_32         := $(COMMON_AUDIO_PATH)/lib/libaptX_encoder.so
 LOCAL_SRC_FILES_64         := $(COMMON_AUDIO_PATH)/lib64/libaptX_encoder.so
 LOCAL_MULTILIB             := first
 LOCAL_MODULE_SUFFIX        := .so
@@ -236,6 +238,8 @@ include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := libaptXHD_encoder
+# 32-bit binary doesn't exist, but this needs to be here for parsing purposes
+LOCAL_SRC_FILES_32         := $(COMMON_AUDIO_PATH)/lib/libaptXHD_encoder.so
 LOCAL_SRC_FILES_64         := $(COMMON_AUDIO_PATH)/lib64/libaptXHD_encoder.so
 LOCAL_MULTILIB             := first
 LOCAL_MODULE_SUFFIX        := .so
