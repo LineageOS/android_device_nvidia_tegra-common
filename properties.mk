@@ -10,6 +10,14 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.lmk.kill_timeout_ms=100 \
     ro.lmk.use_minfree_levels=true
 
+# CEC
+ifneq ($(TARGET_TEGRA_CEC),)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hdmi.device_type=4 \
+    persist.sys.hdmi.keep_awake=0 \
+    ro.hdmi.wake_on_hotplug=0
+endif
+
 # Graphics
 ifeq ($(TARGET_TEGRA_GPU),drm)
 PRODUCT_PROPERTY_OVERRIDES += \
