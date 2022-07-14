@@ -16,11 +16,3 @@ PRODUCT_PACKAGES += \
     android.hardware.tv.cec@1.0-service \
     android.hardware.tv.cec@1.0-impl \
     hdmi_cec.tegra
-
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.hdmi.cec.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.hdmi.cec.xml
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hdmi.device_type=4 \
-    persist.sys.hdmi.keep_awake=0 \
-    ro.hdmi.wake_on_hotplug=0

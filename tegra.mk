@@ -103,6 +103,18 @@ PRODUCT_PACKAGES_DEBUG += \
     bootctrl
 endif
 
+# CEC
+ifneq ($(TARGET_TEGRA_CEC),)
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.hdmi.cec.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.hdmi.cec.xml
+endif
+
+ifeq ($(TARGET_TEGRA_CEC),aosp)
+PRODUCT_PACKAGES += \
+    android.hardware.tv.cec@1.0-service-aosp \
+    android.hardware.tv.cec@1.0-impl-aosp
+endif
+
 # GMS
 PRODUCT_GMS_CLIENTID_BASE ?= android-nvidia
 

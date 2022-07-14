@@ -18,5 +18,6 @@ soong_namespace {
 }
 
 subdirs = [
-    "init"
+    "init",
+    "aosp/cec"
 ]
