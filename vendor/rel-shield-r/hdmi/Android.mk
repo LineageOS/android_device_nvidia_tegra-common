@@ -18,7 +18,6 @@ COMMON_HDMI_PATH := ../../../../../../vendor/nvidia/common/rel-shield-r/hdmi
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := hdmi_cec.tegra
-LOCAL_VINTF_FRAGMENTS      := android.hardware.tv.cec@1.0-service.xml
 LOCAL_SRC_FILES_32         := $(COMMON_HDMI_PATH)/lib/hw/hdmi_cec.tegra.so
 LOCAL_SRC_FILES_64         := $(COMMON_HDMI_PATH)/lib64/hw/hdmi_cec.tegra.so
 LOCAL_MULTILIB             := both
