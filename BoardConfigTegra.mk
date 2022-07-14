@@ -40,6 +40,11 @@ ifeq ($(AB_OTA_UPDATER),true)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/boot.xml
 endif
 
+# CEC
+ifneq ($(TARGET_TEGRA_CEC),)
+DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/cec.xml
+endif
+
 # Graphics
 ifeq ($(TARGET_TEGRA_GPU),drm)
 BOARD_GPU_DRIVERS         ?= nouveau
