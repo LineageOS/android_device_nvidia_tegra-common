@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10834b16_9250fd7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2022-07-19T13:55:03Z",
+      "side": 1,
+      "message": "R default hal is basically just mock-only, this doesn\u0027t work.\nUnverified on icosa.\n\nPlease import the AOSP master (T) default HAL.",
+      "revId": "32b144ebfef4b1ca41f7938c032bc560a0533faa",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
