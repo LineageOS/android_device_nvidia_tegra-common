@@ -40,6 +40,18 @@ bool tegra_init::detect_model_override()
 void tegra_init::detect_model_devicetree()
 {
     std::string hardware = property_get("ro.hardware");
+    std::string sku = property_get("ro.boot.hardware.sku");
+
+    if (!sku.empty()) {
+        for (auto & device : tegra_devices) {
+            if (!device.name.compare(sku)) {
+                chosen_device = &device;
+                break;
+            }
+        }
+        if (chosen_device)
+            return;
+    }
 
     for (auto & device : tegra_devices) {
         if (!device.name.compare(hardware)) {
