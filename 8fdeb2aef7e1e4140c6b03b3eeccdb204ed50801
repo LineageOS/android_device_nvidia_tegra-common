@@ -33,6 +33,24 @@
       "message": "I just restored 334243, patchset 1 from there should be re-uploaded and used instead of this. Unless I\u0027m missing something.",
       "revId": "8fdeb2aef7e1e4140c6b03b3eeccdb204ed50801",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6495b05_f06a53bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2022-08-09T03:48:34Z",
+      "side": 1,
+      "message": "smart",
+      "parentUuid": "5cc7c1ef_ba84101e",
+      "revId": "8fdeb2aef7e1e4140c6b03b3eeccdb204ed50801",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
