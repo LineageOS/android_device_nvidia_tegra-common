@@ -42,6 +42,14 @@ else ifeq ($(TARGET_TEGRA_GPU),swiftshader)
 TARGET_USES_HWC2          := true
 endif
 
+# Keystore
+ifeq ($(TARGET_TEGRA_KEYSTORE),nvkeystore)
+DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/keystore.xml
+else ifeq ($(TARGET_TEGRA_KEYSTORE),software)
+DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/keystore.xml
+endif
+
+>>>>>>> ba4371e (Support software keymaster)
 # Odm permissions
 TARGET_FS_CONFIG_GEN += device/nvidia/tegra-common/config.fs
 
