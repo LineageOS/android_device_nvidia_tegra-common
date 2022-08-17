@@ -128,6 +128,14 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service.tegra_nobatt
 endif
 
+# Kernel
+ifneq ($(TARGET_PREBUILT_KERNEL),)
+ifeq ($(LINEAGE_BUILD),)
+PRODUCT_COPY_FILES += \
+    $(TARGET_PREBUILT_KERNEL):kernel
+endif
+endif
+
 # Memtrack
 ifeq ($(TARGET_TEGRA_MEMTRACK),lineage)
 PRODUCT_PACKAGES += \
