@@ -17,7 +17,6 @@ COMMON_KEYSTORE_PATH := ../../../../../vendor/nvidia/common/keystore
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := android.hardware.keymaster@3.0-service.tegra
-LOCAL_VINTF_FRAGMENTS      := android.hardware.keymaster@3.0-service.xml
 LOCAL_SRC_FILES_32         := $(COMMON_KEYSTORE_PATH)/bin32/hw/android.hardware.keymaster@3.0-service.tegra
 LOCAL_SRC_FILES_64         := $(COMMON_KEYSTORE_PATH)/bin64/hw/android.hardware.keymaster@3.0-service.tegra
 LOCAL_MULTILIB             := first
