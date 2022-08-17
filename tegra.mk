@@ -128,6 +128,14 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service.tegra_nobatt
 endif
 
+# Keystore
+ifeq ($(TARGET_TEGRA_KEYSTORE),software)
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-service.software \
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service
+endif
+
 # Memtrack
 ifeq ($(TARGET_TEGRA_MEMTRACK),lineage)
 PRODUCT_PACKAGES += \
