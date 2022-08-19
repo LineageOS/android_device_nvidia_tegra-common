@@ -27,7 +27,10 @@ PRODUCT_PACKAGES += \
     vulkan.tegra \
     libEGL_tegra \
     libGLESv1_CM_tegra \
-    libGLESv2_tegra
+    libGLESv2_tegra \
+    hdcp1x \
+    hdcp2x \
+    hdcp2xtest
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml \

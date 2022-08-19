@@ -13,9 +13,6 @@
 # limitations under the License.
 
 PRODUCT_PACKAGES += \
-    hdcp1x \
-    hdcp2x \
-    hdcp2xtest \
     run_ss_status \
     ss_status \
     tlk_daemon \

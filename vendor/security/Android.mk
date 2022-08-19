@@ -16,39 +16,6 @@ LOCAL_PATH := $(call my-dir)
 COMMON_SECURITY_PATH := ../../../../../vendor/nvidia/common/security
 
 include $(CLEAR_VARS)
-LOCAL_MODULE               := hdcp1x
-LOCAL_SRC_FILES            := $(COMMON_SECURITY_PATH)/etc/hdcpsrm/hdcp1x.srm
-LOCAL_MODULE_SUFFIX        := .srm
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_MODULE_TAGS          := optional
-LOCAL_MODULE_OWNER         := nvidia
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := hdcpsrm
-include $(BUILD_NVIDIA_COMMON_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := hdcp2x
-LOCAL_SRC_FILES            := $(COMMON_SECURITY_PATH)/etc/hdcpsrm/hdcp2x.srm
-LOCAL_MODULE_SUFFIX        := .srm
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_MODULE_TAGS          := optional
-LOCAL_MODULE_OWNER         := nvidia
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := hdcpsrm
-include $(BUILD_NVIDIA_COMMON_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := hdcp2xtest
-LOCAL_SRC_FILES            := $(COMMON_SECURITY_PATH)/etc/hdcpsrm/hdcp2xtest.srm
-LOCAL_MODULE_SUFFIX        := .srm
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_MODULE_TAGS          := optional
-LOCAL_MODULE_OWNER         := nvidia
-LOCAL_VENDOR_MODULE        := true
-LOCAL_MODULE_RELATIVE_PATH := hdcpsrm
-include $(BUILD_NVIDIA_COMMON_PREBUILT)
-
-include $(CLEAR_VARS)
 LOCAL_MODULE               := run_ss_status
 LOCAL_SRC_FILES            := $(COMMON_SECURITY_PATH)/bin/run_ss_status.sh
 LOCAL_MODULE_SUFFIX        := .sh
@@ -92,33 +59,9 @@ LOCAL_VENDOR_MODULE        := true
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE               := libtlk_secure_hdcp_up
-LOCAL_SRC_FILES_32         := $(COMMON_SECURITY_PATH)/lib/libtlk_secure_hdcp_up.so
-LOCAL_SRC_FILES_64         := $(COMMON_SECURITY_PATH)/lib64/libtlk_secure_hdcp_up.so
-LOCAL_MULTILIB             := both
-LOCAL_MODULE_SUFFIX        := .so
-LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
-LOCAL_MODULE_TAGS          := optional
-LOCAL_MODULE_OWNER         := nvidia
-LOCAL_VENDOR_MODULE        := true
-include $(BUILD_NVIDIA_COMMON_PREBUILT)
-
-include $(CLEAR_VARS)
 LOCAL_MODULE               := libtsec_wrapper
 LOCAL_SRC_FILES_32         := $(COMMON_SECURITY_PATH)/lib/libtsec_wrapper.so
 LOCAL_SRC_FILES_64         := $(COMMON_SECURITY_PATH)/lib64/libtsec_wrapper.so
-LOCAL_MULTILIB             := both
-LOCAL_MODULE_SUFFIX        := .so
-LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
-LOCAL_MODULE_TAGS          := optional
-LOCAL_MODULE_OWNER         := nvidia
-LOCAL_VENDOR_MODULE        := true
-include $(BUILD_NVIDIA_COMMON_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := libtsechdcp
-LOCAL_SRC_FILES_32         := $(COMMON_SECURITY_PATH)/lib/libtsechdcp.so
-LOCAL_SRC_FILES_64         := $(COMMON_SECURITY_PATH)/lib64/libtsechdcp.so
 LOCAL_MULTILIB             := both
 LOCAL_MODULE_SUFFIX        := .so
 LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
