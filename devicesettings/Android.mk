@@ -1,5 +1,7 @@
 LOCAL_PATH:= $(call my-dir)
 
+ifneq ($(LINEAGE_BUILD),)
+
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
@@ -36,3 +38,5 @@ LOCAL_MODULE_CLASS         := ETC
 LOCAL_SRC_FILES            := permissions/privapp-permissions-lineage-displaysettings.xml
 LOCAL_MODULE_RELATIVE_PATH := permissions
 include $(BUILD_PREBUILT)
+
+endif
