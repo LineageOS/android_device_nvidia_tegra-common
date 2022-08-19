@@ -86,6 +86,9 @@ stock-t210	vendor/lib64/vendor.nvidia.hardware.graphics.mempool@1.0-impl.so	comm
 stock-sif	vendor/lib/vendor.nvidia.hardware.graphics.composer@2.0-impl.so		common/nvgpu/lib/vendor.nvidia.hardware.graphics.composer@2.0-impl.so
 stock-sif	vendor/lib/vendor.nvidia.hardware.graphics.display@1.0-impl.so		common/nvgpu/lib/vendor.nvidia.hardware.graphics.display@1.0-impl.so
 stock-sif	vendor/lib/vendor.nvidia.hardware.graphics.mempool@1.0-impl.so		common/nvgpu/lib/vendor.nvidia.hardware.graphics.mempool@1.0-impl.so
+stock-t210	vendor/etc/hdcpsrm/hdcp1x.srm						common/nvgpu/etc/hdcpsrm/hdcp1x.srm
+stock-t210	vendor/etc/hdcpsrm/hdcp2x.srm						common/nvgpu/etc/hdcpsrm/hdcp2x.srm
+stock-t210	vendor/etc/hdcpsrm/hdcp2xtest.srm					common/nvgpu/etc/hdcpsrm/hdcp2xtest.srm
 stock-t210	vendor/lib64/hw/gralloc.tegra.so					common/nvgpu/lib64/hw/gralloc.tegra.so
 stock-t210	vendor/lib64/hw/vulkan.tegra.so						common/nvgpu/lib64/hw/vulkan.tegra.so
 stock-t210	vendor/lib/hw/gralloc.tegra.so						common/nvgpu/lib/hw/gralloc.tegra.so
@@ -121,6 +124,8 @@ stock-t210	vendor/lib64/libnvimp.so						common/nvgpu/lib64/libnvimp.so
 stock-t210	vendor/lib64/libcuda.so							common/nvgpu/lib64/libcuda.so
 stock-t210	vendor/lib64/libnvcucompat.so						common/nvgpu/lib64/libnvcucompat.so
 stock-t210	vendor/lib64/libnvsocsys.so						common/nvgpu/lib64/libnvsocsys.so
+stock-t210	vendor/lib64/libtlk_secure_hdcp_up.so					common/nvgpu/lib64/libtlk_secure_hdcp_up.so
+stock-t210	vendor/lib64/libtsechdcp.so						common/nvgpu/lib64/libtsechdcp.so
 stock-t210	vendor/lib/egl/libEGL_tegra.so						common/nvgpu/lib/egl/libEGL_tegra.so
 stock-t210	vendor/lib/egl/libGLESv1_CM_tegra.so					common/nvgpu/lib/egl/libGLESv1_CM_tegra.so
 stock-t210	vendor/lib/egl/libGLESv2_tegra.so					common/nvgpu/lib/egl/libGLESv2_tegra.so
@@ -151,6 +156,8 @@ stock-t210	vendor/lib/libnvimp.so							common/nvgpu/lib/libnvimp.so
 stock-t210	vendor/lib/libcuda.so							common/nvgpu/lib/libcuda.so
 stock-t210	vendor/lib/libnvcucompat.so						common/nvgpu/lib/libnvcucompat.so
 stock-t210	vendor/lib/libnvsocsys.so						common/nvgpu/lib/libnvsocsys.so
+stock-t210	vendor/lib/libtlk_secure_hdcp_up.so					common/nvgpu/lib/libtlk_secure_hdcp_up.so
+stock-t210	vendor/lib/libtsechdcp.so						common/nvgpu/lib/libtsechdcp.so
 
 # NVMM
 stock-t210	vendor/lib/libnvomxilclient.so		common/nvmm/lib/libnvomxilclient.so
@@ -244,15 +251,8 @@ stock-t210	vendor/bin/eks2_client			common/security/bin64/eks2_client
 stock-t210	vendor/bin/ss_status			common/security/bin64/ss_status
 stock-t210	vendor/bin/tlk_daemon			common/security/bin64/tlk_daemon
 stock-t210	vendor/bin/run_ss_status.sh		common/security/bin/run_ss_status.sh
-stock-t210	vendor/etc/hdcpsrm/hdcp1x.srm		common/security/etc/hdcpsrm/hdcp1x.srm
-stock-t210	vendor/etc/hdcpsrm/hdcp2x.srm		common/security/etc/hdcpsrm/hdcp2x.srm
-stock-t210	vendor/etc/hdcpsrm/hdcp2xtest.srm	common/security/etc/hdcpsrm/hdcp2xtest.srm
-stock-t210	vendor/lib64/libtlk_secure_hdcp_up.so	common/security/lib64/libtlk_secure_hdcp_up.so
-stock-t210	vendor/lib64/libtsechdcp.so		common/security/lib64/libtsechdcp.so
 stock-t210	vendor/lib64/libtsec_wrapper.so		common/security/lib64/libtsec_wrapper.so
 stock-t210	vendor/lib64/libnvsi_ll_2.so		common/security/lib64/libnvsi_ll_2.so
-stock-t210	vendor/lib/libtlk_secure_hdcp_up.so	common/security/lib/libtlk_secure_hdcp_up.so
-stock-t210	vendor/lib/libtsechdcp.so		common/security/lib/libtsechdcp.so
 stock-t210	vendor/lib/libtsec_wrapper.so		common/security/lib/libtsec_wrapper.so
 stock-t210	vendor/lib/libnvsi_ll_2.so		common/security/lib/libnvsi_ll_2.so
 
