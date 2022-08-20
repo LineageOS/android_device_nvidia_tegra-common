@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "686d7a3b_a19ead6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-08-20T00:44:47Z",
+      "side": 1,
+      "message": "Chain verified building full_foster on aosp. Verified no regressions building foster on Lineage, booting on darcy.",
+      "revId": "958fcebe871c7a19669ad6367980fc8c76e4df5c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
