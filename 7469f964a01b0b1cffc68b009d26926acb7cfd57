@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1070448d_4d4ca95f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-08-27T20:52:11Z",
+      "side": 1,
+      "message": "Verified booting icosa using the foster target. Verified no regressions on other foster variants and targets.",
+      "revId": "7469f964a01b0b1cffc68b009d26926acb7cfd57",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
