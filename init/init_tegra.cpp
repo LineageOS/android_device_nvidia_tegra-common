@@ -67,6 +67,7 @@ void tegra_init::detect_model_boardinfo()
     bool bi_found = false;
     uint32_t board_id = -1, sku = -1;
     std::ifstream cvmfile;
+    std::ifstream skufile;
 
     // Get model from /proc/cmdline
     std::ifstream file("/proc/cmdline");
@@ -103,6 +104,19 @@ void tegra_init::detect_model_boardinfo()
         board_id = std::stoul(temp, nullptr, 10);
 
         if (!std::getline(cvmfile, temp, '-'))
+            return;
+        sku = std::stoul(temp, nullptr, 10);
+    } else if (skufile.open("/proc/device-tree/chosen/nvidia,sku"), skufile.is_open()) {
+        if (!std::getline(skufile, temp, '-'))
+            return;
+        // discard 699-
+
+        if (!std::getline(skufile, temp, '-'))
+            return;
+        board_id = std::stoul(temp, nullptr, 10);
+        board_id -= 10000; // remove leading 1 from 4 digit id
+
+        if (!std::getline(skufile, temp, '-'))
             return;
         sku = std::stoul(temp, nullptr, 10);
     } else {
