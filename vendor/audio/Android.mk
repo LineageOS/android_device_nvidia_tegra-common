@@ -19,7 +19,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE               := NvAudioSvc
 LOCAL_MODULE_TAGS          := optional
 LOCAL_SRC_FILES            := $(COMMON_AUDIO_PATH)/app/NvAudioSvc.apk
-LOCAL_CERTIFICATE          := PRESIGNED
+LOCAL_CERTIFICATE          := platform
 LOCAL_MODULE_CLASS         := APPS
 LOCAL_MODULE_SUFFIX        := $(COMMON_ANDROID_PACKAGE_SUFFIX)
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
@@ -28,7 +28,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE               := DolbyAudioService
 LOCAL_MODULE_TAGS          := optional
 LOCAL_SRC_FILES            := $(COMMON_AUDIO_PATH)/app/DolbyAudioService.apk
-LOCAL_CERTIFICATE          := PRESIGNED
+LOCAL_CERTIFICATE          := platform
 LOCAL_MODULE_CLASS         := APPS
 LOCAL_MODULE_SUFFIX        := $(COMMON_ANDROID_PACKAGE_SUFFIX)
 LOCAL_REQUIRED_MODULES     := libnvcontrol_jni

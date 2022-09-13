@@ -19,7 +19,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE               := NvCPLSvc
 LOCAL_MODULE_TAGS          := optional
 LOCAL_SRC_FILES            := $(COMMON_NVCPL_PATH)/app/NvCPLSvc/NvCPLSvc.apk
-LOCAL_CERTIFICATE          := PRESIGNED
+LOCAL_CERTIFICATE          := platform
 LOCAL_MODULE_CLASS         := APPS
 LOCAL_MODULE_SUFFIX        := $(COMMON_ANDROID_PACKAGE_SUFFIX)
 LOCAL_REQUIRED_MODULES     := libnvcontrol_jni
