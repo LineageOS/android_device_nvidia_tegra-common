@@ -7,7 +7,7 @@
 # is strictly prohibited.
 
 #
-# Loadable Kernel Modules (LKM) Service (on boot)
+# Loadable Kernel Modules (LKM) Service
 #
 
 service vendor.lkm_loader /vendor/bin/lkm_loader.sh
@@ -16,6 +16,17 @@ service vendor.lkm_loader /vendor/bin/lkm_loader.sh
     group root
     oneshot
     disabled
+
+service vendor.lkm_loader_target /vendor/bin/lkm_loader_target.sh
+    class main
+    user root
+    group root
+    oneshot
+    disabled
+
+on fs
+    start vendor.lkm_loader_target
+    start vendor.lkm_loader
 
 on property:init.svc.vendor.lkm_loader=stopped
     restorecon_recursive /sys
