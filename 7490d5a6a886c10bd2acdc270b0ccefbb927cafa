@@ -22,6 +22,30 @@
       },
       "revId": "7490d5a6a886c10bd2acdc270b0ccefbb927cafa",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fc86742_cb4002cb",
+        "filename": "tegra.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-10-08T16:45:28Z",
+      "side": 0,
+      "message": "https://review.lineageos.org/c/LineageOS/android_device_nvidia_foster/+/341146\nNot if I remove it. I was getting errors in the log saying the a2dp hw module doesn\u0027t exist, so I\u0027m just pruning all references.",
+      "parentUuid": "f2407ad6_62ffde7b",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 155
+      },
+      "revId": "7490d5a6a886c10bd2acdc270b0ccefbb927cafa",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
