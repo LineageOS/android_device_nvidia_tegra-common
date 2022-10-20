@@ -142,6 +142,30 @@
       },
       "revId": "7490d5a6a886c10bd2acdc270b0ccefbb927cafa",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f40f102a_3afde78f",
+        "filename": "tegra.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2022-10-20T20:45:09Z",
+      "side": 0,
+      "message": "What\u0027s the error? I can check on my devices.",
+      "parentUuid": "4a7346a5_0d885c38",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 155
+      },
+      "revId": "7490d5a6a886c10bd2acdc270b0ccefbb927cafa",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
