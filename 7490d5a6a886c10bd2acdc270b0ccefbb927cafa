@@ -166,6 +166,30 @@
       },
       "revId": "7490d5a6a886c10bd2acdc270b0ccefbb927cafa",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "544ec130_7bd20a5a",
+        "filename": "tegra.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-10-20T21:05:40Z",
+      "side": 0,
+      "message": "I don\u0027t have a copy-paste of it on hand. But it was something like \u0027cannot load module a2dp.default\u0027.",
+      "parentUuid": "f40f102a_3afde78f",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 155
+      },
+      "revId": "7490d5a6a886c10bd2acdc270b0ccefbb927cafa",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
