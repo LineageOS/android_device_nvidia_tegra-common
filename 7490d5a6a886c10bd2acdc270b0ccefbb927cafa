@@ -190,6 +190,30 @@
       },
       "revId": "7490d5a6a886c10bd2acdc270b0ccefbb927cafa",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc1b0736_9a88ca92",
+        "filename": "tegra.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2022-10-21T22:07:07Z",
+      "side": 0,
+      "message": "So, you mean this:\n\n\u003e  10-21 23:05:35.045   634   634 E DevicesFactoryHAL: loadAudioInterface couldn\u0027t load audio hw module audio.a2dp (No such file or directory)\n\u003e  10-21 23:05:35.045   714   714 W DevicesFactoryHalHidl: The specified device name is not recognized: \"a2dp\"\n\u003e  10-21 23:05:35.045   714   714 E AudioFlinger: loadHwModule() error -22 loading module a2dp\n\u003e  10-21 23:05:35.045   714   714 W APM_AudioPolicyManager: could not open HW module a2dp",
+      "parentUuid": "544ec130_7bd20a5a",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 155
+      },
+      "revId": "7490d5a6a886c10bd2acdc270b0ccefbb927cafa",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
