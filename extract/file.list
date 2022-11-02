@@ -300,12 +300,12 @@ l4t-t194	drivers/lib/firmware/rtl8822_setting.bin	common/realtek/rtl8822cu/rtl88
 # BCM Bluetooth Patchfiles
 nv-tegra-t210	3rdparty/bcmbinaries/bcm43241/bluetooth/AB113_BCM43241B0_0012_Azurewave_AW-AH691_TEST.HCD	common/bcm_firmware/bcm43241/AB113_BCM43241B0_0012_Azurewave_AW-AH691_TEST.HCD
 nv-tegra-t210	3rdparty/bcmbinaries/bcm43341/bluetooth/BCM43341B0_002.001.014.0008.0011.hcd			common/bcm_firmware/bcm43341/BCM43341B0_002.001.014.0008.0011.hcd
-nv-tegra-t210	3rdparty/cypress/bcm4354a1/bluetooth/BCM4350C0.hcd						common/bcm_firmware/bcm4354/BCM4350C0.hcd
-nv-tegra-t210	3rdparty/cypress/bcm4356a3/bluetooth/BCM4356A3.hcd						common/bcm_firmware/bcm4356/BCM4356A3.hcd
+stock-t210	vendor/firmware/bcm4350.hcd									common/bcm_firmware/bcm4354/BCM4350C0.hcd
+stock-t210	vendor/firmware/bcm4356a3.hcd									common/bcm_firmware/bcm4356/BCM4356A3.hcd
 
 # BCM Wifi Firmware
-nv-tegra-t210	3rdparty/bcmbinaries/bcm43241/wlan/sdio-ag-pno-p2p-proptxstatus-dmatxrc-rxov-pktfilter-keepalive-aoe-vsdb-wapi-wl11d-sr-srvsdb-opt1.bin							common/bcm_firmware/bcm43241/sdio-ag-pno-p2p-proptxstatus-dmatxrc-rxov-pktfilter-keepalive-aoe-vsdb-wapi-wl11d-sr-srvsdb-opt1.bin
-nv-tegra-t210	3rdparty/bcmbinaries/bcm43341/wlan/sdio-ag-pno-p2p-proptxstatus-dmatxrc-rxov-pktfilter-keepalive-aoe-sr-wapi-wl11d.bin									common/bcm_firmware/bcm43341/sdio-ag-pno-p2p-proptxstatus-dmatxrc-rxov-pktfilter-keepalive-aoe-sr-wapi-wl11d.bin
-nv-tegra-t210	3rdparty/cypress/bcm4354a1/wlan/atv/sdio-ag-p2p-pno-aoe-pktfilter-keepalive-sr-mchan-pktctx-proptxstatus-ampduhostreorder-lpc-pwropt-txbf-wl11u-mfp-tdls-ltecx-wfds-mchandump-atv.bin	common/bcm_firmware/bcm4354/sdio-ag-p2p-pno-aoe-pktfilter-keepalive-sr-mchan-pktctx-proptxstatus-ampduhostreorder-lpc-pwropt-txbf-wl11u-mfp-tdls-ltecx-wfds-mchandump-atv.bin
-nv-tegra-t210	3rdparty/cypress/bcm4356a3/wlan/fw_4356a3_prod.bin																	common/bcm_firmware/bcm4356/fw_4356a3_prod.bin
-nv-tegra-t210	3rdparty/cypress/bcm4356a3/wlan/brcmfmac4356-pcie.bin																	common/bcm_firmware/bcm4356/brcmfmac4356-pcie.bin
+nv-tegra-t210	3rdparty/bcmbinaries/bcm43241/wlan/sdio-ag-pno-p2p-proptxstatus-dmatxrc-rxov-pktfilter-keepalive-aoe-vsdb-wapi-wl11d-sr-srvsdb-opt1.bin	common/bcm_firmware/bcm43241/sdio-ag-pno-p2p-proptxstatus-dmatxrc-rxov-pktfilter-keepalive-aoe-vsdb-wapi-wl11d-sr-srvsdb-opt1.bin
+nv-tegra-t210	3rdparty/bcmbinaries/bcm43341/wlan/sdio-ag-pno-p2p-proptxstatus-dmatxrc-rxov-pktfilter-keepalive-aoe-sr-wapi-wl11d.bin			common/bcm_firmware/bcm43341/sdio-ag-pno-p2p-proptxstatus-dmatxrc-rxov-pktfilter-keepalive-aoe-sr-wapi-wl11d.bin
+stock-t210	vendor/firmware/fw_bcmdhd.bin														common/bcm_firmware/bcm4354/sdio-ag-p2p-pno-aoe-pktfilter-keepalive-sr-mchan-pktctx-proptxstatus-ampduhostreorder-lpc-pwropt-txbf-wl11u-mfp-tdls-ltecx-wfds-mchandump-atv.bin
+nv-tegra-t210	3rdparty/cypress/bcm4356a3/wlan/fw_4356a3_prod.bin											common/bcm_firmware/bcm4356/fw_4356a3_prod.bin
+stock-t210	vendor/firmware/brcmfmac4356-pcie.bin											common/bcm_firmware/bcm4356/brcmfmac4356-pcie.bin
