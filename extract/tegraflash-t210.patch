@@ -1,7 +1,7 @@
-diff --git a/common/tegraflash/tegraflash_internal.py b/common/tegraflash/tegraflash_internal.py
+diff --git a/common/r35/tegraflash/tegraflash_internal.py b/common/r35/tegraflash/tegraflash_internal.py
 index a11923c..f3e3733 100755
---- a/common/tegraflash/tegraflash_internal.py
-+++ b/common/tegraflash/tegraflash_internal.py
+--- a/common/r35/tegraflash/tegraflash_internal.py
++++ b/common/r35/tegraflash/tegraflash_internal.py
 @@ -4372,8 +4372,11 @@ def tegraflash_generate_bct():
          # Don't generate bct for external devices
          return

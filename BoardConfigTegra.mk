@@ -43,7 +43,7 @@ TARGET_USES_HWC2          := true
 endif
 
 # Keystore
-ifeq ($(TARGET_TEGRA_KEYSTORE),nvkeystore)
+ifneq ($(filter rel-shield-r, $(TARGET_TEGRA_KEYSTORE)),)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/keystore.xml
 ifeq ($(TARGET_SUPPORTS_64_BIT_APPS),true)
 TARGET_LD_SHIM_LIBS += \

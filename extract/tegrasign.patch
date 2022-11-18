@@ -1,7 +1,7 @@
-diff --git a/common/tegraflash/tegrasign_v3_util.py b/common/tegraflash/tegrasign_v3_util.py
+diff --git a/common/r35/tegraflash/tegrasign_v3_util.py b/common/r35/tegraflash/tegrasign_v3_util.py
 index f341ec9..9675ec4 100755
---- a/common/tegraflash/tegrasign_v3_util.py
-+++ b/common/tegraflash/tegrasign_v3_util.py
+--- a/common/r35/tegraflash/tegrasign_v3_util.py
++++ b/common/r35/tegraflash/tegrasign_v3_util.py
 @@ -19,7 +19,10 @@ import subprocess
  import re
  import time

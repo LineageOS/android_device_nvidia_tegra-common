@@ -14,51 +14,53 @@
 
 LOCAL_PATH := device/nvidia/tegra-common/vendor
 
-ifeq ($(TARGET_TEGRA_DOLBY),true)
-$(call inherit-product, $(LOCAL_PATH)/ipprotect/ipprotect.mk)
+ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_DOLBY)/ipprotect/ipprotect.mk)","")
+$(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_DOLBY)/ipprotect/ipprotect.mk)
 endif
 
-ifeq ($(TARGET_TEGRA_AUDIO),nvaudio)
-$(call inherit-product, $(LOCAL_PATH)/audio/audio.mk)
+ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_AUDIO)/audio/audio.mk)","")
+$(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_AUDIO)/audio/audio.mk)
 endif
 
-ifeq ($(TARGET_TEGRA_CAMERA),nvcamera)
-$(call inherit-product, $(LOCAL_PATH)/camera/nvcamera.mk)
+ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_CAMERA)/camera/nvcamera.mk)","")
+$(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_CAMERA)/camera/nvcamera.mk)
 endif
 
 ifeq ($(NV_ANDROID_FRAMEWORK_ENHANCEMENTS),true)
-$(call inherit-product, $(LOCAL_PATH)/nvcpl/nvcpl.mk)
+ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/nvcpl/nvcpl.mk)","")
+$(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/nvcpl/nvcpl.mk)
+endif
 endif
 
-ifeq ($(TARGET_TEGRA_GPU),nvgpu)
-$(call inherit-product, $(LOCAL_PATH)/nvgpu/nvgpu.mk)
+ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_GPU)/nvgpu/nvgpu.mk)","")
+$(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_GPU)/nvgpu/nvgpu.mk)
 endif
 
-ifeq ($(TARGET_TEGRA_CEC),nvhdmi)
-$(call inherit-product, $(LOCAL_PATH)/hdmi/hdmi.mk)
+ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_CEC)/hdmi/hdmi.mk)","")
+$(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_CEC)/hdmi/hdmi.mk)
 endif
 
-ifeq ($(TARGET_TEGRA_KEYSTORE),nvkeystore)
-$(call inherit-product, $(LOCAL_PATH)/keystore/keystore.mk)
-$(call inherit-product, $(LOCAL_PATH)/security/security.mk)
+ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_KEYSTORE)/keystore/keystore.mk)","")
+$(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_KEYSTORE)/keystore/keystore.mk)
+$(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/security/security.mk)
 endif
 
-ifeq ($(TARGET_TEGRA_MEMTRACK),nvmemtrack)
-$(call inherit-product, $(LOCAL_PATH)/memtrack/memtrack.mk)
+ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_MEMTRACK)/memtrack/memtrack.mk)","")
+$(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_MEMTRACK)/memtrack/memtrack.mk)
 endif
 
-ifeq ($(TARGET_TEGRA_OMX),nvmm)
-$(call inherit-product, $(LOCAL_PATH)/nvmm/nvmm.mk)
+ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_OMX)/nvmm/nvmm.mk)","")
+$(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_OMX)/nvmm/nvmm.mk)
 endif
 
-ifeq ($(TARGET_TEGRA_PHS),nvphs)
-$(call inherit-product, $(LOCAL_PATH)/nvphs/nvphs.mk)
+ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_PHS)/nvphs/nvphs.mk)","")
+$(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_PHS)/nvphs/nvphs.mk)
 endif
 
-ifeq ($(TARGET_TEGRA_POWER),nvpower)
-$(call inherit-product, $(LOCAL_PATH)/power/power.mk)
+ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_POWER)/power/power.mk)","")
+$(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_POWER)/power/power.mk)
 endif
 
-ifeq ($(TARGET_TEGRA_WIDEVINE),true)
-$(call inherit-product, $(LOCAL_PATH)/widevine/widevine.mk)
+ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_WIDEVINE)/widevine/widevine.mk)","")
+$(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_WIDEVINE)/widevine/widevine.mk)
 endif

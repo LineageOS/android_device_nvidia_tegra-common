@@ -14,7 +14,19 @@
 # limitations under the License.
 #
 
+TARGET_TEGRA_DEFAULT_BRANCH ?= rel-shield-r
+TARGET_TEGRA_L4T_BRANCH     ?= r35
+
+TARGET_TEGRA_AUDIO    ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
+TARGET_TEGRA_CEC      ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
+TARGET_TEGRA_GPU      ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
+TARGET_TEGRA_KEYSTORE ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
+TARGET_TEGRA_MEMTRACK ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
+TARGET_TEGRA_OMX      ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
+TARGET_TEGRA_PHS      ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
+
 TARGET_TEGRA_HEALTH ?= common
+TARGET_TEGRA_POWER  ?= aosp
 
 # Enable nvidia framework enhancements if available
 -include vendor/lineage/product/nvidia.mk
@@ -51,7 +63,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
 
 # Audio
-ifeq ($(TARGET_TEGRA_AUDIO),nvaudio)
+ifneq ($(filter rel-shield-r, $(TARGET_TEGRA_AUDIO)),)
 PRODUCT_PACKAGES += \
     primary_module_deviceports.xml \
     primary_module_deviceports_tv.xml \
@@ -65,7 +77,7 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/surround_sound_configuration_5_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/surround_sound_configuration_5_0.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
 
-ifeq ($(TARGET_TEGRA_DOLBY),true)
+ifneq ($(TARGET_TEGRA_DOLBY),)
 PRODUCT_PACKAGES += \
     msd_audio_policy_configuration.xml
 endif
@@ -156,7 +168,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 endif
 
 # PHS
-ifeq ($(TARGET_TEGRA_PHS),nvphs)
+ifneq ($(TARGET_TEGRA_PHS),)
 PRODUCT_PACKAGES += \
     init.nvphsd_setup.rc \
     nvphsd.rc \
