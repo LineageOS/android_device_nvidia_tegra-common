@@ -231,12 +231,6 @@ stock-t210	vendor/lib/libnvgov_ui.so				common/nvphs/lib/libnvgov_ui.so
 stock-t210	vendor/lib/libnvphs.so					common/nvphs/lib/libnvphs.so
 stock-t210	vendor/lib/libnvphsd.so					common/nvphs/lib/libnvphsd.so
 
-# PBC
-stock-sif	vendor/bin/pbc2			common/pbc/bin32/pbc2
-stock-t210	vendor/bin/pbc2			common/pbc/bin64/pbc2
-stock-t210	vendor/lib64/hw/pbc2.tegra.so	common/pbc/lib64/hw/pbc2.tegra.so
-stock-t210	vendor/lib/hw/pbc2.tegra.so	common/pbc/lib/hw/pbc2.tegra.so
-
 # Power
 stock-sif	vendor/bin/hw/vendor.nvidia.hardware.power@1.0-service	common/power/bin32/hw/vendor.nvidia.hardware.power@1.0-service
 stock-t210	vendor/bin/hw/vendor.nvidia.hardware.power@1.0-service	common/power/bin64/hw/vendor.nvidia.hardware.power@1.0-service
