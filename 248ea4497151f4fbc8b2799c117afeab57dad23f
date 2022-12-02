@@ -16,6 +16,23 @@
       "message": "Verified booting quill. When built using clang, atf would compile successfully, but would boot on neither t186 nor t194.",
       "revId": "248ea4497151f4fbc8b2799c117afeab57dad23f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1de46715_78ef88f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-12-02T07:16:26Z",
+      "side": 1,
+      "message": "Blocked pending fork of gcc prebuilts. Atf will not compile with gcc 4.9.",
+      "revId": "248ea4497151f4fbc8b2799c117afeab57dad23f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
