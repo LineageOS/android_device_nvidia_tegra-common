@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d665778c_a048e133",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-12-03T19:44:04Z",
+      "side": 1,
+      "message": "Verified that bootloader logo shows up on porg",
+      "revId": "79e0b4c5fd24f59f6e9509526fea6310dcc3b409",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
