@@ -3,5 +3,5 @@ nv-tegra-t210-rel24	https://nv-tegra.nvidia.com/gitweb/?p=tegra/prebuilts-licens
 stock-t210	https://ota-downloads.nvidia.com/ota/productionBL-droid-signed-mdarcy-full_ota-7825230_3167.5736_DEE632.zip									nv-recovery-ota
 stock-foster	https://ota-downloads.nvidia.com/ota/productionBL-droid-signed-foster_e_hdd-full_ota-7825230_3167.5736_DF2EE1.zip								nv-recovery-ota
 stock-sif	https://ota-downloads.nvidia.com/ota/productionBL-droid-signed-sif_32b-full_ota-7825199_3167.5736_25631A.zip									nv-recovery-ota
-l4t-t210	https://developer.nvidia.com/embedded/l4t/r32_release_v7.2/t210/jetson-210_linux_r32.7.2_aarch64.tbz2										l4t
-l4t-t194	https://developer.nvidia.com/embedded/l4t/r32_release_v7.2/t186/jetson_linux_r32.7.2_aarch64.tbz2										l4t
+l4t-t210	https://developer.nvidia.com/downloads/remetpack-463r32releasev73t210jetson-210linur3273aarch64tbz2										l4t
+l4t-t194	https://developer.nvidia.com/downloads/remksjetpack-463r32releasev73t186jetsonlinur3273aarch64tbz2										l4t
