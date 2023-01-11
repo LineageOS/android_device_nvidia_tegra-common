@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fb68428_893f259c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-01-11T04:53:34Z",
+      "side": 1,
+      "message": "Verified on darcy and mdarcy. Fixes apps that try to use the standard android frame rate matching api.",
+      "revId": "de01bcf3dadd9d04bf1514feeff801fa7f258e9c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
