@@ -15,9 +15,9 @@ index f341ec9..9675ec4 100755
  AES_128_HASH_BLOCK_LEN = 16
  AES_256_HASH_BLOCK_LEN = 16
 @@ -178,8 +181,11 @@ class KDF:
-     def parse_file(self, p_key, arg, internal):
-         kdf_file = arg.split('=')[1]
+         self.bootmode = None
  
+     def parse_file(self, p_key, kdf_file, internal = None):
 -        with open(kdf_file) as f:
 -            params = yaml.safe_load(f)
 +        try:
