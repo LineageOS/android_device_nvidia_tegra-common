@@ -38,11 +38,6 @@ function patch_bup() {
   sed -i 's/self.gen_version/0x00020000 if args.blob_type == "bmp" else self.gen_version/' ${LINEAGE_ROOT}/${OUTDIR}/common/tegraflash/BUP_generator.py
 }
 
-# Tegraflash in 35.1 broke t210 support
-function patch_tegraflash() {
-  patch --no-backup-if-mismatch -d ${LINEAGE_ROOT}/${OUTDIR} -p1 < ${LINEAGE_ROOT}/device/nvidia/tegra-common/extract/tegraflash-t210.patch
-}
-
 # tegrasign_v3 tries to write the output file to its local dir, let's instead write to cwd
 # Remove dependency on yaml as it's not available in the aosp python prebuilts
 function patch_tegrasign_v3() {
@@ -107,7 +102,6 @@ fetch_bcm4356_patchfile;
 chmod_tegraflash;
 patch_nvcontrol;
 patch_bup;
-patch_tegraflash;
 patch_tegrasign_v3;
 fetch_aptx;
 fetch_l4t_deps;
