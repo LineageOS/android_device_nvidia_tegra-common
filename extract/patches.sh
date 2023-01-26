@@ -60,16 +60,19 @@ function fetch_aptx() {
 }
 
 # Fetch bootloader logos and verity images from nv-tegra
+function fetch_bmp() {
+  NV_TEGRA_URL="https://nv-tegra.nvidia.com/r/plugins/gitiles/tegra/prebuilts-device-nvidia/+/refs/heads/rel-30-r2-partner/platform/t210/assets/bmp/"
+  wget -qO- "${NV_TEGRA_URL}/${1}.bmp?format=TEXT" |base64 --decode > ${LINEAGE_ROOT}/${OUTDIR}/common/BMP/${1}.bmp
+}
 function fetch_bmps() {
-  NV_TEGRA_URL="https://nv-tegra.nvidia.com/gitweb/?p=tegra/prebuilts-device-nvidia.git;hb=rel-30-r2-partner;a=blob;f=platform/t210/assets/bmp"
   mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/BMP
-  wget ${NV_TEGRA_URL}/nvidia1080.bmp -O ${LINEAGE_ROOT}/${OUTDIR}/common/BMP/nvidia1080.bmp
-  wget ${NV_TEGRA_URL}/verity_orange_continue_1080.bmp -O ${LINEAGE_ROOT}/${OUTDIR}/common/BMP/verity_orange_continue_1080.bmp
-  wget ${NV_TEGRA_URL}/verity_orange_pause_1080.bmp -O ${LINEAGE_ROOT}/${OUTDIR}/common/BMP/verity_orange_pause_1080.bmp
-  wget ${NV_TEGRA_URL}/verity_red_continue_1080.bmp -O ${LINEAGE_ROOT}/${OUTDIR}/common/BMP/verity_red_continue_1080.bmp
-  wget ${NV_TEGRA_URL}/verity_red_pause_1080.bmp -O ${LINEAGE_ROOT}/${OUTDIR}/common/BMP/verity_red_pause_1080.bmp
-  wget ${NV_TEGRA_URL}/verity_yellow_continue_1080.bmp -O ${LINEAGE_ROOT}/${OUTDIR}/common/BMP/verity_yellow_continue_1080.bmp
-  wget ${NV_TEGRA_URL}/verity_yellow_pause_1080.bmp -O ${LINEAGE_ROOT}/${OUTDIR}/common/BMP/verity_yellow_pause_1080.bmp
+  fetch_bmp nvidia1080;
+  fetch_bmp verity_orange_continue_1080;
+  fetch_bmp verity_orange_pause_1080;
+  fetch_bmp verity_red_continue_1080;
+  fetch_bmp verity_red_pause_1080;
+  fetch_bmp verity_yellow_continue_1080;
+  fetch_bmp verity_yellow_pause_1080;
 }
 
 fetch_bcm4356_patchfile;
