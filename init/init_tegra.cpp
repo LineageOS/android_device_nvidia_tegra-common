@@ -264,6 +264,20 @@ void tegra_init::set_properties()
     property_set("ro.product.system_ext.model",  chosen_device->model);
 }
 
+void tegra_init::check_safe_mode_adb()
+{
+    std::ifstream safemode("/proc/device-tree/chosen/nvidia,safe_mode_adb");
+    if (safemode.is_open()) {
+        std::string current_mode = property_get("persist.sys.usb.config");
+	if (current_mode.empty() || !current_mode.compare("none")) {
+            property_set("sys.usb.config", "adb");
+        } else if (current_mode.find("adb") == std::string::npos) {
+            property_set("sys.usb.config", current_mode + ",adb");
+        }
+        property_set("ro.adb.secure", "0");
+    }
+}
+
 std::string tegra_init::get_model()
 {
 	return chosen_device->name;
