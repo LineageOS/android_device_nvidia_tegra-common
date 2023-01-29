@@ -102,6 +102,8 @@ void tegra_init::set_properties()
     property_set("ro.vendor.lineage.tegra.model",  chosen_device->model);
 }
 
+void tegra_init::check_safe_mode_adb() {}
+
 std::string tegra_init::get_model()
 {
 	return chosen_device->name;

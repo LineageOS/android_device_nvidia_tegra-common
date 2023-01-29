@@ -31,6 +31,8 @@ class tegra_init {
         void set_fingerprints(build_version fp_version);
         void make_symlinks(std::map<std::string,std::string> paths);
 
+        void check_safe_mode_adb();
+
 	std::string get_model();
 	bool is_model(std::string name);
 	bool is_model(uint16_t board_id, uint16_t sku);
