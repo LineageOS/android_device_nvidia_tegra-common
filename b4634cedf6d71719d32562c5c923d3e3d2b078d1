@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c2c119c_f7df81c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-01-30T03:12:49Z",
+      "side": 1,
+      "message": "Verified on mdarcy, when booting in safe mode from cboot, adb insecure is enabled.",
+      "revId": "b4634cedf6d71719d32562c5c923d3e3d2b078d1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
