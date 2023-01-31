@@ -45,6 +45,8 @@ function patch_bup() {
 # tegrasign_v3 tries to write the output file to its local dir, let's instead write to cwd
 # Remove dependency on yaml as it's not available in the aosp python prebuilts
 function patch_tegrasign_v3() {
+  sed -i "s|current_dir_path + '/|'|" ${LINEAGE_ROOT}/${OUTDIR}/common/r32/tegraflash/tegrasign_v3_internal.py
+  sed -i "/current_dir_path/d" ${LINEAGE_ROOT}/${OUTDIR}/common/r32/tegraflash/tegrasign_v3_internal.py
   sed -i "s|current_dir_path + '/|'|" ${LINEAGE_ROOT}/${OUTDIR}/common/r35/tegraflash/tegrasign_v3_internal.py
   sed -i "/current_dir_path/d" ${LINEAGE_ROOT}/${OUTDIR}/common/r35/tegraflash/tegrasign_v3_internal.py
 
