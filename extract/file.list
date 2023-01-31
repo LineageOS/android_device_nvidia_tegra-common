@@ -256,9 +256,15 @@ stock-t210	vendor/lib64/mediadrm/libwvdrmengine.so			common/rel-shield-r/widevin
 stock-t210	vendor/lib/mediadrm/libwvdrmengine.so			common/rel-shield-r/widevine/lib/mediadrm/libwvdrmengine.so
 stock-t210	vendor/lib/libwvhidl.so					common/rel-shield-r/widevine/lib/libwvhidl.so
 
+# Tegraflash
+# Tnspec
 nv-tegra-t210-rel24	prebuilt/t210/target/product/t210/tnspec.py	common/rel-24/tegraflash/tnspec.py
+
+# Bootloader update generators
 nv-tegra-t210	host/linux-x86/bin/nvblob_v2				common/rel-30/tegraflash/nvblob_v2
 l4t-t194	Linux_for_Tegra/bootloader/BUP_generator.py		common/r35/tegraflash/BUP_generator.py
+
+# R35
 l4t-t194	Linux_for_Tegra/bootloader/tegraflash.py		common/r35/tegraflash/tegraflash.py
 l4t-t194	Linux_for_Tegra/bootloader/tegraflash_impl_t234.py	common/r35/tegraflash/tegraflash_impl_t234.py
 l4t-t194	Linux_for_Tegra/bootloader/tegraflash_internal.py	common/r35/tegraflash/tegraflash_internal.py
@@ -268,22 +274,37 @@ l4t-t194	Linux_for_Tegra/bootloader/pyfdt/fdtmerge.py		common/r35/tegraflash/pyf
 l4t-t194	Linux_for_Tegra/bootloader/pyfdt/__init__.py		common/r35/tegraflash/pyfdt/__init__.py
 l4t-t194	Linux_for_Tegra/bootloader/pyfdt/jsonfdtdump.py		common/r35/tegraflash/pyfdt/jsonfdtdump.py
 l4t-t194	Linux_for_Tegra/bootloader/pyfdt/pyfdt.py		common/r35/tegraflash/pyfdt/pyfdt.py
-l4t-t210	Linux_for_Tegra/bootloader/tegrabct			common/r32/tegraflash/tegrabct
 l4t-t194	Linux_for_Tegra/bootloader/tegrabct_v2			common/r35/tegraflash/tegrabct_v2
-l4t-t210	Linux_for_Tegra/bootloader/tegradevflash		common/r32/tegraflash/tegradevflash
 l4t-t194	Linux_for_Tegra/bootloader/tegradevflash_v2		common/r35/tegraflash/tegradevflash_v2
-l4t-t210	Linux_for_Tegra/bootloader/tegrahost			common/r32/tegraflash/tegrahost
 l4t-t194	Linux_for_Tegra/bootloader/tegrahost_v2			common/r35/tegraflash/tegrahost_v2
-l4t-t210	Linux_for_Tegra/bootloader/tegraparser			common/r32/tegraflash/tegraparser
 l4t-t194	Linux_for_Tegra/bootloader/tegraparser_v2		common/r35/tegraflash/tegraparser_v2
-l4t-t210	Linux_for_Tegra/bootloader/tegrarcm			common/r32/tegraflash/tegrarcm
 l4t-t194	Linux_for_Tegra/bootloader/tegrarcm_v2			common/r35/tegraflash/tegrarcm_v2
-l4t-t210	Linux_for_Tegra/bootloader/tegrasign			common/r32/tegraflash/tegrasign
 l4t-t194	Linux_for_Tegra/bootloader/tegrasign_v2			common/r35/tegraflash/tegrasign_v2
 l4t-t194	Linux_for_Tegra/bootloader/tegrasign_v3.py		common/r35/tegraflash/tegrasign_v3.py
 l4t-t194	Linux_for_Tegra/bootloader/tegrasign_v3_internal.py	common/r35/tegraflash/tegrasign_v3_internal.py
 l4t-t194	Linux_for_Tegra/bootloader/tegrasign_v3_util.py		common/r35/tegraflash/tegrasign_v3_util.py
 l4t-t194	Linux_for_Tegra/bootloader/tegraopenssl			common/r35/tegraflash/tegraopenssl
+
+# R32
+l4t-t186	Linux_for_Tegra/bootloader/tegraflash.py		common/r32/tegraflash/tegraflash.py
+l4t-t186	Linux_for_Tegra/bootloader/tegraflash_internal.py	common/r32/tegraflash/tegraflash_internal.py
+l4t-t186	Linux_for_Tegra/bootloader/sw_memcfg_overlay.pl		common/r32/tegraflash/sw_memcfg_overlay.pl
+l4t-t210	Linux_for_Tegra/bootloader/tegrabct			common/r32/tegraflash/tegrabct
+l4t-t186	Linux_for_Tegra/bootloader/tegrabct_v2			common/r32/tegraflash/tegrabct_v2
+l4t-t210	Linux_for_Tegra/bootloader/tegradevflash		common/r32/tegraflash/tegradevflash
+l4t-t186	Linux_for_Tegra/bootloader/tegradevflash_v2		common/r32/tegraflash/tegradevflash_v2
+l4t-t210	Linux_for_Tegra/bootloader/tegrahost			common/r32/tegraflash/tegrahost
+l4t-t186	Linux_for_Tegra/bootloader/tegrahost_v2			common/r32/tegraflash/tegrahost_v2
+l4t-t210	Linux_for_Tegra/bootloader/tegraparser			common/r32/tegraflash/tegraparser
+l4t-t186	Linux_for_Tegra/bootloader/tegraparser_v2		common/r32/tegraflash/tegraparser_v2
+l4t-t210	Linux_for_Tegra/bootloader/tegrarcm			common/r32/tegraflash/tegrarcm
+l4t-t186	Linux_for_Tegra/bootloader/tegrarcm_v2			common/r32/tegraflash/tegrarcm_v2
+l4t-t210	Linux_for_Tegra/bootloader/tegrasign			common/r32/tegraflash/tegrasign
+l4t-t186	Linux_for_Tegra/bootloader/tegrasign_v2			common/r32/tegraflash/tegrasign_v2
+l4t-t186	Linux_for_Tegra/bootloader/tegrasign_v3.py		common/r32/tegraflash/tegrasign_v3.py
+l4t-t186	Linux_for_Tegra/bootloader/tegrasign_v3_internal.py	common/r32/tegraflash/tegrasign_v3_internal.py
+l4t-t186	Linux_for_Tegra/bootloader/tegrasign_v3_util.py		common/r32/tegraflash/tegrasign_v3_util.py
+l4t-t186	Linux_for_Tegra/bootloader/tegraopenssl			common/r32/tegraflash/tegraopenssl
 
 # Wireless
 # Realtek
