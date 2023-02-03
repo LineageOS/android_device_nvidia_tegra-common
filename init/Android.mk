@@ -17,6 +17,8 @@
 LOCAL_PATH := $(call my-dir)
 
 ifneq ($(TARGET_INIT_VENDOR_LIB),)
+ifneq ($(TARGET_INIT_VENDOR_LIB), vendor_init)
+
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES              := init_tegra_vendor.cpp \
                                 vendor_tegra.cpp
@@ -28,4 +30,5 @@ LOCAL_SHARED_LIBRARIES       := \
 LOCAL_WHOLE_STATIC_LIBRARIES := $(lastword $(subst :, ,$(TARGET_INIT_VENDOR_LIB)))_vendor
 LOCAL_VENDOR_MODULE          := true
 include $(BUILD_EXECUTABLE)
+endif
 endif
