@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5965eb01_d685d098",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-02-04T21:44:18Z",
+      "side": 1,
+      "message": "Uses LINEAGE_BUILD. Needs updated when tinyhal is forked and updated to use target_board_platform instead of target_device.",
+      "revId": "c2a67480ed76b5b38a22fd5af15bdc5a0658528a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
