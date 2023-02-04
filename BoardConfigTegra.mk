@@ -16,6 +16,9 @@
 
 # Audio
 TARGET_EXCLUDES_AUDIOFX := true
+ifneq ($(TARGET_TEGRA_AUDIO),)
+DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/audio.xml
+endif
 
 # Bluetooth
 ifneq ($(TARGET_TEGRA_BT),)
