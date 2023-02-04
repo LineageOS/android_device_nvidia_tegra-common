@@ -13,16 +13,6 @@
 # limitations under the License.
 
 PRODUCT_PACKAGES += \
-    android.hardware.audio.service \
-    android.hardware.audio@6.0 \
-    android.hardware.audio@6.0-impl \
-    android.hardware.audio.common@6.0 \
-    android.hardware.audio.common@6.0-util \
-    android.hardware.audio.effect@6.0-impl \
-    android.hardware.bluetooth.audio-impl \
-    audio.bluetooth.default \
-    audio.usb.default \
-    audio.r_submix.default \
     audio.primary.tegra \
     android.hardware.soundtrigger@2.1-impl \
     sound_trigger.primary.tegra \
