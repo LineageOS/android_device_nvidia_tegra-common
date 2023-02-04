@@ -51,7 +51,20 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
 
 # Audio
-ifeq ($(TARGET_TEGRA_AUDIO),nvaudio)
+ifneq ($(TARGET_TEGRA_AUDIO),)
+PRODUCT_PACKAGES += \
+    android.hardware.audio.service \
+    android.hardware.audio@6.0 \
+    android.hardware.audio@6.0-impl \
+    android.hardware.audio.common@6.0 \
+    android.hardware.audio.common@6.0-util \
+    android.hardware.audio.effect@6.0-impl \
+    android.hardware.bluetooth.audio@2.0-impl \
+    audio.a2dp.default \
+    audio.bluetooth.default \
+    audio.r_submix.default \
+    audio.usb.default
+
 PRODUCT_PACKAGES += \
     primary_module_deviceports.xml \
     primary_module_deviceports_tv.xml \
@@ -66,9 +79,14 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/surround_sound_configuration_5_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/surround_sound_configuration_5_0.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
 
+ifeq ($(TARGET_TEGRA_AUDIO),nvaudio)
 ifeq ($(TARGET_TEGRA_DOLBY),true)
 PRODUCT_PACKAGES += \
     msd_audio_policy_configuration.xml
+endif
+else ifeq ($(TARGET_TEGRA_AUDIO),tinyhal)
+PRODUCT_PACKAGES += \
+    audio.primary.tegra
 endif
 endif
 

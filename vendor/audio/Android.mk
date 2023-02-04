@@ -39,6 +39,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE               := android.hardware.audio@6.0-service-msd
 LOCAL_SRC_FILES_32         := $(COMMON_AUDIO_PATH)/bin32/hw/android.hardware.audio@6.0-service-msd
 LOCAL_MULTILIB             := 32
+LOCAL_VINTF_FRAGMENTS      := android.hardware.audio.service.msd.xml
 LOCAL_INIT_RC              := etc/init/android.hardware.audio@6.0-service-msd.rc
 LOCAL_MODULE_CLASS         := EXECUTABLES
 LOCAL_MODULE_TAGS          := optional
@@ -52,10 +53,8 @@ include $(CLEAR_VARS)
 LOCAL_MODULE               := audio.primary.tegra
 ifeq ($(TARGET_TEGRA_DOLBY),true)
 LOCAL_SRC_FILES            := $(COMMON_AUDIO_PATH)/lib/hw/audio.primary.tegra.dolby.so
-LOCAL_VINTF_FRAGMENTS      := android.hardware.audio.service.msd.xml
 else
 LOCAL_SRC_FILES            := $(COMMON_AUDIO_PATH)/lib/hw/audio.primary.tegra.so
-LOCAL_VINTF_FRAGMENTS      := android.hardware.audio.service.xml
 endif
 LOCAL_MODULE_SUFFIX        := .so
 LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
@@ -70,6 +69,7 @@ include $(BUILD_NVIDIA_COMMON_PREBUILT)
 include $(CLEAR_VARS)
 LOCAL_MODULE               := sound_trigger.primary.tegra
 LOCAL_SRC_FILES            := $(COMMON_AUDIO_PATH)/lib/hw/sound_trigger.primary.tegra.so
+LOCAL_VINTF_FRAGMENTS      := android.hardware.soundtrigger.xml
 LOCAL_MODULE_SUFFIX        := .so
 LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
 LOCAL_MODULE_TARGET_ARCH   := arm
