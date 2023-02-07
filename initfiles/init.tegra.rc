@@ -51,6 +51,9 @@ on post-fs-data
     # Enable backpressure logic
     setprop debug.sf.enable_gl_backpressure 1
 
+    # Disable continuous transaction tracing
+    setprop debug.sf.enable_transaction_tracing false
+
 # backlight
     chown system system /sys/class/backlight/pwm-backlight/brightness
 
