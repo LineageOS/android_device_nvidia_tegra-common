@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ddb7a84_03c9e4bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-02-13T19:59:49Z",
+      "side": 1,
+      "message": "Verified rebuilding tegra vendor",
+      "revId": "cd5e2a01a4bd578bda3341db6ddfe1c3e854eede",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
