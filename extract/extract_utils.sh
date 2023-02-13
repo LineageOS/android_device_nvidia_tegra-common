@@ -110,7 +110,7 @@ function fetch_sources() {
         mkdir ${ESPATH};
 
         fileext="zip";
-        if [ "${type}" == "git" ]; then
+        if [ "${type}" == "git" -o "${type}" == "gitiles" ]; then
             fileext="sh";
         elif [ "${type}" == "l4t" ]; then
             fileext="tbz2";
@@ -123,9 +123,15 @@ function fetch_sources() {
         fi;
         if [ ! -f ${TMPDIR}/downloads/${sname}.${fileext} ]; then
             wget ${url} -O ${TMPDIR}/downloads/${sname}.${fileext};
+
+            if [ "${type}" == "gitiles" ]; then
+                mv ${TMPDIR}/downloads/${sname}.sh ${TMPDIR}/downloads/${sname}.base64;
+                base64 --decode ${TMPDIR}/downloads/${sname}.base64 > ${TMPDIR}/downloads/${sname}.sh;
+	        rm ${TMPDIR}/downloads/${sname}.base64;
+            fi;
         fi;
 
-        if [ "${type}" == "git" ]; then
+        if [ "${type}" == "git" -o "${type}" == "gitiles" ]; then
             tail -n +$(($(grep -an "^\s*__START_TGZ_FILE__" ${TMPDIR}/downloads/${sname}.sh \
                         | awk -F ':' '{print $1}') + 1)) ${TMPDIR}/downloads/${sname}.sh \
               | tar zxv -C ${ESPATH};
