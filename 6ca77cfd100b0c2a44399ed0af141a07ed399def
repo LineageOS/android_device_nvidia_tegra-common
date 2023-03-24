@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e34a4bbf_d40fa0d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-03-24T22:35:11Z",
+      "side": 1,
+      "message": "Fixes launcher3 crashes on gsi",
+      "revId": "6ca77cfd100b0c2a44399ed0af141a07ed399def",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
