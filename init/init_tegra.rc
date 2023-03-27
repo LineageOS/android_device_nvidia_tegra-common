@@ -21,3 +21,6 @@ on property:ro.vendor.lineage.tegra.fingerprint=*
 
 on property:ro.vendor.lineage.tegra.oem_key1=*
     setprop ro.oem.key1 ${ro.vendor.lineage.tegra.oem_key1}
+
+on property:ro.vendor.lineage.tegra.secureos=*
+    setprop ro.boot.secureos ${ro.vendor.lineage.tegra.secureos}

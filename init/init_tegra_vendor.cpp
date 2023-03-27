@@ -97,6 +97,10 @@ void tegra_init::set_properties()
     property_set("ro.vendor.lineage.tegra.first_api_level",
                  std::to_string(chosen_device->first_api));
 
+    // If secureos is empty, set to none
+    if (property_get("ro.boot.secureos").empty())
+        property_set("ro.vendor.lineage.tegra.secureos", "none");
+
     property_set("ro.vendor.lineage.tegra.name",   chosen_device->name);
     property_set("ro.vendor.lineage.tegra.device", chosen_device->device);
     property_set("ro.vendor.lineage.tegra.model",  chosen_device->model);
