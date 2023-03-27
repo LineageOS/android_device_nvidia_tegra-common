@@ -1,0 +1,22 @@
+on property:ro.boot.secureos=tlk
+    enable vendor.gatekeeper-1-0
+
+on property:ro.boot.secureos=trusty
+    enable vendor.gatekeeper-1-0
+
+on property:ro.boot.secureos=none
+    enable vendor.gatekeeper-1-0-software
+
+service vendor.gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service
+    override
+    interface android.hardware.gatekeeper@1.0::IGatekeeper default
+    class hal
+    user system
+    group system
+    disabled
+
+service vendor.gatekeeper-1-0-software /vendor/bin/hw/android.hardware.gatekeeper@1.0-service.software
+    class hal
+    user system
+    group system
+    disabled

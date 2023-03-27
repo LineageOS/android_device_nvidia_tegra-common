@@ -32,10 +32,10 @@ include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := gatekeeper.tlk.tegra
-LOCAL_VINTF_FRAGMENTS      := android.hardware.gatekeeper@1.0-service.xml
 LOCAL_SRC_FILES_32         := $(COMMON_KEYSTORE_PATH)/lib/hw/gatekeeper.tlk.tegra.so
 LOCAL_SRC_FILES_64         := $(COMMON_KEYSTORE_PATH)/lib64/hw/gatekeeper.tlk.tegra.so
 LOCAL_MULTILIB             := both
+LOCAL_INIT_RC              := etc/init/android.hardware.gatekeeper@1.0-service.tegra.rc
 LOCAL_MODULE_SUFFIX        := .so
 LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
 LOCAL_MODULE_TAGS          := optional
