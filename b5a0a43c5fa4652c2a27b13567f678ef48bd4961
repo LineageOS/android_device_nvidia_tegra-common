@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49400798_ea64e4a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2023-03-27T18:35:41Z",
+      "side": 1,
+      "message": "looked at the logs, seems like the passthru entry is not needed. the default hal appears to support hidl?",
+      "revId": "b5a0a43c5fa4652c2a27b13567f678ef48bd4961",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
