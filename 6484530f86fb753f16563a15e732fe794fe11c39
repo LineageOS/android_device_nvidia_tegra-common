@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9940ad63_852142f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-03-28T17:17:33Z",
+      "side": 1,
+      "message": "Verified per user on nvidia devtalk by extracting prebuilts.",
+      "revId": "6484530f86fb753f16563a15e732fe794fe11c39",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
