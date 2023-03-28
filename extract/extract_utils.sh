@@ -100,7 +100,7 @@ function setup_vendor() {
 #
 function fetch_sources() {
     local HOST_BINS=${LINEAGE_ROOT}/out/host/linux-x86/bin
-    local LINEAGE_TOOLS=${LINEAGE_ROOT}/vendor/lineage/build/tools
+    local LINEAGE_TOOLS=${LINEAGE_ROOT}/tools/extract-utils
 
     mkdir ${TMPDIR}/downloads;
     mkdir ${TMPDIR}/extract;
