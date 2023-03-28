@@ -18,7 +18,7 @@
 TARGET_EXCLUDES_AUDIOFX := true
 ifneq ($(TARGET_TEGRA_AUDIO),)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/audio.xml
-ifneq ($(TARGET_TEGRA_AUDIO),tinyhal)
+ifeq ($(TARGET_TEGRA_AUDIO),tinyhal)
 BOARD_USES_TINYHAL_AUDIO := true
 endif
 endif
