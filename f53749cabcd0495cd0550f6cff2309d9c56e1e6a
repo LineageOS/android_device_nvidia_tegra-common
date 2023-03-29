@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d3819ea_e9a79297",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-03-29T00:41:44Z",
+      "side": 1,
+      "message": "Topic chain verified on jetson_cv and mdarcy. Software keymaster and gatekeeper used on no tos devices, tegra keymaster and gatekeeper used on devices with tlk.",
+      "revId": "f53749cabcd0495cd0550f6cff2309d9c56e1e6a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
