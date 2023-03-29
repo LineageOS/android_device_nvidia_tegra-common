@@ -5,4 +5,4 @@ stock-foster	https://ota-downloads.nvidia.com/ota/productionBL-droid-signed-fost
 stock-sif	https://ota-downloads.nvidia.com/ota/productionBL-droid-signed-sif_32b-full_ota-7825199_3167.5736_25631A.zip									nv-recovery-ota
 l4t-t210	https://developer.nvidia.com/downloads/remetpack-463r32releasev73t210jetson-210linur3273aarch64tbz2										l4t
 l4t-t186	https://developer.nvidia.com/downloads/remksjetpack-463r32releasev73t186jetsonlinur3273aarch64tbz2										l4t
-l4t-t194	https://developer.download.nvidia.com/embedded/L4T/r35_Release_v2.1/release/Jetson_Linux_R35.2.1_aarch64.tbz2									l4t
+l4t-t194	https://developer.download.nvidia.com/embedded/L4T/r35_Release_v3.1/release/Jetson_Linux_R35.3.1_aarch64.tbz2									l4t
