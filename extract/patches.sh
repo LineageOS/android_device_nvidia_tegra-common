@@ -76,6 +76,12 @@ function patch_tegrasign_v3() {
   echo "";
 }
 
+# Tegraflash attempts to call dtbcheck in the current working directory
+# Patch it to read from the same directory tegraflash is running from
+function patch_tegraflash_dtbcheck() {
+  patch --no-backup-if-mismatch -d ${LINEAGE_ROOT}/${OUTDIR}/common -p1 < ${LINEAGE_ROOT}/device/nvidia/tegra-common/extract/tegraflash-dtbcheck.patch
+}
+
 function fetch_l4t_deps() {
   echo -n "Fetching dependencies for nvpmodel...";
 
@@ -139,6 +145,7 @@ patch_nvcontrol;
 patch_audio_msd;
 patch_bup;
 patch_tegrasign_v3;
+patch_tegraflash_dtbcheck;
 fetch_l4t_deps;
 patch_nvpmodel;
 fetch_bmps;

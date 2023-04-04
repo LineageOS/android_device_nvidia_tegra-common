@@ -273,6 +273,9 @@ l4t-t194	bootloader/pyfdt/fdtmerge.py		tegraflash/pyfdt/
 l4t-t194	bootloader/pyfdt/__init__.py		tegraflash/pyfdt/
 l4t-t194	bootloader/pyfdt/jsonfdtdump.py		tegraflash/pyfdt/
 l4t-t194	bootloader/pyfdt/pyfdt.py		tegraflash/pyfdt/
+l4t-t194	bootloader/dtbcheck.py			tegraflash/
+l4t-t194	bootloader/t194.py			tegraflash/
+l4t-t194	bootloader/t234.py			tegraflash/
 l4t-t194	bootloader/tegrabct_v2			tegraflash/
 l4t-t194	bootloader/tegradevflash_v2		tegraflash/
 l4t-t194	bootloader/tegrahost_v2			tegraflash/
