@@ -31,11 +31,12 @@ if ! CommandCheck 'xxd'; then
 fi;
 
 declare -A APXPRODUCT;
-APXPRODUCT[t210]=7721;
-APXPRODUCT[t210nano]=7f21;
-APXPRODUCT[t186]=7c18;
-APXPRODUCT[t194]=7019;
-APXPRODUCT[t194nx]=7e19;
+APXPRODUCT[t210]="7721";
+APXPRODUCT[t210nano]="7f21";
+APXPRODUCT[t186]="7c18";
+APXPRODUCT[t194]="7019";
+APXPRODUCT[t194nx]="7e19";
+APXPRODUCT[t234]="7023;7223;7323;7423;7523;7623";
 
 declare AVAILABLE_INTERFACES=();
 declare INTERFACE;
@@ -46,21 +47,26 @@ declare -A CARRIERINFO;
 # Get list of devices in apx mode for the given tegra version
 function get_interfaces()
 {
+  IFS=";" read -r -a pids <<< "${APXPRODUCT[${TARGET_TEGRA_VERSION}]}";
+
   shopt -s globstar
   for devnumpath in /sys/bus/usb/devices/usb*/**/devnum; do
-    if [ "$(cat $(dirname ${devnumpath})/idVendor)"  == "0955" ] &&
-       [ "$(cat $(dirname ${devnumpath})/idProduct)" == "${APXPRODUCT[${TARGET_TEGRA_VERSION}]}" ]; then
-      keyfound=0;
-      for key in "${AVAILABLE_INTERFACES[@]}"; do
-        if [ "$(cat $(dirname ${devnumpath})/busnum)-$(cat $(dirname ${devnumpath})/devpath)" == "${key}" ]; then
-          keyfound=1;
+    if [ "$(cat $(dirname ${devnumpath})/idVendor)"  == "0955" ]; then
+      for pid in "${pids[@]}"; do
+        if [ "$(cat $(dirname ${devnumpath})/idProduct)" == "${pid}" ]; then
+          keyfound=0;
+          for key in "${AVAILABLE_INTERFACES[@]}"; do
+            if [ "$(cat $(dirname ${devnumpath})/busnum)-$(cat $(dirname ${devnumpath})/devpath)" == "${key}" ]; then
+              keyfound=1;
+              break;
+            fi;
+          done;
+          if [ $keyfound -eq 0 ]; then
+            AVAILABLE_INTERFACES+=("$(cat $(dirname ${devnumpath})/busnum)-$(cat $(dirname ${devnumpath})/devpath)");
+          fi;
           break;
         fi;
       done;
-      if [ $keyfound -eq 0 ]; then
-        AVAILABLE_INTERFACES+=("$(cat $(dirname ${devnumpath})/busnum)-$(cat $(dirname ${devnumpath})/devpath)");
-      fi;
-      break;
     fi;
   done;
 
@@ -76,10 +82,13 @@ function get_interfaces()
 function get_eeprominfo()
 {
   local EEPROMCMD="dump eeprom boardinfo eeprom_boardinfo.bin";
+  if [ "${TARGET_TEGRA_VERSION}" == "t234" ]; then
+    EEPROMCMD="dump eeprom cvm eeprom_boardinfo.bin";
+  fi;
   if [ "${1}" == "true" ]; then
     EEPROMCMD+="; dump eeprom baseinfo eeprom_baseinfo.bin";
   fi;
-  if [ "${TARGET_TEGRA_VERSION}" == "t194" -o "${TARGET_TEGRA_VERSION}" == "t194nx" ]; then
+  if [ "${TARGET_TEGRA_VERSION}" == "t194" -o "${TARGET_TEGRA_VERSION}" == "t194nx" -o "${TARGET_TEGRA_VERSION}" == "t234" ]; then
     EEPROMCMD+="; reboot recovery";
   fi;
 
@@ -111,6 +120,10 @@ function get_eeprominfo()
     MODULEINFO[revmin]=$((16#$(dd if=eeprom_boardinfo.bin bs=1 skip=10 count=1 status=none |xxd -p)));
   fi;
   MODULEINFO[version]=$(dd if=eeprom_boardinfo.bin bs=1 skip=35 count=3 status=none);
+  if [ "${TARGET_TEGRA_VERSION}" = "t234" ]; then
+    MODULEINFO[chipskurev]=$((16#$(dd if=chip_info.bin_bak bs=1 skip=0 count=1 status=none |xxd -p)));
+    rm chip_info.bin_bak;
+  fi;
 
   rm eeprom_boardinfo.bin;
 
@@ -139,17 +152,14 @@ function check_compatibility()
   local CARRIERID=${2};
   local TEMPVERSION=;
 
-  local CHECKBASEINFO="false";
-  if [ ! -z "${CARRIERID}" ]; then
-    CHECKBASEINFO="true";
-  fi;
-
   # t210 rcm applet cannot fetch carrier board eeprom, attempts to do so return the modulue eeprom silently
   # t194 nx cannot fetch carrier board eeprom due to bug that will not be fixed per
   #  https://forums.developer.nvidia.com/t/xavier-nx-apx-carrier-board-eeprom-read/191908/3
-  # So even if a carrier board id is supplied, ignore it on these socs
-  if [ "${TARGET_TEGRA_VERSION}" = "t210" -o "${TARGET_TEGRA_VERSION}" = "t210nano" -o "${TARGET_TEGRA_VERSION}" = "t194nx" ]; then
-    CHECKBASEINFO="false";
+  # t234 does not support reading cvb at all
+  # This means only t186 and t194-agx support reading cvb, so whitelist on those
+  local CHECKBASEINFO="false";
+  if [ ! -z "${CARRIERID}" ] && [ "${TARGET_TEGRA_VERSION}" = "t186" -o "${TARGET_TEGRA_VERSION}" = "t194" ]; then
+    CHECKBASEINFO="true";
   fi;
 
   echo "Checking compatibility.";
