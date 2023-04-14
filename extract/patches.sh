@@ -53,15 +53,6 @@ function patch_tegrasign_v3() {
   patch --no-backup-if-mismatch -d ${LINEAGE_ROOT}/${OUTDIR} -p1 < ${LINEAGE_ROOT}/device/nvidia/tegra-common/extract/tegrasign.patch
 }
 
-# aptX libraries from stock t210 crash when opening an audio stream
-# Source from Pixel 4 instead
-function fetch_aptx() {
-  FLAME_SYSTEM_EXT_URL="https://dumps.tadiphone.dev/dumps/google/flame/-/raw/flame-user-11-RQ2A.210305.006-7119741-release-keys/system_ext"
-  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/external/audio/lib64
-  wget ${FLAME_SYSTEM_EXT_URL}/lib64/libaptX_encoder.so -O ${LINEAGE_ROOT}/${OUTDIR}/common/external/audio/lib64/libaptX_encoder.so
-  wget ${FLAME_SYSTEM_EXT_URL}/lib64/libaptXHD_encoder.so -O ${LINEAGE_ROOT}/${OUTDIR}/common/external/audio/lib64/libaptXHD_encoder.so
-}
-
 function fetch_l4t_deps() {
   mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/bin64
   mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64
@@ -112,7 +103,6 @@ chmod_tegraflash;
 patch_nvcontrol;
 patch_bup;
 patch_tegrasign_v3;
-fetch_aptx;
 fetch_l4t_deps;
 patch_nvpmodel;
 fetch_bmps;
