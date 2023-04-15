@@ -15,6 +15,7 @@
 ifeq ($(TARGET_TEGRA_AUDIO),rel-shield-r)
 LOCAL_PATH := $(call my-dir)
 COMMON_AUDIO_PATH := ../../../../../../vendor/nvidia/common/rel-shield-r/audio
+VNDK_30_PATH := ../../../../../../prebuilts/vndk/v30
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := NvAudioSvc
@@ -47,6 +48,8 @@ LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_CHECK_ELF_FILES      := false
+LOCAL_SHARED_LIBRARIES     := libcutils libhardware libhidlbase libhidltransport liblog libfmq libutils libmedia_helper libaudioutils vendor.nvidia.hardware.ipprotect@1.0 android.hardware.audio@6.0 android.hardware.audio.common@6.0 android.hardware.audio.common@6.0-util vendor.dolby.audio.measurement@1.0 vendor.dolby.ms12@1.0 vendor.dolby.ms12@1.1 vendor.dolby.ms12@1.2 libjsonshm libc++ libc libm libdl
 LOCAL_REQUIRED_MODULES     := cp_pgm_one_dap_lib cp_pgm_two_dap_lib cp_sys_one_dap_lib cp_sys_two_dap_lib ddp_enc_lib_ac3 ddp_enc_lib_eac3 ddp_udc_lib_ac3 ddp_udc_lib_ec3 dp_dap_lib
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
@@ -222,5 +225,22 @@ LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := soundfx
+include $(BUILD_NVIDIA_COMMON_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE               := libjsonshm
+ifeq ($(TARGET_ARCH),arm64)
+LOCAL_SRC_FILES_32         := $(VNDK_30_PATH)/arm64/arch-arm-armv8-a/shared/vndk-sp/libjsoncpp.so
+LOCAL_SRC_FILES_64         := $(VNDK_30_PATH)/arm64/arch-arm64-armv8-a/shared/vndk-sp/libjsoncpp.so
+else ifeq ($(TARGET_ARCH),arm)
+LOCAL_SRC_FILES_32         := $(VNDK_30_PATH)/arm/arch-arm-armv7-a-neon/shared/vndk-sp/libjsoncpp.so
+endif
+LOCAL_MULTILIB             := both
+LOCAL_MODULE_SUFFIX        := .so
+LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS          := optional
+LOCAL_MODULE_OWNER         := google
+LOCAL_VENDOR_MODULE        := true
+LOCAL_CHECK_ELF_FILES      := false
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 endif
