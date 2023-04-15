@@ -21,13 +21,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.os.IBinder;
 import android.util.Log;
+import android.view.IWindowManager;
 import android.view.WindowManagerPolicyConstants;
+
+import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcModeType;
+import vendor.nvidia.hardware.graphics.display.V1_0.INvDisplay;
 
 public class DisplayService extends Service {
     private static final String TAG = DisplayService.class.getSimpleName();
     final Receiver mReceiver = new Receiver();
+
+    private IWindowManager mWindowManager;
+    private INvDisplay mDisplayService;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -48,6 +57,14 @@ public class DisplayService extends Service {
         public void init() {
             IntentFilter filter = new IntentFilter();
 
+            try {
+                mDisplayService = INvDisplay.getService(true /* retry */);
+            } catch (RemoteException e) {
+            }
+
+            mWindowManager = IWindowManager.Stub.asInterface(
+                ServiceManager.getService(Context.WINDOW_SERVICE));
+
             filter.addAction(WindowManagerPolicyConstants.ACTION_HDMI_PLUGGED);
             filter.addAction(Intent.ACTION_SCREEN_ON);
 
@@ -56,15 +73,22 @@ public class DisplayService extends Service {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            SharedPreferences sharedPrefs = context.getSharedPreferences("org.lineageos.settings.device_preferences", context.MODE_PRIVATE);
+            SharedPreferences sharedPrefs = context.getSharedPreferences(
+                "org.lineageos.settings.device_preferences", context.MODE_PRIVATE);
             Log.w(TAG, intent.getAction());
             String action = intent.getAction();
 
             switch (action) {
                 case WindowManagerPolicyConstants.ACTION_HDMI_PLUGGED:
-                    mExternalDisplayConnected = intent.getBooleanExtra(WindowManagerPolicyConstants.EXTRA_HDMI_PLUGGED_STATE, false);
+                    mExternalDisplayConnected = intent.getBooleanExtra(
+                        WindowManagerPolicyConstants.EXTRA_HDMI_PLUGGED_STATE, false);
+                    DisplayUtils.setDisplayMode(
+                        mExternalDisplayConnected ? 1 : 0, 
+                        mDisplayService, mWindowManager, sharedPrefs);
                 case Intent.ACTION_SCREEN_ON:
-                    DisplayUtils.setInternalDisplayState(!(mExternalDisplayConnected && sharedPrefs.getBoolean("disable_internal_on_external_connected", false)));
+                    DisplayUtils.setInternalDisplayState(
+                        !(mExternalDisplayConnected && 
+                        sharedPrefs.getBoolean("disable_internal_on_external_connected", false)));
                 default:
                     break;
             }
