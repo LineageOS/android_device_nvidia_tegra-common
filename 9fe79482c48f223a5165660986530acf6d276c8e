@@ -24,6 +24,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7d4e204_c129c271",
+        "filename": "devicesettings/src/org/lineageos/settings/device/DisplayService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2023-04-16T01:35:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faf9dc15_ea13732e",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 112
+      },
+      "revId": "9fe79482c48f223a5165660986530acf6d276c8e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d08f66eb_5a2d8979",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-15T23:48:33Z",
       "side": 1,
       "message": "if (mExternalDisplayConnected) {...}",
+      "range": {
+        "startLine": 82,
+        "startChar": 20,
+        "endLine": 82,
+        "endChar": 49
+      },
+      "revId": "9fe79482c48f223a5165660986530acf6d276c8e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "360c5031_e9103fe9",
+        "filename": "devicesettings/src/org/lineageos/settings/device/DisplayService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2023-04-16T01:35:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d08f66eb_5a2d8979",
       "range": {
         "startLine": 82,
         "startChar": 20,
@@ -70,6 +118,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4aa0d98_68bfca30",
+        "filename": "devicesettings/src/org/lineageos/settings/device/DisplayService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2023-04-16T01:35:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4528e38_309bfaf0",
+      "range": {
+        "startLine": 83,
+        "startChar": 52,
+        "endLine": 83,
+        "endChar": 53
+      },
+      "revId": "9fe79482c48f223a5165660986530acf6d276c8e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ad72f39_a44b92c0",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-04-15T23:48:33Z",
       "side": 1,
       "message": "100 chars",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 140
+      },
+      "revId": "9fe79482c48f223a5165660986530acf6d276c8e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00946b5e_98aebfb7",
+        "filename": "devicesettings/src/org/lineageos/settings/device/DisplayUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2023-04-16T01:35:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ad72f39_a44b92c0",
       "range": {
         "startLine": 57,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af87cb68_a4bef5f1",
+        "filename": "devicesettings/src/org/lineageos/settings/device/DisplayUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2023-04-16T01:35:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6782a283_7b360e46",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 139
+      },
+      "revId": "9fe79482c48f223a5165660986530acf6d276c8e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37631981_e132a7d1",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-04-15T23:48:33Z",
       "side": 1,
       "message": "Stray tab",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 12
+      },
+      "revId": "9fe79482c48f223a5165660986530acf6d276c8e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4643072f_e4a1b149",
+        "filename": "devicesettings/src/org/lineageos/settings/device/DisplayUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2023-04-16T01:35:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37631981_e132a7d1",
       "range": {
         "startLine": 66,
         "startChar": 0,
