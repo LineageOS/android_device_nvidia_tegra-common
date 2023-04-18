@@ -17,6 +17,19 @@ if [ "$EUID" -ne 0 ]; then
   exit -1;
 fi;
 
+# Start up error checking
+CommandCheck () {
+  CMD="$1";
+  MORE="$2";
+  command -v ${CMD} >/dev/null 2>&1 || { echo >&2 "${CMD} is required, but not installed."; [ ! -z "${MORE}" ] && echo >&2 "${MORE}"; echo >&2 "Aborting."; return -1; }
+
+  return 0;
+}
+
+if ! CommandCheck 'xxd'; then
+  return -1;
+fi;
+
 declare -A APXPRODUCT;
 APXPRODUCT[t210]=7721;
 APXPRODUCT[t210nano]=7f21;
