@@ -50,7 +50,16 @@ function get_interfaces()
   for devnumpath in /sys/bus/usb/devices/usb*/**/devnum; do
     if [ "$(cat $(dirname ${devnumpath})/idVendor)"  == "0955" ] &&
        [ "$(cat $(dirname ${devnumpath})/idProduct)" == "${APXPRODUCT[${TARGET_TEGRA_VERSION}]}" ]; then
-      AVAILABLE_INTERFACES+="$(cat $(dirname ${devnumpath})/busnum)-$(cat $(dirname ${devnumpath})/devpath)";
+      keyfound=0;
+      for key in "${AVAILABLE_INTERFACES[@]}"; do
+        if [ "$(cat $(dirname ${devnumpath})/busnum)-$(cat $(dirname ${devnumpath})/devpath)" == "${key}" ]; then
+          keyfound=1;
+          break;
+        fi;
+      done;
+      if [ $keyfound -eq 0 ]; then
+        AVAILABLE_INTERFACES+=("$(cat $(dirname ${devnumpath})/busnum)-$(cat $(dirname ${devnumpath})/devpath)");
+      fi;
       break;
     fi;
   done;
