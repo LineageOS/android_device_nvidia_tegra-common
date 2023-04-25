@@ -94,12 +94,22 @@ function get_eeprominfo()
     return;
   fi;
 
+  MODULEINFO[eepromver]=$(dd if=eeprom_boardinfo.bin bs=1 count=1 status=none |xxd -p);
   MODULEINFO[assetnum]=$(dd if=eeprom_boardinfo.bin bs=1 skip=74 count=15 status=none |tr -dc '[[:print:]]');
-  MODULEINFO[boardid]=$((16#$(dd if=eeprom_boardinfo.bin bs=1 skip=4 count=2 status=none |xxd -p |tac -rs .. |tr -d '\n')));
-  MODULEINFO[sku]=$((16#$(dd if=eeprom_boardinfo.bin bs=1 skip=6 count=2 status=none |xxd -p |tac -rs .. |tr -d '\n')));
-  MODULEINFO[fab]=$((16#$(dd if=eeprom_boardinfo.bin bs=1 skip=8 count=1 status=none |xxd -p)));
-  MODULEINFO[revmaj]=$((16#$(dd if=eeprom_boardinfo.bin bs=1 skip=9 count=1 status=none |xxd -p)));
-  MODULEINFO[revmin]=$((16#$(dd if=eeprom_boardinfo.bin bs=1 skip=10 count=1 status=none |xxd -p)));
+  MODULEINFO[partnum]=$(dd if=eeprom_boardinfo.bin bs=1 skip=20 count=30 status=none |tr -dc '[[:print:]]');
+  if [ ${MODULEINFO[eepromver]} -eq 2 ]; then
+    MODULEINFO[boardid]=$(dd if=eeprom_boardinfo.bin bs=1 skip=25 count=4 status=none);
+    MODULEINFO[sku]=$(dd if=eeprom_boardinfo.bin bs=1 skip=30 count=4 status=none);
+    MODULEINFO[fab]=$(dd if=eeprom_boardinfo.bin bs=1 skip=35 count=3 status=none);
+    MODULEINFO[revmaj]=$(dd if=eeprom_boardinfo.bin bs=1 skip=39 count=1 status=none);
+    MODULEINFO[revmin]=$(dd if=eeprom_boardinfo.bin bs=1 skip=41 count=1 status=none);
+  else
+    MODULEINFO[boardid]=$((16#$(dd if=eeprom_boardinfo.bin bs=1 skip=4 count=2 status=none |xxd -p |tac -rs .. |tr -d '\n')));
+    MODULEINFO[sku]=$((16#$(dd if=eeprom_boardinfo.bin bs=1 skip=6 count=2 status=none |xxd -p |tac -rs .. |tr -d '\n')));
+    MODULEINFO[fab]=$((16#$(dd if=eeprom_boardinfo.bin bs=1 skip=8 count=1 status=none |xxd -p)));
+    MODULEINFO[revmaj]=$((16#$(dd if=eeprom_boardinfo.bin bs=1 skip=9 count=1 status=none |xxd -p)));
+    MODULEINFO[revmin]=$((16#$(dd if=eeprom_boardinfo.bin bs=1 skip=10 count=1 status=none |xxd -p)));
+  fi;
   MODULEINFO[version]=$(dd if=eeprom_boardinfo.bin bs=1 skip=35 count=3 status=none);
 
   rm eeprom_boardinfo.bin;
