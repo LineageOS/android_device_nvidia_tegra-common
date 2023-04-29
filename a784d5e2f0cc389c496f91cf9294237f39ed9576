@@ -67,6 +67,23 @@
       "message": "Aaron has thoughts - he\u0027ll post them here",
       "revId": "a784d5e2f0cc389c496f91cf9294237f39ed9576",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "688caf9e_0548dbcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-04-29T04:17:24Z",
+      "side": 1,
+      "message": "This was tested against an hdmi primary device. The ui was not being updated properly after the resolution changed. Resulting in weird display issues like the drawable area being a small area in the corner with the rest of the panel being in an undefined state. If this works on one device, but does not work on others, it should be forked to the device and made an override of the common apk. It would be preferable that the code work generically on all targets however.",
+      "revId": "a784d5e2f0cc389c496f91cf9294237f39ed9576",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
