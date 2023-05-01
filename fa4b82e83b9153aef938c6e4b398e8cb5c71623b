@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b9e9fe3_1630773b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-05-01T23:53:06Z",
+      "side": 1,
+      "message": "This would conflict with the google/atv class assignment. Mobile does not have a platform level default, so this concept is okay, but platform or device should be able to set something else.",
+      "revId": "fa4b82e83b9153aef938c6e4b398e8cb5c71623b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
