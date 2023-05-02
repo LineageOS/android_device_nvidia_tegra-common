@@ -1,6 +1,7 @@
 # Bluetooth
 ifneq ($(TARGET_TEGRA_BT),)
 PRODUCT_PROPERTY_OVERRIDES += \
+    bluetooth.hardware.power.operating_voltage_mv=0 \
     bluetooth.profile.asha.central.enabled?=true \
     bluetooth.profile.a2dp.source.enabled?=true \
     bluetooth.profile.avrcp.target.enabled?=true \
