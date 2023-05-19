@@ -15,13 +15,6 @@
 LOCAL_PATH := $(call my-dir)
 COMMON_NVPMODEL_PATH := ../../../../../vendor/nvidia/common/nvpmodel
 
-NVPMODEL_DATA_SYMLINK := $(TARGET_OUT_ODM)/etc/nvpmodel
-$(NVPMODEL_DATA_SYMLINK): $(LOCAL_INSTALLED_MODULE)
-	$(hide) mkdir -p $(dir $@)
-	$(hide) ln -sf /data/vendor/nvpmodel $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(NVPMODEL_DATA_SYMLINK)
-
 include $(CLEAR_VARS)
 LOCAL_MODULE               := nvpmodel
 LOCAL_SRC_FILES            := $(COMMON_NVPMODEL_PATH)/bin64/nvpmodel
@@ -34,6 +27,9 @@ LOCAL_VENDOR_MODULE        := true
 LOCAL_REQUIRED_MODULES     := ld-linux-aarch64.so.1 libc.so.6 nvpmodel_script
 LOCAL_CHECK_ELF_FILES      := false
 LOCAL_MODULE_RELATIVE_PATH := l4t
+LOCAL_POST_INSTALL_CMD     := \
+    mkdir -p $(TARGET_OUT_ODM_ETC); \
+    ln -sf /data/vendor/nvpmodel $(TARGET_OUT_ODM_ETC)/nvpmodel
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
