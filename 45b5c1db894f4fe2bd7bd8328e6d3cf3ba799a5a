@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2525c98a_bb2f3d56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-05-20T01:34:44Z",
+      "side": 1,
+      "message": "Verified building quill and verified that the symlink was in place.",
+      "revId": "45b5c1db894f4fe2bd7bd8328e6d3cf3ba799a5a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
