@@ -26,9 +26,11 @@ CommandCheck () {
   return 0;
 }
 
-if ! CommandCheck 'xxd'; then
-  return -1;
-fi;
+for COMMAND_CHECK in 'xxd' 'fdtput'; do
+  if ! CommandCheck ${COMMAND_CHECK}; then
+    return -1;
+  fi;
+done;
 
 declare -A APXPRODUCT;
 APXPRODUCT[t210]="7721";
@@ -192,6 +194,19 @@ function check_compatibility()
   fi;
 
   INTERFACE="${AVAILABLE_INTERFACES[0]}";
+  return 0;
+}
+
+# Add tnspec efi var to a dtbo
+function generate_tnspec_dtbo()
+{
+  if [ -z "${1}" ]; then return -1; fi;
+
+  local TNSPEC=$(printf "p%04d-%04d+p%04d-%04d.android\0" ${MODULEINFO[boardid]} ${MODULEINFO[sku]} ${CARRIERINFO[boardid]} ${CARRIERINFO[sku]} |xxd -p |sed 's/../& /g');
+  fdtput -p -t bx ${1} /fragment@0/__overlay__/firmware/uefi/variables/gNVIDIAPublicVariableGuid/TegraPlatformSpec data ${TNSPEC};
+  fdtput -p ${1} /fragment@0/__overlay__/firmware/uefi/variables/gNVIDIAPublicVariableGuid/TegraPlatformSpec runtime;
+  fdtput -p ${1} /fragment@0/__overlay__/firmware/uefi/variables/gNVIDIAPublicVariableGuid/TegraPlatformSpec locked;
+
   return 0;
 }
 
