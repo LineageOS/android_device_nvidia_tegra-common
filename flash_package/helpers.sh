@@ -210,6 +210,39 @@ function generate_tnspec_dtbo()
   return 0;
 }
 
+function generate_version_bootblob_v3()
+{
+  if [ -z "${1}" -o -z "${2}" ]; then return -1; fi;
+  local LINEAGEVER=${2};
+
+  echo "NV4" > ${1};
+  echo "# R${LINEAGEVER%.*} , REVISION: ${LINEAGEVER#*.}" >> ${1};
+  echo "BOARDID=${MODULEINFO[boardid]} BOARDSKU=$(printf %04d ${MODULEINFO[sku]}) FAB=" >> ${1};
+  date '+%Y%m%d%H%M%S' >> ${1};
+  local CRC32=$(python -c 'import zlib; print("%X"%(zlib.crc32(open("'"${1}"'", "rb").read()) & 0xFFFFFFFF))');
+  local BYTECOUNT=$(wc -c ${1} |awk '{ print $1 }');
+  echo "BYTES:${BYTECOUNT} CRC32:${CRC32}" >> ${1};
+
+  return 0;
+}
+
+function generate_version_bootblob_v4()
+{
+  if [ -z "${1}" -o -z "${2}" ]; then return -1; fi;
+  local LINEAGEVER=${2};
+
+  echo "NV4" > ${1};
+  echo "# R${LINEAGEVER%.*} , REVISION: ${LINEAGEVER#*.}" >> ${1};
+  echo "BOARDID=${MODULEINFO[boardid]} BOARDSKU=$(printf %04d ${MODULEINFO[sku]}) FAB=" >> ${1};
+  date '+%Y%m%d%H%M%S' >> ${1};
+  echo "$(printf "0x%x" $(( ${LINEAGEVER%.*}<<16 | ${LINEAGEVER#*.}<<8 )) )" >> ${1};
+  local CRC32=$(python -c 'import zlib; print("%X"%(zlib.crc32(open("'"${1}"'", "rb").read()) & 0xFFFFFFFF))');
+  local BYTECOUNT=$(wc -c ${1} |awk '{ print $1 }');
+  echo "BYTES:${BYTECOUNT} CRC32:${CRC32}" >> ${1};
+
+  return 0;
+}
+
 # Compatibility functions for older flash pacakges
 function check_module_compatibility()
 {
