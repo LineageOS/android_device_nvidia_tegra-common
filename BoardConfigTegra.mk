@@ -36,7 +36,7 @@ endif
 endif
 
 # Boot Control
-ifeq ($(AB_OTA_UPDATER),true)
+ifneq ($(TARGET_TEGRA_BOOTCTRL),)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/boot.xml
 endif
 
