@@ -113,14 +113,22 @@ endif
 endif
 
 # Boot Control
-ifeq ($(AB_OTA_UPDATER),true)
+ifneq ($(TARGET_TEGRA_BOOTCTRL),)
+AB_OTA_UPDATER := true
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.0-service \
-    android.hardware.boot@1.0-impl.nvidia \
-    android.hardware.boot@1.0-impl.nvidia.recovery
-
+    android.hardware.boot@1.0-service
 PRODUCT_PACKAGES_DEBUG += \
     bootctrl
+
+ifeq ($(TARGET_TEGRA_BOOTCTRL),smd)
+PRODUCT_PACKAGES += \
+    android.hardware.boot@1.0-impl.nvidia \
+    android.hardware.boot@1.0-impl.nvidia.recovery
+else ifeq ($(TARGET_TEGRA_BOOTCTRL),efi)
+PRODUCT_PACKAGES += \
+    android.hardware.boot@1.0-impl.nvidia-efi \
+    android.hardware.boot@1.0-impl.nvidia-efi.recovery
+endif
 endif
 
 # CEC
