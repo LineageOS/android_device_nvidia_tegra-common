@@ -44,10 +44,11 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 ifeq ($(TARGET_TEGRA_GPU),drm)
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196610 \
-    ro.hardware.gralloc=gbm \
+    ro.hardware.gralloc=minigbm \
     ro.hardware.hwcomposer=drm \
+    ro.hardware.egl=mesa \
     gralloc.gbm.device=/dev/dri/renderD129 \
-    hwc.drm.device=/dev/dri/card1 \
+    vendor.hwc.drm.device=/dev/dri/card1 \
     drm.gpu.vendor_name=tegra
 else ifeq ($(TARGET_TEGRA_GPU),swiftshader)
 PRODUCT_PROPERTY_OVERRIDES += \
