@@ -14,6 +14,7 @@
 # limitations under the License.
 #
 
+ifneq ($(TARGET_TEGRA_PHS),)
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
@@ -53,3 +54,4 @@ LOCAL_MODULE_CLASS         := EXECUTABLES
 LOCAL_SRC_FILES            := nvphsd_setup.sh
 LOCAL_VENDOR_MODULE        := true
 include $(BUILD_PREBUILT)
+endif
