@@ -91,7 +91,7 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
 
 ifneq ($(filter rel-shield-r, $(TARGET_TEGRA_AUDIO)),)
-ifneq ($(TARGET_TEGRA_DOLBY),)
+ifneq ($(filter audio, $(TARGET_TEGRA_DOLBY)),)
 PRODUCT_PACKAGES += \
     msd_audio_policy_configuration.xml
 endif

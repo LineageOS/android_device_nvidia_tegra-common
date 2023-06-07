@@ -193,7 +193,7 @@ include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := libnvmmlite_video
-ifneq ($(TARGET_TEGRA_DOLBY),)
+ifneq ($(filter video, $(TARGET_TEGRA_DOLBY)),)
 LOCAL_SRC_FILES_32         := $(COMMON_NVMM_PATH)/lib/libnvmmlite_video.dolby.so
 LOCAL_SRC_FILES_64         := $(COMMON_NVMM_PATH)/lib64/libnvmmlite_video.dolby.so
 else
@@ -210,7 +210,7 @@ include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := libnvomx
-ifneq ($(TARGET_TEGRA_DOLBY),)
+ifneq ($(filter video, $(TARGET_TEGRA_DOLBY)),)
 LOCAL_SRC_FILES_32         := $(COMMON_NVMM_PATH)/lib/libnvomx.dolby.so
 LOCAL_SRC_FILES_64         := $(COMMON_NVMM_PATH)/lib64/libnvomx.dolby.so
 else
@@ -253,7 +253,7 @@ include $(BUILD_NVIDIA_COMMON_PREBUILT)
 include $(CLEAR_VARS)
 LOCAL_MODULE               := libstagefrighthw
 LOCAL_VINTF_FRAGMENTS      := android.hardware.media.omx@1.0-service.xml
-ifneq ($(TARGET_TEGRA_DOLBY),)
+ifneq ($(filter video, $(TARGET_TEGRA_DOLBY)),)
 LOCAL_SRC_FILES_32         := $(COMMON_NVMM_PATH)/lib/libstagefrighthw.dolby.so
 else
 LOCAL_SRC_FILES_32         := $(COMMON_NVMM_PATH)/lib/libstagefrighthw.so

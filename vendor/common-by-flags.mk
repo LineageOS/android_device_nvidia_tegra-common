@@ -14,8 +14,8 @@
 
 LOCAL_PATH := device/nvidia/tegra-common/vendor
 
-ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_DOLBY)/ipprotect/ipprotect.mk)","")
-$(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_DOLBY)/ipprotect/ipprotect.mk)
+ifneq ($(TARGET_TEGRA_DOLBY),)
+$(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/ipprotect/ipprotect.mk)
 endif
 
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_AUDIO)/audio/audio.mk)","")

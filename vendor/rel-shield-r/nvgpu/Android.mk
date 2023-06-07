@@ -229,7 +229,7 @@ include $(BUILD_NVIDIA_COMMON_PREBUILT)
 include $(CLEAR_VARS)
 LOCAL_MODULE               := libnvhwcomposer
 LOCAL_REQUIRED_MODULES     := libcuda
-ifneq ($(TARGET_TEGRA_DOLBY),)
+ifneq ($(filter video, $(TARGET_TEGRA_DOLBY)),)
 LOCAL_SRC_FILES_32         := $(COMMON_NVGPU_PATH)/lib/libnvhwcomposer.dolby.so
 LOCAL_SRC_FILES_64         := $(COMMON_NVGPU_PATH)/lib64/libnvhwcomposer.dolby.so
 LOCAL_REQUIRED_MODULES     += libdolbycontrol

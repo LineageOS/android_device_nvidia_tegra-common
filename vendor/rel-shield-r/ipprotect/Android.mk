@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifeq ($(TARGET_TEGRA_DOLBY),rel-shield-r)
+ifeq ($(TARGET_TEGRA_DEFAULT_BRANCH),rel-shield-r)
 LOCAL_PATH := $(call my-dir)
 COMMON_IPPROTECT_PATH := ../../../../../../vendor/nvidia/common/rel-shield-r/ipprotect
 

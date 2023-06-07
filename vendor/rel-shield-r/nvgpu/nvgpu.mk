@@ -13,7 +13,7 @@
 # limitations under the License.
 
 ifeq ($(TARGET_ARCH),arm)
-ifneq ($(TARGET_TEGRA_DOLBY),)
+ifneq ($(filter video, $(TARGET_TEGRA_DOLBY)),)
 $(error NvGPU on Armv7 is only supported with dolby enabled)
 endif
 endif
@@ -60,7 +60,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.tegra.glc.gpu_pri=15 \
     ro.vendor.tegra.glc.emc_min=4080
 
-ifneq ($(TARGET_TEGRA_DOLBY),)
+ifneq ($(filter video, $(TARGET_TEGRA_DOLBY)),)
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.tegra.deepisp.cpu_min=-1 \
     ro.vendor.tegra.deepisp.cpu_max=-1 \
