@@ -14,7 +14,7 @@
 
 LOCAL_PATH := device/nvidia/tegra-common/vendor
 
-ifeq ($(TARGET_TEGRA_DOLBY),true)
+ifneq ($(TARGET_TEGRA_DOLBY),)
 $(call inherit-product, $(LOCAL_PATH)/ipprotect/ipprotect.mk)
 endif
 

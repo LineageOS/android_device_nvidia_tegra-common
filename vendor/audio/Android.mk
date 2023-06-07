@@ -54,7 +54,7 @@ include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := audio.primary.tegra
-ifeq ($(TARGET_TEGRA_DOLBY),true)
+ifneq ($(filter audio, $(TARGET_TEGRA_DOLBY)),)
 LOCAL_SRC_FILES            := $(COMMON_AUDIO_PATH)/lib/hw/audio.primary.tegra.dolby.so
 else
 LOCAL_SRC_FILES            := $(COMMON_AUDIO_PATH)/lib/hw/audio.primary.tegra.so

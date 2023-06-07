@@ -18,7 +18,7 @@ PRODUCT_PACKAGES += \
     sound_trigger.primary.tegra \
     NvAudioSvc
 
-ifeq ($(TARGET_TEGRA_DOLBY),true)
+ifneq ($(filter audio, $(TARGET_TEGRA_DOLBY)),)
 PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-service-msd \
     DolbyAudioService
