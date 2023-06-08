@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "752aa195_507bf9b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-06-08T00:25:59Z",
+      "side": 1,
+      "message": "Verified booting the sif target on jetson_cv. The dolby audio feature is broken on 19.1, but works on 20. Merging this to 19.1 to make things less broken and unblock forking the sif target.",
+      "revId": "0c602702cb9ebd5df2b3ebe4548712226880cb29",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
