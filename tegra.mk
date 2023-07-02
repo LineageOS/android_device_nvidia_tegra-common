@@ -26,6 +26,14 @@ include device/nvidia/tegra-common/properties.mk
 DEVICE_PACKAGE_OVERLAYS += \
     device/nvidia/tegra-common/overlay
 
+ifeq ($(TARGET_SUPPORTS_64_BIT_APPS),true)
+DEVICE_PACKAGE_OVERLAYS += \
+    device/nvidia/tegra-common/overlay-arm64
+else
+DEVICE_PACKAGE_OVERLAYS += \
+    device/nvidia/tegra-common/overlay-arm
+endif
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += device/nvidia/tegra-common
 
