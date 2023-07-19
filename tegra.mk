@@ -123,6 +123,12 @@ PRODUCT_PACKAGES += \
     android.hardware.tv.cec@1.0-impl
 endif
 
+# DRM
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-service \
+    android.hardware.drm@1.0-impl \
+    android.hardware.drm@1.3-service.clearkey
+
 # GMS
 PRODUCT_GMS_CLIENTID_BASE ?= android-nvidia
 
