@@ -17,7 +17,7 @@ COMMON_WIDEVINE_PATH := ../../../../../vendor/nvidia/common/widevine
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := android.hardware.drm@1.3-service.widevine
-LOCAL_VINTF_FRAGMENTS      := android.hardware.drm@1.0-service.xml
+LOCAL_VINTF_FRAGMENTS      := widevine.xml
 LOCAL_SRC_FILES_32         := $(COMMON_WIDEVINE_PATH)/bin32/hw/android.hardware.drm@1.3-service.widevine
 LOCAL_MULTILIB             := 32
 LOCAL_INIT_RC              := etc/init/android.hardware.drm@1.3-service.widevine.rc

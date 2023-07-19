@@ -45,6 +45,9 @@ ifneq ($(TARGET_TEGRA_CEC),)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/cec.xml
 endif
 
+# DRM
+DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/android.hardware.drm@1.0-service.xml
+
 # Graphics
 ifeq ($(TARGET_TEGRA_GPU),drm)
 BOARD_GPU_DRIVERS         ?= nouveau
