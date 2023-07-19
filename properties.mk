@@ -25,6 +25,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hdmi.wake_on_hotplug=0
 endif
 
+# DRM
+PRODUCT_PROPERTY_OVERRIDES += \
+    drm.service.enabled=true
+
 # Graphics
 ifeq ($(TARGET_TEGRA_GPU),drm)
 PRODUCT_PROPERTY_OVERRIDES += \
