@@ -14,7 +14,9 @@ PRODUCT_PRODUCT_PROPERTIES += \
 ifneq ($(TARGET_TEGRA_CEC),)
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hdmi.device_type=4 \
-    persist.sys.hdmi.keep_awake=0 \
+    persist.sys.hdmi.keep_awake=0
+endif
+ifneq ($(TARGET_TEGRA_CEC),aosp)
     ro.hdmi.wake_on_hotplug=0
 endif
 
