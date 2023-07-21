@@ -16,6 +16,23 @@
       "message": "verified building on nx, needs review",
       "revId": "57bf27d5030af8b89c9fbb5edc544dbb7a3e450f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e2310d8_998c53c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-07-21T21:24:40Z",
+      "side": 1,
+      "message": "I\u0027d really rather not. This is set the way it is to avoid cec doing weird things on input switching.",
+      "revId": "57bf27d5030af8b89c9fbb5edc544dbb7a3e450f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
