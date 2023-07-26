@@ -15,50 +15,50 @@
 LOCAL_PATH := device/nvidia/tegra-common/vendor
 
 ifneq ($(TARGET_TEGRA_DOLBY),)
-$(call inherit-product, $(LOCAL_PATH)/ipprotect/ipprotect.mk)
+include $(LOCAL_PATH)/ipprotect/ipprotect.mk
 endif
 
 ifeq ($(TARGET_TEGRA_AUDIO),nvaudio)
-$(call inherit-product, $(LOCAL_PATH)/audio/audio.mk)
+include $(LOCAL_PATH)/audio/audio.mk
 endif
 
 ifeq ($(TARGET_TEGRA_CAMERA),nvcamera)
-$(call inherit-product, $(LOCAL_PATH)/camera/nvcamera.mk)
+include $(LOCAL_PATH)/camera/nvcamera.mk
 endif
 
 ifeq ($(NV_ANDROID_FRAMEWORK_ENHANCEMENTS),true)
-$(call inherit-product, $(LOCAL_PATH)/nvcpl/nvcpl.mk)
+include $(LOCAL_PATH)/nvcpl/nvcpl.mk
 endif
 
 ifeq ($(TARGET_TEGRA_GPU),nvgpu)
-$(call inherit-product, $(LOCAL_PATH)/nvgpu/nvgpu.mk)
+include $(LOCAL_PATH)/nvgpu/nvgpu.mk
 endif
 
 ifeq ($(TARGET_TEGRA_CEC),nvhdmi)
-$(call inherit-product, $(LOCAL_PATH)/hdmi/hdmi.mk)
+include $(LOCAL_PATH)/hdmi/hdmi.mk
 endif
 
 ifeq ($(TARGET_TEGRA_KEYSTORE),nvkeystore)
-$(call inherit-product, $(LOCAL_PATH)/keystore/keystore.mk)
-$(call inherit-product, $(LOCAL_PATH)/security/security.mk)
+include $(LOCAL_PATH)/keystore/keystore.mk
+include $(LOCAL_PATH)/security/security.mk
 endif
 
 ifeq ($(TARGET_TEGRA_MEMTRACK),nvmemtrack)
-$(call inherit-product, $(LOCAL_PATH)/memtrack/memtrack.mk)
+include $(LOCAL_PATH)/memtrack/memtrack.mk
 endif
 
 ifeq ($(TARGET_TEGRA_OMX),nvmm)
-$(call inherit-product, $(LOCAL_PATH)/nvmm/nvmm.mk)
+include $(LOCAL_PATH)/nvmm/nvmm.mk
 endif
 
 ifeq ($(TARGET_TEGRA_PHS),nvphs)
-$(call inherit-product, $(LOCAL_PATH)/nvphs/nvphs.mk)
+include $(LOCAL_PATH)/nvphs/nvphs.mk
 endif
 
 ifeq ($(TARGET_TEGRA_POWER),nvpower)
-$(call inherit-product, $(LOCAL_PATH)/power/power.mk)
+include $(LOCAL_PATH)/power/power.mk
 endif
 
 ifeq ($(TARGET_TEGRA_WIDEVINE),true)
-$(call inherit-product, $(LOCAL_PATH)/widevine/widevine.mk)
+include $(LOCAL_PATH)/widevine/widevine.mk
 endif
