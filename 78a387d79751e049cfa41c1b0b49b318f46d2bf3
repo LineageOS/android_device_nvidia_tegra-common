@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02237d7c_0c53460f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-07-27T07:40:10Z",
+      "side": 1,
+      "message": "Verified on t210, t186, and t194 targets",
+      "revId": "78a387d79751e049cfa41c1b0b49b318f46d2bf3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
