@@ -80,11 +80,6 @@ ifeq ($(TARGET_TEGRA_OMX),software)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/omx.xml
 endif
 
-# TWRP Support
-ifeq ($(WITH_TWRP),true)
-include device/nvidia/tegra-common/twrp.mk
-endif
-
 # Wifi
 ifneq ($(TARGET_TEGRA_WIFI),)
 # rtl8822ce driver works with bcm userspace
