@@ -305,4 +305,4 @@ nv-tegra-t210	3rdparty/cypress/bcm4356a3/wlan/fw_4356a3_prod.bin											commo
 stock-t210	vendor/firmware/brcmfmac4356-pcie.bin											common/bcm_firmware/bcm4356/brcmfmac4356-pcie.bin
 
 # NvPModel
-l4t-t194	Linux_for_Tegra/nv_tegra/l4t_deb_packages/nvidia-l4t-nvpmodel_35.3.1-20230319081403_arm64.deb	common/nvpmodel/nvidia-l4t-nvpmodel_arm64.deb
+l4t-t194	Linux_for_Tegra/nv_tegra/l4t_deb_packages/nvidia-l4t-nvpmodel_35.4.1-20230801124926_arm64.deb	common/nvpmodel/nvidia-l4t-nvpmodel_arm64.deb
