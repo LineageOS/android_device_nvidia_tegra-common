@@ -66,6 +66,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.app_widgets.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.app_widgets.xml
 
 # Audio
+TARGET_EXCLUDES_AUDIOFX := true
 ifneq ($(TARGET_TEGRA_AUDIO),)
 PRODUCT_PACKAGES += \
     android.hardware.audio.service \
