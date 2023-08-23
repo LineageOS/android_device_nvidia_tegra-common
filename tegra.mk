@@ -62,7 +62,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.app_widgets.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.app_widgets.xml
 
 # Audio
+TARGET_EXCLUDES_AUDIOFX := true
+
 ifeq ($(TARGET_TEGRA_AUDIO),nvaudio)
+
 PRODUCT_PACKAGES += \
     primary_module_deviceports.xml \
     primary_module_deviceports_tv.xml \
