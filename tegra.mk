@@ -62,7 +62,25 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.app_widgets.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.app_widgets.xml
 
 # Audio
+<<<<<<< HEAD   (b067f4 Build and enable fastbootd)
 ifeq ($(TARGET_TEGRA_AUDIO),nvaudio)
+=======
+TARGET_EXCLUDES_AUDIOFX := true
+ifneq ($(TARGET_TEGRA_AUDIO),)
+PRODUCT_PACKAGES += \
+    android.hardware.audio.service \
+    android.hardware.audio@6.0 \
+    android.hardware.audio@6.0-impl \
+    android.hardware.audio.common@6.0 \
+    android.hardware.audio.common@6.0-util \
+    android.hardware.audio.effect@6.0-impl \
+    android.hardware.bluetooth.audio@2.0-impl \
+    audio.a2dp.default \
+    audio.bluetooth.default \
+    audio.r_submix.default \
+    audio.usb.default
+
+>>>>>>> CHANGE (5aabb8 tegra: Properly exclude AudioFX)
 PRODUCT_PACKAGES += \
     primary_module_deviceports.xml \
     primary_module_deviceports_tv.xml \
