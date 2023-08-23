@@ -14,9 +14,6 @@
 # limitations under the License.
 #
 
-# Audio
-TARGET_EXCLUDES_AUDIOFX := true
-
 # Bluetooth
 ifneq ($(TARGET_TEGRA_BT),)
 BOARD_HAVE_BLUETOOTH := true
