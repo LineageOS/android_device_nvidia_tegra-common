@@ -241,8 +241,13 @@ PRODUCT_PACKAGES_DEBUG += \
 endif
 
 # USB
+ifeq ($(TARGET_TEGRA_USB),typec)
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.1-service.typec
+else
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
+endif
 
 # Wifi
 ifneq ($(TARGET_TEGRA_WIFI),)
