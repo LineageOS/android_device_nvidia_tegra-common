@@ -16,6 +16,23 @@
       "message": "verified on nx (frig and odin)",
       "revId": "de14245f74dedb907bade831a1e12e7f30cf9aa5",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e2cd2de_d050193e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2023-08-29T20:53:06Z",
+      "side": 1,
+      "message": "nvm dw about it",
+      "revId": "de14245f74dedb907bade831a1e12e7f30cf9aa5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
