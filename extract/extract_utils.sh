@@ -303,10 +303,18 @@ function extract() {
     fi
 
     if [ "$VENDOR_STATE" -eq "0" ]; then
-        echo "Cleaning output directory ($OUTDIR).."
-        rm -rf ${LINEAGE_ROOT}/${OUTDIR}/*
-        VENDOR_STATE=1
-    fi
+        for key in "${!FILELIST_PATHS[@]}"; do
+            local project="${FILELIST_PATHS["$key"]}";
+            if [ "${project}" == "tegra-common" ]; then
+                project="common";
+            else
+                project=${project%"-common"};
+            fi;
+            echo "Cleaning output directory ($OUTDIR/$project)...";
+            rm -rf ${LINEAGE_ROOT}/${OUTDIR}/${project}/*;
+        done;
+        VENDOR_STATE=1;
+    fi;
 
     fetch_sources $SRC;
     copy_files;
