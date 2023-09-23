@@ -117,31 +117,34 @@ function fetch_sources() {
                 cp "$1/${sname}.${fileext}" ${TMPDIR}/downloads/${sname}.${fileext};
             fi;
             if [ ! -f ${TMPDIR}/downloads/${sname}.${fileext} ]; then
-                wget ${url} -O ${TMPDIR}/downloads/${sname}.${fileext};
+                echo -n "Downloading source ${sname} from ${url}...";
+                wget ${url} -O ${TMPDIR}/downloads/${sname}.${fileext} 1>/dev/null 2>&1;
 
                 if [ "${type}" == "gitiles" ]; then
                     mv ${TMPDIR}/downloads/${sname}.sh ${TMPDIR}/downloads/${sname}.base64;
                     base64 --decode ${TMPDIR}/downloads/${sname}.base64 > ${TMPDIR}/downloads/${sname}.sh;
                     rm ${TMPDIR}/downloads/${sname}.base64;
                 fi;
+                echo "";
             fi;
 
+            echo -n "Extracting source ${sname} for prebuilts branch ${branch}...";
             if [ "${type}" == "git" -o "${type}" == "gitiles" ]; then
                 tail -n +$(($(grep -an "^\s*__START_TGZ_FILE__" ${TMPDIR}/downloads/${sname}.sh \
                             | awk -F ':' '{print $1}') + 1)) ${TMPDIR}/downloads/${sname}.sh \
-                  | tar zxv -C ${ESPATH};
+                  | tar zxv -C ${ESPATH} 1>/dev/null 2>&1;
 
                 if [ ! -z "${extra_path}" ]; then
                     mv ${ESPATH}/${extra_path}/* ${ESPATH}/;
                 fi;
             elif [ "${type}" == "l4t" ]; then
                 mkdir ${ESPATH}/drivers;
-                tar -xf ${TMPDIR}/downloads/${sname}.tbz2 -C ${ESPATH}
+                tar -xf ${TMPDIR}/downloads/${sname}.tbz2 -C ${ESPATH} 1>/dev/null 2>&1;
                 mv ${ESPATH}/Linux_for_Tegra/* ${ESPATH}/;
                 rmdir ${ESPATH}/Linux_for_Tegra;
-                tar -xf ${ESPATH}/nv_tegra/nvidia_drivers.tbz2 -C ${ESPATH}/drivers
+                tar -xf ${ESPATH}/nv_tegra/nvidia_drivers.tbz2 -C ${ESPATH}/drivers 1>/dev/null 2>&1;
             else
-                unzip -d ${ESPATH} ${TMPDIR}/downloads/${sname}.zip;
+                unzip -d ${ESPATH} ${TMPDIR}/downloads/${sname}.zip 1>/dev/null 2>&1;
 
                 case "${type}" in
                     "nv-recovery-t114")
@@ -151,10 +154,10 @@ function fetch_sources() {
                         mv ${ESPATH}/extract-nv-recovery-image-*.sh ${ESPATH}/extract-nv.sh
                         tail -n +$(($(grep -an "^\s*__START_TGZ_FILE__" ${ESPATH}/extract-nv.sh \
                                     | awk -F ':' '{print $1}') + 1)) ${ESPATH}/extract-nv.sh \
-                          | tar zxv -C ${ESPATH}/temp;
+                          | tar zxv -C ${ESPATH}/temp 2>&1 1>/dev/null 2>&1;
 
                         ${HOST_BINS}/simg2img ${ESPATH}/temp/system.img ${ESPATH}/system.img;
-                        7z x -o${ESPATH}/system ${ESPATH}/system.img;
+                        7z x -o${ESPATH}/system ${ESPATH}/system.img 1>/dev/null 2>&1;
 
                         rm -rf \
                           ${ESPATH}/temp \
@@ -166,7 +169,7 @@ function fetch_sources() {
                         mkdir ${ESPATH}/system;
 
                         ${HOST_BINS}/simg2img ${ESPATH}/nv-recovery-*/system.img ${ESPATH}/system.img;
-                        7z x -o${ESPATH}/system ${ESPATH}/system.img;
+                        7z x -o${ESPATH}/system ${ESPATH}/system.img 1>/dev/null 2>&1;
 
                         rm -rf \
                           ${ESPATH}/nv-recovery-* \
@@ -178,10 +181,10 @@ function fetch_sources() {
                         mkdir ${ESPATH}/vendor;
 
                         ${HOST_BINS}/simg2img ${ESPATH}/nv-recovery-image-*/system.img ${ESPATH}/system.img;
-                        7z x -o${ESPATH}/system ${ESPATH}/system.img;
+                        7z x -o${ESPATH}/system ${ESPATH}/system.img 1>/dev/null 2>&1;
 
                         ${HOST_BINS}/simg2img ${ESPATH}/nv-recovery-image-*/vendor.img ${ESPATH}/vendor.img;
-                        7z x -o${ESPATH}/vendor ${ESPATH}/vendor.img;
+                        7z x -o${ESPATH}/vendor ${ESPATH}/vendor.img 1>/dev/null 2>&1;
 
                         rm -rf \
                           ${ESPATH}/nv-recovery-image-* \
@@ -197,16 +200,16 @@ function fetch_sources() {
                         python ${LINEAGE_TOOLS}/sdat2img.py \
                           ${ESPATH}/system.transfer.list \
                           ${ESPATH}/system.new.dat \
-                          ${ESPATH}/system.img;
-                        7z x -o${ESPATH}/system ${ESPATH}/system.img;
+                          ${ESPATH}/system.img 1>/dev/null 2>&1;
+                        7z x -o${ESPATH}/system ${ESPATH}/system.img 1>/dev/null 2>&1;
 
                         ${HOST_BINS}/brotli -d ${ESPATH}/vendor.new.dat.br
                         python ${LINEAGE_TOOLS}/sdat2img.py \
                           ${ESPATH}/vendor.transfer.list \
                           ${ESPATH}/vendor.new.dat \
-                          ${ESPATH}/vendor.img;
+                          ${ESPATH}/vendor.img 1>/dev/null 2>&1;
                         # symlinks causes errors here, but not elsewhere?
-                        7z x -o${ESPATH}/vendor ${ESPATH}/vendor.img || true;
+                        7z x -o${ESPATH}/vendor ${ESPATH}/vendor.img 1>/dev/null 2>&1 || true;
 
                         rm -rf \
                           ${ESPATH}/system.* \
@@ -221,6 +224,7 @@ function fetch_sources() {
             fi;
 
             rm -f ${TMPDIR}/downloads/${sname}.${fileext};
+            echo "";
         done < "${LINEAGE_ROOT}/device/nvidia/${SOURCE_PATHS["$key"]}/extract/sources.txt";
     done;
 }
@@ -229,6 +233,8 @@ function fetch_sources() {
 # Copy prebuilts
 #
 function copy_files() {
+    echo "Copying files...";
+
     for key in "${!FILELIST_PATHS[@]}"; do
         local project="${FILELIST_PATHS["$key"]}";
         if [ "${project}" == "tegra-common" ]; then
@@ -244,12 +250,19 @@ function copy_files() {
                 dest="${dest}$(basename ${source})";
             fi;
 
-            mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/$(dirname ${project}/${SOURCE_BRANCH[$sname]}/$dest);
-            cp ${TMPDIR}/extract/${sname}/${source} ${LINEAGE_ROOT}/${OUTDIR}/${project}/${SOURCE_BRANCH[$sname]}/${dest};
+            if [ -f "${TMPDIR}/extract/${sname}/${source}" ]; then
+                echo "  * ${project}/${SOURCE_BRANCH[$sname]}/${dest}";
+                mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/$(dirname ${project}/${SOURCE_BRANCH[$sname]}/$dest);
+                cp ${TMPDIR}/extract/${sname}/${source} ${LINEAGE_ROOT}/${OUTDIR}/${project}/${SOURCE_BRANCH[$sname]}/${dest};
+            else
+                echo "  X ${source} is missing from ${sname} for ${project}";
+            fi;
         done < "${LINEAGE_ROOT}/device/nvidia/${FILELIST_PATHS["$key"]}/extract/file.list";
 
         find ${LINEAGE_ROOT}/${OUTDIR}/${project} -type f -exec chmod 644 {} \;
     done;
+
+    echo "Finished copying files.";
 }
 
 #
@@ -257,7 +270,11 @@ function copy_files() {
 #
 function do_patches() {
     for key in "${!PATCH_PATHS[@]}"; do
+      echo "Starting patches for ${PATCH_PATHS["$key"]}.";
+
       source "${LINEAGE_ROOT}/device/nvidia/${PATCH_PATHS["$key"]}/extract/patches.sh";
+
+      echo "Finished patches for ${PATCH_PATHS["$key"]}.";
     done;
 }
 
