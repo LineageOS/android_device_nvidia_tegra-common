@@ -16,6 +16,7 @@
 #
 
 declare -a SOURCE_PATHS=();
+declare -A SOURCE_BRANCH=();
 declare -a FILELIST_PATHS=();
 declare -a PATCH_PATHS=();
 
@@ -85,14 +86,6 @@ function setup_vendor() {
     for sources in ${LINEAGE_ROOT}/device/nvidia/*/extract/extract_sources.sh; do
         source "$sources";
     done;
-
-    for key in "${!SOURCE_PATHS[@]}"; do
-      cat "${LINEAGE_ROOT}/device/nvidia/${SOURCE_PATHS["$key"]}/extract/sources.txt" >> "$TMPDIR/sources.txt";
-    done;
-
-    for key in "${!FILELIST_PATHS[@]}"; do
-      cat "${LINEAGE_ROOT}/device/nvidia/${FILELIST_PATHS["$key"]}/extract/file.list" >> "$TMPDIR/file.list";
-    done;
 }
 
 #
@@ -105,152 +98,158 @@ function fetch_sources() {
     mkdir ${TMPDIR}/downloads;
     mkdir ${TMPDIR}/extract;
 
-    while read -r sname url type extra_path; do
-        ESPATH="${TMPDIR}/extract/${sname}";
-        mkdir ${ESPATH};
+    for key in "${!SOURCE_PATHS[@]}"; do
+        while read -r sname url type branch extra_path; do
+            SOURCE_BRANCH[${sname}]="${branch}";
+            ESPATH="${TMPDIR}/extract/${sname}";
+            mkdir ${ESPATH};
 
-        fileext="zip";
-        if [ "${type}" == "git" -o "${type}" == "gitiles" ]; then
-            fileext="sh";
-        elif [ "${type}" == "l4t" ]; then
-            fileext="tbz2";
-        fi;
-
-        if [ "$1" != "download" -a -f "$1/$(echo ${url} |awk -F/ '{ print $NF }')" ]; then
-            cp "$1/$(echo ${url} |awk -F/ '{ print $NF }')" ${TMPDIR}/downloads/${sname}.${fileext};
-        elif [ "$1" != "download" -a -f "$1/${sname}.${fileext}" ]; then
-            cp "$1/${sname}.${fileext}" ${TMPDIR}/downloads/${sname}.${fileext};
-        fi;
-        if [ ! -f ${TMPDIR}/downloads/${sname}.${fileext} ]; then
-            wget ${url} -O ${TMPDIR}/downloads/${sname}.${fileext};
-
-            if [ "${type}" == "gitiles" ]; then
-                mv ${TMPDIR}/downloads/${sname}.sh ${TMPDIR}/downloads/${sname}.base64;
-                base64 --decode ${TMPDIR}/downloads/${sname}.base64 > ${TMPDIR}/downloads/${sname}.sh;
-	        rm ${TMPDIR}/downloads/${sname}.base64;
+            fileext="zip";
+            if [ "${type}" == "git" -o "${type}" == "gitiles" ]; then
+                fileext="sh";
+            elif [ "${type}" == "l4t" ]; then
+                fileext="tbz2";
             fi;
-        fi;
 
-        if [ "${type}" == "git" -o "${type}" == "gitiles" ]; then
-            tail -n +$(($(grep -an "^\s*__START_TGZ_FILE__" ${TMPDIR}/downloads/${sname}.sh \
-                        | awk -F ':' '{print $1}') + 1)) ${TMPDIR}/downloads/${sname}.sh \
-              | tar zxv -C ${ESPATH};
-        elif [ "${type}" == "l4t" ]; then
-            mkdir ${ESPATH}/drivers;
-            tar -xf ${TMPDIR}/downloads/${sname}.tbz2 -C ${ESPATH}
-            tar -xf ${ESPATH}/Linux_for_Tegra/nv_tegra/nvidia_drivers.tbz2 -C ${ESPATH}/drivers
-        else
-            unzip -d ${ESPATH} ${TMPDIR}/downloads/${sname}.zip;
+            if [ "$1" != "download" -a -f "$1/$(echo ${url} |awk -F/ '{ print $NF }')" ]; then
+                cp "$1/$(echo ${url} |awk -F/ '{ print $NF }')" ${TMPDIR}/downloads/${sname}.${fileext};
+            elif [ "$1" != "download" -a -f "$1/${sname}.${fileext}" ]; then
+                cp "$1/${sname}.${fileext}" ${TMPDIR}/downloads/${sname}.${fileext};
+            fi;
+            if [ ! -f ${TMPDIR}/downloads/${sname}.${fileext} ]; then
+                wget ${url} -O ${TMPDIR}/downloads/${sname}.${fileext};
 
-            case "${type}" in
-                "nv-recovery-t114")
-                    mkdir ${ESPATH}/temp;
-                    mkdir ${ESPATH}/system;
+                if [ "${type}" == "gitiles" ]; then
+                    mv ${TMPDIR}/downloads/${sname}.sh ${TMPDIR}/downloads/${sname}.base64;
+                    base64 --decode ${TMPDIR}/downloads/${sname}.base64 > ${TMPDIR}/downloads/${sname}.sh;
+	            rm ${TMPDIR}/downloads/${sname}.base64;
+                fi;
+            fi;
 
-                    mv ${ESPATH}/extract-nv-recovery-image-*.sh ${ESPATH}/extract-nv.sh
-                    tail -n +$(($(grep -an "^\s*__START_TGZ_FILE__" ${ESPATH}/extract-nv.sh \
-                                | awk -F ':' '{print $1}') + 1)) ${ESPATH}/extract-nv.sh \
-                      | tar zxv -C ${ESPATH}/temp;
+            if [ "${type}" == "git" -o "${type}" == "gitiles" ]; then
+                tail -n +$(($(grep -an "^\s*__START_TGZ_FILE__" ${TMPDIR}/downloads/${sname}.sh \
+                            | awk -F ':' '{print $1}') + 1)) ${TMPDIR}/downloads/${sname}.sh \
+                  | tar zxv -C ${ESPATH};
 
-                    ${HOST_BINS}/simg2img ${ESPATH}/temp/system.img ${ESPATH}/system.img;
-                    7z x -o${ESPATH}/system ${ESPATH}/system.img;
+                if [ ! -z "${extra_path}" ]; then
+                    mv ${ESPATH}/${extra_path}/* ${ESPATH}/;
+                fi;
+            elif [ "${type}" == "l4t" ]; then
+                mkdir ${ESPATH}/drivers;
+                tar -xf ${TMPDIR}/downloads/${sname}.tbz2 -C ${ESPATH}
+                mv ${ESPATH}/Linux_for_Tegra/* ${ESPATH}/;
+		rmdir ${ESPATH}/Linux_for_Tegra;
+                tar -xf ${ESPATH}/nv_tegra/nvidia_drivers.tbz2 -C ${ESPATH}/drivers
+            else
+                unzip -d ${ESPATH} ${TMPDIR}/downloads/${sname}.zip;
 
-                    rm -rf \
-                      ${ESPATH}/temp \
-                      ${ESPATH}/extract-nv.sh \
-                      ${ESPATH}/system.img;
-                    ;;
+                case "${type}" in
+                    "nv-recovery-t114")
+                        mkdir ${ESPATH}/temp;
+                        mkdir ${ESPATH}/system;
 
-                "nv-recovery-no-vendor")
-                    mkdir ${ESPATH}/system;
+                        mv ${ESPATH}/extract-nv-recovery-image-*.sh ${ESPATH}/extract-nv.sh
+                        tail -n +$(($(grep -an "^\s*__START_TGZ_FILE__" ${ESPATH}/extract-nv.sh \
+                                    | awk -F ':' '{print $1}') + 1)) ${ESPATH}/extract-nv.sh \
+                          | tar zxv -C ${ESPATH}/temp;
 
-                    ${HOST_BINS}/simg2img ${ESPATH}/nv-recovery-*/system.img ${ESPATH}/system.img;
-                    7z x -o${ESPATH}/system ${ESPATH}/system.img;
+                        ${HOST_BINS}/simg2img ${ESPATH}/temp/system.img ${ESPATH}/system.img;
+                        7z x -o${ESPATH}/system ${ESPATH}/system.img;
 
-                    rm -rf \
-                      ${ESPATH}/nv-recovery-* \
-                      ${ESPATH}/system.img;
-                    ;;
+                        rm -rf \
+                          ${ESPATH}/temp \
+                          ${ESPATH}/extract-nv.sh \
+                          ${ESPATH}/system.img;
+                        ;;
 
-                "nv-recovery")
-                    mkdir ${ESPATH}/system;
-                    mkdir ${ESPATH}/vendor;
+                    "nv-recovery-no-vendor")
+                        mkdir ${ESPATH}/system;
 
-                    ${HOST_BINS}/simg2img ${ESPATH}/nv-recovery-image-*/system.img ${ESPATH}/system.img;
-                    7z x -o${ESPATH}/system ${ESPATH}/system.img;
+                        ${HOST_BINS}/simg2img ${ESPATH}/nv-recovery-*/system.img ${ESPATH}/system.img;
+                        7z x -o${ESPATH}/system ${ESPATH}/system.img;
 
-                    ${HOST_BINS}/simg2img ${ESPATH}/nv-recovery-image-*/vendor.img ${ESPATH}/vendor.img;
-                    7z x -o${ESPATH}/vendor ${ESPATH}/vendor.img;
+                        rm -rf \
+                          ${ESPATH}/nv-recovery-* \
+                          ${ESPATH}/system.img;
+                        ;;
 
-                    rm -rf \
-                      ${ESPATH}/nv-recovery-image-* \
-                      ${ESPATH}/system.img \
-                      ${ESPATH}/vendor.img;
-                    ;;
+                    "nv-recovery")
+                        mkdir ${ESPATH}/system;
+                        mkdir ${ESPATH}/vendor;
 
-                "nv-recovery-ota")
-                    mkdir ${ESPATH}/system;
-                    mkdir ${ESPATH}/vendor;
+                        ${HOST_BINS}/simg2img ${ESPATH}/nv-recovery-image-*/system.img ${ESPATH}/system.img;
+                        7z x -o${ESPATH}/system ${ESPATH}/system.img;
 
-                    ${HOST_BINS}/brotli -d ${ESPATH}/system.new.dat.br;
-                    python ${LINEAGE_TOOLS}/sdat2img.py \
-                      ${ESPATH}/system.transfer.list \
-                      ${ESPATH}/system.new.dat \
-                      ${ESPATH}/system.img;
-                    7z x -o${ESPATH}/system ${ESPATH}/system.img;
+                        ${HOST_BINS}/simg2img ${ESPATH}/nv-recovery-image-*/vendor.img ${ESPATH}/vendor.img;
+                        7z x -o${ESPATH}/vendor ${ESPATH}/vendor.img;
 
-                    ${HOST_BINS}/brotli -d ${ESPATH}/vendor.new.dat.br
-                    python ${LINEAGE_TOOLS}/sdat2img.py \
-                      ${ESPATH}/vendor.transfer.list \
-                      ${ESPATH}/vendor.new.dat \
-                      ${ESPATH}/vendor.img;
-                    # symlinks causes errors here, but not elsewhere?
-                    7z x -o${ESPATH}/vendor ${ESPATH}/vendor.img || true;
+                        rm -rf \
+                          ${ESPATH}/nv-recovery-image-* \
+                          ${ESPATH}/system.img \
+                          ${ESPATH}/vendor.img;
+                        ;;
 
-                    rm -rf \
-                      ${ESPATH}/system.* \
-                      ${ESPATH}/vendor.* \
-                      ${ESPATH}/boot.img \
-                      ${ESPATH}/blob \
-                      ${ESPATH}/bmp.blob \
-                      ${ESPATH}/compatibility.zip \
-                      ${ESPATH}/META-INF;
-                    ;;
-            esac;
-        fi;
+                    "nv-recovery-ota")
+                        mkdir ${ESPATH}/system;
+                        mkdir ${ESPATH}/vendor;
 
-        rm -f ${TMPDIR}/downloads/${sname}.${fileext};
-    done < ${TMPDIR}/sources.txt;
+                        ${HOST_BINS}/brotli -d ${ESPATH}/system.new.dat.br;
+                        python ${LINEAGE_TOOLS}/sdat2img.py \
+                          ${ESPATH}/system.transfer.list \
+                          ${ESPATH}/system.new.dat \
+                          ${ESPATH}/system.img;
+                        7z x -o${ESPATH}/system ${ESPATH}/system.img;
+
+                        ${HOST_BINS}/brotli -d ${ESPATH}/vendor.new.dat.br
+                        python ${LINEAGE_TOOLS}/sdat2img.py \
+                          ${ESPATH}/vendor.transfer.list \
+                          ${ESPATH}/vendor.new.dat \
+                          ${ESPATH}/vendor.img;
+                        # symlinks causes errors here, but not elsewhere?
+                        7z x -o${ESPATH}/vendor ${ESPATH}/vendor.img || true;
+
+                        rm -rf \
+                          ${ESPATH}/system.* \
+                          ${ESPATH}/vendor.* \
+                          ${ESPATH}/boot.img \
+                          ${ESPATH}/blob \
+                          ${ESPATH}/bmp.blob \
+                          ${ESPATH}/compatibility.zip \
+                          ${ESPATH}/META-INF;
+                        ;;
+                esac;
+            fi;
+
+            rm -f ${TMPDIR}/downloads/${sname}.${fileext};
+        done < "${LINEAGE_ROOT}/device/nvidia/${SOURCE_PATHS["$key"]}/extract/sources.txt";
+    done;
 }
 
 #
 # Copy prebuilts
 #
 function copy_files() {
-    while read -r sname url type extra_path; do
-        while read -r fname source dest; do
-            if [ "$sname" == "$fname" ]; then
-                mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/$(dirname $dest);
+    for key in "${!FILELIST_PATHS[@]}"; do
+        local project="${FILELIST_PATHS["$key"]}";
+        if [ "${project}" == "tegra-common" ]; then
+            project="common";
+        else
+            project=${project%"-common"};
+        fi;
 
-                extrapath="$extra_path"
-                if [[ ${source} != "${source/bcmbinaries/}" ]]; then
-                    extrapath="prebuilt/t210"
-                elif [[ ${source} != "${source/cypress/}" ]]; then
-                    extrapath="prebuilt/t210"
-                elif [[ ${source} != "${source/model_frontal/}" ]]; then
-                    extrapath=""
-                elif [[ ${source} != "${source/linux-x86/}" ]]; then
-                    extrapath="prebuilt/t210"
-                elif [[ ${source} != "${source/tnspec/}" ]]; then
-                    extrapath=""
-                fi;
+        while read -r sname source dest; do
+            if [ -z "${sname#"#"}"  ]; then continue; fi;
 
-                cp ${TMPDIR}/extract/${sname}/${extrapath}/${source} ${LINEAGE_ROOT}/${OUTDIR}/${dest};
+            if [ "${dest: -1}" == "/" ]; then
+                dest="${dest}$(basename ${source})";
             fi;
-        done < ${TMPDIR}/file.list;
-    done < ${TMPDIR}/sources.txt;
 
-    find ${LINEAGE_ROOT}/${OUTDIR} -type f -exec chmod 644 {} \;
+            mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/$(dirname ${project}/${SOURCE_BRANCH[$sname]}/$dest);
+            cp ${TMPDIR}/extract/${sname}/${source} ${LINEAGE_ROOT}/${OUTDIR}/${project}/${SOURCE_BRANCH[$sname]}/${dest};
+        done < "${LINEAGE_ROOT}/device/nvidia/${FILELIST_PATHS["$key"]}/extract/file.list";
+
+        find ${LINEAGE_ROOT}/${OUTDIR}/${project} -type f -exec chmod 644 {} \;
+    done;
 }
 
 #
