@@ -291,17 +291,12 @@ l4t-t194	drivers/lib/firmware/rtl8822cu_fw		realtek/rtl8822cu/
 l4t-t194	drivers/lib/firmware/rtl8822_setting.bin	realtek/rtl8822cu/
 
 # BCM Bluetooth Patchfiles
-nv-tegra-t210	prebuilt/t210/3rdparty/bcmbinaries/bcm43241/bluetooth/AB113_BCM43241B0_0012_Azurewave_AW-AH691_TEST.HCD	bcm_firmware/bcm43241/
-nv-tegra-t210	prebuilt/t210/3rdparty/bcmbinaries/bcm43341/bluetooth/BCM43341B0_002.001.014.0008.0011.hcd		bcm_firmware/bcm43341/
-stock-t210	vendor/firmware/bcm4350.hcd										bcm_firmware/bcm4354/BCM4350C0.hcd
-stock-t210	vendor/firmware/bcm4356a3.hcd										bcm_firmware/bcm4356/BCM4356A3.hcd
+stock-t210	vendor/firmware/bcm4350.hcd	bcm_firmware/bcm4354/BCM4350C0.hcd
+stock-t210	vendor/firmware/bcm4356a3.hcd	bcm_firmware/bcm4356/BCM4356A3.hcd
 
 # BCM Wifi Firmware
-nv-tegra-t210	prebuilt/t210/3rdparty/bcmbinaries/bcm43241/wlan/sdio-ag-pno-p2p-proptxstatus-dmatxrc-rxov-pktfilter-keepalive-aoe-vsdb-wapi-wl11d-sr-srvsdb-opt1.bin	bcm_firmware/bcm43241/
-nv-tegra-t210	prebuilt/t210/3rdparty/bcmbinaries/bcm43341/wlan/sdio-ag-pno-p2p-proptxstatus-dmatxrc-rxov-pktfilter-keepalive-aoe-sr-wapi-wl11d.bin			bcm_firmware/bcm43341/
-stock-t210	vendor/firmware/fw_bcmdhd.bin	bcm_firmware/bcm4354/sdio-ag-p2p-pno-aoe-pktfilter-keepalive-sr-mchan-pktctx-proptxstatus-ampduhostreorder-lpc-pwropt-txbf-wl11u-mfp-tdls-ltecx-wfds-mchandump-atv.bin
-nv-tegra-t210	prebuilt/t210/3rdparty/cypress/bcm4356a3/wlan/fw_4356a3_prod.bin											bcm_firmware/bcm4356/
-stock-t210	vendor/firmware/brcmfmac4356-pcie.bin															bcm_firmware/bcm4356/
+stock-t210	vendor/firmware/fw_bcmdhd.bin		bcm_firmware/bcm4354/sdio-ag-p2p-pno-aoe-pktfilter-keepalive-sr-mchan-pktctx-proptxstatus-ampduhostreorder-lpc-pwropt-txbf-wl11u-mfp-tdls-ltecx-wfds-mchandump-atv.bin
+stock-t210	vendor/firmware/brcmfmac4356-pcie.bin	bcm_firmware/bcm4356/
 
 # NvPModel
 l4t-t194	nv_tegra/l4t_deb_packages/nvidia-l4t-nvpmodel_35.3.1-20230319081403_arm64.deb	nvpmodel/nvidia-l4t-nvpmodel_arm64.deb

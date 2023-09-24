@@ -1,4 +1,3 @@
-nv-tegra-t210	https://nv-tegra.nvidia.com/r/plugins/gitiles/tegra/prebuilts-licensed-binary-tlk-t210/+/c84a4130e416b4182c752a343c8c11e622dc2e72/extract-nv-bins.sh?format=TEXT		gitiles		rel-30		prebuilt/t210/target/product/t210
 nv-tegra-t210-rel24	https://nv-tegra.nvidia.com/r/plugins/gitiles/tegra/prebuilts-licensed-binary-tlk-t210/+/380abc390d5611c789623ae836d78cd3dbd7cdac/extract-nv-bins.sh?format=TEXT	gitiles		rel-24		prebuilt/t210/target/product/t210
 stock-t210	https://ota-downloads.nvidia.com/ota/productionBL-droid-signed-mdarcy-full_ota-7825230_3167.5736_DEE632.zip									nv-recovery-ota	rel-shield-r
 stock-foster	https://ota-downloads.nvidia.com/ota/productionBL-droid-signed-foster_e_hdd-full_ota-7825230_3167.5736_DF2EE1.zip								nv-recovery-ota	rel-shield-r
