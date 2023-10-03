@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# BUILD_BROKEN_*
+BUILD_BROKEN_INCORRECT_PARTITION_IMAGES := true
+
 # Audio
 ifneq ($(TARGET_TEGRA_AUDIO),)
 ifeq ($(filter audio, $(TARGET_TEGRA_DOLBY)),)
