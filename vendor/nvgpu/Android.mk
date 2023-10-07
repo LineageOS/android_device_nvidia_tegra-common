@@ -149,7 +149,7 @@ LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
 LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
-LOCAL_REQUIRED_MODULES     := com.nvidia.feature.opengl4.xml com.nvidia.nvsi.xml
+LOCAL_REQUIRED_MODULES     := com.nvidia.feature.opengl4.xml
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
