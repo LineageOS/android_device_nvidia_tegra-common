@@ -72,7 +72,7 @@ function setup_vendor() {
         exit 1
     fi
 
-    export OUTDIR=vendor/"$VENDOR"
+    export OUTDIR=vendor/nvidia
     if [ ! -d "$LINEAGE_ROOT/$OUTDIR" ]; then
         mkdir -p "$LINEAGE_ROOT/$OUTDIR"
     fi
@@ -86,6 +86,18 @@ function setup_vendor() {
     for sources in ${LINEAGE_ROOT}/device/nvidia/*/extract/extract_sources.sh; do
         source "$sources";
     done;
+    for key in "${!SOURCE_PATHS[@]}"; do
+        SOURCE_PATHS["$key"]=nvidia/${SOURCE_PATHS["$key"]};
+    done;
+    for key in "${!FILELIST_PATHS[@]}"; do
+        FILELIST_PATHS["$key"]=nvidia/${FILELIST_PATHS["$key"]};
+    done;
+    for key in "${!PATCH_PATHS[@]}"; do
+        PATCH_PATHS["$key"]=nvidia/${PATCH_PATHS["$key"]};
+    done;
+    if [ "${VENDOR}" != "nvidia" ]; then
+        source ${LINEAGE_ROOT}/device/${VENDOR}/${DEVICE}/extract/extract_sources.sh;
+    fi;
 }
 
 #
@@ -225,7 +237,7 @@ function fetch_sources() {
 
             rm -f ${TMPDIR}/downloads/${sname}.${fileext};
             echo "";
-        done < "${LINEAGE_ROOT}/device/nvidia/${SOURCE_PATHS["$key"]}/extract/sources.txt";
+        done < "${LINEAGE_ROOT}/device/${SOURCE_PATHS["$key"]}/extract/sources.txt";
     done;
 }
 
@@ -237,8 +249,8 @@ function copy_files() {
 
     for key in "${!FILELIST_PATHS[@]}"; do
         local project="${FILELIST_PATHS["$key"]}";
-        if [ "${project}" == "tegra-common" ]; then
-            project="common";
+        if [ "${project}" == "nvidia/tegra-common" ]; then
+            project="nvidia/common";
         else
             project=${project%"-common"};
         fi;
@@ -252,14 +264,14 @@ function copy_files() {
 
             if [ -f "${TMPDIR}/extract/${sname}/${source}" ]; then
                 echo "  * ${project}/${SOURCE_BRANCH[$sname]}/${dest}";
-                mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/$(dirname ${project}/${SOURCE_BRANCH[$sname]}/$dest);
-                cp ${TMPDIR}/extract/${sname}/${source} ${LINEAGE_ROOT}/${OUTDIR}/${project}/${SOURCE_BRANCH[$sname]}/${dest};
+                mkdir -p ${LINEAGE_ROOT}/vendor/$(dirname ${project}/${SOURCE_BRANCH[$sname]}/$dest);
+                cp ${TMPDIR}/extract/${sname}/${source} ${LINEAGE_ROOT}/vendor/${project}/${SOURCE_BRANCH[$sname]}/${dest};
             else
                 echo "  X ${source} is missing from ${sname} for ${project}";
             fi;
-        done < "${LINEAGE_ROOT}/device/nvidia/${FILELIST_PATHS["$key"]}/extract/file.list";
+        done < "${LINEAGE_ROOT}/device/${FILELIST_PATHS["$key"]}/extract/file.list";
 
-        find ${LINEAGE_ROOT}/${OUTDIR}/${project} -type f -exec chmod 644 {} \;
+        find ${LINEAGE_ROOT}/vendor/${project} -type f -exec chmod 644 {} \;
     done;
 
     echo "Finished copying files.";
@@ -273,7 +285,7 @@ function do_patches() {
       echo "Starting patches for ${PATCH_PATHS["$key"]}.";
 
       set +e;
-      source "${LINEAGE_ROOT}/device/nvidia/${PATCH_PATHS["$key"]}/extract/patches.sh";
+      source "${LINEAGE_ROOT}/device/${PATCH_PATHS["$key"]}/extract/patches.sh";
       set -e;
 
       echo "Finished patches for ${PATCH_PATHS["$key"]}.";
@@ -324,13 +336,13 @@ function extract() {
     if [ "$VENDOR_STATE" -eq "0" ]; then
         for key in "${!FILELIST_PATHS[@]}"; do
             local project="${FILELIST_PATHS["$key"]}";
-            if [ "${project}" == "tegra-common" ]; then
-                project="common";
+            if [ "${project}" == "nvidia/tegra-common" ]; then
+                project="nvidia/common";
             else
                 project=${project%"-common"};
             fi;
-            echo "Cleaning output directory ($OUTDIR/$project)...";
-            rm -rf ${LINEAGE_ROOT}/${OUTDIR}/${project}/*;
+            echo "Cleaning output directory (vendor/$project)...";
+            rm -rf ${LINEAGE_ROOT}/vendor/${project}/*;
         done;
         VENDOR_STATE=1;
     fi;

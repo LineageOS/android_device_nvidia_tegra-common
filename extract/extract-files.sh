@@ -18,8 +18,8 @@
 
 set -e
 
-DEVICE=tegraref
-VENDOR=nvidia
+DEVICE="${DEVICE:-tegraref}"
+VENDOR="${VENDOR:-nvidia}"
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
