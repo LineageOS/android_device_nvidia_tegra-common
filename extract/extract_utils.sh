@@ -272,7 +272,9 @@ function do_patches() {
     for key in "${!PATCH_PATHS[@]}"; do
       echo "Starting patches for ${PATCH_PATHS["$key"]}.";
 
+      set +e;
       source "${LINEAGE_ROOT}/device/nvidia/${PATCH_PATHS["$key"]}/extract/patches.sh";
+      set -e;
 
       echo "Finished patches for ${PATCH_PATHS["$key"]}.";
     done;
