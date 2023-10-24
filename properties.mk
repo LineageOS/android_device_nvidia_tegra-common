@@ -1,3 +1,9 @@
+# Apex
+ifneq ($(TARGET_FLATTEN_APEX),true)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.apex.updatable=true
+endif
+
 # Bluetooth
 ifneq ($(TARGET_TEGRA_BT),)
 PRODUCT_PROPERTY_OVERRIDES += \
