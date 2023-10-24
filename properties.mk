@@ -1,3 +1,7 @@
+# Apex
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.apex.updatable=true
+
 # Bluetooth
 ifneq ($(TARGET_TEGRA_BT),)
 PRODUCT_PROPERTY_OVERRIDES += \
