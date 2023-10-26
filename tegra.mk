@@ -113,7 +113,8 @@ PRODUCT_COPY_FILES += \
 ifneq ($(filter bcm, $(TARGET_TEGRA_BT)),)
 PRODUCT_PACKAGES += \
     libbt-vendor \
-    android.hardware.bluetooth@1.1-service
+    android.hardware.bluetooth@1.0-service \
+    android.hardware.bluetooth@1.0-impl
 endif
 
 ifneq ($(filter btlinux, $(TARGET_TEGRA_BT)),)
