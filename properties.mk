@@ -15,6 +15,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     bluetooth.profile.pan.panu.enabled?=true \
     bluetooth.profile.pbap.server.enabled?=true \
     bluetooth.profile.sap.server.enabled?=true
+ifneq ($(filter bcm, $(TARGET_TEGRA_BT)),)
+PRODUCT_PROPERTY_OVERRIDES += \
+    bluetooth.core.gap.le.privacy.enabled=false
+endif
 endif
 
 # CEC
