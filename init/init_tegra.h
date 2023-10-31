@@ -11,6 +11,7 @@ class tegra_init {
         struct devices {
             std::string device;
             std::string name;
+            std::string hardware;
             std::string model;
             uint16_t board_id;
             uint16_t sku;
