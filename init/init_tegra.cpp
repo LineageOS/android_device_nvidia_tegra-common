@@ -54,7 +54,7 @@ void tegra_init::detect_model_devicetree()
     }
 
     for (auto & device : tegra_devices) {
-        if (!device.name.compare(hardware)) {
+        if (!device.hardware.compare(hardware)) {
             chosen_device = &device;
             break;
         }
@@ -146,15 +146,6 @@ bool tegra_init::detect_model()
     if (!tegra_devices.size()) {
         LOG(ERROR) << "tegra_init: device list is empty, aborting";
         return false;
-    }
-
-    // If hardware name isn't set, attempt to read it from the device tree
-    if (property_get("ro.hardware").empty()) {
-        std::ifstream file("/proc/device-tree/firmware/android/hardware");
-        std::string line;
-        if (file.is_open() && std::getline(file, line)) {
-            property_set("ro.hardware", line);
-        }
     }
 
     // If only one device is defined, just use that one
