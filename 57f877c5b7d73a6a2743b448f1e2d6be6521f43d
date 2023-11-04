@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00015fd9_627af216",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-11-04T07:19:03Z",
+      "side": 1,
+      "message": "Still fails to get the model name when policy is enforcing. But I\u0027m not seeing a relevant denial in the logs, same as before.",
+      "revId": "57f877c5b7d73a6a2743b448f1e2d6be6521f43d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
