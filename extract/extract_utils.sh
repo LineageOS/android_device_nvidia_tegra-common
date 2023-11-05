@@ -118,6 +118,7 @@ function setup_vendor() {
 #
 function fetch_sources() {
     local LINEAGE_TOOLS=${LINEAGE_ROOT}/tools/extract-utils
+    local COMMON_EXTRACT=${LINEAGE_ROOT}/device/nvidia/tegra-common/extract
 
     mkdir ${TMPDIR}/downloads;
     mkdir ${TMPDIR}/extract;
@@ -178,6 +179,9 @@ function fetch_sources() {
                 mv ${ESPATH}/Linux_for_Tegra/* ${ESPATH}/;
                 rmdir ${ESPATH}/Linux_for_Tegra;
                 tar -xf ${ESPATH}/nv_tegra/nvidia_drivers.tbz2 -C ${ESPATH}/drivers 1>/dev/null 2>&1;
+            elif [ "${type}" == "blob" ]; then
+                # Only extract blob
+                unzip -d ${ESPATH} ${TMPDIR}/downloads/${sname}.zip blob 1>/dev/null 2>&1;
             else
                 unzip -d ${ESPATH} ${TMPDIR}/downloads/${sname}.zip 1>/dev/null 2>&1;
 
@@ -250,12 +254,28 @@ function fetch_sources() {
                           ${ESPATH}/system.* \
                           ${ESPATH}/vendor.* \
                           ${ESPATH}/boot.img \
-                          ${ESPATH}/blob \
-                          ${ESPATH}/bmp.blob \
                           ${ESPATH}/compatibility.zip \
                           ${ESPATH}/META-INF;
                         ;;
                 esac;
+            fi;
+
+            if [ -f ${ESPATH}/blob ]; then
+                mkdir -p ${ESPATH}/bootloader;
+                python ${COMMON_EXTRACT}/nvblob_extract.py ${ESPATH}/blob ${ESPATH}/bootloader 1>/dev/null 2>&1;
+            fi;
+
+            if [ -f ${ESPATH}/bmp.blob ]; then
+                BLOB_HEADER_SIZE=$((16#$(xxd -s 24 -l 1 -p ${ESPATH}/bmp.blob)));
+                if [ "$(xxd -s ${BLOB_HEADER_SIZE} -l 4 -p ${ESPATH}/bmp.blob)" == "02214c18" ]; then
+                    mv ${ESPATH}/bmp.blob ${ESPATH}/bmp.blob.comp;
+                    dd if=${ESPATH}/bmp.blob.comp bs=1 count=${BLOB_HEADER_SIZE} status=none of=${ESPATH}/bmp.blob;
+                    dd if=${ESPATH}/bmp.blob.comp bs=1 skip=${BLOB_HEADER_SIZE} status=none |unlz4 >> ${ESPATH}/bmp.blob;
+                    rm ${ESPATH}/bmp.blob.comp;
+                fi;
+
+                mkdir -p ${ESPATH}/bmp;
+                python ${COMMON_EXTRACT}/nvblob_extract.py ${ESPATH}/bmp.blob ${ESPATH}/bmp 1>/dev/null 2>&1;
             fi;
 
             rm -f ${TMPDIR}/downloads/${sname}.${fileext};
