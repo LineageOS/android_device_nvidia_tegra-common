@@ -285,6 +285,33 @@ l4t-t194	bootloader/tegrasign_v3_internal.py	tegraflash/
 l4t-t194	bootloader/tegrasign_v3_util.py		tegraflash/
 l4t-t194	bootloader/tegraopenssl			tegraflash/
 
+# Bootloader images
+stock-foster	bmp/nvidia480.bmp			BMP/
+stock-foster	bmp/nvidia720.bmp			BMP/
+stock-foster	bmp/nvidia810.bmp			BMP/
+stock-foster	bmp/nvidia1080.bmp			BMP/
+stock-foster	bmp/nvidia4k.bmp			BMP/
+stock-foster	bmp/sata_fw_ota480.bmp			BMP/
+stock-foster	bmp/sata_fw_ota720.bmp			BMP/
+stock-foster	bmp/sata_fw_ota1080.bmp			BMP/
+stock-foster	bmp/sata_fw_ota4k.bmp			BMP/
+stock-foster	bmp/verity_orange_continue_720.bmp	BMP/
+stock-foster	bmp/verity_orange_continue_1080.bmp	BMP/
+stock-foster	bmp/verity_orange_pause_720.bmp		BMP/
+stock-foster	bmp/verity_orange_pause_1080.bmp	BMP/
+stock-foster	bmp/verity_red_continue_720.bmp		BMP/
+stock-foster	bmp/verity_red_continue_1080.bmp	BMP/
+stock-foster	bmp/verity_red_pause_720.bmp		BMP/
+stock-foster	bmp/verity_red_pause_1080.bmp		BMP/
+stock-foster	bmp/verity_yellow_continue_720.bmp	BMP/
+stock-foster	bmp/verity_yellow_continue_1080.bmp	BMP/
+stock-foster	bmp/verity_yellow_pause_720.bmp		BMP/
+stock-foster	bmp/verity_yellow_pause_1080.bmp	BMP/
+stock-t210	bmp/verity_red_stop_720.bmp		BMP/
+stock-t210	bmp/verity_red_stop_1080.bmp		BMP/
+stock-t210	bmp/verity_eio_continue_720.bmp		BMP/
+stock-t210	bmp/verity_eio_continue_1080.bmp	BMP/
+
 # Wireless
 # Realtek
 l4t-t194	drivers/lib/firmware/rtl8822cu_config		realtek/rtl8822cu/

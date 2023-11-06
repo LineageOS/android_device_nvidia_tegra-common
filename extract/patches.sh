@@ -142,6 +142,22 @@ function fetch_bmps() {
   echo "";
 }
 
+# Some bootloader images need to be converted to BMP3
+function convert_bmp() {
+  if [ "$(identify -format \"%m\" ${1})" != "\"BMP3\"" ]; then
+    convert ${1} BMP3:${1};
+  fi;
+}
+function convert_bmps() {
+  echo -n "Converting bootloader BMPs to BMP3...";
+
+  for bmp in ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/BMP/*.bmp; do
+    convert_bmp ${bmp};
+  done;
+
+  echo "";
+}
+
 fetch_bcm4356_patchfile;
 chmod_tegraflash;
 patch_nvcontrol;
@@ -152,3 +168,4 @@ patch_tegraflash_dtbcheck;
 fetch_l4t_deps;
 patch_nvpmodel;
 fetch_bmps;
+convert_bmps;
