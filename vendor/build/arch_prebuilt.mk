@@ -13,18 +13,18 @@
 # limitations under the License.
 
 ifneq ("$(LOCAL_SRC_FILES)","")
-NVIDIA_SRC_FILES_32 := $(shell (echo $(LOCAL_SRC_FILES) |cut -d/ -f10-))
-NVIDIA_SRC_FILES_64 := $(shell (echo $(LOCAL_SRC_FILES) |cut -d/ -f10-))
+NVIDIA_SRC_FILES_32 := $(shell (echo $(LOCAL_SRC_FILES) |cut -d/ -f12-))
+NVIDIA_SRC_FILES_64 := $(shell (echo $(LOCAL_SRC_FILES) |cut -d/ -f12-))
 endif
 ifneq ("$(LOCAL_SRC_FILES_32)","")
-NVIDIA_SRC_FILES_32 := $(shell (echo $(LOCAL_SRC_FILES_32) |cut -d/ -f10-))
+NVIDIA_SRC_FILES_32 := $(shell (echo $(LOCAL_SRC_FILES_32) |cut -d/ -f12-))
 endif
 ifneq ("$(LOCAL_SRC_FILES_64)","")
-NVIDIA_SRC_FILES_64 := $(shell (echo $(LOCAL_SRC_FILES_64) |cut -d/ -f10-))
+NVIDIA_SRC_FILES_64 := $(shell (echo $(LOCAL_SRC_FILES_64) |cut -d/ -f12-))
 endif
 
-ifeq ("$(wildcard vendor/nvidia/$(TARGET_DEVICE)/$(notdir $(LOCAL_PATH))/$(NVIDIA_SRC_FILES_32))","")
-ifeq ("$(wildcard vendor/nvidia/$(TARGET_DEVICE)/$(notdir $(LOCAL_PATH))/$(NVIDIA_SRC_FILES_64))","")
+ifeq ("$(wildcard vendor/nvidia/$(TARGET_DEVICE)/$(shell (echo $(LOCAL_PATH) |awk -F/ '{ print $$(NF-1) "/" $$(NF) }'))/$(NVIDIA_SRC_FILES_32))","")
+ifeq ("$(wildcard vendor/nvidia/$(TARGET_DEVICE)/$(shell (echo $(LOCAL_PATH) |awk -F/ '{ print $$(NF-1) "/" $$(NF) }'))/$(NVIDIA_SRC_FILES_64))","")
 include $(BUILD_NVIDIA_PREBUILT)
 endif
 endif
