@@ -224,6 +224,41 @@ function patch_tnspec() {
   echo "";
 }
 
+# Raydium uses an intrinsic that got moved around in Q, so it needs shimmed
+function patch_raydium() {
+  echo -n "Patching raydium prebuilts for intrinsics changes and libstdc++...";
+
+  sed -i 's/__aeabi_uldivmod/s_aeabi_uldivmod/' ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/librm31080.so
+
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/bin32/rm_ts_server
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/hw/ts.default.so
+  ${PATCHELF} --replace-needed libm.so libw.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/librm31080.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/librm31080.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/librm_ts_service.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_02_00_20.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_02_00_a0.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_02_00_b0.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_03_00_20.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_03_00_a0.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_03_00_b0.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_04_00_b0.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_04_00_c0.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_05_00_c0.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_06_00_b0.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_07_00_b0.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_08_00_20.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_08_00_a0.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_08_00_b0.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_09_00_c0.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_09_01_c0.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_09_02_c0.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_0a_00_b0.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_0b_00_a0.so
+  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/touch_para_10.so
+
+  echo "";
+}
+
 fetch_bcm4356_patchfile;
 chmod_tegraflash;
 patch_nvcontrol;
@@ -239,3 +274,4 @@ patch_keymaster;
 patch_widevine;
 patch_nvgpu;
 patch_tnspec;
+patch_raydium;

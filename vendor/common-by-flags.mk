@@ -62,6 +62,10 @@ ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_TOS)/tos/tos.mk)","")
 include $(LOCAL_PATH)/$(TARGET_TEGRA_TOS)/tos/tos.mk
 endif
 
+ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_TOUCH)/touch.mk)","")
+include $(LOCAL_PATH)/$(TARGET_TEGRA_TOUCH)/touch.mk
+endif
+
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_WIDEVINE)/widevine/widevine.mk)","")
 include $(LOCAL_PATH)/$(TARGET_TEGRA_WIDEVINE)/widevine/widevine.mk
 endif

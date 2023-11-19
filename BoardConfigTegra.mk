@@ -77,6 +77,12 @@ ifneq ($(TARGET_TEGRA_SENSORS),)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/sensors.xml
 endif
 
+# Touch
+ifeq ($(TARGET_TEGRA_TOUCH),rel-29/raydium)
+TARGET_LD_SHIM_LIBS += \
+  /system/vendor/lib/librm_ts_service.so|/system/lib/liblog.so
+endif
+
 # Wifi
 ifneq ($(TARGET_TEGRA_WIFI),)
 # rtl8822ce driver works with bcm userspace

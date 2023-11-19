@@ -248,6 +248,32 @@ stock-t210	vendor/lib64/hw/keystore.v0.tegra.so				tos/lib64/hw/
 stock-t210	vendor/lib/hw/gatekeeper.tlk.tegra.so				tos/lib/hw/
 stock-t210	vendor/lib/hw/keystore.v0.tegra.so				tos/lib/hw/
 
+# Touch - Raydium
+nv-tegra-t210-rel29	vendor/bin/rm_ts_server		raydium/bin32/
+nv-tegra-t210-rel29	vendor/lib/hw/ts.default.so	raydium/lib/hw/
+nv-tegra-t210-rel29	vendor/lib/librm31080.so	raydium/lib/
+nv-tegra-t210-rel29	vendor/lib/librm_ts_service.so	raydium/lib/
+nv-tegra-t210-rel29	vendor/lib/para_10_02_00_20.so	raydium/lib/
+nv-tegra-t210-rel29	vendor/lib/para_10_02_00_a0.so	raydium/lib/
+nv-tegra-t210-rel29	vendor/lib/para_10_02_00_b0.so	raydium/lib/
+nv-tegra-t210-rel29	vendor/lib/para_10_03_00_20.so	raydium/lib/
+nv-tegra-t210-rel29	vendor/lib/para_10_03_00_a0.so	raydium/lib/
+nv-tegra-t210-rel29	vendor/lib/para_10_03_00_b0.so	raydium/lib/
+nv-tegra-t210-rel29	vendor/lib/para_10_04_00_b0.so	raydium/lib/
+nv-tegra-t210-rel29	vendor/lib/para_10_04_00_c0.so	raydium/lib/
+nv-tegra-t210-rel29	vendor/lib/para_10_05_00_c0.so	raydium/lib/
+nv-tegra-t210-rel29	vendor/lib/para_10_06_00_b0.so	raydium/lib/
+nv-tegra-t210-rel29	vendor/lib/para_10_07_00_b0.so	raydium/lib/
+nv-tegra-t210-rel29	vendor/lib/para_10_08_00_20.so	raydium/lib/
+nv-tegra-t210-rel29	vendor/lib/para_10_08_00_a0.so	raydium/lib/
+nv-tegra-t210-rel29	vendor/lib/para_10_08_00_b0.so	raydium/lib/
+nv-tegra-t210-rel29	vendor/lib/para_10_09_00_c0.so	raydium/lib/
+nv-tegra-t210-rel29	vendor/lib/para_10_09_01_c0.so	raydium/lib/
+nv-tegra-t210-rel29	vendor/lib/para_10_09_02_c0.so	raydium/lib/
+nv-tegra-t210-rel29	vendor/lib/para_10_0a_00_b0.so	raydium/lib/
+nv-tegra-t210-rel29	vendor/lib/para_10_0b_00_a0.so	raydium/lib/
+nv-tegra-t210-rel29	vendor/lib/touch_para_10.so	raydium/lib/
+
 # Widevine
 stock-t210	vendor/bin/hw/android.hardware.drm@1.3-service.widevine	widevine/bin32/hw/
 stock-t210	vendor/lib64/mediadrm/libwvdrmengine.so			widevine/lib64/mediadrm/
