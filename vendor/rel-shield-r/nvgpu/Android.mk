@@ -532,4 +532,28 @@ LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE               := libtsec_wrapper
+LOCAL_SRC_FILES_32         := $(COMMON_NVGPU_PATH)/lib/libtsec_wrapper.so
+LOCAL_SRC_FILES_64         := $(COMMON_NVGPU_PATH)/lib64/libtsec_wrapper.so
+LOCAL_MULTILIB             := both
+LOCAL_MODULE_SUFFIX        := .so
+LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS          := optional
+LOCAL_MODULE_OWNER         := nvidia
+LOCAL_VENDOR_MODULE        := true
+include $(BUILD_NVIDIA_COMMON_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE               := libnvsi_ll_2
+LOCAL_SRC_FILES_32         := $(COMMON_NVGPU_PATH)/lib/libnvsi_ll_2.so
+LOCAL_SRC_FILES_64         := $(COMMON_NVGPU_PATH)/lib64/libnvsi_ll_2.so
+LOCAL_MULTILIB             := both
+LOCAL_MODULE_SUFFIX        := .so
+LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS          := optional
+LOCAL_MODULE_OWNER         := nvidia
+LOCAL_VENDOR_MODULE        := true
+include $(BUILD_NVIDIA_COMMON_PREBUILT)
 endif

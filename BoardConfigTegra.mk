@@ -58,7 +58,7 @@ TARGET_USES_HWC2          := true
 endif
 
 # Keystore
-ifneq ($(filter rel-shield-r, $(TARGET_TEGRA_KEYSTORE)),)
+ifneq ($(filter rel-shield-r, $(TARGET_TEGRA_TOS)),)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/keystore.xml
 ifeq ($(TARGET_SUPPORTS_64_BIT_APPS),true)
 TARGET_LD_SHIM_LIBS += \
@@ -67,7 +67,7 @@ else
 TARGET_LD_SHIM_LIBS += \
   /vendor/bin/hw/android.hardware.keymaster@3.0-service.tegra|/vendor/lib/libkeymaster_shim.so
 endif
-else ifeq ($(TARGET_TEGRA_KEYSTORE),software)
+else ifeq ($(TARGET_TEGRA_TOS),software)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/keystore.xml
 endif
 
