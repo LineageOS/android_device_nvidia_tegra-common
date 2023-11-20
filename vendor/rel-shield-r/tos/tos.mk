@@ -12,9 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# TOS clients
 PRODUCT_PACKAGES += \
     run_ss_status \
     ss_status \
     tlk_daemon \
-    eks2_client \
-    libnvsi_ll_2
+    eks2_client
+
+# Gatekeeper
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-impl \
+    android.hardware.gatekeeper@1.0-service \
+    gatekeeper.tlk.tegra
+
+# Tegra Keystore
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0-service.tegra \
+    keystore.v0.tegra
+
+# Generic Keystore (for secure=none)
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-service.software \
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service

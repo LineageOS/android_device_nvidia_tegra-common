@@ -40,11 +40,6 @@ ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_CEC)/hdmi/hdmi.mk)","")
 include $(LOCAL_PATH)/$(TARGET_TEGRA_CEC)/hdmi/hdmi.mk
 endif
 
-ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_KEYSTORE)/keystore/keystore.mk)","")
-include $(LOCAL_PATH)/$(TARGET_TEGRA_KEYSTORE)/keystore/keystore.mk
-include $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/security/security.mk
-endif
-
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_MEMTRACK)/memtrack/memtrack.mk)","")
 include $(LOCAL_PATH)/$(TARGET_TEGRA_MEMTRACK)/memtrack/memtrack.mk
 endif
@@ -59,6 +54,10 @@ endif
 
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_POWER)/power/power.mk)","")
 include $(LOCAL_PATH)/$(TARGET_TEGRA_POWER)/power/power.mk
+endif
+
+ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_TOS)/tos/tos.mk)","")
+include $(LOCAL_PATH)/$(TARGET_TEGRA_TOS)/tos/tos.mk
 endif
 
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_WIDEVINE)/widevine/widevine.mk)","")

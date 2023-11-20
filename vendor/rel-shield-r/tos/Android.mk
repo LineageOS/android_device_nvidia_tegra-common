@@ -12,13 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifeq ($(TARGET_TEGRA_DEFAULT_BRANCH),rel-shield-r)
+ifeq ($(TARGET_TEGRA_TOS),rel-shield-r)
 LOCAL_PATH := $(call my-dir)
-COMMON_SECURITY_PATH := ../../../../../../vendor/nvidia/common/rel-shield-r/security
+COMMON_TOS_PATH := ../../../../../../vendor/nvidia/common/rel-shield-r/tos
+
+include $(CLEAR_VARS)
+LOCAL_MODULE               := android.hardware.keymaster@3.0-service.tegra
+LOCAL_SRC_FILES_32         := $(COMMON_TOS_PATH)/bin32/hw/android.hardware.keymaster@3.0-service.tegra
+LOCAL_SRC_FILES_64         := $(COMMON_TOS_PATH)/bin64/hw/android.hardware.keymaster@3.0-service.tegra
+LOCAL_MULTILIB             := first
+LOCAL_INIT_RC              := etc/init/android.hardware.keymaster@3.0-service.tegra.rc
+LOCAL_MODULE_CLASS         := EXECUTABLES
+LOCAL_MODULE_TAGS          := optional
+LOCAL_MODULE_OWNER         := nvidia
+LOCAL_VENDOR_MODULE        := true
+LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_SHARED_LIBRARIES     := libkeymaster_shim
+include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := run_ss_status
-LOCAL_SRC_FILES            := $(COMMON_SECURITY_PATH)/bin/run_ss_status.sh
+LOCAL_SRC_FILES            := $(COMMON_TOS_PATH)/bin/run_ss_status.sh
 LOCAL_MODULE_SUFFIX        := .sh
 LOCAL_MODULE_CLASS         := EXECUTABLES
 LOCAL_MODULE_TAGS          := optional
@@ -28,8 +42,8 @@ include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := eks2_client
-LOCAL_SRC_FILES_32         := $(COMMON_SECURITY_PATH)/bin32/eks2_client
-LOCAL_SRC_FILES_64         := $(COMMON_SECURITY_PATH)/bin64/eks2_client
+LOCAL_SRC_FILES_32         := $(COMMON_TOS_PATH)/bin32/eks2_client
+LOCAL_SRC_FILES_64         := $(COMMON_TOS_PATH)/bin64/eks2_client
 LOCAL_MULTILIB             := first
 LOCAL_MODULE_CLASS         := EXECUTABLES
 LOCAL_MODULE_TAGS          := optional
@@ -39,8 +53,8 @@ include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := ss_status
-LOCAL_SRC_FILES_32         := $(COMMON_SECURITY_PATH)/bin32/ss_status
-LOCAL_SRC_FILES_64         := $(COMMON_SECURITY_PATH)/bin64/ss_status
+LOCAL_SRC_FILES_32         := $(COMMON_TOS_PATH)/bin32/ss_status
+LOCAL_SRC_FILES_64         := $(COMMON_TOS_PATH)/bin64/ss_status
 LOCAL_MULTILIB             := first
 LOCAL_MODULE_CLASS         := EXECUTABLES
 LOCAL_MODULE_TAGS          := optional
@@ -50,8 +64,8 @@ include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := tlk_daemon
-LOCAL_SRC_FILES_32         := $(COMMON_SECURITY_PATH)/bin32/tlk_daemon
-LOCAL_SRC_FILES_64         := $(COMMON_SECURITY_PATH)/bin64/tlk_daemon
+LOCAL_SRC_FILES_32         := $(COMMON_TOS_PATH)/bin32/tlk_daemon
+LOCAL_SRC_FILES_64         := $(COMMON_TOS_PATH)/bin64/tlk_daemon
 LOCAL_MULTILIB             := first
 LOCAL_MODULE_CLASS         := EXECUTABLES
 LOCAL_MODULE_TAGS          := optional
@@ -60,26 +74,29 @@ LOCAL_VENDOR_MODULE        := true
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE               := libtsec_wrapper
-LOCAL_SRC_FILES_32         := $(COMMON_SECURITY_PATH)/lib/libtsec_wrapper.so
-LOCAL_SRC_FILES_64         := $(COMMON_SECURITY_PATH)/lib64/libtsec_wrapper.so
+LOCAL_MODULE               := gatekeeper.tlk.tegra
+LOCAL_SRC_FILES_32         := $(COMMON_TOS_PATH)/lib/hw/gatekeeper.tlk.tegra.so
+LOCAL_SRC_FILES_64         := $(COMMON_TOS_PATH)/lib64/hw/gatekeeper.tlk.tegra.so
 LOCAL_MULTILIB             := both
+LOCAL_INIT_RC              := etc/init/android.hardware.gatekeeper@1.0-service.tegra.rc
 LOCAL_MODULE_SUFFIX        := .so
 LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
 LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
+LOCAL_MODULE_RELATIVE_PATH := hw
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE               := libnvsi_ll_2
-LOCAL_SRC_FILES_32         := $(COMMON_SECURITY_PATH)/lib/libnvsi_ll_2.so
-LOCAL_SRC_FILES_64         := $(COMMON_SECURITY_PATH)/lib64/libnvsi_ll_2.so
+LOCAL_MODULE               := keystore.v0.tegra
+LOCAL_SRC_FILES_32         := $(COMMON_TOS_PATH)/lib/hw/keystore.v0.tegra.so
+LOCAL_SRC_FILES_64         := $(COMMON_TOS_PATH)/lib64/hw/keystore.v0.tegra.so
 LOCAL_MULTILIB             := both
 LOCAL_MODULE_SUFFIX        := .so
 LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
 LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
+LOCAL_MODULE_RELATIVE_PATH := hw
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 endif

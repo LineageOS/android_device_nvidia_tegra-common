@@ -20,10 +20,10 @@ TARGET_TEGRA_L4T_BRANCH     ?= r35
 TARGET_TEGRA_AUDIO    ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
 TARGET_TEGRA_CEC      ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
 TARGET_TEGRA_GPU      ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
-TARGET_TEGRA_KEYSTORE ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
 TARGET_TEGRA_MEMTRACK ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
 TARGET_TEGRA_OMX      ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
 TARGET_TEGRA_PHS      ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
+TARGET_TEGRA_TOS      ?= $(if $(TARGET_TEGRA_KEYSTORE),$(TARGET_TEGRA_KEYSTORE),$(TARGET_TEGRA_DEFAULT_BRANCH))
 
 TARGET_TEGRA_HEALTH ?= common
 TARGET_TEGRA_POWER  ?= aosp
@@ -196,14 +196,6 @@ PRODUCT_COPY_FILES += \
 endif
 endif
 
-# Keystore
-ifeq ($(TARGET_TEGRA_KEYSTORE),software)
-PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-service.software \
-    android.hardware.keymaster@3.0-impl \
-    android.hardware.keymaster@3.0-service
-endif
-
 # Memtrack
 ifeq ($(TARGET_TEGRA_MEMTRACK),lineage)
 PRODUCT_PACKAGES += \
@@ -238,6 +230,14 @@ PRODUCT_COPY_FILES += \
     device/nvidia/tegra-common/seccomp/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
     device/nvidia/tegra-common/seccomp/mediaswcodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaswcodec.policy \
     device/nvidia/tegra-common/seccomp/mediaextractor.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
+
+# TOS
+ifeq ($(TARGET_TEGRA_TOS),software)
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-service.software \
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service
+endif
 
 # Update Engine
 ifeq ($(AB_OTA_UPDATER),true)

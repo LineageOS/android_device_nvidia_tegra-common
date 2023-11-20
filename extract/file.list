@@ -50,14 +50,6 @@ stock-t210	vendor/lib/libnvos.so	common/lib/
 stock-t210	vendor/lib64/hw/hdmi_cec.tegra.so	hdmi/lib64/hw/
 stock-t210	vendor/lib/hw/hdmi_cec.tegra.so		hdmi/lib/hw/
 
-# Keymaster
-stock-t210	vendor/bin/hw/android.hardware.keymaster@3.0-service.tegra	keystore/bin64/hw/
-stock-sif	vendor/bin/hw/android.hardware.keymaster@3.0-service.tegra	keystore/bin32/hw/
-stock-t210	vendor/lib64/hw/gatekeeper.tlk.tegra.so				keystore/lib64/hw/
-stock-t210	vendor/lib64/hw/keystore.v0.tegra.so				keystore/lib64/hw/
-stock-t210	vendor/lib/hw/gatekeeper.tlk.tegra.so				keystore/lib/hw/
-stock-t210	vendor/lib/hw/keystore.v0.tegra.so				keystore/lib/hw/
-
 # IPProtect (Dolby)
 stock-t210	vendor/bin/hw/vendor.nvidia.hardware.ipprotect@1.0-service	ipprotect/bin64/hw/
 stock-sif	vendor/bin/hw/vendor.nvidia.hardware.ipprotect@1.0-service	ipprotect/bin32/hw/
@@ -126,6 +118,8 @@ stock-t210	vendor/lib64/libnvcucompat.so						nvgpu/lib64/
 stock-t210	vendor/lib64/libnvsocsys.so						nvgpu/lib64/
 stock-t210	vendor/lib64/libtlk_secure_hdcp_up.so					nvgpu/lib64/
 stock-t210	vendor/lib64/libtsechdcp.so						nvgpu/lib64/
+stock-t210	vendor/lib64/libtsec_wrapper.so						nvgpu/lib64/
+stock-t210	vendor/lib64/libnvsi_ll_2.so						nvgpu/lib64/
 stock-t210	vendor/lib/egl/libEGL_tegra.so						nvgpu/lib/egl/
 stock-t210	vendor/lib/egl/libGLESv1_CM_tegra.so					nvgpu/lib/egl/
 stock-t210	vendor/lib/egl/libGLESv2_tegra.so					nvgpu/lib/egl/
@@ -158,6 +152,8 @@ stock-t210	vendor/lib/libnvcucompat.so						nvgpu/lib/
 stock-t210	vendor/lib/libnvsocsys.so						nvgpu/lib/
 stock-t210	vendor/lib/libtlk_secure_hdcp_up.so					nvgpu/lib/
 stock-t210	vendor/lib/libtsechdcp.so						nvgpu/lib/
+stock-t210	vendor/lib/libtsec_wrapper.so						nvgpu/lib/
+stock-t210	vendor/lib/libnvsi_ll_2.so						nvgpu/lib/
 
 # NVMM
 stock-t210	vendor/lib/libnvomxilclient.so		nvmm/lib/
@@ -237,18 +233,20 @@ stock-t210	vendor/bin/hw/vendor.nvidia.hardware.power@1.0-service	power/bin64/hw
 stock-t210	vendor/lib64/hw/powerhal.tegra.so			power/lib64/hw/
 stock-t210	vendor/lib/hw/powerhal.tegra.so				power/lib/hw/
 
-# Security
-stock-sif	vendor/bin/eks2_client			security/bin32/
-stock-sif	vendor/bin/ss_status			security/bin32/
-stock-sif	vendor/bin/tlk_daemon			security/bin32/
-stock-t210	vendor/bin/eks2_client			security/bin64/
-stock-t210	vendor/bin/ss_status			security/bin64/
-stock-t210	vendor/bin/tlk_daemon			security/bin64/
-stock-t210	vendor/bin/run_ss_status.sh		security/bin/
-stock-t210	vendor/lib64/libtsec_wrapper.so		security/lib64/
-stock-t210	vendor/lib64/libnvsi_ll_2.so		security/lib64/
-stock-t210	vendor/lib/libtsec_wrapper.so		security/lib/
-stock-t210	vendor/lib/libnvsi_ll_2.so		security/lib/
+# TOS
+stock-t210	vendor/bin/hw/android.hardware.keymaster@3.0-service.tegra	tos/bin64/hw/
+stock-sif	vendor/bin/hw/android.hardware.keymaster@3.0-service.tegra	tos/bin32/hw/
+stock-sif	vendor/bin/eks2_client						tos/bin32/
+stock-sif	vendor/bin/ss_status						tos/bin32/
+stock-sif	vendor/bin/tlk_daemon						tos/bin32/
+stock-t210	vendor/bin/eks2_client						tos/bin64/
+stock-t210	vendor/bin/ss_status						tos/bin64/
+stock-t210	vendor/bin/tlk_daemon						tos/bin64/
+stock-t210	vendor/bin/run_ss_status.sh					tos/bin/
+stock-t210	vendor/lib64/hw/gatekeeper.tlk.tegra.so				tos/lib64/hw/
+stock-t210	vendor/lib64/hw/keystore.v0.tegra.so				tos/lib64/hw/
+stock-t210	vendor/lib/hw/gatekeeper.tlk.tegra.so				tos/lib/hw/
+stock-t210	vendor/lib/hw/keystore.v0.tegra.so				tos/lib/hw/
 
 # Widevine
 stock-t210	vendor/bin/hw/android.hardware.drm@1.3-service.widevine	widevine/bin32/hw/
