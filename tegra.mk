@@ -149,7 +149,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     android.hardware.tv.cec@1.0-service \
-    android.hardware.tv.cec@1.0-impl
+    android.hardware.tv.cec@1.0-impl.nvidia
 endif
 
 # DRM
