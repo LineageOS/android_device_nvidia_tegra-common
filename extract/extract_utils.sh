@@ -19,6 +19,7 @@ declare -a SOURCE_PATHS=();
 declare -A SOURCE_BRANCH=();
 declare -a FILELIST_PATHS=();
 declare -a PATCH_PATHS=();
+declare -a HOOK_PATHS=();
 
 VENDOR_STATE=-1
 
@@ -34,6 +35,15 @@ function cleanup() {
 }
 
 trap cleanup 0
+
+# To be overridden by device-level hooks.sh
+# Parameters:
+#   $1: Name of the source. Used as the basename.
+#   $2: Type of the source
+#
+function handle_extract() {
+    return -1;
+}
 
 #
 # setup_vendor
@@ -95,6 +105,9 @@ function setup_vendor() {
     for key in "${!PATCH_PATHS[@]}"; do
         PATCH_PATHS["$key"]=nvidia/${PATCH_PATHS["$key"]};
     done;
+    for key in "${!HOOK_PATHS[@]}"; do
+        HOOK_PATHS["$key"]=nvidia/${HOOK_PATHS["$key"]};
+    done;
     if [ "${VENDOR}" != "nvidia" ]; then
         source ${LINEAGE_ROOT}/device/${VENDOR}/${DEVICE}/extract/extract_sources.sh;
     fi;
@@ -141,6 +154,17 @@ function fetch_sources() {
             fi;
 
             echo -n "Extracting source ${sname} for prebuilts branch ${branch}...";
+            local extract_handled="false";
+            for hook in "${!HOOK_PATHS[@]}"; do
+                source "${LINEAGE_ROOT}/device/${HOOK_PATHS["$hook"]}/extract/hooks.sh";
+                if handle_extract "${sname}" "${type}"; then extract_handled="true"; break; fi;
+            done;
+            if [ "$extract_handled" == "true" ]; then
+                rm -f ${TMPDIR}/downloads/${sname}.${fileext};
+                echo "";
+                continue;
+            fi;
+
             if [ "${type}" == "git" -o "${type}" == "gitiles" ]; then
                 tail -n +$(($(grep -an "^\s*__START_TGZ_FILE__" ${TMPDIR}/downloads/${sname}.sh \
                             | awk -F ':' '{print $1}') + 1)) ${TMPDIR}/downloads/${sname}.sh \
