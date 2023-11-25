@@ -25,8 +25,8 @@ service vendor.lkm_loader_target /vendor/bin/lkm_loader_target.sh
     disabled
 
 on fs
-    start vendor.lkm_loader_target
-    start vendor.lkm_loader
+    exec_start vendor.lkm_loader_target
+    exec_start vendor.lkm_loader
 
 on property:init.svc.vendor.lkm_loader=stopped
     restorecon_recursive /sys
