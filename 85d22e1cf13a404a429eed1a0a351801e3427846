@@ -16,6 +16,24 @@
       "message": "This should stay.",
       "revId": "85d22e1cf13a404a429eed1a0a351801e3427846",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f51587b_2f1c1b54",
+        "filename": "devicesettings/AndroidManifest.xml",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2023-11-27T23:34:06Z",
+      "side": 0,
+      "message": "Again, android.intent.action.MAIN should stay.",
+      "parentUuid": "f5bd54e0_80afe12c",
+      "revId": "85d22e1cf13a404a429eed1a0a351801e3427846",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
