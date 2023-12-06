@@ -260,6 +260,7 @@ nv-tegra-t210-rel24	tnspec.py	tegraflash/
 
 # Bootloader update generators
 l4t-t194	bootloader/BUP_generator.py			tegraflash/
+l4t-t234	bootloader/BUP_generator.py			tegraflash/
 
 # Tegraflash
 l4t-t194	bootloader/tegraflash.py		tegraflash/
@@ -284,6 +285,28 @@ l4t-t194	bootloader/tegrasign_v3.py		tegraflash/
 l4t-t194	bootloader/tegrasign_v3_internal.py	tegraflash/
 l4t-t194	bootloader/tegrasign_v3_util.py		tegraflash/
 l4t-t194	bootloader/tegraopenssl			tegraflash/
+l4t-t234	bootloader/tegraflash.py		tegraflash/
+l4t-t234	bootloader/tegraflash_impl_t234.py	tegraflash/
+l4t-t234	bootloader/tegraflash_internal.py	tegraflash/
+l4t-t234	bootloader/sw_memcfg_overlay.pl		tegraflash/
+l4t-t234	bootloader/pyfdt/dtbdump.py		tegraflash/pyfdt/
+l4t-t234	bootloader/pyfdt/fdtmerge.py		tegraflash/pyfdt/
+l4t-t234	bootloader/pyfdt/__init__.py		tegraflash/pyfdt/
+l4t-t234	bootloader/pyfdt/jsonfdtdump.py		tegraflash/pyfdt/
+l4t-t234	bootloader/pyfdt/pyfdt.py		tegraflash/pyfdt/
+l4t-t234	bootloader/dtbcheck.py			tegraflash/
+l4t-t234	bootloader/t194.py			tegraflash/
+l4t-t234	bootloader/t234.py			tegraflash/
+l4t-t234	bootloader/tegrabct_v2			tegraflash/
+l4t-t234	bootloader/tegradevflash_v2		tegraflash/
+l4t-t234	bootloader/tegrahost_v2			tegraflash/
+l4t-t234	bootloader/tegraparser_v2		tegraflash/
+l4t-t234	bootloader/tegrarcm_v2			tegraflash/
+l4t-t234	bootloader/tegrasign_v2			tegraflash/
+l4t-t234	bootloader/tegrasign_v3.py		tegraflash/
+l4t-t234	bootloader/tegrasign_v3_internal.py	tegraflash/
+l4t-t234	bootloader/tegrasign_v3_util.py		tegraflash/
+l4t-t234	bootloader/tegraopenssl			tegraflash/
 
 # Bootloader images
 stock-foster	bmp/nvidia480.bmp			BMP/
@@ -317,6 +340,9 @@ stock-t210	bmp/verity_eio_continue_1080.bmp	BMP/
 l4t-t194	drivers/lib/firmware/rtl8822cu_config		realtek/rtl8822cu/
 l4t-t194	drivers/lib/firmware/rtl8822cu_fw		realtek/rtl8822cu/
 l4t-t194	drivers/lib/firmware/rtl8822_setting.bin	realtek/rtl8822cu/
+l4t-t234	drivers/lib/firmware/rtl8822cu_config		realtek/rtl8822cu/
+l4t-t234	drivers/lib/firmware/rtl8822cu_fw		realtek/rtl8822cu/
+l4t-t234	drivers/lib/firmware/rtl8822_setting.bin	realtek/rtl8822cu/
 
 # BCM Bluetooth Patchfiles
 stock-t210	vendor/firmware/bcm4350.hcd	bcm_firmware/bcm4354/BCM4350C0.hcd
@@ -330,3 +356,6 @@ stock-t210	vendor/firmware/brcmfmac4356-pcie.bin	bcm_firmware/bcm4356/
 l4t-t194	nv_tegra/l4t_deb_packages/nvidia-l4t-nvpmodel_35.5.0-20240219203809_arm64.deb	nvpmodel/nvidia-l4t-nvpmodel_arm64.deb
 l4t-t194	drivers/usr/lib/aarch64-linux-gnu/tegra/libnvos.so				l4t/lib64/
 l4t-t194	drivers/usr/lib/aarch64-linux-gnu/tegra/libnvsocsys.so				l4t/lib64/
+l4t-t234	nv_tegra/l4t_deb_packages/nvidia-l4t-nvpmodel_36.4.0-20240912212859_arm64.deb	nvpmodel/nvidia-l4t-nvpmodel_arm64.deb
+l4t-t234	drivers/usr/lib/aarch64-linux-gnu/tegra/libnvos.so				l4t/lib64/
+l4t-t234	drivers/usr/lib/aarch64-linux-gnu/tegra/libnvsocsys.so				l4t/lib64/

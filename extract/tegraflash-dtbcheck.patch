@@ -18,3 +18,23 @@ index 7ef56708..6fc7bba6 100755
                  command.extend(["-c", chipid])
                  command.extend(["-o", bpmp_dtb])
                  command.extend([tmp_dtb])
+diff --git a/r36/tegraflash/tegraflash_impl_t234.py b/r36/tegraflash/tegraflash_impl_t234.py
+index 7f4beb2..c930a0b 100755
+--- a/r36/tegraflash/tegraflash_impl_t234.py
++++ b/r36/tegraflash/tegraflash_impl_t234.py
+@@ -1496,12 +1496,13 @@ class TFlashT23x_Base(object):
+ 
+             # Create temp file for dtbcheck.py
+             tmp_dtb = tegraflash_create_backup_file(bpmp_dtb, '_tmp')
+-            if os.path.exists(tmp_dtb) and os.path.exists('dtbcheck.py'):
++            dtbcheckpath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'dtbcheck.py')
++            if os.path.exists(tmp_dtb) and os.path.exists(dtbcheckpath):
+                 if sys.executable:
+                     python_path = sys.executable
+                 else:
+                     python_path = 'python3' # set as default
+-                command = [python_path, "dtbcheck.py"]
++                command = [python_path, dtbcheckpath]
+                 command.extend(["-c", chipid])
+                 command.extend(["-o", bpmp_dtb])
+                 command.extend([tmp_dtb])

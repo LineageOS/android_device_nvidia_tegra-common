@@ -27,6 +27,7 @@ function chmod_tegraflash() {
   echo -n "Making tegraflash host binaries executable...";
 
   find ${LINEAGE_ROOT}/${OUTDIR}/common/r35/tegraflash -type f -exec chmod 755 {} \;
+  find ${LINEAGE_ROOT}/${OUTDIR}/common/r36/tegraflash -type f -exec chmod 755 {} \;
   find ${LINEAGE_ROOT}/${OUTDIR}/common/rel-24/tegraflash -type f -exec chmod 755 {} \;
 
   echo "";
@@ -60,6 +61,10 @@ function patch_bup() {
   sed -i 's/= bup_magic/= "NVIDIA__BLOB__V2" if args.blob_type == "bmp" else bup_magic/' ${LINEAGE_ROOT}/${OUTDIR}/common/r35/tegraflash/BUP_generator.py
   sed -i 's/self.gen_version/0x00020000 if args.blob_type == "bmp" else self.gen_version/' ${LINEAGE_ROOT}/${OUTDIR}/common/r35/tegraflash/BUP_generator.py
 
+  sed -i 's/payload_obj.outfile/os.path.join(os.environ.get("OUT"), payload_obj.outfile)/' ${LINEAGE_ROOT}/${OUTDIR}/common/r36/tegraflash/BUP_generator.py
+  sed -i 's/= bup_magic/= "NVIDIA__BLOB__V2" if args.blob_type == "bmp" else bup_magic/' ${LINEAGE_ROOT}/${OUTDIR}/common/r36/tegraflash/BUP_generator.py
+  sed -i 's/self.gen_version/0x00020000 if args.blob_type == "bmp" else self.gen_version/' ${LINEAGE_ROOT}/${OUTDIR}/common/r36/tegraflash/BUP_generator.py
+
   echo "";
 }
 
@@ -70,6 +75,9 @@ function patch_tegrasign_v3() {
 
   sed -i "s|current_dir_path + '/|'|" ${LINEAGE_ROOT}/${OUTDIR}/common/r35/tegraflash/tegrasign_v3_internal.py
   sed -i "/current_dir_path/d" ${LINEAGE_ROOT}/${OUTDIR}/common/r35/tegraflash/tegrasign_v3_internal.py
+
+  sed -i "s|current_dir_path + '/|'|" ${LINEAGE_ROOT}/${OUTDIR}/common/r36/tegraflash/tegrasign_v3_internal.py
+  sed -i "/current_dir_path/d" ${LINEAGE_ROOT}/${OUTDIR}/common/r36/tegraflash/tegrasign_v3_internal.py
 
   patch --no-backup-if-mismatch -d ${LINEAGE_ROOT}/${OUTDIR} -p1 1>/dev/null 2>&1 < ${LINEAGE_ROOT}/device/nvidia/tegra-common/extract/tegrasign.patch
 
@@ -85,18 +93,34 @@ function patch_tegraflash_dtbcheck() {
 function fetch_l4t_deps() {
   echo -n "Fetching dependencies for nvpmodel...";
 
-  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/bin64
-  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64
   LOCALTMPDIR=$(mktemp -d)
   pushd ${LOCALTMPDIR} 1>/dev/null 2>&1
   wget -q http://ports.ubuntu.com/pool/main/g/glibc/libc6_2.31-0ubuntu9_arm64.deb
   ar x libc6_2.31-0ubuntu9_arm64.deb data.tar.xz 1>/dev/null 2>&1
   tar -xf data.tar.xz ./lib/aarch64-linux-gnu/ld-2.31.so ./lib/aarch64-linux-gnu/libc-2.31.so ./lib/aarch64-linux-gnu/libdl-2.31.so ./lib/aarch64-linux-gnu/librt-2.31.so ./lib/aarch64-linux-gnu/libpthread-2.31.so 1>/dev/null 2>&1
+
+  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/bin64
+  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64
   cp lib/aarch64-linux-gnu/ld-2.31.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/bin64/ld-linux-aarch64.so.1
   cp lib/aarch64-linux-gnu/libc-2.31.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64/libc.so.6
   cp lib/aarch64-linux-gnu//libdl-2.31.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64/libdl.so.2
   cp lib/aarch64-linux-gnu/librt-2.31.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64/librt.so.1
   cp lib/aarch64-linux-gnu/libpthread-2.31.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64/libpthread.so.0
+
+  rm -rf ${LOCALTMPDIR}/*
+
+  wget -q http://ports.ubuntu.com/pool/main/g/glibc/libc6_2.35-0ubuntu3_arm64.deb
+  ar x libc6_2.35-0ubuntu3_arm64.deb data.tar.zst 1>/dev/null 2>&1
+  tar -xf data.tar.zst ./lib/aarch64-linux-gnu/ld-linux-aarch64.so.1 ./lib/aarch64-linux-gnu/libc.so.6 ./lib/aarch64-linux-gnu/libdl.so.2 ./lib/aarch64-linux-gnu/librt.so.1 ./lib/aarch64-linux-gnu/libpthread.so.0 1>/dev/null 2>&1
+
+  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/bin64
+  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64
+  cp lib/aarch64-linux-gnu/ld-linux-aarch64.so.1 ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/bin64/ld-linux-aarch64.so.1
+  cp lib/aarch64-linux-gnu/libc.so.6 ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64/libc.so.6
+  cp lib/aarch64-linux-gnu/libdl.so.2 ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64/libdl.so.2
+  cp lib/aarch64-linux-gnu/librt.so.1 ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64/librt.so.1
+  cp lib/aarch64-linux-gnu/libpthread.so.0 ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64/libpthread.so.0
+
   popd 1>/dev/null 2>&1
   rm -rf ${LOCALTMPDIR}
 
@@ -107,17 +131,28 @@ function fetch_l4t_deps() {
 function patch_nvpmodel() {
   echo -n "Setting up nvpmodel...";
 
-  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/r35/nvpmodel/bin64
   LOCALTMPDIR=$(mktemp -d)
   pushd ${LOCALTMPDIR} 1>/dev/null 2>&1
+
+  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/r35/nvpmodel/bin64
   ar x ${LINEAGE_ROOT}/${OUTDIR}/common/r35/nvpmodel/nvidia-l4t-nvpmodel_arm64.deb data.tar.zst 2>&1 1>/dev/null
   tar -xf data.tar.zst ./usr/sbin/nvpmodel 1>/dev/null 2>&1
   cp usr/sbin/nvpmodel ${LINEAGE_ROOT}/${OUTDIR}/common/r35/nvpmodel/bin64/nvpmodel
-  popd 1>/dev/null 2>&1
-  rm -rf ${LOCALTMPDIR}
   rm ${LINEAGE_ROOT}/${OUTDIR}/common/r35/nvpmodel/nvidia-l4t-nvpmodel_arm64.deb
   ${LINEAGE_ROOT}/prebuilts/extract-tools/linux-x86/bin/patchelf-0_9 --set-interpreter /vendor/bin/l4t/ld-linux-aarch64.so.1 ${LINEAGE_ROOT}/${OUTDIR}/common/r35/nvpmodel/bin64/nvpmodel 1>/dev/null 2>&1
   sed -i "s|/var/lib|/odm/etc|g" ${LINEAGE_ROOT}/${OUTDIR}/common/r35/nvpmodel/bin64/nvpmodel
+  rm -rf ${LOCALTMPDIR}/*
+
+  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/r36/nvpmodel/bin64
+  ar x ${LINEAGE_ROOT}/${OUTDIR}/common/r36/nvpmodel/nvidia-l4t-nvpmodel_arm64.deb data.tar.zst 2>&1 1>/dev/null
+  tar -xf data.tar.zst ./usr/sbin/nvpmodel 1>/dev/null 2>&1
+  cp usr/sbin/nvpmodel ${LINEAGE_ROOT}/${OUTDIR}/common/r36/nvpmodel/bin64/nvpmodel
+  rm ${LINEAGE_ROOT}/${OUTDIR}/common/r36/nvpmodel/nvidia-l4t-nvpmodel_arm64.deb
+  ${LINEAGE_ROOT}/prebuilts/extract-tools/linux-x86/bin/patchelf-0_9 --set-interpreter /vendor/bin/l4t/ld-linux-aarch64.so.1 ${LINEAGE_ROOT}/${OUTDIR}/common/r36/nvpmodel/bin64/nvpmodel 1>/dev/null 2>&1
+  sed -i "s|/var/lib|/odm/etc|g" ${LINEAGE_ROOT}/${OUTDIR}/common/r36/nvpmodel/bin64/nvpmodel
+
+  popd 1>/dev/null 2>&1
+  rm -rf ${LOCALTMPDIR}
 
   echo "";
 }

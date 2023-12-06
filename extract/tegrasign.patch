@@ -28,3 +28,33 @@ index f341ec9..9675ec4 100755
  
          tokens = {'IV':'--iv', 'AAD':'--aad', 'VER':None, 'DERSTR':None, 'CHIPID':None,
                    'MAGICID':None, 'FLAG':None, 'BL_DERSTR':None, 'FW_DERSTR':None}
+diff --git a/common/r36/tegraflash/tegrasign_v3_util.py b/common/r36/tegraflash/tegrasign_v3_util.py
+index fcfdb02..7beb045 100755
+--- a/common/r36/tegraflash/tegrasign_v3_util.py
++++ b/common/r36/tegraflash/tegrasign_v3_util.py
+@@ -20,7 +20,10 @@ import subprocess
+ import re
+ import time
+ import traceback
+-import yaml
++try:
++    import yaml
++except ImportError:
++    print("WARNING: failed to import yaml")
+ 
+ AES_128_HASH_BLOCK_LEN = 16
+ AES_256_HASH_BLOCK_LEN = 16
+@@ -252,8 +255,11 @@ class KDF:
+         self.rdm_salt2 = False
+ 
+     def parse_file(self, p_key, kdf_file, internal = None):
+-        with open(kdf_file) as f:
+-            params = yaml.safe_load(f)
++        try:
++            with open(kdf_file) as f:
++                params = yaml.safe_load(f)
++        except ImportError:
++            print("WARNING: kdf: yaml unavailable")
+ 
+         tokens = {'IV':'--iv', 'AAD':'--aad', 'VER':None, 'DERSTR':None, 'CHIPID':None,
+                   'MAGICID':None, 'FLAG':None, 'BL_DERSTR':None, 'FW_DERSTR':None,

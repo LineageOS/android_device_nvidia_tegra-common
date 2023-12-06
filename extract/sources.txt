@@ -3,3 +3,4 @@ stock-t210	https://ota-downloads.nvidia.com/ota/productionBL-droid-signed-mdarcy
 stock-foster	https://ota-downloads.nvidia.com/ota/productionBL-droid-signed-foster_e_hdd-full_ota-7825230_3167.5736_DF2EE1.zip								nv-recovery-ota	rel-shield-r
 stock-sif	https://ota-downloads.nvidia.com/ota/productionBL-droid-signed-sif_32b-full_ota-7825199_3167.5736_25631A.zip									nv-recovery-ota	rel-shield-r
 l4t-t194	https://developer.download.nvidia.com/embedded/L4T/r35_Release_v5.0/release/Jetson_Linux_R35.5.0_aarch64.tbz2									l4t		r35
+l4t-t234	https://developer.download.nvidia.com/embedded/L4T/r36_Release_v4.0/release/Jetson_Linux_R36.4.0_aarch64.tbz2									l4t		r36
