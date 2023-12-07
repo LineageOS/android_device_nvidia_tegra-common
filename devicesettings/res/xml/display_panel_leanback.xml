@@ -14,4 +14,17 @@
 <PreferenceScreen
     android:title="@string/display_panel_title"
     xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="customization_category"
+        android:title="@string/cust_category_title">
+
+        <SeekBarPreference
+            android:key="bright_pref"
+            android:title="@string/bright_pref_title"
+            android:max="@integer/max_brightness"
+            android:min="@integer/min_brightness" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

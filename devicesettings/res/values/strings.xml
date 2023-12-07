@@ -17,6 +17,8 @@
 <resources>
     <string name="display_panel_title">Display Configuration</string>
     <string name="display_panel_summary">Adjust external display and dock settings</string>
+    <string name="cust_category_title">Customization</string>
+    <string name="bright_pref_title">Adjust System Brightness</string>
     <string name="mode_selection_title">Select Mode</string>
     <string name="mode_confirmation_title">Confirmation</string>
     <string name="mode_confirmation_summary">Are you sure you want to keep these display settings?\n\nWill revert in %1$d seconds</string>

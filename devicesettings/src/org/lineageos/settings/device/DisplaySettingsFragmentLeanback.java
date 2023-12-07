@@ -42,6 +42,7 @@ import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
+import androidx.preference.SeekBarPreference;
 import androidx.preference.SwitchPreference;
 
 import vendor.nvidia.hardware.graphics.display.V1_0.HwcSvcDisplay;
@@ -118,6 +119,8 @@ public class DisplaySettingsFragmentLeanback extends LeanbackSettingsFragmentCom
             }
 
             PreferenceScreen preferenceScreen = this.getPreferenceScreen();
+
+            createBrightSettings();
 
             if (mDisplayService != null)
                 createDisplaySettings(preferenceScreen);
@@ -243,6 +246,25 @@ public class DisplaySettingsFragmentLeanback extends LeanbackSettingsFragmentCom
                                 .performClick();
                 }
             }.start();
+        }
+
+        private void createBrightSettings() {
+            SeekBarPreference brightPref = findPreference("bright_pref");
+            int current = DisplayUtils.getPanelBrightness(getActivity().getContentResolver());
+
+            brightPref.setUpdatesContinuously(true);
+            brightPref.setShowSeekBarValue(false);
+            brightPref.setDefaultValue(current);
+            brightPref.setOnPreferenceChangeListener(
+                    new Preference.OnPreferenceChangeListener() {
+                        @Override
+                        public boolean onPreferenceChange(Preference preference,
+                                Object newValue) {
+
+                            DisplayUtils.setPanelBrightness(getActivity().getContentResolver(), (Integer)newValue);
+                            return true;
+                        }
+                    });
         }
 
         private void createDisplaySettings(PreferenceScreen preferenceScreen) {

@@ -16,7 +16,9 @@
 
 package org.lineageos.settings.device;
 
+import android.content.ContentResolver;
 import android.os.RemoteException;
+import android.provider.Settings;
 import android.util.Log;
 
 import java.io.FileInputStream;
@@ -103,5 +105,13 @@ public class DisplayUtils {
             colorimetryStr = "Rec. 2020";
 
         return String.format("%s %d-bit %s", encodingStr, mode.bpc, colorimetryStr);
+    }
+
+    public static void setPanelBrightness(ContentResolver resolver, int brightness) {
+	Settings.System.putInt(resolver, Settings.System.SCREEN_BRIGHTNESS, brightness);
+    }
+
+    public static Integer getPanelBrightness(ContentResolver resolver) {
+	return Settings.System.getInt(resolver, Settings.System.SCREEN_BRIGHTNESS, 0);
     }
 }
