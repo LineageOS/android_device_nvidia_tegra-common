@@ -16,6 +16,23 @@
       "message": "Verified on quill, nvphs doesn\u0027t crash on kernels using upstream style dt node names",
       "revId": "e353f655a8e3bec14b1fd4089bf0d37183b63291",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34bdc0de_2ce757ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-12-07T00:50:08Z",
+      "side": 1,
+      "message": "The relevant kernel dt change is new to 19, so this should be picked back as a bugfix.",
+      "revId": "e353f655a8e3bec14b1fd4089bf0d37183b63291",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
