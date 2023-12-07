@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34f2300d_78415963",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-12-07T00:48:11Z",
+      "side": 1,
+      "message": "Verified on quill, nvphs doesn\u0027t crash on kernels using upstream style dt node names",
+      "revId": "e353f655a8e3bec14b1fd4089bf0d37183b63291",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
