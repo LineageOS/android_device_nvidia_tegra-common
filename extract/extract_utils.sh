@@ -66,10 +66,10 @@ function setup_vendor() {
         exit 1
     fi
 
-    if [ ! -f "${LINEAGE_ROOT}/out/host/linux-x86/bin/brotli" ]; then
-        echo "otatools must be built before running this script!"
-        exit 1
-    fi
+    export PATH="${LINEAGE_ROOT}/out/host/linux-x86/bin":"$PATH";
+    for CMD in 'brotli' '7z' 'simg2img'; do
+        command -v ${CMD} >/dev/null 2>&1 || { echo >&2 "${CMD} is required, but not installed. Aborting."; exit 1; }
+    done
 
     export OUTDIR=vendor/"$VENDOR"
     if [ ! -d "$LINEAGE_ROOT/$OUTDIR" ]; then
@@ -99,7 +99,6 @@ function setup_vendor() {
 # Download and extract source archives
 #
 function fetch_sources() {
-    local HOST_BINS=${LINEAGE_ROOT}/out/host/linux-x86/bin
     local LINEAGE_TOOLS=${LINEAGE_ROOT}/tools/extract-utils
 
     mkdir ${TMPDIR}/downloads;
@@ -152,7 +151,7 @@ function fetch_sources() {
                                 | awk -F ':' '{print $1}') + 1)) ${ESPATH}/extract-nv.sh \
                       | tar zxv -C ${ESPATH}/temp;
 
-                    ${HOST_BINS}/simg2img ${ESPATH}/temp/system.img ${ESPATH}/system.img;
+                    simg2img ${ESPATH}/temp/system.img ${ESPATH}/system.img;
                     7z x -o${ESPATH}/system ${ESPATH}/system.img;
 
                     rm -rf \
@@ -164,7 +163,7 @@ function fetch_sources() {
                 "nv-recovery-no-vendor")
                     mkdir ${ESPATH}/system;
 
-                    ${HOST_BINS}/simg2img ${ESPATH}/nv-recovery-*/system.img ${ESPATH}/system.img;
+                    simg2img ${ESPATH}/nv-recovery-*/system.img ${ESPATH}/system.img;
                     7z x -o${ESPATH}/system ${ESPATH}/system.img;
 
                     rm -rf \
@@ -176,10 +175,10 @@ function fetch_sources() {
                     mkdir ${ESPATH}/system;
                     mkdir ${ESPATH}/vendor;
 
-                    ${HOST_BINS}/simg2img ${ESPATH}/nv-recovery-image-*/system.img ${ESPATH}/system.img;
+                    simg2img ${ESPATH}/nv-recovery-image-*/system.img ${ESPATH}/system.img;
                     7z x -o${ESPATH}/system ${ESPATH}/system.img;
 
-                    ${HOST_BINS}/simg2img ${ESPATH}/nv-recovery-image-*/vendor.img ${ESPATH}/vendor.img;
+                    simg2img ${ESPATH}/nv-recovery-image-*/vendor.img ${ESPATH}/vendor.img;
                     7z x -o${ESPATH}/vendor ${ESPATH}/vendor.img;
 
                     rm -rf \
@@ -192,14 +191,14 @@ function fetch_sources() {
                     mkdir ${ESPATH}/system;
                     mkdir ${ESPATH}/vendor;
 
-                    ${HOST_BINS}/brotli -d ${ESPATH}/system.new.dat.br;
+                    brotli -d ${ESPATH}/system.new.dat.br;
                     python ${LINEAGE_TOOLS}/sdat2img.py \
                       ${ESPATH}/system.transfer.list \
                       ${ESPATH}/system.new.dat \
                       ${ESPATH}/system.img;
                     7z x -o${ESPATH}/system ${ESPATH}/system.img;
 
-                    ${HOST_BINS}/brotli -d ${ESPATH}/vendor.new.dat.br
+                    brotli -d ${ESPATH}/vendor.new.dat.br
                     python ${LINEAGE_TOOLS}/sdat2img.py \
                       ${ESPATH}/vendor.transfer.list \
                       ${ESPATH}/vendor.new.dat \
