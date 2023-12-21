@@ -14,5 +14,9 @@
 
 LOCAL_PATH := $(call my-dir)
 
+ifneq ($(TARGET_PROVIDES_TOS),true)
+
 include $(LOCAL_PATH)/atf.mk
 include $(LOCAL_PATH)/tos.mk
+
+endif
