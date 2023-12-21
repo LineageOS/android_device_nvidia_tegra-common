@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3833d6fd_fb2e6b7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-12-21T05:27:39Z",
+      "side": 1,
+      "message": "https://review.lineageos.org/c/LineageOS/android_device_nvidia_tegra-common/+/362700\nNo need for this, there\u0027s already customization in the existing rules.",
+      "revId": "7eb32d005508a2de73dc1d115f266799acad12d5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
