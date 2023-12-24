@@ -137,9 +137,15 @@ ifneq ($(TARGET_TEGRA_CEC),)
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.hdmi.cec.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.hdmi.cec.xml
 
+ifeq ($(TARGET_TEGRA_CEC),aosp)
 PRODUCT_PACKAGES += \
     android.hardware.tv.cec@1.0-service \
     android.hardware.tv.cec@1.0-impl
+else
+PRODUCT_PACKAGES += \
+    android.hardware.tv.cec@1.0-service \
+    android.hardware.tv.cec@1.0-impl
+endif
 endif
 
 # DRM
