@@ -37,6 +37,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     drm.gpu.vendor_name=tegra
 endif
 
+# LMKD
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.lmk.kill_heaviest_task=true
+
 # USB
 ifneq ($(filter $(TARGET_TEGRA_KERNEL), 3.4 3.10),)
 PRODUCT_PROPERTY_OVERRIDES += \
