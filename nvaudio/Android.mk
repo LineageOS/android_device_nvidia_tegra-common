@@ -42,6 +42,10 @@ include $(CLEAR_VARS)
 LOCAL_MODULE        := msd_audio_policy_configuration.xml
 LOCAL_MODULE_TAGS   := optional
 LOCAL_MODULE_CLASS  := ETC
+ifneq ($(filter audio, $(TARGET_TEGRA_DOLBY)),)
 LOCAL_SRC_FILES     := msd_audio_policy_configuration.xml
+else
+LOCAL_SRC_FILES     := msd_audio_policy_configuration_dummy.xml
+endif
 LOCAL_VENDOR_MODULE := true
 include $(BUILD_PREBUILT)
