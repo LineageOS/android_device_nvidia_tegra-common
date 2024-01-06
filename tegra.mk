@@ -81,6 +81,7 @@ PRODUCT_PACKAGES += \
     audio.usb.default
 
 PRODUCT_PACKAGES += \
+    msd_audio_policy_configuration.xml \
     primary_module_deviceports.xml \
     primary_module_deviceports_tv.xml \
     primary_module_mixports.xml
@@ -93,12 +94,7 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/surround_sound_configuration_5_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/surround_sound_configuration_5_0.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
 
-ifneq ($(filter rel-shield-r, $(TARGET_TEGRA_AUDIO)),)
-ifneq ($(filter audio, $(TARGET_TEGRA_DOLBY)),)
-PRODUCT_PACKAGES += \
-    msd_audio_policy_configuration.xml
-endif
-else ifeq ($(TARGET_TEGRA_AUDIO),tinyhal)
+ifeq ($(TARGET_TEGRA_AUDIO),tinyhal)
 PRODUCT_PACKAGES += \
     audio.primary.tegra
 endif
