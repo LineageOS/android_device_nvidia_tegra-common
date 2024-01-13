@@ -78,7 +78,7 @@ function setup_vendor() {
     fi
 
     export PATH="${LINEAGE_ROOT}/out/host/linux-x86/bin":"$PATH";
-    for CMD in 'brotli' '7z' 'simg2img'; do
+    for CMD in 'brotli' '7z' 'simg2img' 'tar' 'ar' 'zstd' 'wget'; do
         command -v ${CMD} >/dev/null 2>&1 || { echo >&2 "${CMD} is required, but not installed. Aborting."; exit 1; }
     done
 
