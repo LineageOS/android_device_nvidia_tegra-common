@@ -13,6 +13,7 @@
 # limitations under the License.
 
 ATF_PATH ?= external/arm-trusted-firmware
+ATF_CROSS_COMPILE ?= CROSS_COMPILE="$(CCACHE_BIN) $(KERNEL_TOOLCHAIN)/$(KERNEL_TOOLCHAIN_PREFIX)"
 
 include $(CLEAR_VARS)
 
@@ -26,7 +27,7 @@ _atf_bin := $(_atf_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
 
 $(_atf_bin):
 	@mkdir -p $(dir $@)
-	$(hide) +$(KERNEL_MAKE_CMD) $(KERNEL_CROSS_COMPILE) -C $(ATF_PATH) $(ATF_PARAMS) BUILD_BASE=$(abspath $(_atf_intermediates)) PLAT=tegra TARGET_SOC=$(TARGET_TEGRA_VERSION) bl31
+	$(hide) +$(KERNEL_MAKE_CMD) $(ATF_CROSS_COMPILE) -C $(ATF_PATH) $(ATF_PARAMS) BUILD_BASE=$(abspath $(_atf_intermediates)) PLAT=tegra TARGET_SOC=$(TARGET_TEGRA_VERSION) bl31
 	@cp $(dir $@)/tegra/$(TARGET_TEGRA_VERSION)/release/bl31.bin $@
 
 include $(BUILD_SYSTEM)/base_rules.mk
