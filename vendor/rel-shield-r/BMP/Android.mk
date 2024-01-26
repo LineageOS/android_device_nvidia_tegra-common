@@ -26,6 +26,25 @@ _bmp_blob_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),$(
 _bmp_blob := $(_bmp_blob_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
 
 $(_bmp_blob):
-	OUT=$(dir $@) TOP=$(BUILD_TOP) python2 $(BUP_PATH)/BUP_generator.py -t bmp -e "$(COMMON_BMP_PATH)/nvidia1080.bmp nvidia 1080; $(COMMON_BMP_PATH)/verity_orange_continue_1080.bmp verity_orange_continue 1080; $(COMMON_BMP_PATH)/verity_orange_pause_1080.bmp verity_orange_pause 1080; $(COMMON_BMP_PATH)/verity_red_continue_1080.bmp verity_red_continue 1080; $(COMMON_BMP_PATH)/verity_red_pause_1080.bmp verity_red_pause 1080; $(COMMON_BMP_PATH)/verity_yellow_continue_1080.bmp verity_yellow_continue 1080; $(COMMON_BMP_PATH)/verity_yellow_pause_1080.bmp verity_yellow_pause 1080"
+	OUT=$(dir $@) TOP=$(BUILD_TOP) python2 $(BUP_PATH)/BUP_generator.py -t bmp -e \
+		"$(COMMON_BMP_PATH)/nvidia480.bmp nvidia 480; \
+		 $(COMMON_BMP_PATH)/nvidia720.bmp nvidia 720; \
+		 $(COMMON_BMP_PATH)/nvidia810.bmp nvidia 810; \
+		 $(COMMON_BMP_PATH)/nvidia1080.bmp nvidia 1080; \
+		 $(COMMON_BMP_PATH)/nvidia4k.bmp nvidia 4k; \
+		 $(COMMON_BMP_PATH)/verity_orange_continue_720.bmp verity_orange_continue 720; \
+		 $(COMMON_BMP_PATH)/verity_orange_continue_1080.bmp verity_orange_continue 1080; \
+		 $(COMMON_BMP_PATH)/verity_orange_pause_720.bmp verity_orange_pause 720; \
+		 $(COMMON_BMP_PATH)/verity_orange_pause_1080.bmp verity_orange_pause 1080; \
+		 $(COMMON_BMP_PATH)/verity_red_continue_720.bmp verity_red_continue 720; \
+		 $(COMMON_BMP_PATH)/verity_red_continue_1080.bmp verity_red_continue 1080; \
+		 $(COMMON_BMP_PATH)/verity_red_pause_720.bmp verity_red_pause 720; \
+		 $(COMMON_BMP_PATH)/verity_red_pause_1080.bmp verity_red_pause 1080; \
+		 $(COMMON_BMP_PATH)/verity_red_stop_720.bmp verity_red_stop 720; \
+		 $(COMMON_BMP_PATH)/verity_red_stop_1080.bmp verity_red_stop 1080; \
+		 $(COMMON_BMP_PATH)/verity_yellow_continue_720.bmp verity_yellow_continue 720; \
+		 $(COMMON_BMP_PATH)/verity_yellow_continue_1080.bmp verity_yellow_continue 1080; \
+		 $(COMMON_BMP_PATH)/verity_yellow_pause_720.bmp verity_yellow_pause 720; \
+		 $(COMMON_BMP_PATH)/verity_yellow_pause_1080.bmp verity_yellow_pause 1080"
 
 include $(BUILD_SYSTEM)/base_rules.mk
