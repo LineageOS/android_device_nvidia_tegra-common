@@ -122,26 +122,6 @@ function patch_nvpmodel() {
   echo "";
 }
 
-# Fetch bootloader logos and verity images from nv-tegra
-function fetch_bmp() {
-  NV_TEGRA_URL="https://nv-tegra.nvidia.com/r/plugins/gitiles/tegra/prebuilts-device-nvidia/+/refs/heads/rel-30-r2-partner/platform/t210/assets/bmp/"
-  wget -qO- "${NV_TEGRA_URL}/${1}.bmp?format=TEXT" |base64 --decode > ${LINEAGE_ROOT}/${OUTDIR}/common/rel-30/BMP/${1}.bmp
-}
-function fetch_bmps() {
-  echo -n "Fetching bootloader BMPs from nv-tegra...";
-
-  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/rel-30/BMP
-  fetch_bmp nvidia1080;
-  fetch_bmp verity_orange_continue_1080;
-  fetch_bmp verity_orange_pause_1080;
-  fetch_bmp verity_red_continue_1080;
-  fetch_bmp verity_red_pause_1080;
-  fetch_bmp verity_yellow_continue_1080;
-  fetch_bmp verity_yellow_pause_1080;
-
-  echo "";
-}
-
 # Some bootloader images need to be converted to BMP3
 function convert_bmp() {
   if [ "$(identify -format \"%m\" ${1})" != "\"BMP3\"" ]; then
@@ -175,6 +155,5 @@ patch_tegrasign_v3;
 patch_tegraflash_dtbcheck;
 fetch_l4t_deps;
 patch_nvpmodel;
-fetch_bmps;
 convert_bmps;
 patch_nvcamera;

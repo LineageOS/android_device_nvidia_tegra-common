@@ -1,4 +1,4 @@
-# Copyright (C) 2021 The LineageOS Project
+# Copyright (C) 2024 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
 # limitations under the License.
 
 LOCAL_PATH := $(call my-dir)
-COMMON_BMP_PATH := $(BUILD_TOP)/vendor/nvidia/common/rel-30/BMP
+COMMON_BMP_PATH := $(BUILD_TOP)/vendor/nvidia/common/rel-shield-r/BMP
 
 BUP_PATH := $(BUILD_TOP)/vendor/nvidia/common/r35/tegraflash
 
