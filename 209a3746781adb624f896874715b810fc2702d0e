@@ -16,6 +16,23 @@
       "message": "Verified images are usable",
       "revId": "209a3746781adb624f896874715b810fc2702d0e",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "879d9f2c_c92721c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2024-01-27T00:39:33Z",
+      "side": 1,
+      "message": "Testing has reveal that the verity red continue/pause/stop images are a different format from the rest and cannot be loaded by android cboot on jetson_cv.",
+      "revId": "209a3746781adb624f896874715b810fc2702d0e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
