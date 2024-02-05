@@ -93,6 +93,13 @@ BOARD_WLAN_DEVICE                := bcmdhd
 WIFI_DRIVER_FW_PATH_PARAM        := "/data/vendor/wifi/fw_path"
 endif
 
+# Disable wifi hal features not supported by nvidia bcm firmware
+ifneq ($(filter $(TARGET_TEGRA_WIFI), bcm),)
+# This disables:
+#  android packet filter (1 << 0)
+WIFI_FORCE_DISABLE_AIDLSTAIFACECAPS := (1 << 0)
+endif
+
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
