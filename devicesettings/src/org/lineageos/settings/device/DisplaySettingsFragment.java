@@ -197,7 +197,8 @@ public class DisplaySettingsFragment extends PreferenceFragment
         }.start();
     }
 
-    private boolean initializeDisplayCategory(PreferenceCategory category, int display) {
+    private boolean initializeDisplayCategory(PreferenceCategory category,
+                                                                int display) {
         try {
             int type = mDisplayService.displayGetType(display);
             ArrayList<HwcSvcDisplayMode> availableModes = mDisplayService.modeGetList(display);
@@ -279,7 +280,6 @@ public class DisplaySettingsFragment extends PreferenceFragment
             disableInternalOnExternalConnectedPreference.setSummaryOn(R.string.disable_internal_on_external_connected_summary_on);
             disableInternalOnExternalConnectedPreference.setSummaryOff(R.string.disable_internal_on_external_connected_summary_off);
             disableInternalOnExternalConnectedPreference.setKey("disable_internal_on_external_connected");
-
             category.addPreference(disableInternalOnExternalConnectedPreference);
         }
     }
