@@ -46,7 +46,7 @@
             android:name=".DisplaySettingsActivity"
             android:label="@string/display_panel_title"
             android:icon="@drawable/ic_settings_additional_buttons"
-            android:theme="@style/Theme.Main"
+            android:theme="@style/Theme.SubSettingsBase"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.android.settings.action.IA_SETTINGS" />
