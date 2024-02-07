@@ -24,8 +24,9 @@ import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.view.WindowManagerPolicyConstants;
 
+import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 
-public class DisplaySettingsActivity extends PreferenceActivity {
+public class DisplaySettingsActivity extends CollapsingToolbarBaseActivity {
     public final Receiver mReceiver = new Receiver();
     private DisplaySettingsFragment mFragment;
     public boolean mExternalDisplayConnected;
@@ -33,9 +34,10 @@ public class DisplaySettingsActivity extends PreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mFragment = new DisplaySettingsFragment();
-
-        getFragmentManager().beginTransaction().replace(android.R.id.content, mFragment).commit();
+        if (savedInstanceState == null) {
+            getFragmentManager().beginTransaction().replace(R.id.content_frame,
+                    new DisplaySettingsFragment()).commit();
+        }
     }
 
     @Override
