@@ -327,6 +327,6 @@ stock-t210	vendor/firmware/fw_bcmdhd.bin		bcm_firmware/bcm4354/sdio-ag-p2p-pno-a
 stock-t210	vendor/firmware/brcmfmac4356-pcie.bin	bcm_firmware/bcm4356/
 
 # NvPModel
-l4t-t194	nv_tegra/l4t_deb_packages/nvidia-l4t-nvpmodel_35.4.1-20230801124926_arm64.deb	nvpmodel/nvidia-l4t-nvpmodel_arm64.deb
+l4t-t194	nv_tegra/l4t_deb_packages/nvidia-l4t-nvpmodel_35.5.0-20240219203809_arm64.deb	nvpmodel/nvidia-l4t-nvpmodel_arm64.deb
 l4t-t194	drivers/usr/lib/aarch64-linux-gnu/tegra/libnvos.so				l4t/lib64/
 l4t-t194	drivers/usr/lib/aarch64-linux-gnu/tegra/libnvsocsys.so				l4t/lib64/
