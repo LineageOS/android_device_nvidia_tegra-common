@@ -158,6 +158,14 @@ function convert_bmps() {
   echo "";
 }
 
+function patch_nvcamera() {
+  echo -n "Patching nvcamera prebuilts for renamed symbols...";
+
+  sed -i 's/_ZN7android8hardware6camera6device4V1_014implementation12CameraDeviceC1ENS_2spINS1_6common4V1_06helper12CameraModuleEEERKNSt3__112basic_stringIcNSC_11char_traitsIcEENSC_9allocatorIcEEEERKNS_12SortedVectorINSC_4pairISI_SI_EEEE/_ZN7android8hardware6camera6device4V1_014implementation12CameraDeviceC1ENS_2spINS1_6common6helper12CameraModuleEEERKNSt3__112basic_stringIcNSB_11char_traitsIcEENSB_9allocatorIcEEEERKNS_12SortedVectorINSB_4pairISH_SH_EEEE\x0\x0\x0\x0\x0/' ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/camera/lib64/vendor.nvidia.hardware.camera.provider@2.4-impl.so
+
+  echo "";
+}
+
 fetch_bcm4356_patchfile;
 chmod_tegraflash;
 patch_nvcontrol;
@@ -169,3 +177,4 @@ fetch_l4t_deps;
 patch_nvpmodel;
 fetch_bmps;
 convert_bmps;
+patch_nvcamera;
