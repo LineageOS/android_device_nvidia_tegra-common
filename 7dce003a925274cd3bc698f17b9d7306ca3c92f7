@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8be229d_66f702e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2024-02-25T03:49:07Z",
+      "side": 1,
+      "message": "Verified on mdarcy booting foster. Vendor camera service runs, no missing symbols.",
+      "revId": "7dce003a925274cd3bc698f17b9d7306ca3c92f7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
