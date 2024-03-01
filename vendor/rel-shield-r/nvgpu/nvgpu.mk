@@ -45,7 +45,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.tegra.decompression=cde-client \
     ro.vendor.tegra.AF73C63E=0x80007ffd \
     vendor.tegra.0x523dd1=2 \
-    ro.surface_flinger.use_frame_rate_api=false \
     ro.vendor.tegra.yuv.cpu_min=-1 \
     ro.vendor.tegra.yuv.cpu_max=-1 \
     ro.vendor.tegra.yuv.cpu_pri=15 \
