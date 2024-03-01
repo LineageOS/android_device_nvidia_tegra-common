@@ -43,7 +43,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
 
 # fastbootd
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.fastbootd.available=true
 
 # Graphics
