@@ -1,0 +1,6 @@
+runtime_resource_overlay {
+    name: "TvSettingsNvgpuOverlay",
+    theme: "TvSettingsNvgpuOverlay",
+    sdk_version: "current",
+    soc_specific: true
+}
