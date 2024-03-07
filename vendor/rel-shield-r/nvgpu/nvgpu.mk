@@ -35,6 +35,7 @@ PRODUCT_PACKAGES += \
 
 # Overlays
 PRODUCT_PACKAGES += \
+    SimpleSettingsNvgpuOverlay \
     TvSettingsNvgpuOverlay
 
 PRODUCT_COPY_FILES += \
