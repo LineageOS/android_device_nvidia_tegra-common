@@ -1,0 +1,6 @@
+runtime_resource_overlay {
+    name: "SimpleSettingsNvgpuOverlay",
+    theme: "SimpleSettingsNvgpuOverlay",
+    sdk_version: "current",
+    soc_specific: true
+}
