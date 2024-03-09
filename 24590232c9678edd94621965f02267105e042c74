@@ -16,6 +16,23 @@
       "message": "Depends on SimpleSettingsConfig, which will be uploaded in a separate topic.",
       "revId": "24590232c9678edd94621965f02267105e042c74",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab8256fc_eea9f098",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2024-03-09T00:41:51Z",
+      "side": 1,
+      "message": "Topic simplesettings is uploaded and verified. This has been verified against the current version of that topic. Once it is merged, this can be marked verified and mergeable.",
+      "revId": "24590232c9678edd94621965f02267105e042c74",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
