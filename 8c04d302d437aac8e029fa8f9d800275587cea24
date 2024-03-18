@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaa168e9_a0dc78a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2024-03-18T23:14:05Z",
+      "side": 1,
+      "message": "For one, at least fix the commit message to match vendor. :P But I want to work with the changes and not set any broken flags. Fine to leave for picks atm, though.",
+      "revId": "8c04d302d437aac8e029fa8f9d800275587cea24",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
