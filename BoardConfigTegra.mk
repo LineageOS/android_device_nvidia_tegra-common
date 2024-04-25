@@ -58,6 +58,11 @@ DEVICE_MANIFEST_FILE      += device/nvidia/tegra-common/manifests/drm.xml
 TARGET_USES_HWC2          := true
 endif
 
+# HIDL
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
+    device/nvidia/tegra-common/manifests/device_framework_matrix.xml \
+    vendor/lineage/config/device_framework_matrix.xml
+
 # Keystore
 ifneq ($(filter rel-shield-r, $(TARGET_TEGRA_TOS)),)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/keystore.xml

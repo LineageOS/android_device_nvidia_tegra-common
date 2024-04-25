@@ -1,0 +1,82 @@
+<compatibility-matrix version="2.0" type="framework">
+    <hal format="hidl" optional="true">
+        <name>vendor.nvidia.hardware.camera.provider</name>
+        <version>2.4</version>
+        <interface>
+            <name>ICameraProvider</name>
+            <instance>legacy/0</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.nvidia.hardware.cpl.interfacecb</name>
+        <version>1.0</version>
+        <interface>
+            <name>INvCplInterfaceManager</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.nvidia.hardware.cpl.service</name>
+        <version>1.0</version>
+        <interface>
+            <name>INvCplHalService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.nvidia.hardware.cpl.service_common</name>
+        <version>1.0</version>
+        <interface>
+            <name>INvCplHalCommonService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.nvidia.hardware.cpl.tools</name>
+        <version>1.0</version>
+        <interface>
+            <name>INvToolsApiHalService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.nvidia.hardware.graphics.composer</name>
+        <version>2.0</version>
+        <interface>
+            <name>INvComposer</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.nvidia.hardware.graphics.display</name>
+        <version>1.0</version>
+        <interface>
+            <name>INvDisplay</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.nvidia.hardware.graphics.mempool</name>
+        <version>1.0</version>
+        <interface>
+            <name>INvMemPool</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.nvidia.hardware.phs</name>
+        <version>1.0</version>
+        <interface>
+            <name>INVPHS</name>
+            <instance>nvphsd</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.nvidia.hardware.power</name>
+        <version>1.0</version>
+        <interface>
+            <name>IPower</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+</compatibility-matrix>
