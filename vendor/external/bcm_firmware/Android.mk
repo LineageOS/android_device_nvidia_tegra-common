@@ -17,11 +17,12 @@ LOCAL_PATH := $(call my-dir)
 COMMON_BCM_PATH := ../../../../../../vendor/nvidia/common/external/bcm_firmware
 
 include $(CLEAR_VARS)
-LOCAL_MODULE               := BCM4354A2-13d3-3488
+LOCAL_MODULE               := BCM4356A2-13d3-3488
 LOCAL_SRC_FILES            := $(COMMON_BCM_PATH)/bcm4356/BCM4356A2-13d3-3488.hcd
 LOCAL_MODULE_SUFFIX        := .hcd
 LOCAL_MODULE_CLASS         := ETC
 LOCAL_MODULE_PATH          := $(TARGET_OUT_VENDOR)/firmware/brcm
 LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := broadcom
+LOCAL_MODULE_SYMLINKS      := BCM4354A2-13d3-3488.hcd
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
