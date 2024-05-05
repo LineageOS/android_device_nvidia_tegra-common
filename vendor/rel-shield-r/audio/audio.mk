@@ -14,9 +14,16 @@
 
 PRODUCT_PACKAGES += \
     audio.primary.tegra \
-    android.hardware.soundtrigger@2.1-impl \
     sound_trigger.primary.tegra \
     NvAudioSvc
+
+ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \>= 6), 1)
+PRODUCT_PACKAGES += \
+    android.hardware.soundtrigger@2.3-impl
+else
+PRODUCT_PACKAGES += \
+    android.hardware.soundtrigger@2.1-impl
+endif
 
 ifneq ($(filter audio, $(TARGET_TEGRA_DOLBY)),)
 PRODUCT_PACKAGES += \

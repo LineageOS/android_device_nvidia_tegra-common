@@ -212,11 +212,23 @@ endif
 
 # Health HAL
 ifeq ($(TARGET_TEGRA_HEALTH),aosp)
+ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \>= 7), 1)
+PRODUCT_PACKAGES += \
+    android.hardware.health-service.example \
+    android.hardware.health-service.example_recovery
+else
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service.tegra
+endif
 else ifeq ($(TARGET_TEGRA_HEALTH),nobattery)
+ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \>= 7), 1)
+PRODUCT_PACKAGES += \
+    android.hardware.health-service.tegra_nobatt \
+    android.hardware.health-service.tegra_nobatt_recovery
+else
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service.tegra_nobatt
+endif
 endif
 
 # Kernel
@@ -229,14 +241,24 @@ endif
 
 # Light
 ifeq ($(TARGET_TEGRA_LIGHT),lineage)
+ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \>= 5), 1)
+PRODUCT_PACKAGES += \
+    android.hardware.light-service-nvidia
+else
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service-nvidia
+endif
 endif
 
 # Memtrack
 ifeq ($(TARGET_TEGRA_MEMTRACK),lineage)
+ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \>= 6), 1)
+PRODUCT_PACKAGES += \
+    android.hardware.memtrack-service-nvidia
+else
 PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-service-nvidia
+endif
 endif
 
 # OMX
@@ -270,8 +292,13 @@ PRODUCT_COPY_FILES += \
 
 # Thermal
 ifeq ($(TARGET_TEGRA_THERMAL),lineage)
+ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \>= 8), 1)
+PRODUCT_PACKAGES += \
+    android.hardware.thermal-service-nvidia
+else
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-service-nvidia
+endif
 endif
 
 # TOS
