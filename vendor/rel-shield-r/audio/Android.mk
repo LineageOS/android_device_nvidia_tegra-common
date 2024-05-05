@@ -73,7 +73,11 @@ include $(BUILD_NVIDIA_COMMON_PREBUILT)
 include $(CLEAR_VARS)
 LOCAL_MODULE               := sound_trigger.primary.tegra
 LOCAL_SRC_FILES            := $(COMMON_AUDIO_PATH)/lib/hw/sound_trigger.primary.tegra.so
+ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \>= 6), 1)
+LOCAL_VINTF_FRAGMENTS      := android.hardware.soundtrigger.23.xml
+else
 LOCAL_VINTF_FRAGMENTS      := android.hardware.soundtrigger.xml
+endif
 LOCAL_MODULE_SUFFIX        := .so
 LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
 LOCAL_MODULE_TARGET_ARCH   := arm
