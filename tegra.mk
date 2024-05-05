@@ -28,6 +28,20 @@ TARGET_TEGRA_CEC    ?= lineage
 TARGET_TEGRA_HEALTH ?= common
 TARGET_TEGRA_POWER  ?= aosp
 
+ifeq ($(TARGET_TEGRA_MAN_LVL),)
+ifeq ($(TARGET_TEGRA_KERNEL),4.9)
+TARGET_TEGRA_MAN_LVL := 4
+else ifeq ($(TARGET_TEGRA_KERNEL),5.10)
+TARGET_TEGRA_MAN_LVL := 6
+else ifeq ($(TARGET_TEGRA_KERNEL),5.15)
+TARGET_TEGRA_MAN_LVL := 7
+else ifeq ($(TARGET_TEGRA_KERNEL),6.1)
+TARGET_TEGRA_MAN_LVL := 8
+else ifeq ($(TARGET_TEGRA_KERNEL),6.6)
+TARGET_TEGRA_MAN_LVL := 9
+endif
+endif
+
 # Enable nvidia framework enhancements if available
 -include vendor/lineage/product/nvidia.mk
 

@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Baseline Manifest, must be declared before any module manifests
+DEVICE_MANIFEST_FILE ?= device/nvidia/tegra-common/manifests/manifest.$(TARGET_TEGRA_MAN_LVL).xml
+
 # Audio
 ifneq ($(TARGET_TEGRA_AUDIO),)
 ifeq ($(filter audio, $(TARGET_TEGRA_DOLBY)),)
