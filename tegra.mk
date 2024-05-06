@@ -262,6 +262,12 @@ PRODUCT_COPY_FILES += \
     device/nvidia/tegra-common/seccomp/mediaswcodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaswcodec.policy \
     device/nvidia/tegra-common/seccomp/mediaextractor.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
 
+# Thermal
+ifeq ($(TARGET_TEGRA_THERMAL),lineage)
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@1.0-service-nvidia
+endif
+
 # TOS
 ifeq ($(TARGET_TEGRA_TOS),software)
 PRODUCT_PACKAGES += \
