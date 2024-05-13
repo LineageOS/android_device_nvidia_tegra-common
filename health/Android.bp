@@ -75,3 +75,52 @@ cc_binary {
 	"healthd",
     ],
 }
+
+cc_defaults {
+    name: "android.hardware.health-service.tegra_nobatt-defaults",
+    relative_install_path: "hw",
+    vintf_fragments: ["android.hardware.health-service.tegra_nobatt.xml"],
+    vendor: true,
+    recovery_available: true,
+
+    defaults: [
+        "libhealth_aidl_impl_user",
+    ],
+
+    include_dirs: [
+        "system/core/healthd",
+        "system/core/healthd/include",
+        "system/core/healthd/include_charger"
+    ],
+
+    static_libs: [
+        "libhealth_aidl_impl",
+    ],
+
+    srcs: [
+        "service-aidl.cpp",
+    ],
+
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+}
+
+cc_binary {
+    name: "android.hardware.health-service.tegra_nobatt",
+    recovery: false,
+    vendor: true,
+    defaults: ["android.hardware.health-service.tegra_nobatt-defaults"],
+    init_rc: ["android.hardware.health-service.tegra_nobatt.rc"],
+    overrides: ["charger"],
+}
+
+cc_binary {
+    name: "android.hardware.health-service.tegra_nobatt_recovery",
+    vendor: false,
+    recovery: true,
+    defaults: ["android.hardware.health-service.tegra_nobatt-defaults"],
+    init_rc: ["android.hardware.health-service.tegra_nobatt_recovery.rc"],
+    overrides: ["charger.recovery"],
+}
