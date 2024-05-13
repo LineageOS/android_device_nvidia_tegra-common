@@ -24,7 +24,7 @@ TARGET_TEGRA_PHS      ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
 TARGET_TEGRA_TOS      ?= $(if $(TARGET_TEGRA_KEYSTORE),$(TARGET_TEGRA_KEYSTORE),$(TARGET_TEGRA_DEFAULT_BRANCH))
 
 TARGET_TEGRA_CEC      ?= lineage
-TARGET_TEGRA_HEALTH   ?= common
+TARGET_TEGRA_HEALTH   ?= aosp
 TARGET_TEGRA_MEMTRACK ?= lineage
 TARGET_TEGRA_POWER    ?= aosp
 
@@ -211,7 +211,7 @@ PRODUCT_COPY_FILES += \
 endif
 
 # Health HAL
-ifeq ($(TARGET_TEGRA_HEALTH),common)
+ifeq ($(TARGET_TEGRA_HEALTH),aosp)
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service.tegra
 else ifeq ($(TARGET_TEGRA_HEALTH),nobattery)
