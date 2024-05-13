@@ -52,9 +52,15 @@ ifeq ($(TARGET_TEGRA_GPU),drm)
 BOARD_GPU_DRIVERS         ?= nouveau tegra
 BOARD_USES_DRM_HWCOMPOSER := true
 DEVICE_MANIFEST_FILE      += device/nvidia/tegra-common/manifests/drm.xml
+ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \<= 4), 1)
+DEVICE_MANIFEST_FILE      += device/nvidia/tegra-common/manifests/configstore.xml
+endif
 TARGET_USES_HWC2          := true
 else ifeq ($(TARGET_TEGRA_GPU),swiftshader)
 DEVICE_MANIFEST_FILE      += device/nvidia/tegra-common/manifests/drm.xml
+ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \<= 4), 1)
+DEVICE_MANIFEST_FILE      += device/nvidia/tegra-common/manifests/configstore.xml
+endif
 TARGET_USES_HWC2          := true
 endif
 
