@@ -227,6 +227,12 @@ PRODUCT_COPY_FILES += \
 endif
 endif
 
+# Light
+ifeq ($(TARGET_TEGRA_LIGHT),lineage)
+PRODUCT_PACKAGES += \
+    android.hardware.light@2.0-service-nvidia
+endif
+
 # Memtrack
 ifeq ($(TARGET_TEGRA_MEMTRACK),lineage)
 PRODUCT_PACKAGES += \
