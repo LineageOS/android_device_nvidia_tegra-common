@@ -20,7 +20,6 @@ TARGET_TEGRA_L4T_BRANCH     ?= r35
 TARGET_TEGRA_AUDIO    ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
 TARGET_TEGRA_GPU      ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
 TARGET_TEGRA_OMX      ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
-TARGET_TEGRA_PHS      ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
 TARGET_TEGRA_TOS      ?= $(if $(TARGET_TEGRA_KEYSTORE),$(TARGET_TEGRA_KEYSTORE),$(TARGET_TEGRA_DEFAULT_BRANCH))
 
 TARGET_TEGRA_CEC      ?= lineage
@@ -40,6 +39,10 @@ TARGET_TEGRA_MAN_LVL := 8
 else ifeq ($(TARGET_TEGRA_KERNEL),6.6)
 TARGET_TEGRA_MAN_LVL := 202404
 endif
+endif
+
+ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \<= 5), 1)
+TARGET_TEGRA_PHS ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
 endif
 
 # Enable nvidia framework enhancements if available
@@ -287,9 +290,24 @@ endif
 
 # Power
 ifneq ($(filter $(TARGET_TEGRA_POWER), aosp lineage),)
+ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \>= 6), 1)
+PRODUCT_PACKAGES += \
+    android.hardware.power-service.lineage-libperfmgr \
+    powerhint.json
+
+PRODUCT_SOONG_NAMESPACES += \
+    hardware/google/interfaces \
+    hardware/google/pixel \
+    hardware/lineage/interfaces/power-libperfmgr
+
+ifneq ($(TARGET_TEGRA_PHS),)
+$(error Perfmgr and ussr/phs are incompatible)
+endif
+else
 TARGET_POWERHAL_VARIANT := tegra
 PRODUCT_PACKAGES += \
     vendor.nvidia.hardware.power@1.0-service
+endif
 endif
 
 # Vendor seccomp policy files for media components:
