@@ -1,0 +1,3 @@
+on init
+  setprop vendor.powerhal.init 1
+  setprop vendor.powerhal.disp.idle_support 0
