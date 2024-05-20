@@ -74,6 +74,11 @@ endif
 # Odm permissions
 TARGET_FS_CONFIG_GEN += device/nvidia/tegra-common/config.fs
 
+# Power
+ifeq ($(filter $(TARGET_TEGRA_POWER), perfmgr),)
+include device/lineage/sepolicy/libperfmgr/sepolicy.mk
+endif
+
 # Sensors
 ifneq ($(TARGET_TEGRA_SENSORS),)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/sensors.xml
