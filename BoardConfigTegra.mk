@@ -96,3 +96,7 @@ WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 endif
 
 include device/nvidia/sepolicy/sepolicy.mk
+
+ifeq ($(TARGET_TEGRA_POWER),perfmgr)
+include device/lineage/sepolicy/libperfmgr/sepolicy.mk
+endif
