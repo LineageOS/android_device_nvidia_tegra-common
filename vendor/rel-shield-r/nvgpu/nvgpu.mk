@@ -46,6 +46,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196610 \
+    persist.vendor.tegra.compression=off \
     persist.vendor.tegra.decompression=cde-client \
     ro.vendor.tegra.AF73C63E=0x80007ffd \
     vendor.tegra.0x523dd1=2 \
