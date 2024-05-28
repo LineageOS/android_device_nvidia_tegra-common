@@ -31,3 +31,4 @@ $(_atf_bin):
 	@cp $(dir $@)/tegra/$(TARGET_TEGRA_VERSION)/release/bl31.bin $@
 
 include $(BUILD_SYSTEM)/base_rules.mk
+INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/bl31.bin
