@@ -136,7 +136,12 @@ endif
 # Boot Control
 ifeq ($(TARGET_TEGRA_BOOTCTRL),)
 AB_OTA_UPDATER := false
+<<<<<<< PATCH SET (1af118 Inherit non_ab_device.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
+else ifneq ($(TARGET_TEGRA_BOOTCTRL),)
+=======
 else
+>>>>>>> BASE      (bbdc24 Explicitly set as an non-AB target)
 AB_OTA_UPDATER := true
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-service
