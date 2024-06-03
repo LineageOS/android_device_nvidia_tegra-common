@@ -63,6 +63,18 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="hidl">
+        <name>vendor.nvidia.hardware.ipprotect</name>
+        <version>1.0</version>
+        <interface>
+            <name>IDolby</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>ISuperres</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
     <hal format="hidl" optional="true">
         <name>vendor.nvidia.hardware.phs</name>
         <version>1.0</version>
