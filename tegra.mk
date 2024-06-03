@@ -136,6 +136,7 @@ endif
 # Boot Control
 ifeq ($(TARGET_TEGRA_BOOTCTRL),)
 AB_OTA_UPDATER := false
+$(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
 else
 AB_OTA_UPDATER := true
 PRODUCT_PACKAGES += \
