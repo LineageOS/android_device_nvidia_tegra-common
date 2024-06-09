@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85c3d281_5d640943",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2024-06-09T02:57:35Z",
+      "side": 1,
+      "message": "Depends on https://review.lineageos.org/c/LineageOS/android_packages_apps_TvSettings/+/392589 which currently doesn\u0027t work.",
+      "revId": "37085d81b7f851e7e65f81dbff24cd669b14c738",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
