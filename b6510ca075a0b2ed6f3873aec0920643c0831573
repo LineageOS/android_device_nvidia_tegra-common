@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62c72cad_16756709",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2024-06-09T02:56:36Z",
+      "side": 1,
+      "message": "This works independently of the ui hiding functionality that currently doesn\u0027t work. We can get this in now so pure org test builds will at least have the toggle off.",
+      "revId": "b6510ca075a0b2ed6f3873aec0920643c0831573",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
