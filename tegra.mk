@@ -212,23 +212,13 @@ endif
 
 # Health HAL
 ifeq ($(TARGET_TEGRA_HEALTH),aosp)
-ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \>= 7), 1)
 PRODUCT_PACKAGES += \
     android.hardware.health-service.example \
     android.hardware.health-service.example_recovery
-else
-PRODUCT_PACKAGES += \
-    android.hardware.health@2.0-service.tegra
-endif
 else ifeq ($(TARGET_TEGRA_HEALTH),nobattery)
-ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \>= 7), 1)
 PRODUCT_PACKAGES += \
     android.hardware.health-service.tegra_nobatt \
     android.hardware.health-service.tegra_nobatt_recovery
-else
-PRODUCT_PACKAGES += \
-    android.hardware.health@2.0-service.tegra_nobatt
-endif
 endif
 
 # Kernel
