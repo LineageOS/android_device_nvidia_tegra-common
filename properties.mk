@@ -55,8 +55,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hardware.gralloc=minigbm \
     ro.hardware.hwcomposer=drm_minigbm \
     ro.hardware.egl=angle \
-    ro.hardware.vulkan=pastel \
-    ro.gfx.angle.supported=true
+    ro.hardware.vulkan=pastel
 endif
 
 # LMKD
