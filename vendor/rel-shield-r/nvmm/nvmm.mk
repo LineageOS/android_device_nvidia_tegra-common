@@ -15,7 +15,8 @@
 PRODUCT_PACKAGES += \
     libnvomx \
     libnvomxilclient \
-    libstagefrighthw
+    libstagefrighthw \
+    libstagefright_softomx_plugin.vendor
 
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.stagefright.c2-poolmask=0x80000 \
