@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71985cd5_0d3c2965",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2024-06-27T19:16:11Z",
+      "side": 1,
+      "message": "Random screen corruptions on atv have not been observed with this change. Testing reports on mobile say that rare corruptions there have not occurred either.\n\nThis will duplicate a property on the nx target, which can be removed in favor of this common copy.",
+      "revId": "f657efac9a30dd0df858ce0f2751d456b283e536",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
