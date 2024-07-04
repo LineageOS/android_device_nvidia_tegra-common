@@ -17,6 +17,13 @@ COMMON_BMP_PATH := $(BUILD_TOP)/vendor/nvidia/common/rel-shield-r/BMP
 
 BUP_PATH := $(BUILD_TOP)/vendor/nvidia/common/r35/tegraflash
 
+TEGRA_BOOT_LOGO ?= \
+		 $(COMMON_BMP_PATH)/nvidia480.bmp nvidia 480; \
+		 $(COMMON_BMP_PATH)/nvidia720.bmp nvidia 720; \
+		 $(COMMON_BMP_PATH)/nvidia810.bmp nvidia 810; \
+		 $(COMMON_BMP_PATH)/nvidia1080.bmp nvidia 1080; \
+		 $(COMMON_BMP_PATH)/nvidia4k.bmp nvidia 4k;
+
 include $(CLEAR_VARS)
 LOCAL_MODULE       := bmp.blob
 LOCAL_MODULE_CLASS := ETC
@@ -27,11 +34,7 @@ _bmp_blob := $(_bmp_blob_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
 
 $(_bmp_blob):
 	OUT=$(dir $@) TOP=$(BUILD_TOP) python2 $(BUP_PATH)/BUP_generator.py -t bmp -e \
-		"$(COMMON_BMP_PATH)/nvidia480.bmp nvidia 480; \
-		 $(COMMON_BMP_PATH)/nvidia720.bmp nvidia 720; \
-		 $(COMMON_BMP_PATH)/nvidia810.bmp nvidia 810; \
-		 $(COMMON_BMP_PATH)/nvidia1080.bmp nvidia 1080; \
-		 $(COMMON_BMP_PATH)/nvidia4k.bmp nvidia 4k; \
+		"$(TEGRA_BOOT_LOGO) \
 		 $(COMMON_BMP_PATH)/verity_orange_continue_720.bmp verity_orange_continue 720; \
 		 $(COMMON_BMP_PATH)/verity_orange_continue_1080.bmp verity_orange_continue 1080; \
 		 $(COMMON_BMP_PATH)/verity_orange_pause_720.bmp verity_orange_pause 720; \
