@@ -132,8 +132,10 @@ void tegra_init::detect_model_boardinfo()
         sku = bswap_32(sku);
     }
 
+    std::string hardware = property_get("ro.hardware");
     for (auto & device : tegra_devices) {
-        if (board_id == device.board_id && sku == device.sku) {
+        if (board_id == device.board_id && sku == device.sku &&
+            !device.hardware.compare(hardware)) {
             chosen_device = &device;
             break;
         }
