@@ -28,9 +28,7 @@ LOCAL_VENDOR_MODULE        := true
 LOCAL_REQUIRED_MODULES     := ld-linux-aarch64.so.1 libc.so.6 libnvsocsys-l4t nvpmodel_script
 LOCAL_CHECK_ELF_FILES      := false
 LOCAL_MODULE_RELATIVE_PATH := l4t
-LOCAL_POST_INSTALL_CMD     := \
-    mkdir -p $(TARGET_OUT_ODM_ETC); \
-    ln -sf /data/vendor/nvpmodel $(TARGET_OUT_ODM_ETC)/nvpmodel
+LOCAL_REQUIRED_MODULES     := nvpmodel_symlink
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)

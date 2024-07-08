@@ -14,6 +14,8 @@
 
 LOCAL_PATH := device/nvidia/tegra-common/vendor
 
+PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)/$(TARGET_TEGRA_L4T_BRANCH)
+
 ifneq ($(TARGET_TEGRA_DOLBY),)
 include $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/ipprotect/ipprotect.mk
 endif
