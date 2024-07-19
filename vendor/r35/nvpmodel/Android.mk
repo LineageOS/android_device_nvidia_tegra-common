@@ -25,10 +25,9 @@ LOCAL_MODULE_TARGET_ARCH   := arm64
 LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
-LOCAL_REQUIRED_MODULES     := ld-linux-aarch64.so.1 libc.so.6 libnvsocsys-l4t nvpmodel_script
+LOCAL_REQUIRED_MODULES     := ld-linux-aarch64.so.1 libc.so.6 libnvsocsys-l4t nvpmodel_script nvpmodel_symlink
 LOCAL_CHECK_ELF_FILES      := false
 LOCAL_MODULE_RELATIVE_PATH := l4t
-LOCAL_REQUIRED_MODULES     := nvpmodel_symlink
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
