@@ -124,8 +124,15 @@ function patch_nvpmodel() {
 
 # Some bootloader images need to be converted to BMP3
 function convert_bmp() {
-  if [ "$(identify -format \"%m\" ${1})" != "\"BMP3\"" ]; then
-    convert ${1} BMP3:${1};
+  # Thanks im7, for changing the established calling conventions
+  CONVERT="convert";
+  IDENTIFY="identify";
+  if type magick &>/dev/null; then
+    CONVERT="magick";
+    IDENTIFY="magick identify";
+  fi;
+  if [ "$(${IDENTIFY} -format \"%m\" ${1})" != "\"BMP3\"" ]; then
+    ${CONVERT} ${1} BMP3:${1};
   fi;
 }
 function convert_bmps() {
