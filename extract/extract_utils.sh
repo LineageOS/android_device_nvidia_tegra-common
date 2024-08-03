@@ -196,7 +196,8 @@ function fetch_sources() {
                           | tar zxv -C ${ESPATH}/temp 2>&1 1>/dev/null 2>&1;
 
                         simg2img ${ESPATH}/temp/system.img ${ESPATH}/system.img;
-                        7z x -o${ESPATH}/system ${ESPATH}/system.img 1>/dev/null 2>&1;
+                        # 7z complains about 'dangerous symlinks', so the return value must be ignored
+                        7z x -o${ESPATH}/system ${ESPATH}/system.img 1>/dev/null 2>&1 || true;
 
                         rm -rf \
                           ${ESPATH}/temp \
@@ -208,7 +209,8 @@ function fetch_sources() {
                         mkdir ${ESPATH}/system;
 
                         simg2img ${ESPATH}/nv-recovery-*/system.img ${ESPATH}/system.img;
-                        7z x -o${ESPATH}/system ${ESPATH}/system.img 1>/dev/null 2>&1;
+                        # 7z complains about 'dangerous symlinks', so the return value must be ignored
+                        7z x -o${ESPATH}/system ${ESPATH}/system.img 1>/dev/null 2>&1 || true;
 
                         rm -rf \
                           ${ESPATH}/nv-recovery-* \
@@ -220,10 +222,12 @@ function fetch_sources() {
                         mkdir ${ESPATH}/vendor;
 
                         simg2img ${ESPATH}/nv-recovery-image-*/system.img ${ESPATH}/system.img;
-                        7z x -o${ESPATH}/system ${ESPATH}/system.img 1>/dev/null 2>&1;
+                        # 7z complains about 'dangerous symlinks', so the return value must be ignored
+                        7z x -o${ESPATH}/system ${ESPATH}/system.img 1>/dev/null 2>&1 || true;
 
                         simg2img ${ESPATH}/nv-recovery-image-*/vendor.img ${ESPATH}/vendor.img;
-                        7z x -o${ESPATH}/vendor ${ESPATH}/vendor.img 1>/dev/null 2>&1;
+                        # 7z complains about 'dangerous symlinks', so the return value must be ignored
+                        7z x -o${ESPATH}/vendor ${ESPATH}/vendor.img 1>/dev/null 2>&1 || true;
 
                         rm -rf \
                           ${ESPATH}/nv-recovery-image-* \
@@ -240,14 +244,15 @@ function fetch_sources() {
                           ${ESPATH}/system.transfer.list \
                           ${ESPATH}/system.new.dat \
                           ${ESPATH}/system.img 1>/dev/null 2>&1;
-                        7z x -o${ESPATH}/system ${ESPATH}/system.img 1>/dev/null 2>&1;
+                        # 7z complains about 'dangerous symlinks', so the return value must be ignored
+                        7z x -o${ESPATH}/system ${ESPATH}/system.img 1>/dev/null 2>&1 || true;
 
                         brotli -d ${ESPATH}/vendor.new.dat.br
                         python ${LINEAGE_TOOLS}/sdat2img.py \
                           ${ESPATH}/vendor.transfer.list \
                           ${ESPATH}/vendor.new.dat \
                           ${ESPATH}/vendor.img 1>/dev/null 2>&1;
-                        # symlinks causes errors here, but not elsewhere?
+                        # 7z complains about 'dangerous symlinks', so the return value must be ignored
                         7z x -o${ESPATH}/vendor ${ESPATH}/vendor.img 1>/dev/null 2>&1 || true;
 
                         rm -rf \
