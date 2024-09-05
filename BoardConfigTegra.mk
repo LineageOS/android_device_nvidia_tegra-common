@@ -83,11 +83,6 @@ endif
 # Odm permissions
 TARGET_FS_CONFIG_GEN += device/nvidia/tegra-common/config.fs
 
-# Omx
-ifeq ($(TARGET_TEGRA_OMX),software)
-DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/omx.xml
-endif
-
 # Widevine
 ifneq ($(filter rel-shield-r, $(TARGET_TEGRA_WIDEVINE)),)
 TARGET_LD_SHIM_LIBS += \
