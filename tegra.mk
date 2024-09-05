@@ -139,6 +139,17 @@ endif
 # Boot Control
 ifneq ($(TARGET_TEGRA_BOOTCTRL),)
 AB_OTA_UPDATER := true
+ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \>= 8), 1)
+ifeq ($(TARGET_TEGRA_BOOTCTRL),smd)
+PRODUCT_PACKAGES += \
+    android.hardware.boot-service.nvidia \
+    android.hardware.boot-service.nvidia.recovery
+else ifeq ($(TARGET_TEGRA_BOOTCTRL),efi)
+PRODUCT_PACKAGES += \
+    android.hardware.boot-service.nvidia-efi \
+    android.hardware.boot-service.nvidia-efi.recovery
+endif
+else
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-service
 PRODUCT_PACKAGES_DEBUG += \
@@ -152,6 +163,7 @@ else ifeq ($(TARGET_TEGRA_BOOTCTRL),efi)
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl.nvidia-efi \
     android.hardware.boot@1.0-impl.nvidia-efi.recovery
+endif
 endif
 endif
 

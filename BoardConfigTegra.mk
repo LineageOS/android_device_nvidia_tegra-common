@@ -41,7 +41,9 @@ endif
 
 # Boot Control
 ifneq ($(TARGET_TEGRA_BOOTCTRL),)
+ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \< 8), 1)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/boot.xml
+endif
 endif
 
 # CEC
