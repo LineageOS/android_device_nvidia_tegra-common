@@ -296,10 +296,16 @@ endif
 
 # TOS
 ifeq ($(TARGET_TEGRA_TOS),software)
+ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \>= 8), 1)
+PRODUCT_PACKAGES += \
+    com.android.hardware.gatekeeper.nonsecure \
+    android.hardware.security.keymint-service.nonsecure
+else
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service.software \
     android.hardware.keymaster@3.0-impl \
     android.hardware.keymaster@3.0-service
+endif
 endif
 
 # Update Engine

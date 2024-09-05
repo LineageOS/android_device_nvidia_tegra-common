@@ -79,7 +79,9 @@ TARGET_LD_SHIM_LIBS += \
   /vendor/bin/hw/android.hardware.keymaster@3.0-service.tegra|/vendor/lib/libkeymaster_shim.so
 endif
 else ifeq ($(TARGET_TEGRA_TOS),software)
+ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \< 8), 1)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/keystore.xml
+endif
 endif
 
 # Odm permissions
