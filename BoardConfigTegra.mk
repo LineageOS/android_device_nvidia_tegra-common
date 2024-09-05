@@ -20,7 +20,9 @@ DEVICE_MANIFEST_FILE ?= device/nvidia/tegra-common/manifests/manifest.$(TARGET_T
 # Audio
 ifneq ($(TARGET_TEGRA_AUDIO),)
 ifeq ($(filter audio, $(TARGET_TEGRA_DOLBY)),)
+ifneq ($(TARGET_TEGRA_AUDIO),aidl)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/audio.xml
+endif
 endif
 ifeq ($(TARGET_TEGRA_AUDIO),tinyhal)
 BOARD_USES_TINYHAL_AUDIO := true

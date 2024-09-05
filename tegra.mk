@@ -81,7 +81,10 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 TARGET_EXCLUDES_AUDIOFX := true
-ifneq ($(TARGET_TEGRA_AUDIO),)
+ifeq ($(TARGET_TEGRA_AUDIO),aidl)
+PRODUCT_PACKAGES += \
+    com.android.hardware.audio
+else ifneq ($(TARGET_TEGRA_AUDIO),)
 PRODUCT_PACKAGES += \
     android.hardware.audio.service \
     android.hardware.audio@6.0 \
