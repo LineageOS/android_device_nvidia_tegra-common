@@ -25,9 +25,9 @@ ALL_DEFAULT_INSTALLED_MODULES += $(BT_IMPL_SYMLINK)
 endif
 
 include $(CLEAR_VARS)
-LOCAL_MODULE               := android.hardware.bluetooth@1.1-service.btlinux-tegra.rc
+LOCAL_MODULE               := android.hardware.bluetooth-service.default-tegra.rc
 LOCAL_MODULE_CLASS         := ETC
-LOCAL_SRC_FILES            := android.hardware.bluetooth@1.1-service.btlinux-tegra.rc
+LOCAL_SRC_FILES            := android.hardware.bluetooth-service.default-tegra.rc
 LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := init
 include $(BUILD_PREBUILT)
