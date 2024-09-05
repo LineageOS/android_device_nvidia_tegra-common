@@ -128,8 +128,8 @@ endif
 
 ifneq ($(filter btlinux, $(TARGET_TEGRA_BT)),)
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.1-service.btlinux \
-    android.hardware.bluetooth@1.1-service.btlinux-tegra.rc
+    android.hardware.bluetooth-service.default \
+    android.hardware.bluetooth-service.default-tegra.rc
 endif
 endif
 

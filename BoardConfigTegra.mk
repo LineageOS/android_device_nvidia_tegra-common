@@ -30,10 +30,10 @@ endif
 # Bluetooth
 ifneq ($(TARGET_TEGRA_BT),)
 BOARD_HAVE_BLUETOOTH := true
-DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/bluetooth.xml
 
 ifneq ($(filter bcm, $(TARGET_TEGRA_BT)),)
 BOARD_HAVE_BLUETOOTH_BCM := true
+DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/bluetooth.xml
 endif
 endif
 
