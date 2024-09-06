@@ -96,6 +96,11 @@ TARGET_LD_SHIM_LIBS += \
   /vendor/lib/libwvhidl.so|/vendor/lib/libcrypto_shim.so
 endif
 
+# Sensors
+ifneq ($(TARGET_TEGRA_SENSORS),)
+DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/sensors.xml
+endif
+
 # Wifi
 ifneq ($(TARGET_TEGRA_WIFI),)
 # rtl8822ce driver works with bcm userspace

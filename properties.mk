@@ -67,6 +67,12 @@ endif
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.lmk.kill_heaviest_task=true
 
+# Sensors
+ifeq ($(words $(TARGET_TEGRA_SENSORS)),1)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware.sensors=$(TARGET_TEGRA_SENSORS)
+endif
+
 # USB
 ifneq ($(filter $(TARGET_TEGRA_KERNEL), 3.4 3.10),)
 PRODUCT_PROPERTY_OVERRIDES += \

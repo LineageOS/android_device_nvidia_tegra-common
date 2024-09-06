@@ -316,6 +316,17 @@ PRODUCT_COPY_FILES += \
     device/nvidia/tegra-common/seccomp/mediaswcodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaswcodec.policy \
     device/nvidia/tegra-common/seccomp/mediaextractor.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
 
+ifneq ($(TARGET_TEGRA_SENSORS),)
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0-service \
+    android.hardware.sensors@1.0-impl \
+    $(foreach module,$(TARGET_TEGRA_SENSORS),sensors.$(module))
+
+TARGET_TEGRA_SENSOR_FEATURES ?= accelerometer gyroscope
+PRODUCT_COPY_FILES += \
+    $(foreach feature,$(TARGET_TEGRA_SENSOR_FEATURES),frameworks/native/data/etc/android.hardware.sensor.$(feature).xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.$(feature).xml)
+endif
+
 # Thermal
 ifeq ($(TARGET_TEGRA_THERMAL),lineage)
 ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \>= 8), 1)
