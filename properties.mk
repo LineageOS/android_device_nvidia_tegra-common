@@ -32,6 +32,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hdmi.wake_on_hotplug=0
 endif
 
+# Disable debug and verbose logging by default
+ifneq ($(TARGET_BUILD_VARIANT),eng)
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += log.tag=I
+endif
+
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
