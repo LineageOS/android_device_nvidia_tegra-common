@@ -39,7 +39,7 @@ LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
 LOCAL_SHARED_LIBRARIES     := android.hardware.drm@1.0 android.hardware.drm@1.1 android.hardware.drm@1.2 android.hardware.drm@1.3 android.hidl.memory@1.0 libbase libc++ libc libcrypto libdl libhidlbase libhidlmemory liblog libm libprotobuf-cpp-lite libutils
-LOCAL_REQUIRED_MODULES     := libprotobuf-cpp-lite-3.9.1-vendorcompat
+LOCAL_REQUIRED_MODULES     := libprotobuf-cpp-lite-3.9.1-vendorcompat libcrypto_shim
 LOCAL_CHECK_ELF_FILES      := false
 include $(BUILD_PREBUILT)
 endif
