@@ -203,14 +203,17 @@ PRODUCT_PACKAGES += \
     disable_configstore
 endif
 ifeq ($(TARGET_TEGRA_GPU),drm)
-PRODUCT_SOONG_NAMESPACES += external/mesa3d
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@4.0-service.minigbm \
     android.hardware.graphics.mapper@4.0-impl.minigbm \
     android.hardware.graphics.composer@2.4-service \
     hwcomposer.drm \
     gralloc.minigbm \
-    libGLES_mesa
+    libEGL_mesa \
+    libGLESv1_CM_mesa \
+    libGLESv2_mesa \
+    libgallium_dri \
+    libglapi
 else ifeq ($(TARGET_TEGRA_GPU),swiftshader)
 PRODUCT_REQUIRES_INSECURE_EXECMEM_FOR_SWIFTSHADER := true
 PRODUCT_PACKAGES += \

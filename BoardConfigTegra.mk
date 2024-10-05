@@ -53,7 +53,8 @@ endif
 
 # Graphics
 ifeq ($(TARGET_TEGRA_GPU),drm)
-BOARD_GPU_DRIVERS         ?= nouveau tegra
+BOARD_MESA3D_USES_MESON_BUILD := true
+BOARD_MESA3D_GALLIUM_DRIVERS ?= nouveau tegra
 BOARD_USES_DRM_HWCOMPOSER := true
 DEVICE_MANIFEST_FILE      += device/nvidia/tegra-common/manifests/drm.xml
 TARGET_USES_HWC2          := true
