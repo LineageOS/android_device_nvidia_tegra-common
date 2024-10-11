@@ -275,8 +275,10 @@ endif
 
 # OMX
 ifeq ($(TARGET_TEGRA_OMX),software)
+ifneq ($(filter $(TARGET_TEGRA_KERNEL), 3.4 3.10 4.4 4.9 5.10),)
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.stagefright.c2-poolmask=0x80000
+endif
 endif
 
 # PHS
