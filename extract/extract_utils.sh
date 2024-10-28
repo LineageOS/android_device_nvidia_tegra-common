@@ -82,6 +82,22 @@ function setup_vendor() {
         command -v ${CMD} >/dev/null 2>&1 || { echo >&2 "${CMD} is required, but not installed. Aborting."; exit 1; }
     done
 
+    if [ -z "$PATCHELF_VERSION" ]; then
+        PATCHELF_VERSION=0_18;
+    fi;
+    mapfile -td \_ PE_VER < <(printf "%s\0" "${PATCHELF_VERSION}")
+    PE_VER[2]=${PE_VER[2]:-0};
+
+    if command -v "${LINEAGE_ROOT}/prebuilts/extract-tools/linux-x86/bin/patchelf_${PATCHELF_VERSION}" >/dev/null 2>&1; then
+        export PATH="${LINEAGE_ROOT}/prebuilts/extract-tools/linux-x86/bin":"$PATH";
+        PATCHELF=patchelf_${PATCHELF_VERSION};
+    elif command -v patchelf >/dev/null 2>&1 && [ "$(patchelf --version)" == "patchelf ${PE_VER[0]}.${PE_VER[1]}.${PE_VER[2]}" ]; then
+        PATCHELF=patchelf;
+    else
+        echo >&2 "patchelf ${PE_VER[0]}.${PE_VER[1]}.${PE_VER[2]} is required, but not installed. Aborting.";
+        exit 1;
+    fi;
+
     export OUTDIR=vendor/nvidia
     if [ ! -d "$LINEAGE_ROOT/$OUTDIR" ]; then
         mkdir -p "$LINEAGE_ROOT/$OUTDIR"
