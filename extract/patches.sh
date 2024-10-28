@@ -153,6 +153,23 @@ function patch_nvcamera() {
   echo "";
 }
 
+function patch_keymaster() {
+  echo -n "Patching keymaster prebuilts for missing symbols...";
+
+  ${PATCHELF} --add-needed libkeymaster_shim.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/tos/bin32/hw/android.hardware.keymaster@3.0-service.tegra
+  ${PATCHELF} --add-needed libkeymaster_shim.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/tos/bin64/hw/android.hardware.keymaster@3.0-service.tegra
+
+  echo "";
+}
+
+function patch_widevine() {
+  echo -n "Patching widevine prebuilts for missing symbols...";
+
+  ${PATCHELF} --add-needed libcrypto_shim.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/widevine/lib/libwvhidl.so
+
+  echo "";
+}
+
 fetch_bcm4356_patchfile;
 chmod_tegraflash;
 patch_nvcontrol;
@@ -164,3 +181,5 @@ fetch_l4t_deps;
 patch_nvpmodel;
 convert_bmps;
 patch_nvcamera;
+patch_keymaster;
+patch_widevine;

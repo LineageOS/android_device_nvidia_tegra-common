@@ -67,27 +67,12 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
 endif
 
 # Keystore
-ifneq ($(filter rel-shield-r, $(TARGET_TEGRA_TOS)),)
-DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/keystore.xml
-ifeq ($(TARGET_SUPPORTS_64_BIT_APPS),true)
-TARGET_LD_SHIM_LIBS += \
-  /vendor/bin/hw/android.hardware.keymaster@3.0-service.tegra|/vendor/lib64/libkeymaster_shim.so
-else
-TARGET_LD_SHIM_LIBS += \
-  /vendor/bin/hw/android.hardware.keymaster@3.0-service.tegra|/vendor/lib/libkeymaster_shim.so
-endif
-else ifeq ($(TARGET_TEGRA_TOS),software)
+ifneq ($(TARGET_TEGRA_TOS),)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/keystore.xml
 endif
 
 # Odm permissions
 TARGET_FS_CONFIG_GEN += device/nvidia/tegra-common/config.fs
-
-# Widevine
-ifneq ($(filter rel-shield-r, $(TARGET_TEGRA_WIDEVINE)),)
-TARGET_LD_SHIM_LIBS += \
-  /vendor/lib/libwvhidl.so|/vendor/lib/libcrypto_shim.so
-endif
 
 # Wifi
 ifneq ($(TARGET_TEGRA_WIFI),)
