@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96c9cb2c_a73db5e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2024-10-30T01:02:07Z",
+      "side": 1,
+      "message": "Verified on foster booting on mdarcy. Keymaster and widevine work as expected.",
+      "revId": "82cfd985ce2b86b003898de1c3e3784c6b06b66a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
