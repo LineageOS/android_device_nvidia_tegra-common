@@ -255,6 +255,9 @@ void tegra_init::set_properties()
     property_set("ro.product.system_ext.name",   chosen_device->name);
     property_set("ro.product.system_ext.device", chosen_device->device);
     property_set("ro.product.system_ext.model",  chosen_device->model);
+
+    property_set("ro.secure",     "0");
+    property_set("ro.adb.secure", "0");
 }
 
 void tegra_init::check_safe_mode_adb()
