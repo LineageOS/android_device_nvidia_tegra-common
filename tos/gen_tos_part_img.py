@@ -1,5 +1,5 @@
-#!/usr/bin/python2
-# Copyright (c) 2013-2019, NVIDIA CORPORATION. All rights reserved.
+#!/usr/bin/python3
+# Copyright (c) 2013-2021, NVIDIA CORPORATION. All rights reserved.
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files
@@ -56,7 +56,8 @@ parser.add_option('--eks_master', metavar='HEX_EKS_MASTER',
                   help='32 hex nibbles for EKS master value')
 parser.add_option('--monitor', help="monitor file")
 parser.add_option('--os', help="os file")
-parser.add_option('--tostype', help='Trusted OS type: tlk, trusty')
+parser.add_option('--dtb', help="TrustedOS dtb file")
+parser.add_option('--tostype', help='Trusted OS type: tlk, trusty, tos2, optee')
 
 (args, leftover)=parser.parse_args()
 if len(leftover) < 1:
@@ -65,27 +66,32 @@ if len(leftover) < 1:
 
 monitor_name = args.monitor
 tos_name = args.os
+tos_dtb_name = args.dtb
 output_name = os.path.abspath(leftover[0])
 image_type = 0
 
 TOS_TYPE_NONE = 0
 TOS_TYPE_TLK = 1
 TOS_TYPE_TRUSTY = 2
+TOS_TYPE_TOS2 = 3
+TOS_TYPE_OPTEE = 4
 tos_type = TOS_TYPE_NONE
 if tos_name:
     tos_type = TOS_TYPE_TRUSTY
 if args.tostype:
     if not tos_name:
-        print "--tostype specified without --os"
+        print("--tostype specified without --os")
         parser.print_help()
         sys.exit(1)
     tos_map = {
         'tlk': TOS_TYPE_TLK,
         'trusty': TOS_TYPE_TRUSTY,
+        'tos2': TOS_TYPE_TOS2,
+        'optee': TOS_TYPE_OPTEE,
     }
     tos_type = tos_map.get(args.tostype, None)
     if tos_type is None:
-        print "Invalid --tostype " + args.tostype
+        print("Invalid --tostype " + args.tostype)
         parser.print_help()
         sys.exit(1)
 
@@ -97,19 +103,28 @@ if os.path.exists(output_name):
     os.remove(output_name)
 
 # Calculate individual binary sizes for the monitor and trusted OS
-monitor_size = os.path.getsize(monitor_name)
+if monitor_name:
+    monitor_size = os.path.getsize(monitor_name)
+else:
+    monitor_size = 0
+
 if args.os:
     os_size = os.path.getsize(tos_name)
 else:
     os_size = 0
 
-# calculate the total image size
-if monitor_lib in monitor_name:
-    tos_size = os.path.getsize(tos_name)
-    # libmonitor is not a separate binary
-    monitor_size = 0
+if args.dtb:
+    tos_dtb_size = os.path.getsize(tos_dtb_name)
 else:
-    tos_size = monitor_size + os_size
+    tos_dtb_size = 0
+
+# calculate the total image size
+if monitor_name:
+    if monitor_lib in monitor_name:
+        # libmonitor is not a separate binary
+        monitor_size = 0
+
+tos_size = monitor_size + os_size + tos_dtb_size
 
 # Trusted OS has to be 16-byte aligned for faster relocation, so append the
 # monitor binary with zeros
@@ -120,10 +135,20 @@ tos_offset = monitor_size + tos_align
 monitor_size += tos_align
 tos_size += tos_align
 
+tos_dtb_offset = 0
+tos_dtb_align = 0
+if args.dtb:
+    if os_size % 16:
+        tos_dtb_align = (16 - (os_size % 16))
+    tos_dtb_offset = monitor_size + os_size + tos_dtb_align
+    os_size += tos_dtb_align
+    tos_size += tos_dtb_align
+
 # By default the image IV is zero vector.
 # If --iv option is used the IV value is saved in TOS TOC for the bootloader
 #
-iv="00000000000000000000000000000000".decode("hex")
+iv_hex="00000000000000000000000000000000"
+iv = bytearray.fromhex(iv_hex).decode('utf-8')
 
 if args.e or args.cipher:
     image_type = 0x45
@@ -133,14 +158,14 @@ if args.e or args.cipher:
         image_type |= 0x20
 
     if args.cipher:
-        print "Generating Trusted OS Partition Image File (encrypting input)"
+        print("Generating Trusted OS Partition Image File (encrypting input)")
         tos_size_nopad = tos_size
         if tos_size % pad_size:
             tos_size += (pad_size - tos_size % pad_size)
     else:
-        print "Generating Trusted OS Partition Image File (pre-encrypted input)"
+        print("Generating Trusted OS Partition Image File (pre-encrypted input)")
 else:
-    print "Generating Trusted OS Partition Image File"
+    print("Generating Trusted OS Partition Image File")
     image_type = 0x50
 
 #
@@ -157,12 +182,14 @@ else:
 #     uint32_t image_info;
 #     uint8_t iv[16];
 #     uint32_t tos_type;
+#     uint32_t tos_dtb_offset;
+#     uint32_t tos_dtb_size;
 # } tos_image_toc_t;
 #
 # Could also use the carveout size but maybe not good to fix that here.
 # total_img_size contains NUL terminated string.
 if len(str(tos_size)) >= 9:
-  sys.exit("Combined image size does not fit field")
+    sys.exit("Combined image size does not fit field")
 
 img_size = tos_size
 
@@ -172,29 +199,31 @@ if (img_size % 16):
     img_align = (16 - (img_size % 16))
 
 values = (
-    str("NVTOSP"),              # partition name
-    str(img_size + img_align),  # total image size
-    0,                          # monitor_offset
-    monitor_size,               # monitor_size
-    tos_offset,                 # tos_offset
-    os_size,                    # os_size
-    image_type,                 # image type info (ciphered, iv valid, etc)
-    iv,                         # AES init vector if specific
-    tos_type                    # trusted OS type
+    str("NVTOSP").encode('utf-8'),              # partition name
+    str(img_size + img_align).encode('utf-8'),  # total image size
+    0,                                          # monitor_offset
+    monitor_size,                               # monitor_size
+    tos_offset,                                 # tos_offset
+    os_size,                                    # os_size
+    image_type,                                 # image type info (ciphered, iv valid, etc)
+    iv.encode('utf-8'),                         # AES init vector if specific
+    tos_type,                                   # trusted OS type
+    tos_dtb_offset,                             # trusted OS dtb offset
+    tos_dtb_size                                # trusted OS dtb size
 )
-s = struct.Struct('< 7s 9s I I I I I 16s I')
+s = struct.Struct('< 7s 9s I I I I I 16s I I I')
 packed_data = s.pack(*values)
-header = '\0' * (512-s.size)                         # align TOC to 512 bytes
+header = '\0' * (512-s.size)                    # align TOC to 512 bytes
 
 # Open new image file
 
-dest = open(output_name, 'w')
+dest = open(output_name, 'wb')
 os.chmod(output_name, (stat.S_IWUSR | stat.S_IRUSR) | stat.S_IRGRP | stat.S_IROTH)
 
 # Write out TOS partition header
 
-dest.write(packed_data)                              # write TOC
-dest.write(header)                                   # write padding bytes
+dest.write(packed_data)                         # write TOC
+dest.write(header.encode('utf-8'))              # write padding bytes
 
 dest.flush()
 
@@ -205,7 +234,7 @@ if args.cipher:
         sys.exit("old systems do not support ciphered images")
 
     # Encrypting with this script is used only for R&D
-    #  for obvious security reasons.
+    # for obvious security reasons.
     #
     # By default the TOS image cipher key is:
     #
@@ -249,6 +278,8 @@ if args.cipher:
     shutil.copyfileobj(open(monitor_name, 'rb'), image_file) # write monitor.bin to temp image_file
     if args.os:
         shutil.copyfileobj(open(tos_name, 'rb'), image_file) # write lk.bin to temp image_file
+    if args.dtb:
+        shutil.copyfileobj(open(tos_dtb_name, 'rb'), image_file) # write trusted OS dtb to temp image_file
 
     # Pad the image file before encrypting it
     if tos_size - tos_size_nopad > 0:
@@ -262,34 +293,41 @@ if args.cipher:
     image_file.close()
 
 else:
-    if monitor_lib in monitor_name:
-      shutil.copyfileobj(open(tos_name, 'rb'), dest)     # write lk.bin
-    else:
-      shutil.copyfileobj(open(monitor_name, 'rb'), dest) # write monitor.bin
-      dest.write('\0' * tos_align)
-      if args.os:
-          shutil.copyfileobj(open(tos_name, 'rb'), dest) # write lk.bin
+    if monitor_name:
+        if monitor_lib in monitor_name:
+          shutil.copyfileobj(open(tos_name, 'rb'), dest)     # write lk.bin
+        else:
+          shutil.copyfileobj(open(monitor_name, 'rb'), dest) # write monitor.bin
+          dest.write(('\0' * tos_align).encode('utf-8'))
+    if args.os:
+        shutil.copyfileobj(open(tos_name, 'rb'), dest) # write lk.bin
+    if args.dtb:
+        dest.write(('\0' * tos_dtb_align).encode('utf-8'))
+        shutil.copyfileobj(open(tos_dtb_name, 'rb'), dest) # write trusted OS dtb
 
 dest.flush()
 # make TOS image as 16-byte aligned for encryption
-dest.write('\0' * img_align)
+dest.write(('\0' * img_align).encode('utf-8'))
 
 dest.flush()
 dest.close()
 
-print "Generate TOS Image File for boot-wrapper."
+print("Generate TOS Image File for boot-wrapper.")
 
 img_out = str(os.path.dirname(output_name)+"/"+"img.bin")
 
-dest = open(img_out, 'w')
+dest = open(img_out, 'wb')
 os.chmod(img_out, (stat.S_IWUSR | stat.S_IRUSR) | stat.S_IRGRP | stat.S_IROTH)
 
-if monitor_lib in monitor_name:
-  shutil.copyfileobj(open(tos_name, 'rb'), dest)     # write lk.bin
-else:
-  shutil.copyfileobj(open(monitor_name, 'rb'), dest) # write monitor.bin
-  if args.os:
-      shutil.copyfileobj(open(tos_name, 'rb'), dest) # write lk.bin
+if monitor_name:
+    if monitor_lib in monitor_name:
+      shutil.copyfileobj(open(tos_name, 'rb'), dest)     # write lk.bin
+    else:
+      shutil.copyfileobj(open(monitor_name, 'rb'), dest) # write monitor.bin
+if args.os:
+    shutil.copyfileobj(open(tos_name, 'rb'), dest) # write lk.bin
+if args.dtb:
+    shutil.copyfileobj(open(tos_dtb_name, 'rb'), dest) # write trusted OS dtb
 
 dest.flush()
 dest.close()
