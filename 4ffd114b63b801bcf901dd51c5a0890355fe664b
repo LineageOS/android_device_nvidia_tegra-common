@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "779039cd_c0a1a3c9",
+        "filename": "tos/gen_tos_part_img.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2024-11-21T23:21:15Z",
+      "side": 1,
+      "message": "unrelated but idc",
+      "revId": "4ffd114b63b801bcf901dd51c5a0890355fe664b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
