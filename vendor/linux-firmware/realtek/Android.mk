@@ -16,6 +16,15 @@ LOCAL_PATH := $(call my-dir)
 LF_RTL_PATH := ../../../../../../kernel/nvidia/linux-firmware/
 
 include $(CLEAR_VARS)
+LOCAL_MODULE               := rtl8153a-3.fw
+LOCAL_SRC_FILES            := $(LF_BCM_PATH)/rtl_nic/rtl8153a-3.fw
+LOCAL_MODULE_CLASS         := ETC
+LOCAL_MODULE_PATH          := $(TARGET_OUT_VENDOR)/firmware/rtl_nic
+LOCAL_MODULE_TAGS          := optional
+LOCAL_MODULE_OWNER         := realtek
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
 LOCAL_MODULE               := rtl8822cu_config-lf
 LOCAL_MODULE_STEM          := rtl8822cu_config
 LOCAL_SRC_FILES            := $(LF_RTL_PATH)/rtl_bt/rtl8761bu_config.bin
