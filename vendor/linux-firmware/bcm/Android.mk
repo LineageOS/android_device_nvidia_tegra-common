@@ -16,6 +16,15 @@ LOCAL_PATH := $(call my-dir)
 LF_BCM_PATH := ../../../../../../kernel/nvidia/linux-firmware/
 
 include $(CLEAR_VARS)
+LOCAL_MODULE               := brcmfmac43241b0-sdio.bin
+LOCAL_SRC_FILES            := $(LF_BCM_PATH)/brcm/brcmfmac43241b0-sdio.bin
+LOCAL_MODULE_CLASS         := ETC
+LOCAL_MODULE_PATH          := $(TARGET_OUT_VENDOR)/firmware/brcm
+LOCAL_MODULE_TAGS          := optional
+LOCAL_MODULE_OWNER         := broadcom
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
 LOCAL_MODULE               := brcmfmac4354-sdio.bin
 LOCAL_SRC_FILES            := $(LF_BCM_PATH)/cypress/cyfmac4354-sdio.bin
 LOCAL_MODULE_CLASS         := ETC
