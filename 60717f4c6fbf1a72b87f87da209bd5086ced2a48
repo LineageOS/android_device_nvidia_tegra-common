@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d1ff6eb_ced71281",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2024-11-24T06:39:04Z",
+      "side": 1,
+      "message": "Verified building galen and concord, then booting rey and arvala respectively.",
+      "revId": "60717f4c6fbf1a72b87f87da209bd5086ced2a48",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
