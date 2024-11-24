@@ -310,6 +310,7 @@ function fetch_sources() {
 # Copy prebuilts
 #
 function copy_files() {
+    local COMMON_EXTRACT=${LINEAGE_ROOT}/device/nvidia/tegra-common/extract
     echo "Copying files...";
 
     for key in "${!FILELIST_PATHS[@]}"; do
@@ -331,6 +332,9 @@ function copy_files() {
                 echo "  * ${project}/${SOURCE_BRANCH[$sname]}/${dest}";
                 mkdir -p ${LINEAGE_ROOT}/vendor/$(dirname ${project}/${SOURCE_BRANCH[$sname]}/$dest);
                 cp ${TMPDIR}/extract/${sname}/${source} ${LINEAGE_ROOT}/vendor/${project}/${SOURCE_BRANCH[$sname]}/${dest};
+                if [ -n "${EXTRACT_DEBUGDATA}" ]; then
+                    python ${COMMON_EXTRACT}/debugdata-extract.py ${LINEAGE_ROOT}/vendor/${project}/${SOURCE_BRANCH[$sname]}/${dest} 1>/dev/null 2>&1;
+                fi;
             else
                 echo "  X ${source} is missing from ${sname} for ${project}";
             fi;
