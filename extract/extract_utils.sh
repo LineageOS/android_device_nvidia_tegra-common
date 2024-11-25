@@ -334,7 +334,18 @@ function copy_files() {
             if [ -f "${TMPDIR}/extract/${sname}/${source}" ]; then
                 echo "  * ${project}/${SOURCE_BRANCH[$sname]}/${dest}";
                 mkdir -p ${LINEAGE_ROOT}/vendor/$(dirname ${project}/${SOURCE_BRANCH[$sname]}/$dest);
-                cp ${TMPDIR}/extract/${sname}/${source} ${LINEAGE_ROOT}/vendor/${project}/${SOURCE_BRANCH[$sname]}/${dest};
+
+                # If asked to unstrip elf file, check for the debugdata section.
+                # If ivrodata section exists, ignore file because the extra sections confuse unstrip.
+                if [ -n "${EXTRACT_UNSTRIP}" ] && file -b ${TMPDIR}/extract/${sname}/${source} |grep ^ELF 2>&1 1>/dev/null && \
+                   llvm-objdump -h ${TMPDIR}/extract/${sname}/${source} |grep gnu_debugdata 2>&1 > /dev/null && \
+                   ! (llvm-objdump -h ${TMPDIR}/extract/${sname}/${source} |grep ivrodata 2>&1 > /dev/null); then
+                    echo "    - Found debugdata";
+                    llvm-objcopy --dump-section .gnu_debugdata=/dev/stdout ${TMPDIR}/extract/${sname}/${source} | xz -d > ${TMPDIR}/extract/${sname}/${source}.dbg;
+                    eu-unstrip ${TMPDIR}/extract/${sname}/${source} ${TMPDIR}/extract/${sname}/${source}.dbg -o ${LINEAGE_ROOT}/vendor/${project}/${SOURCE_BRANCH[$sname]}/${dest};
+                else
+                    cp ${TMPDIR}/extract/${sname}/${source} ${LINEAGE_ROOT}/vendor/${project}/${SOURCE_BRANCH[$sname]}/${dest};
+                fi;
             else
                 echo "  X ${source} is missing from ${sname} for ${project}";
             fi;
