@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+include device/nvidia/tegra-common/aosp-compat.mk
+
 TARGET_AUDIO_HAL              ?= baylibre
 TARGET_GRAPHICS               ?= mesa
 TARGET_GRAPHICS_ALLOCATOR_HAL ?= minigbm
