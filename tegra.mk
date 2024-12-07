@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+include device/nvidia/tegra-common/aosp-compat.mk
+
 TARGET_TEGRA_DEFAULT_BRANCH ?= rel-shield-r
 TARGET_TEGRA_L4T_BRANCH     ?= r35
 
