@@ -18,7 +18,6 @@ CLANG_TOOLS_PATH ?= $(BUILD_TOP)/prebuilts/clang-tools/$(HOST_PREBUILT_TAG)
 TARGET_KERNEL_RUST_VERSION ?= 1.73.0c
 RUST_PATH ?= $(BUILD_TOP)/prebuilts/rust/$(HOST_PREBUILT_TAG)/$(TARGET_KERNEL_RUST_VERSION)
 BUILD_TOOLS_PATH ?= $(BUILD_TOP)/prebuilts/build-tools/$(HOST_PREBUILT_TAG)
-NPROC := $(shell prebuilts/tools-lineage/$(HOST_PREBUILT_TAG)/bin/nproc --all)
 LKROOT ?= $(BUILD_TOP)/external/trusty/lk
 include $(BUILD_TOP)/trusty/vendor/google/aosp/lk_inc_aosp.mk
 LKINC += trusty/hardware/nvidia
@@ -26,7 +25,7 @@ LKINC += trusty/hardware/nvidia
 _trusty_bin := $(call intermediates-dir-for,EXECUTABLES,trusty)/trusty.bin
 $(_trusty_bin):
 	@mkdir -p $(dir $@)
-	$(KERNEL_MAKE_CMD) -j $(NPROC) -f $(LKROOT)/makefile PROJECT=$(TARGET_TEGRA_VERSION) \
+	$(KERNEL_MAKE_CMD) -f $(LKROOT)/makefile PROJECT=$(TARGET_TEGRA_VERSION) \
 		LKROOT=$(LKROOT) LKINC="$(LKINC)" BUILDROOT=$(dir $@) TRUSTY_TOP=$(BUILD_TOP) BUILDTOOLS_BINDIR=$(BUILD_TOOLS_PATH)/bin \
 		CLANG_BINDIR=$(TARGET_KERNEL_CLANG_PATH)/bin CLANG_TOOLS_BINDIR=$(CLANG_TOOLS_PATH)/bin CLANG_HOST_LIBDIR=$(TARGET_KERNEL_CLANG_PATH)/lib \
 		BINDGEN_CLANG_PATH=$(TARGET_KERNEL_CLANG_PATH)/bin/clang BINDGEN_LIBCLANG_PATH=$(TARGET_KERNEL_CLANG_PATH)/lib \
