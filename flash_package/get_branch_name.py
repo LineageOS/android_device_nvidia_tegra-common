@@ -21,5 +21,8 @@ manifest_file = top_dir + '/.repo/manifests/default.xml'
 xml_tree = parse(manifest_file)
 collection = xml_tree.documentElement
 projects = collection.getElementsByTagName("default")
-ver = projects[0].getAttribute("revision").split('-')[1].split('.')
+try:
+    ver = projects[0].getAttribute("revision").split('-')[1].split('.')
+except:
+    ver = ["99", "99"]
 print("%s.%s" % (ver[0].zfill(2), ver[1].zfill(2)))
