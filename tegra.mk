@@ -17,6 +17,7 @@
 TARGET_TEGRA_DEFAULT_BRANCH ?= rel-shield-r
 TARGET_TEGRA_L4T_BRANCH     ?= r35
 
+ifneq ($(filter 3.10 4.9 5.10, $(TARGET_KERNEL_VERSION)),)
 TARGET_TEGRA_AUDIO    ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
 TARGET_TEGRA_CPL      ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
 TARGET_TEGRA_GPU      ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
@@ -27,6 +28,41 @@ TARGET_TEGRA_CEC      ?= lineage
 TARGET_TEGRA_HEALTH   ?= aosp
 TARGET_TEGRA_MEMTRACK ?= lineage
 TARGET_TEGRA_POWER    ?= aosp
+else
+TARGET_TEGRA_BT     ?= mainline
+TARGET_TEGRA_HEALTH ?= aosp
+TARGET_TEGRA_WIFI   ?= mainline
+
+TARGET_AUDIO_HAL              ?= baylibre
+TARGET_GRAPHICS               ?= mesa
+TARGET_GRAPHICS_ALLOCATOR_HAL ?= minigbm
+TARGET_HEALTH_HAL             ?= none
+TARGET_LIGHT_HAL              ?= none
+TARGET_POWER_HAL              ?= perfmgr-lineage
+TARGET_TV_HDMI_CEC_HAL        ?= baylibre
+
+MAINLINE_COMMON_DISABLE_COMMON_PRODUCT_DEFS ?= true
+TARGET_HAS_VIBRATOR                         ?= false
+TARGET_SUPPORTS_USB_ACCESSORY_MODE          ?= false
+TARGET_USES_MAINLINE_COMMON_AB_DEFS         ?= false
+
+ifeq ($(TARGET_GRAPHICS),mesa)
+TARGET_MINIGBM_PLATFORM ?= nouveau
+endif
+
+PRODUCT_PACKAGES += \
+    mediaextractor.policy.vendor \
+    mediaswcodec.policy.vendor
+
+# GCC Toolchain needed to build bootloaders
+ifeq ($(TARGET_SUPPORTS_64_BIT_APPS),true)
+KERNEL_TOOLCHAIN        := $(shell pwd)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-gnu-9.3/bin
+KERNEL_TOOLCHAIN_PREFIX := aarch64-buildroot-linux-gnu-
+endif
+
+include device/mainline/common/optional/options.mk
+include device/mainline/common/mainline_common.mk
+endif
 
 ifeq ($(TARGET_TEGRA_MAN_LVL),)
 ifeq ($(TARGET_KERNEL_VERSION),4.9)
@@ -46,8 +82,10 @@ TARGET_TEGRA_MAN_LVL := 202604
 endif
 endif
 
+ifeq ($(filter $(TARGET_POWER_HAL), perfmgr-lineage),)
 ifeq ($(filter $(TARGET_TEGRA_POWER), perfmgr),)
 TARGET_TEGRA_PHS ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
+endif
 endif
 
 # Enable nvidia framework enhancements if available
@@ -238,28 +276,13 @@ ifneq ($(TARGET_TEGRA_GPU),)
 PRODUCT_PACKAGES += \
     disable_configstore
 endif
-ifeq ($(TARGET_TEGRA_GPU),drm)
-PRODUCT_SOONG_NAMESPACES += external/mesa3d
+ifneq ($(TARGET_GRAPHICS),)
+TARGET_USES_VULKAN ?= false
+
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.allocator@4.0-service.minigbm \
-    android.hardware.graphics.mapper@4.0-impl.minigbm \
-    android.hardware.graphics.composer@2.4-service \
-    hwcomposer.drm \
-    gralloc.minigbm \
-    libGLES_mesa
-else ifeq ($(TARGET_TEGRA_GPU),swiftshader)
-PRODUCT_REQUIRES_INSECURE_EXECMEM_FOR_SWIFTSHADER := true
-PRODUCT_PACKAGES += \
-    android.hardware.graphics.allocator@4.0-service.minigbm \
-    android.hardware.graphics.mapper@4.0-impl.minigbm \
-    android.hardware.graphics.composer@2.4-service \
-    hwcomposer.drm_minigbm \
-    gralloc.minigbm \
-    vulkan.pastel
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level.xml \
-    frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml \
-    frameworks/native/data/etc/android.software.vulkan.deqp.level-2020-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml
+    disable_configstore \
+    SimpleSettingsNvgpuOverlay \
+    TvSettingsNvgpuOverlay
 endif
 
 # Health HAL
@@ -274,10 +297,12 @@ PRODUCT_PACKAGES += \
 endif
 
 # Kernel
+ifneq ($(filter 3.10 4.9 5.10, $(TARGET_KERNEL_VERSION)),)
 ifneq ($(TARGET_PREBUILT_KERNEL),)
 ifeq ($(LINEAGE_BUILD),)
 PRODUCT_COPY_FILES += \
     $(TARGET_PREBUILT_KERNEL):kernel
+endif
 endif
 endif
 
@@ -296,12 +321,6 @@ endif
 ifeq ($(TARGET_TEGRA_MEMTRACK),lineage)
 PRODUCT_PACKAGES += \
     android.hardware.memtrack-service-nvidia
-endif
-
-# OMX
-ifeq ($(TARGET_TEGRA_OMX),software)
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.stagefright.c2-poolmask=0x80000
 endif
 
 # PHS
@@ -339,8 +358,11 @@ endif
 # Vendor seccomp policy files for media components:
 PRODUCT_COPY_FILES += \
     device/nvidia/tegra-common/seccomp/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
-    device/nvidia/tegra-common/seccomp/mediaswcodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaswcodec.policy \
     device/nvidia/tegra-common/seccomp/mediaextractor.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
+ifneq ($(filter 3.10 4.9 5.10, $(TARGET_KERNEL_VERSION)),)
+PRODUCT_COPY_FILES += \
+    device/nvidia/tegra-common/seccomp/mediaswcodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaswcodec.policy
+endif
 
 ifneq ($(TARGET_TEGRA_SENSORS),)
 PRODUCT_PACKAGES += \
@@ -406,6 +428,11 @@ endif
 ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \<= 7), 1)
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.3-service.basic
+endif
+
+# Virtualization (AVF)
+ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \>= 202404), 1)
+$(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
 endif
 
 # Wifi
