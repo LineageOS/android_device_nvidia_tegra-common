@@ -52,21 +52,12 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.fastbootd.available=true
 
 # Graphics
-ifeq ($(TARGET_TEGRA_GPU),drm)
+ifeq ($(TARGET_GRAPHICS),mesa)
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196610 \
-    ro.hardware.gralloc=minigbm \
-    ro.hardware.hwcomposer=drm \
-    ro.hardware.egl=mesa \
-    gralloc.gbm.device=/dev/dri/renderD129 \
-    vendor.hwc.drm.device=/dev/dri/card1 \
-    drm.gpu.vendor_name=tegra
-else ifeq ($(TARGET_TEGRA_GPU),swiftshader)
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hardware.gralloc=minigbm \
-    ro.hardware.hwcomposer=drm_minigbm \
-    ro.hardware.egl=angle \
-    ro.hardware.vulkan=pastel
+    ro.hardware.vulkan=nouveau \
+    vendor.hwc.drm.device=/dev/dri/card0 \
+    drm.gpu.vendor_name=nouveau
 endif
 
 # LMKD

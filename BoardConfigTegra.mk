@@ -50,14 +50,11 @@ DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/cec.xml
 endif
 
 # Graphics
-ifeq ($(TARGET_TEGRA_GPU),drm)
-BOARD_GPU_DRIVERS         ?= nouveau tegra
-BOARD_USES_DRM_HWCOMPOSER := true
-DEVICE_MANIFEST_FILE      += device/nvidia/tegra-common/manifests/drm.xml
-TARGET_USES_HWC2          := true
-else ifeq ($(TARGET_TEGRA_GPU),swiftshader)
-DEVICE_MANIFEST_FILE      += device/nvidia/tegra-common/manifests/drm.xml
-TARGET_USES_HWC2          := true
+ifeq ($(TARGET_GRAPHICS),mesa)
+BOARD_MESA3D_GALLIUM_DRIVERS += nouveau tegra
+BOARD_MESA3D_VULKAN_DRIVERS += nouveau
+BOARD_MESA3D_GALLIUM_VA := enabled
+BOARD_MESA3D_VIDEO_CODECS := all
 endif
 
 # HIDL
@@ -66,7 +63,9 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
 
 # Keystore
 ifneq ($(TARGET_TEGRA_TOS),)
+ifneq ($(filter 3.10 4.9 5.10, $(TARGET_KERNEL_VERSION)),)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/keystore.xml
+endif
 endif
 
 # Odm permissions
@@ -98,3 +97,7 @@ WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 endif
 
 include device/nvidia/sepolicy/sepolicy.mk
+
+ifeq ($(filter 3.10 4.9 5.10, $(TARGET_KERNEL_VERSION)),)
+include device/mainline/common/BoardConfigMainlineCommon.mk
+endif
