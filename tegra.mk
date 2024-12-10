@@ -19,6 +19,7 @@ include device/nvidia/tegra-common/aosp-compat.mk
 TARGET_TEGRA_DEFAULT_BRANCH ?= rel-shield-r
 TARGET_TEGRA_L4T_BRANCH     ?= r36
 
+ifneq ($(filter 3.10 4.9 5.10, $(TARGET_TEGRA_KERNEL)),)
 TARGET_TEGRA_AUDIO    ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
 TARGET_TEGRA_CPL      ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
 TARGET_TEGRA_GPU      ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
@@ -29,6 +30,13 @@ TARGET_TEGRA_CEC      ?= lineage
 TARGET_TEGRA_HEALTH   ?= aosp
 TARGET_TEGRA_MEMTRACK ?= lineage
 TARGET_TEGRA_POWER    ?= aosp
+else
+TARGET_POWER_HAL      ?= perfmgr-lineage
+TARGET_SUPPORTS_USB_ACCESSORY_MODE ?= false
+
+include device/mainline/common/optional/options.mk
+include device/mainline/common/mainline_common.mk
+endif
 
 ifeq ($(TARGET_TEGRA_MAN_LVL),)
 ifeq ($(TARGET_TEGRA_KERNEL),4.9)
@@ -232,29 +240,6 @@ ifneq ($(TARGET_TEGRA_GPU),)
 PRODUCT_PACKAGES += \
     disable_configstore
 endif
-ifeq ($(TARGET_TEGRA_GPU),drm)
-PRODUCT_SOONG_NAMESPACES += external/mesa3d
-PRODUCT_PACKAGES += \
-    android.hardware.graphics.allocator@4.0-service.minigbm \
-    android.hardware.graphics.mapper@4.0-impl.minigbm \
-    android.hardware.graphics.composer@2.4-service \
-    hwcomposer.drm \
-    gralloc.minigbm \
-    libGLES_mesa
-else ifeq ($(TARGET_TEGRA_GPU),swiftshader)
-PRODUCT_REQUIRES_INSECURE_EXECMEM_FOR_SWIFTSHADER := true
-PRODUCT_PACKAGES += \
-    android.hardware.graphics.allocator@4.0-service.minigbm \
-    android.hardware.graphics.mapper@4.0-impl.minigbm \
-    android.hardware.graphics.composer@2.4-service \
-    hwcomposer.drm_minigbm \
-    gralloc.minigbm \
-    vulkan.pastel
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level.xml \
-    frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml \
-    frameworks/native/data/etc/android.software.vulkan.deqp.level-2020-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml
-endif
 
 # Health HAL
 ifeq ($(TARGET_TEGRA_HEALTH),aosp)
@@ -268,10 +253,12 @@ PRODUCT_PACKAGES += \
 endif
 
 # Kernel
+ifneq ($(filter 3.10 4.9 5.10, $(TARGET_TEGRA_KERNEL)),)
 ifneq ($(TARGET_PREBUILT_KERNEL),)
 ifeq ($(LINEAGE_BUILD),)
 PRODUCT_COPY_FILES += \
     $(TARGET_PREBUILT_KERNEL):kernel
+endif
 endif
 endif
 
@@ -295,12 +282,6 @@ else
 PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-service-nvidia
 endif
-endif
-
-# OMX
-ifeq ($(TARGET_TEGRA_OMX),software)
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.stagefright.c2-poolmask=0x80000
 endif
 
 # PHS
