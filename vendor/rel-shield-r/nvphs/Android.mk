@@ -12,8 +12,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifeq ($(TARGET_TEGRA_PHS),rel-shield-r)
 LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE               := libnvphs
+LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS          := optional
+LOCAL_MODULE_SUFFIX        := .so
+LOCAL_VENDOR_MODULE        := true
+ifneq ($(filter $(TARGET_TEGRA_POWER), aosp lineage),)
+LOCAL_SRC_FILES_32         := $(COMMON_NVPHS_PATH)/lib/libnvphs.so
+LOCAL_SRC_FILES_64         := $(COMMON_NVPHS_PATH)/lib64/libnvphs.so
+LOCAL_MULTILIB             := both
+LOCAL_MODULE_OWNER         := nvidia
+LOCAL_REQUIRED_MODULES     := libnvgov_boot libnvgov_camera libnvgov_force libnvgov_generic libnvgov_gpucompute libnvgov_graphics libnvgov_il libnvgov_spincircle libnvgov_tbc libnvgov_ui
+include $(BUILD_NVIDIA_COMMON_PREBUILT)
+else
+LOCAL_SRC_FILES            := stub/nvphs_stub.c
+LOCAL_CFLAGS               := -Wall -Wno-unused-parameter -Werror
+include $(BUILD_SHARED_LIBRARY)
+endif
+
+ifeq ($(TARGET_TEGRA_PHS),rel-shield-r)
 COMMON_NVPHS_PATH := ../../../../../../vendor/nvidia/common/rel-shield-r/nvphs
 
 include $(CLEAR_VARS)
@@ -27,19 +47,6 @@ LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
 LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
-include $(BUILD_NVIDIA_COMMON_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE               := libnvphs
-LOCAL_SRC_FILES_32         := $(COMMON_NVPHS_PATH)/lib/libnvphs.so
-LOCAL_SRC_FILES_64         := $(COMMON_NVPHS_PATH)/lib64/libnvphs.so
-LOCAL_MULTILIB             := both
-LOCAL_MODULE_SUFFIX        := .so
-LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
-LOCAL_MODULE_TAGS          := optional
-LOCAL_MODULE_OWNER         := nvidia
-LOCAL_VENDOR_MODULE        := true
-LOCAL_REQUIRED_MODULES     := libnvgov_boot libnvgov_camera libnvgov_force libnvgov_generic libnvgov_gpucompute libnvgov_graphics libnvgov_il libnvgov_spincircle libnvgov_tbc libnvgov_ui
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
