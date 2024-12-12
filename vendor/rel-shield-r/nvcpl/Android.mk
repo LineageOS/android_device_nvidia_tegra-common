@@ -56,15 +56,22 @@ include $(BUILD_NVIDIA_COMMON_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := libnvcpl_vendor
+LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS          := optional
+LOCAL_MODULE_SUFFIX        := .so
+LOCAL_VENDOR_MODULE        := true
+ifneq ($(filter $(TARGET_TEGRA_POWER), aosp lineage),)
 LOCAL_SRC_FILES_32         := $(COMMON_NVCPL_PATH)/lib/libnvcpl_vendor.so
 LOCAL_SRC_FILES_64         := $(COMMON_NVCPL_PATH)/lib64/libnvcpl_vendor.so
 LOCAL_MULTILIB             := both
-LOCAL_MODULE_SUFFIX        := .so
-LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
-LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
-LOCAL_VENDOR_MODULE        := true
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
+else
+LOCAL_SRC_FILES            := stub/nvcpl_stub.c
+LOCAL_SHARED_LIBRARIES     := libcutils
+LOCAL_CFLAGS               := -Wall -Wno-unused-parameter -Werror
+include $(BUILD_SHARED_LIBRARY)
+endif
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := libnvcontrol_jni
