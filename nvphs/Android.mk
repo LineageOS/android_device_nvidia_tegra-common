@@ -14,9 +14,9 @@
 # limitations under the License.
 #
 
-ifneq ($(TARGET_TEGRA_PHS),)
 LOCAL_PATH := $(call my-dir)
 
+ifneq ($(TARGET_TEGRA_PHS),)
 include $(CLEAR_VARS)
 LOCAL_MODULE               := nvphsd
 LOCAL_SRC_FILES            := nvphsd.c
@@ -24,4 +24,14 @@ LOCAL_SHARED_LIBRARIES     := libc libdl libnvphsd
 LOCAL_MODULE_CLASS         := EXECUTABLES
 LOCAL_VENDOR_MODULE        := true
 include $(BUILD_EXECUTABLE)
+else
+include $(CLEAR_VARS)
+LOCAL_MODULE               := libnvphs
+LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS          := optional
+LOCAL_MODULE_SUFFIX        := .so
+LOCAL_VENDOR_MODULE        := true
+LOCAL_SRC_FILES            := nvphs_stub.c
+LOCAL_CFLAGS               := -Wall -Wno-unused-parameter -Werror
+include $(BUILD_SHARED_LIBRARY)
 endif
