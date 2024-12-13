@@ -48,6 +48,7 @@ endif
 
 ifneq ($(filter $(TARGET_TEGRA_POWER), aosp lineage),)
 TARGET_TEGRA_PHS ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
+TARGET_TEGRA_CPL ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
 endif
 
 # Enable nvidia framework enhancements if available
