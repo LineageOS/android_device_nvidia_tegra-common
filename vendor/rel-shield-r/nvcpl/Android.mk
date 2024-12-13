@@ -1,4 +1,4 @@
-# Copyright (C) 2020 The LineageOS Project
+# Copyright (C) 2020-2024 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,9 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifeq ($(TARGET_TEGRA_DEFAULT_BRANCH),rel-shield-r)
 LOCAL_PATH := $(call my-dir)
 COMMON_NVCPL_PATH := ../../../../../../vendor/nvidia/common/rel-shield-r/nvcpl
+
+ifeq ($(TARGET_TEGRA_CPL),rel-shield-r)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := NvCPLSvc
@@ -65,6 +66,7 @@ LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
+endif
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := libnvcontrol_jni
@@ -76,4 +78,3 @@ LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
 LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
-endif
