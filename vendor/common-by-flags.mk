@@ -29,7 +29,7 @@ include $(LOCAL_PATH)/$(TARGET_TEGRA_CAMERA)/camera/nvcamera.mk
 endif
 
 ifeq ($(NV_ANDROID_FRAMEWORK_ENHANCEMENTS),true)
-ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/nvcpl/nvcpl.mk)","")
+ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_CPL)/nvcpl/nvcpl.mk)","")
 include $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/nvcpl/nvcpl.mk
 endif
 endif
