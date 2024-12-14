@@ -91,4 +91,28 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.audio</name>
+        <version>6.0</version>
+        <interface>
+            <name>IDevicesFactory</name>
+            <instance>msd</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.dolby.audio.measurement</name>
+        <version>1.0</version>
+        <interface>
+            <name>ILatencyReporter</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.dolby.ms12</name>
+        <version>1.2</version>
+        <interface>
+            <name>IMs12</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
 </compatibility-matrix>
