@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cdd2a52_64a7cba4",
+        "filename": "tegra.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2024-12-15T01:27:49Z",
+      "side": 1,
+      "message": "CPL isn\u0027t only power, it does a lot of other things too. Like fan profiles, voltage limits on older archs, etc etc. This should be in the unguarded defaults and if a target wants to disable the module, it can opt out.",
+      "revId": "b903c86fbe6ba7519933695c1cb5fde1daecc004",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54358d4c_dc45fefc",
+        "filename": "vendor/common-by-flags.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2024-12-15T01:27:49Z",
+      "side": 1,
+      "message": "See other modules in this file and match style. No need for multiples if\u0027s after adding the flag.",
+      "revId": "b903c86fbe6ba7519933695c1cb5fde1daecc004",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43cf6c6e_f777f309",
+        "filename": "vendor/rel-shield-r/nvcpl/Android.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2024-12-15T01:27:49Z",
+      "side": 1,
+      "message": "Why move this if? The jni below is only used by the cpl apk.",
+      "revId": "b903c86fbe6ba7519933695c1cb5fde1daecc004",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
