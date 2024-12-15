@@ -49,6 +49,13 @@ while [ "$1" != "" ]; do
                                 SECTION="$1"
                                 CLEAN_VENDOR=false
                                 ;;
+        -p | --prime-cache )    shift
+                                CACHEDIR="$1"
+                                PRIMECACHE="yes"
+                                ;;
+        -c | --cache-dir )      shift
+                                CACHEDIR="$1"
+                                ;;
         * )                     SRC="$1"
                                 ;;
     esac
