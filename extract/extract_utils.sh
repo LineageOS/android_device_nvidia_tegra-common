@@ -316,6 +316,8 @@ function fetch_sources() {
 function copy_files() {
     echo "Copying files...";
 
+    declare -a MISSING_PATHS=();
+
     for key in "${!FILELIST_PATHS[@]}"; do
         local project="${FILELIST_PATHS["$key"]}";
         if [ "${project}" == "nvidia/tegra-common" ]; then
@@ -348,11 +350,21 @@ function copy_files() {
                 fi;
             else
                 echo "  X ${source} is missing from ${sname} for ${project}";
+		MISSING_PATHS+=("${project}/${SOURCE_BRANCH[$sname]}/${dest}");
             fi;
         done < "${LINEAGE_ROOT}/device/${FILELIST_PATHS["$key"]}/extract/file.list";
 
         find ${LINEAGE_ROOT}/vendor/${project} -type f -exec chmod 644 {} \;
     done;
+
+    if [ ! ${#MISSING_PATHS[@]} -eq 0 ]; then
+        echo "";
+        echo "Some targets failed to extract:";
+        for path in "${MISSING_PATHS[@]}"; do
+            echo "  ${path}";
+        done;
+	exit -1;
+    fi;
 
     echo "Finished copying files.";
 }
