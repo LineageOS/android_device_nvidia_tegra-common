@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "131632d1_b36b5265",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2024-12-15T05:00:15Z",
+      "side": 1,
+      "message": "Verified by priming a cache folder, then extracting from it. The vendor output matched a previous extract without downloading and extracting sources.",
+      "revId": "bb7b6fe86fd573a11a55c5d13de5556a68149cd0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
