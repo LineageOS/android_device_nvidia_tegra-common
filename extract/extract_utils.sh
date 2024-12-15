@@ -229,6 +229,8 @@ function fetch_sources() {
                         # 7z complains about 'dangerous symlinks', so the return value must be ignored
                         7z x -o${ESPATH}/system ${ESPATH}/system.img 1>/dev/null 2>&1 || true;
 
+			mv ${ESPATH}/nv-recovery-*/blob ${ESPATH}/blob || true;
+
                         rm -rf \
                           ${ESPATH}/nv-recovery-* \
                           ${ESPATH}/system.img;
@@ -245,6 +247,8 @@ function fetch_sources() {
                         simg2img ${ESPATH}/nv-recovery-image-*/vendor.img ${ESPATH}/vendor.img;
                         # 7z complains about 'dangerous symlinks', so the return value must be ignored
                         7z x -o${ESPATH}/vendor ${ESPATH}/vendor.img 1>/dev/null 2>&1 || true;
+
+			mv ${ESPATH}/nv-recovery-*/blob ${ESPATH}/blob || true;
 
                         rm -rf \
                           ${ESPATH}/nv-recovery-image-* \
