@@ -49,6 +49,10 @@ function patch_audio_msd() {
 
   sed -i 's/libjsoncpp.so/libjsonshm.so/' ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/audio/bin32/hw/android.hardware.audio@6.0-service-msd
 
+  echo -n "Patching checks in msd audio service...";
+
+  sed -i 's/ro.boot.verifiedbootstate/ro.protect.verifiedbootst/' ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/audio/bin32/hw/android.hardware.audio@6.0-service-msd
+
   echo "";
 }
 
@@ -203,6 +207,12 @@ function patch_widevine() {
   ${PATCHELF} --add-needed libcrypto_shim.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/widevine/lib/libwvhidl.so
 
   echo "";
+}
+
+function patch_dolby() {
+  echo -n "Patching checks in dolby hwc...";
+
+  sed -i 's/ro.boot.verifiedbootstate/ro.protect.verifiedbootst/' ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/libnvhwcomposer.dolby.so
 }
 
 fetch_bcm4356_patchfile;
