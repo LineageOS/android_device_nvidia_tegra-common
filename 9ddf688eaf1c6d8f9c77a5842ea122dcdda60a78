@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "547163c2_90824d62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2024-12-15T06:20:14Z",
+      "side": 1,
+      "message": "and tabs in properties.mk, it\u0027s spaces",
+      "revId": "9ddf688eaf1c6d8f9c77a5842ea122dcdda60a78",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4498d759_e19d0bde",
