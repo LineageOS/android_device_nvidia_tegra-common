@@ -33,6 +33,24 @@
       "message": "This is printing another info line without a previous newline, so it will print on the same line as the last echo.",
       "revId": "9ddf688eaf1c6d8f9c77a5842ea122dcdda60a78",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42bc3ce3_88c383b7",
+        "filename": "extract/patches.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2024-12-15T20:29:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4498d759_e19d0bde",
+      "revId": "9ddf688eaf1c6d8f9c77a5842ea122dcdda60a78",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
