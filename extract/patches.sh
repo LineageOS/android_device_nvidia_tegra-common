@@ -50,6 +50,12 @@ function patch_audio_msd() {
   sed -i 's/libjsoncpp.so/libjsonshm.so/' ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/audio/bin32/hw/android.hardware.audio@6.0-service-msd
 
   echo "";
+
+  echo -n "Patching checks in msd audio service...";
+
+  sed -i 's/ro.boot.verifiedbootstate/ro.protect.verifiedbootst/' ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/audio/bin32/hw/android.hardware.audio@6.0-service-msd
+
+  echo "";
 }
 
 # BUP tries to write the output file to cwd, let's instead use the already referenced env path var 'OUT'
@@ -205,6 +211,14 @@ function patch_widevine() {
   echo "";
 }
 
+function patch_dolby() {
+  echo -n "Patching checks in dolby hwc...";
+
+  sed -i 's/ro.boot.verifiedbootstate/ro.protect.verifiedbootst/' ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/libnvhwcomposer.dolby.so
+
+  echo "";
+}
+
 fetch_bcm4356_patchfile;
 chmod_tegraflash;
 patch_nvcontrol;
@@ -218,3 +232,4 @@ convert_bmps;
 patch_nvcamera;
 patch_keymaster;
 patch_widevine;
+patch_dolby;
