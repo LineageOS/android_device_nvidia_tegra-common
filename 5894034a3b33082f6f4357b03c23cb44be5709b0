@@ -16,6 +16,24 @@
       "message": "No new line here either.",
       "revId": "5894034a3b33082f6f4357b03c23cb44be5709b0",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f0b7c18_6daa2c59",
+        "filename": "extract/patches.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2024-12-15T21:01:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef9070aa_95802911",
+      "revId": "5894034a3b33082f6f4357b03c23cb44be5709b0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
