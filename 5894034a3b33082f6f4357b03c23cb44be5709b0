@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef9070aa_95802911",
+        "filename": "extract/patches.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2024-12-15T20:49:42Z",
+      "side": 1,
+      "message": "No new line here either.",
+      "revId": "5894034a3b33082f6f4357b03c23cb44be5709b0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
