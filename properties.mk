@@ -37,6 +37,12 @@ ifneq ($(TARGET_BUILD_VARIANT),eng)
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += log.tag=I
 endif
 
+# Dolby
+ifneq ($(TARGET_TEGRA_DOLBY),)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.protect.verifiedbootst=green
+endif
+
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
