@@ -253,6 +253,7 @@ stock-t210	vendor/bin/hw/android.hardware.drm@1.3-service.widevine	widevine/bin3
 stock-t210	vendor/lib64/mediadrm/libwvdrmengine.so			widevine/lib64/mediadrm/
 stock-t210	vendor/lib/mediadrm/libwvdrmengine.so			widevine/lib/mediadrm/
 stock-t210	vendor/lib/libwvhidl.so					widevine/lib/
+stock-t210	vendor/lib/liboemcrypto.so				widevine/lib/
 
 # Tegraflash
 # Tnspec
