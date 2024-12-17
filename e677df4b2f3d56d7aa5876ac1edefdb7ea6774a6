@@ -16,6 +16,24 @@
       "message": "tabs? spaces",
       "revId": "e677df4b2f3d56d7aa5876ac1edefdb7ea6774a6",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb8a7227_92e95b02",
+        "filename": "extract/extract_utils.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2024-12-17T17:59:15Z",
+      "side": 1,
+      "message": "Derp",
+      "parentUuid": "c5e41e42_38427aa7",
+      "revId": "e677df4b2f3d56d7aa5876ac1edefdb7ea6774a6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
