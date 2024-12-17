@@ -18,6 +18,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b219c0e_c8e1b46d",
+        "filename": "tegra.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-12-17T15:10:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cdd2a52_64a7cba4",
+      "revId": "b903c86fbe6ba7519933695c1cb5fde1daecc004",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54358d4c_dc45fefc",
@@ -35,6 +53,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d97d462_59e1fdd4",
+        "filename": "vendor/common-by-flags.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-12-17T15:10:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54358d4c_dc45fefc",
+      "revId": "b903c86fbe6ba7519933695c1cb5fde1daecc004",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43cf6c6e_f777f309",
@@ -48,6 +84,24 @@
       "writtenOn": "2024-12-15T01:27:49Z",
       "side": 1,
       "message": "Why move this if? The jni below is only used by the cpl apk.",
+      "revId": "b903c86fbe6ba7519933695c1cb5fde1daecc004",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96117e86_d5121c8a",
+        "filename": "vendor/rel-shield-r/nvcpl/Android.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2024-12-17T15:10:27Z",
+      "side": 1,
+      "message": "nope\ndolbyaudiosvc, didnt bother checking if there were more\nit does not hard fail if the rest of cpl is not there, so we can leave it here in case something wants it.",
+      "parentUuid": "43cf6c6e_f777f309",
       "revId": "b903c86fbe6ba7519933695c1cb5fde1daecc004",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
