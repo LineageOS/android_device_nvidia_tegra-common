@@ -43,4 +43,15 @@ LOCAL_REQUIRED_MODULES     := libprotobuf-cpp-lite-3.9.1-vendorcompat
 LOCAL_CHECK_ELF_FILES      := false
 LOCAL_STRIP_MODULE         := false
 include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE               := liboemcrypto
+LOCAL_SRC_FILES_32         := $(COMMON_WIDEVINE_PATH)/lib/liboemcrypto.so
+LOCAL_MULTILIB             := 32
+LOCAL_MODULE_SUFFIX        := .so
+LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS          := optional
+LOCAL_MODULE_OWNER         := nvidia
+LOCAL_VENDOR_MODULE        := true
+include $(BUILD_NVIDIA_COMMON_PREBUILT)
 endif
