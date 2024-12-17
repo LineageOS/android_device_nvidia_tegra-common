@@ -348,8 +348,3 @@ PRODUCT_PACKAGES += \
     p2p_supplicant_overlay.conf \
     wpa_supplicant_overlay.conf
 endif
-
-ifeq ($(TARGET_TEGRA_WIREGUARD),compat)
-PRODUCT_PACKAGES += \
-    wireguard
-endif
