@@ -29,4 +29,6 @@ endef
 
 $(eval $(call tos_rule,tos-mon-only,bl31))
 $(eval $(call tos_rule,tos-trusty,bl31-trusty,$(PRODUCT_OUT)/trusty.bin,--tostype=trusty --os=$(PRODUCT_OUT)/trusty.bin))
+$(eval $(call tos_rule,tos-tlk,bl31-tlk,$(PRODUCT_OUT)/tlk.bin,--tostype=tlk --os=$(PRODUCT_OUT)/tlk.bin))
+$(eval $(call tos_rule,tos-optee,bl31-optee,$(PRODUCT_OUT)/optee.bin,--tostype=optee --os=$(PRODUCT_OUT)/optee.bin))
 endif
