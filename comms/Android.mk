@@ -47,7 +47,3 @@ LOCAL_SRC_FILES            := wpa_supplicant_overlay.conf
 LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := wifi
 include $(BUILD_PREBUILT)
-
-ifneq ("$(wildcard kernel/nvidia/wireguard)","")
-include $(LOCAL_PATH)/wireguard.mk
-endif
