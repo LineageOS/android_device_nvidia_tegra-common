@@ -95,10 +95,16 @@ PRODUCT_PACKAGES += \
     audio.usb.default
 
 PRODUCT_PACKAGES += \
-    msd_audio_policy_configuration.xml \
     primary_module_deviceports.xml \
     primary_module_deviceports_tv.xml \
     primary_module_mixports.xml
+ifneq ($(filter audio, $(TARGET_TEGRA_DOLBY)),)
+PRODUCT_COPY_FILES += \
+    device/nvidia/tegra-common/nvaudio/msd_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/msd_audio_policy_configuration.xml
+else
+PRODUCT_COPY_FILES += \
+    device/nvidia/tegra-common/nvaudio/msd_audio_policy_configuration_dummy.xml:$(TARGET_COPY_OUT_VENDOR)/etc/msd_audio_policy_configuration.xml
+endif
 
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
@@ -124,12 +130,18 @@ ifneq ($(filter bcm, $(TARGET_TEGRA_BT)),)
 PRODUCT_PACKAGES += \
     libbt-vendor \
     android.hardware.bluetooth@1.1-service
+ifeq ($(TARGET_SUPPORTS_64_BIT_APPS),true)
+PRODUCT_PACKAGES += bt_impl_symlink64
+else
+PRODUCT_PACKAGES += bt_impl_symlink
+endif
 endif
 
 ifneq ($(filter btlinux, $(TARGET_TEGRA_BT)),)
+PRODUCT_COPY_FILES += \
+    device/nvidia/tegra-common/comms/android.hardware.bluetooth-service.default-tegra.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.bluetooth-service.default-tegra.rc
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth-service.default \
-    android.hardware.bluetooth-service.default-tegra.rc
+    android.hardware.bluetooth-service.default
 endif
 endif
 
@@ -338,13 +350,14 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml
 
+PRODUCT_COPY_FILES += \
+    device/nvidia/tegra-common/comms/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
+    device/nvidia/tegra-common/comms/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
 PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
     hostapd \
     wificond \
     libwpa_client \
     wpa_supplicant \
-    wpa_supplicant.conf \
-    p2p_supplicant_overlay.conf \
-    wpa_supplicant_overlay.conf
+    wpa_supplicant.conf
 endif
