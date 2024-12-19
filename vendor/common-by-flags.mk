@@ -65,3 +65,7 @@ endif
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_WIDEVINE)/widevine/widevine.mk)","")
 include $(LOCAL_PATH)/$(TARGET_TEGRA_WIDEVINE)/widevine/widevine.mk
 endif
+
+ifeq ($(TARGET_TEGRA_DEFAULT_BRANCH),rel-shield-r)
+PRODUCT_PACKAGES += public.libraries
+endif

@@ -14,4 +14,16 @@
 
 LOCAL_PATH := $(call my-dir)
 
+ifeq ($(TARGET_TEGRA_DEFAULT_BRANCH),rel-shield-r)
+include $(CLEAR_VARS)
+LOCAL_MODULE               := public.libraries
+LOCAL_SRC_FILES            := public.libraries.txt
+LOCAL_MODULE_SUFFIX        := .txt
+LOCAL_MODULE_CLASS         := ETC
+LOCAL_MODULE_TAGS          := optional
+LOCAL_MODULE_OWNER         := nvidia
+LOCAL_VENDOR_MODULE        := true
+include $(BUILD_NVIDIA_PREBUILT)
+endif
+
 include $(call all-makefiles-under,$(LOCAL_PATH))
