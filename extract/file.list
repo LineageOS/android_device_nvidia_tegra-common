@@ -346,12 +346,12 @@ l4t-t234	drivers/lib/firmware/rtl8822cu_fw		realtek/rtl8822cu/
 l4t-t234	drivers/lib/firmware/rtl8822_setting.bin	realtek/rtl8822cu/
 
 # BCM Bluetooth Patchfiles
-stock-t210	vendor/firmware/bcm4350.hcd	bcm_firmware/bcm4354/BCM4350C0.hcd
-stock-t210	vendor/firmware/bcm4356a3.hcd	bcm_firmware/bcm4356/BCM4356A3.hcd
+stock-t210	vendor/firmware/bcm4350.hcd	bcm/bcm4354/BCM4350C0.hcd
+stock-t210	vendor/firmware/bcm4356a3.hcd	bcm/bcm4356/BCM4356A3.hcd
 
 # BCM Wifi Firmware
-stock-t210	vendor/firmware/fw_bcmdhd.bin		bcm_firmware/bcm4354/sdio-ag-p2p-pno-aoe-pktfilter-keepalive-sr-mchan-pktctx-proptxstatus-ampduhostreorder-lpc-pwropt-txbf-wl11u-mfp-tdls-ltecx-wfds-mchandump-atv.bin
-stock-t210	vendor/firmware/brcmfmac4356-pcie.bin	bcm_firmware/bcm4356/
+stock-t210	vendor/firmware/fw_bcmdhd.bin		bcm/bcm4354/sdio-ag-p2p-pno-aoe-pktfilter-keepalive-sr-mchan-pktctx-proptxstatus-ampduhostreorder-lpc-pwropt-txbf-wl11u-mfp-tdls-ltecx-wfds-mchandump-atv.bin
+stock-t210	vendor/firmware/brcmfmac4356-pcie.bin	bcm/bcm4356/
 
 # NvPModel
 l4t-t194	nv_tegra/l4t_deb_packages/nvidia-l4t-nvpmodel_35.5.0-20240219203809_arm64.deb	nvpmodel/nvidia-l4t-nvpmodel_arm64.deb

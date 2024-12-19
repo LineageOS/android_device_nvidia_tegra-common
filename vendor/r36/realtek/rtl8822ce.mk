@@ -1,4 +1,4 @@
-# Copyright (C) 2020 The LineageOS Project
+# Copyright (C) 2024 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,9 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-COMMON_BCM_PATH := vendor/nvidia/common/rel-shield-r/bcm_firmware
+COMMON_REALTEK_PATH := vendor/nvidia/common/r36/realtek
 
-BCM_FW_SRC_FILE_STA := sdio-ag-p2p-pno-aoe-pktfilter-keepalive-sr-mchan-pktctx-proptxstatus-ampduhostreorder-lpc-pwropt-txbf-wl11u-mfp-tdls-ltecx-wfds-mchandump-atv.bin
-
+# Rtl8822ce firmware
 PRODUCT_COPY_FILES += \
-    $(COMMON_BCM_PATH)/bcm4354/$(BCM_FW_SRC_FILE_STA):$(TARGET_COPY_OUT_VENDOR)/firmware/fw_bcmdhd.bin
+    $(COMMON_REALTEK_PATH)/rtl8822cu/rtl8822cu_config:$(TARGET_COPY_OUT_VENDOR)/firmware/rtl8822cu_config \
+    $(COMMON_REALTEK_PATH)/rtl8822cu/rtl8822cu_fw:$(TARGET_COPY_OUT_VENDOR)/firmware/rtl8822cu_fw \
+    $(COMMON_REALTEK_PATH)/rtl8822cu/rtl8822_setting.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/rtl8822_setting.bin
