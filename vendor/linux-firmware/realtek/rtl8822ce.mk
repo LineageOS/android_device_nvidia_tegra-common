@@ -12,8 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-PRODUCT_PACKAGES += \
-    rtl8822cu_fw-lf \
-    rtl8822cu_config-lf \
-    rtw8822c_fw \
-    rtw8822c_wow_fw
+LF_BCM_PATH := kernel/nvidia/linux-firmware/
+
+PRODUCT_COPY_FILES += \
+    $(LF_BCM_PATH)/rtl_bt/rtl8761bu_config.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/rtl_bt/rtl8822cu_config.bin \
+    $(LF_BCM_PATH)/rtl_bt/rtl8822cu_fw.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/rtl_bt/rtl8822cu_fw.bin \
+    $(LF_BCM_PATH)/rtw88/rtw8822c_fw.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/rtw88/rtw8822c_fw.bin \
+    $(LF_BCM_PATH)/rtw88/rtw8822c_wow_fw.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/rtw88/rtw8822c_wow_fw.bin
