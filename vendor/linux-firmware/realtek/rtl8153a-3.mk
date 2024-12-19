@@ -12,5 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-PRODUCT_PACKAGES += \
-    rtl8153a-3.fw
+LF_BCM_PATH := kernel/nvidia/linux-firmware/
+
+PRODUCT_COPY_FILES += \
+    $(LF_BCM_PATH)/rtl_nic/rtl8153a-3.fw:$(TARGET_COPY_OUT_VENDOR)/firmware/rtl_nic/rtl8153a-3.fw
