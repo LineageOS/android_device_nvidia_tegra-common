@@ -16,8 +16,8 @@
 function fetch_bcm4356_patchfile() {
   echo -n "Fetching bcm4356 patchfile for btlinux from winterheart...";
 
-  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/external/bcm_firmware/bcm4356
-  wget -q 'https://github.com/winterheart/broadcom-bt-firmware/raw/ddb24edc5169d064af3f405d6307aa4661a2cc52/brcm/BCM4356A2-13d3-3488.hcd' -O $(realpath ${LINEAGE_ROOT}/${OUTDIR}/common/external/bcm_firmware/bcm4356/BCM4356A2-13d3-3488.hcd)
+  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/external/bcm/bcm4356
+  wget -q 'https://github.com/winterheart/broadcom-bt-firmware/raw/ddb24edc5169d064af3f405d6307aa4661a2cc52/brcm/BCM4356A2-13d3-3488.hcd' -O $(realpath ${LINEAGE_ROOT}/${OUTDIR}/common/external/bcm/bcm4356/BCM4356A2-13d3-3488.hcd)
 
   echo "";
 }

@@ -12,8 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifeq ($(TARGET_TEGRA_FIRMWARE_BRANCH),linux-firmware)
-LOCAL_PATH := $(call my-dir)
+COMMON_REALTEK_PATH := vendor/nvidia/common/r35/realtek
 
-include $(call all-makefiles-under,$(LOCAL_PATH))
-endif
+# Rtl8822ce firmware
+PRODUCT_COPY_FILES += \
+    $(COMMON_REALTEK_PATH)/rtl8822cu/rtl8822cu_config:$(TARGET_COPY_OUT_VENDOR)/firmware/rtl8822cu_config \
+    $(COMMON_REALTEK_PATH)/rtl8822cu/rtl8822cu_fw:$(TARGET_COPY_OUT_VENDOR)/firmware/rtl8822cu_fw \
+    $(COMMON_REALTEK_PATH)/rtl8822cu/rtl8822_setting.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/rtl8822_setting.bin
