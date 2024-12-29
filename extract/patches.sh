@@ -205,6 +205,17 @@ function patch_widevine() {
   echo "";
 }
 
+function patch_nvgpu() {
+  echo -n "Patching nvgpu prebuilts for old composer utils...";
+
+  ${PATCHELF} --replace-needed android.hardware.graphics.composer@2.1-resources.so android.hardware.graphics.composer@2.1-resources-v34.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/bin32/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
+  ${PATCHELF} --replace-needed android.hardware.graphics.composer@2.1-resources.so android.hardware.graphics.composer@2.1-resources-v34.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/bin64/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
+  ${PATCHELF} --replace-needed android.hardware.graphics.composer@2.1-resources.so android.hardware.graphics.composer@2.1-resources-v34.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib/vendor.nvidia.hardware.graphics.composer@2.0-impl.so
+  ${PATCHELF} --replace-needed android.hardware.graphics.composer@2.1-resources.so android.hardware.graphics.composer@2.1-resources-v34.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/vendor.nvidia.hardware.graphics.composer@2.0-impl.so
+
+  echo "";
+}
+
 fetch_bcm4356_patchfile;
 chmod_tegraflash;
 patch_nvcontrol;
@@ -218,3 +229,4 @@ convert_bmps;
 patch_nvcamera;
 patch_keymaster;
 patch_widevine;
+patch_nvgpu;
