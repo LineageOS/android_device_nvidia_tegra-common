@@ -16,6 +16,23 @@
       "message": "Verified booting foster. Depends on https://review.lineageos.org/c/LineageOS/android_hardware_lineage_compat/+/413265",
       "revId": "0c12406319d4791af1dce1c3b13d8ede6e394e88",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9b1549e_f2f068aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2024-12-30T23:13:05Z",
+      "side": 1,
+      "message": "waiting for composer merge",
+      "revId": "0c12406319d4791af1dce1c3b13d8ede6e394e88",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
