@@ -389,8 +389,10 @@ PRODUCT_PACKAGES_DEBUG += \
 endif
 
 # USB
+ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \<= 7), 1)
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.3-service.basic
+endif
 
 # Wifi
 ifneq ($(TARGET_TEGRA_WIFI),)
