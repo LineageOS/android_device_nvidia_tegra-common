@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6872177c_092be8ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 28223
+      },
+      "writtenOn": "2025-01-06T06:18:57Z",
+      "side": 1,
+      "message": "https://review.lineageos.org/c/LineageOS/android_vendor_lineage/+/412693",
+      "revId": "4a54009b4f771407694cc6cfe2738e3f53a8f28b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
