@@ -57,6 +57,10 @@ DEVICE_PACKAGE_OVERLAYS += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += device/nvidia/tegra-common
 
+# Soong variables
+$(call soong_config_set,TARGET_TEGRA,VERSION,$(TARGET_TEGRA_VERSION))
+$(call soong_config_set,TARGET_TEGRA,VARIANT,$(TARGET_TEGRA_VARIANT))
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     bt_loader \
