@@ -323,6 +323,21 @@ function fetch_sources() {
         done < "${LINEAGE_ROOT}/device/${SOURCE_PATHS["$key"]}/extract/sources.txt";
     done;
 
+    echo -n "Fetching external links...";
+    for key in "${!FILELIST_PATHS[@]}"; do
+        while read -r sname source dest; do
+            if [ "${sname}" == "external" ]; then
+                mkdir -p ${TMPDIR}/extract/external;
+                if ! wget -q "${source}" -O $(realpath ${TMPDIR}/extract/external/$(basename ${dest})); then
+                    echo "";
+                    echo "Failed to download ${source}";
+                    exit 1;
+                fi;
+            fi;
+        done < "${LINEAGE_ROOT}/device/${FILELIST_PATHS["$key"]}/extract/file.list";
+    done;
+    echo "";
+
     if [ -n "${PRIMECACHE}" ]; then
         cp -r ${TMPDIR}/extract/* ${CACHEDIR}/;
 	exit 0;
@@ -372,6 +387,10 @@ function copy_files() {
                 else
                     cp ${EXTRACTDIR}/${sname}/${source} ${LINEAGE_ROOT}/vendor/${project}/${SOURCE_BRANCH[$sname]}/${dest};
                 fi;
+            elif [ "${sname}" == "external" -a -f "${EXTRACTDIR}/external/$(basename ${dest})" ]; then
+                echo "  * ${project}/external/${dest}";
+                mkdir -p ${LINEAGE_ROOT}/vendor/$(dirname ${project}/external/$dest);
+                cp ${EXTRACTDIR}/external/$(basename ${dest}) ${LINEAGE_ROOT}/vendor/${project}/external/${dest};
             else
                 echo "  X ${source} is missing from ${sname} for ${project}";
 		MISSING_PATHS+=("${project}/${SOURCE_BRANCH[$sname]}/${dest}");
