@@ -325,6 +325,8 @@ function fetch_sources() {
 
     if [ -n "${PRIMECACHE}" ]; then
         cp -r ${TMPDIR}/extract/* ${CACHEDIR}/;
+        # TegraZone is ~80mb and must be fetched from the web - so cache this item.
+        source ${LINEAGE_ROOT}/device/nvidia/shield-common/extract/patches.sh
 	exit 0;
     fi;
 }
