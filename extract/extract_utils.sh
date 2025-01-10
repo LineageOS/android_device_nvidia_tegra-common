@@ -325,6 +325,8 @@ function fetch_sources() {
 
     if [ -n "${PRIMECACHE}" ]; then
         cp -r ${TMPDIR}/extract/* ${CACHEDIR}/;
+        mkdir -p ${CACHEDIR}/play-store
+        wget -q 'https://archive.org/download/com.nvidia.tegrazone3_5.51.31668050/com.nvidia.tegrazone3_5.51.31668050.apk' -O $(realpath ${CACHEDIR}/play-store/TegraZone_Next.apk)
 	exit 0;
     fi;
 }
