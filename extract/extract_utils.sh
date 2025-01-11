@@ -339,6 +339,7 @@ function fetch_sources() {
     echo "";
 
     if [ -n "${PRIMECACHE}" ]; then
+        mkdir -p ${CACHEDIR}/;
         cp -r ${TMPDIR}/extract/* ${CACHEDIR}/;
 	exit 0;
     fi;
