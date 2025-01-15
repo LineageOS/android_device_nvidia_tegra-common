@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "affab936_ece77ef0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2025-01-15T06:53:03Z",
+      "side": 1,
+      "message": "03-18 08:30:22.749     0     0 I         : [TLK] [dolby_service] E\u003e te_receive_operation_iface: Verified boot is not in green state. Current state: 4",
+      "revId": "bcc4cc942fbfb21d0074fef4250292cad46093d8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
