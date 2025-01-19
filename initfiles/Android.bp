@@ -34,3 +34,10 @@ sh_binary {
     src: "lkm_loader.sh",
     soc_specific: true,
 }
+
+sh_binary {
+    name: "dhclient-rec",
+    filename: "dhclient.sh",
+    src: "dhclient.sh",
+    recovery: true,
+}
