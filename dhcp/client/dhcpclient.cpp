@@ -50,6 +50,15 @@ static std::string addrToStr(in_addr_t address) {
     return inet_ntop(AF_INET, &addr, buffer, sizeof(buffer));
 }
 
+static void setDone(const char* interfaceName) {
+    char propName[64];
+    snprintf(propName, sizeof(propName), "vendor.net.%s.dhcp_done",
+             interfaceName);
+    if (property_set(propName, "1") != 0) {
+        ALOGE("Failed to set %s: %s", propName, strerror(errno));
+    }
+}
+
 DhcpClient::DhcpClient(uint32_t options)
     : mOptions(options),
       mRandomEngine(std::random_device()()),
@@ -62,24 +71,28 @@ DhcpClient::DhcpClient(uint32_t options)
 Result DhcpClient::init(const char* interfaceName) {
     Result res = mInterface.init(interfaceName);
     if (!res) {
-        return res;
+        goto err;
     }
 
     res = mRouter.init();
     if (!res) {
-        return res;
+        goto err;
     }
 
     res = mSocket.open(PF_PACKET, SOCK_DGRAM, htons(ETH_P_IP));
     if (!res) {
-        return res;
+        goto err;
     }
 
     res = mSocket.bindRaw(mInterface.getIndex());
     if (!res) {
-        return res;
+        goto err;
     }
     return Result::success();
+
+err:
+    setDone(mInterface.getName().c_str());
+    return res;
 }
 
 Result DhcpClient::run() {
@@ -301,13 +314,19 @@ void DhcpClient::waitAndReceive(const sigset_t& pollSignalMask) {
 
 bool DhcpClient::configureDhcp(const Message& msg) {
     size_t optsSize = msg.optionsSize();
+    bool ret = false;
+    const uint8_t* options = msg.dhcpData.options;
+    const uint8_t* opt;
+    uint32_t t1, t2;
+    Result res = Result::success();
+    char propName[64];
+    int numDnsEntries;
+
     if (optsSize < 4) {
         // Message is too small
         if (kDebug) ALOGD("Opts size too small %d", static_cast<int>(optsSize));
-        return false;
+        goto err;
     }
-
-    const uint8_t* options = msg.dhcpData.options;
 
     memset(&mDhcpInfo, 0, sizeof(mDhcpInfo));
 
@@ -324,9 +343,9 @@ bool DhcpClient::configureDhcp(const Message& msg) {
             if (kDebug) ALOGD("Invalid opt length %d for opt %d",
                               static_cast<int>(optLength),
                               static_cast<int>(optCode));
-            return false;
+            goto err;
         }
-        const uint8_t* opt = options + i + 2;
+        opt = options + i + 2;
         switch (optCode) {
             case OPT_LEASE_TIME:
                 if (optLength == 4) {
@@ -397,18 +416,19 @@ bool DhcpClient::configureDhcp(const Message& msg) {
 
     if (mDhcpInfo.leaseTime == 0) {
         // We didn't get a lease time, ignore this offer
-        return false;
+        goto err;
     }
     // If there is no T1 or T2 timer given then we create an estimate as
     // suggested for servers in RFC 2131.
-    uint32_t t1 = mDhcpInfo.t1, t2 = mDhcpInfo.t2;
+    t1 = mDhcpInfo.t1;
+    t2 = mDhcpInfo.t2;
     mT1.expireSeconds(t1 > 0 ? t1 : (mDhcpInfo.leaseTime / 2));
     mT2.expireSeconds(t2 > 0 ? t2 : ((mDhcpInfo.leaseTime * 7) / 8));
 
-    Result res = mInterface.bringUp();
+    res = mInterface.bringUp();
     if (!res) {
         ALOGE("Could not configure DHCP: %s", res.c_str());
-        return false;
+        goto err;
     }
 
     if (mDhcpInfo.mtu != 0) {
@@ -420,14 +440,13 @@ bool DhcpClient::configureDhcp(const Message& msg) {
         }
     }
 
-    char propName[64];
     snprintf(propName, sizeof(propName), "vendor.net.%s.gw",
              mInterface.getName().c_str());
     if (property_set(propName, addrToStr(mDhcpInfo.gateway).c_str()) != 0) {
         ALOGE("Failed to set %s: %s", propName, strerror(errno));
     }
 
-    int numDnsEntries = sizeof(mDhcpInfo.dns) / sizeof(mDhcpInfo.dns[0]);
+    numDnsEntries = sizeof(mDhcpInfo.dns) / sizeof(mDhcpInfo.dns[0]);
     for (int i = 0; i < numDnsEntries; ++i) {
         snprintf(propName, sizeof(propName), "vendor.net.%s.dns%d",
                  mInterface.getName().c_str(), i + 1);
@@ -448,7 +467,7 @@ bool DhcpClient::configureDhcp(const Message& msg) {
                                 mDhcpInfo.subnetMask);
     if (!res) {
         ALOGE("Could not configure DHCP: %s", res.c_str());
-        return false;
+        goto err;
     }
 
     if ((mOptions & static_cast<uint32_t>(ClientOption::NoGateway)) == 0) {
@@ -456,10 +475,14 @@ bool DhcpClient::configureDhcp(const Message& msg) {
                                         mInterface.getIndex());
         if (!res) {
             ALOGE("Could not configure DHCP: %s", res.c_str());
-            return false;
+            goto err;
         }
     }
-    return true;
+    ret = true;
+
+err:
+    setDone(mInterface.getName().c_str());
+    return ret;
 }
 
 void DhcpClient::haltNetwork() {
