@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c714371_0ee35fdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2025-01-30T19:05:46Z",
+      "side": 1,
+      "message": "Setting default based on kernel version isn\u0027t valid. Because I\u0027m actively doing work on 6.6 for t124+. 6.1 is supported too. It would need to be set per arch at the most general, more likely per device. It\u0027s still annoying that the rule can\u0027t be \u0027globally\u0027 available, though.",
+      "revId": "da1d7fcc05be53e103534ca92e0b1b0d3539681a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
