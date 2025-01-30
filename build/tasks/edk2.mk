@@ -67,7 +67,7 @@ $(1): $(DTC_HOST)
 		sed -E -i 's/^CONFIG_([^=]*)=$$$$/# CONFIG_\1 is not set/' $(abspath $(dir $1))/edk2-nvidia-lineage/config.dsc.inc && \
 		$(abspath $(dir $1))/edk2/BaseTools/BinWrappers/PosixLike/build -q -a $(EDK2_ARCH) -t $(EDK2_TOOLCHAIN) \
 			-p $(abspath $(dir $1))/edk2-nvidia-lineage/Platform/NVIDIA/$(EDK2_TARGET)/$(EDK2_TARGET).dsc -b $(EDK2_BUILD_TYPE) \
-			$3 -DEDK2_PKCS7_INC=$(EDK2_PKCS7_INC) -DBUILD_PROJECT_TYPE=EDK2 -DBUILD_DATE_TIME="$(shell date '+%Y-%m-%dT%H:%M:%S+00:00')" \
+			$3 -DEDK2_PKCS7_INC=$(EDK2_PKCS7_INC) -DBUILD_PROJECT_TYPE=EDK2 -DBUILD_DATE_TIME="$(shell date '+%Y-%m-%d')" \
 			-DBUILDID_STRING="$(shell BUILD_TOP=$(abspath $(TIANOCORE_PATH)/../..) python $(SCRIPTS_PATH)/get_branch_name.py)-$(shell git -C $(TIANOCORE_PATH)/edk2-nvidia-lineage rev-parse --short HEAD)"
 	@python $(dir $1)/edk2-nvidia/Silicon/NVIDIA/edk2nv/FormatUefiBinary.py $(dir $1)/Build/$(EDK2_TARGET)/$(EDK2_BUILD_TYPE)_$(EDK2_TOOLCHAIN)/FV/UEFI_NS.Fv $1
 
