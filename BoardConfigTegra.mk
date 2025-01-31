@@ -59,7 +59,7 @@ TARGET_USES_HWC2          := true
 endif
 
 # HIDL
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     device/nvidia/tegra-common/manifests/device_framework_matrix.xml
 ifneq ($(LINEAGE_BUILD),)
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
