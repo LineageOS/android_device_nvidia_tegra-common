@@ -31,14 +31,14 @@
         <mixPort name="ms12 input compressed" role="source" maxOpenCount="2" maxActiveCount="2"
                 flags="AUDIO_OUTPUT_FLAG_DIRECT|AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD">
             <profile name="" format="AUDIO_FORMAT_AC3"
-                     samplingRates="32000,44100,48000"
-                     channelMasks="AUDIO_CHANNEL_OUT_MONO,AUDIO_CHANNEL_OUT_STEREO,AUDIO_CHANNEL_OUT_5POINT1"/>
+                     samplingRates="32000 44100 48000"
+                     channelMasks="AUDIO_CHANNEL_OUT_MONO AUDIO_CHANNEL_OUT_STEREO AUDIO_CHANNEL_OUT_5POINT1"/>
             <profile name="" format="AUDIO_FORMAT_E_AC3"
-                     samplingRates="32000,44100,48000"
-                     channelMasks="AUDIO_CHANNEL_OUT_MONO,AUDIO_CHANNEL_OUT_STEREO,AUDIO_CHANNEL_OUT_5POINT1,AUDIO_CHANNEL_OUT_7POINT1"/>
+                     samplingRates="32000 44100 48000"
+                     channelMasks="AUDIO_CHANNEL_OUT_MONO AUDIO_CHANNEL_OUT_STEREO AUDIO_CHANNEL_OUT_5POINT1 AUDIO_CHANNEL_OUT_7POINT1"/>
             <profile name="" format="AUDIO_FORMAT_E_AC3_JOC"
-                     samplingRates="32000,44100,48000"
-                     channelMasks="AUDIO_CHANNEL_OUT_STEREO,AUDIO_CHANNEL_OUT_5POINT1,AUDIO_CHANNEL_OUT_7POINT1"/>
+                     samplingRates="32000 44100 48000"
+                     channelMasks="AUDIO_CHANNEL_OUT_STEREO AUDIO_CHANNEL_OUT_5POINT1 AUDIO_CHANNEL_OUT_7POINT1"/>
         </mixPort>
         <mixPort name="ms12 output" role="sink">
             <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"

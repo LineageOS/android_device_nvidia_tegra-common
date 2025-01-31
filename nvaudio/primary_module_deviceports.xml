@@ -36,15 +36,15 @@
     </devicePort>
     <devicePort tagName="BT SCO" type="AUDIO_DEVICE_OUT_BLUETOOTH_SCO" role="sink">
         <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                 samplingRates="8000,16000" channelMasks="AUDIO_CHANNEL_OUT_MONO"/>
+                 samplingRates="8000 16000" channelMasks="AUDIO_CHANNEL_OUT_MONO"/>
     </devicePort>
     <devicePort tagName="BT SCO Headset" type="AUDIO_DEVICE_OUT_BLUETOOTH_SCO_HEADSET" role="sink">
         <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                 samplingRates="8000,16000" channelMasks="AUDIO_CHANNEL_OUT_MONO"/>
+                 samplingRates="8000 16000" channelMasks="AUDIO_CHANNEL_OUT_MONO"/>
     </devicePort>
     <devicePort tagName="BT SCO Car Kit" type="AUDIO_DEVICE_OUT_BLUETOOTH_SCO_CARKIT" role="sink">
         <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                 samplingRates="8000,16000" channelMasks="AUDIO_CHANNEL_OUT_MONO"/>
+                 samplingRates="8000 16000" channelMasks="AUDIO_CHANNEL_OUT_MONO"/>
     </devicePort>
     <devicePort tagName="AUX Digital" type="AUDIO_DEVICE_OUT_AUX_DIGITAL" role="sink">
         <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
@@ -58,26 +58,26 @@
     <!-- Input devices declaration, i.e. Source DEVICE PORT -->
     <devicePort tagName="Built-In Mic" type="AUDIO_DEVICE_IN_BUILTIN_MIC" role="source">
         <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                 samplingRates="8000,11025,12000,16000,22050,24000,32000,44100,48000"
-                 channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
+                 samplingRates="8000 11025 12000 16000 22050 24000 32000 44100 48000"
+                 channelMasks="AUDIO_CHANNEL_IN_MONO AUDIO_CHANNEL_IN_STEREO"/>
     </devicePort>
     <devicePort tagName="Wired Headset Mic" type="AUDIO_DEVICE_IN_WIRED_HEADSET" role="source">
         <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                 samplingRates="8000,11025,12000,16000,22050,24000,32000,44100,48000"
-                 channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
+                 samplingRates="8000 11025 12000 16000 22050 24000 32000 44100 48000"
+                 channelMasks="AUDIO_CHANNEL_IN_MONO AUDIO_CHANNEL_IN_STEREO"/>
     </devicePort>
     <devicePort tagName="BT SCO Headset Mic" type="AUDIO_DEVICE_IN_BLUETOOTH_SCO_HEADSET" role="source">
         <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                 samplingRates="8000,16000" channelMasks="AUDIO_CHANNEL_IN_MONO"/>
+                 samplingRates="8000 16000" channelMasks="AUDIO_CHANNEL_IN_MONO"/>
     </devicePort>
     <devicePort tagName="Digital Dock HS Mic" type="AUDIO_DEVICE_IN_DGTL_DOCK_HEADSET" role="source">
         <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                 samplingRates="8000,11025,12000,16000,22050,24000,32000,44100,48000"
-                 channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
+                 samplingRates="8000 11025 12000 16000 22050 24000 32000 44100 48000"
+                 channelMasks="AUDIO_CHANNEL_IN_MONO AUDIO_CHANNEL_IN_STEREO"/>
     </devicePort>
     <devicePort tagName="AudioIP-In" type="AUDIO_DEVICE_IN_IP" role="source">
         <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                  samplingRates="16000"
-                 channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
+                 channelMasks="AUDIO_CHANNEL_IN_MONO AUDIO_CHANNEL_IN_STEREO"/>
     </devicePort>
 </devicePorts>
