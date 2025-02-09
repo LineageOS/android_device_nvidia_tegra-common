@@ -64,7 +64,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.tegra.glc.gpu_min=614400 \
     ro.vendor.tegra.glc.gpu_max=-1 \
     ro.vendor.tegra.glc.gpu_pri=15 \
-    ro.vendor.tegra.glc.emc_min=4080
+    ro.vendor.tegra.glc.emc_min=4080 \
+    ro.surface_flinger.vsync_event_phase_offset_ns=100000 \
+    ro.surface_flinger.vsync_sf_event_phase_offset_ns=100000 \
+    debug.sf.high_fps_late_app_phase_offset_ns=100000 \
+    debug.sf.high_fps_late_sf_phase_offset_ns=100000
 
 ifneq ($(filter video, $(TARGET_TEGRA_DOLBY)),)
 PRODUCT_PROPERTY_OVERRIDES += \
