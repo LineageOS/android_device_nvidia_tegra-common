@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc66982d_d8f68c0e",
+        "filename": "vendor/rel-shield-r/nvgpu/nvgpu.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2025-02-10T21:37:48Z",
+      "side": 1,
+      "message": "pls for love of god fix your editor",
+      "revId": "9e767d8f0eaa992103016373507862576c8f9335",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
