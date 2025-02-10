@@ -16,6 +16,24 @@
       "message": "pls for love of god fix your editor",
       "revId": "9e767d8f0eaa992103016373507862576c8f9335",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "303ee1cc_a2a2b832",
+        "filename": "vendor/rel-shield-r/nvgpu/nvgpu.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2025-02-10T21:38:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc66982d_d8f68c0e",
+      "revId": "9e767d8f0eaa992103016373507862576c8f9335",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
