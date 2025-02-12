@@ -2,5 +2,9 @@
  {
    "repository": "android_device_nvidia_sepolicy",
    "target_path": "device/nvidia/sepolicy"
+ },
+ {
+   "repository": "android_hardware_dolby_interfaces",
+   "target_path": "hardware/dolby/interfaces"
  }
 ]
