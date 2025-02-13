@@ -17,7 +17,7 @@
 include device/nvidia/tegra-common/aosp-compat.mk
 
 TARGET_TEGRA_DEFAULT_BRANCH ?= rel-shield-r
-TARGET_TEGRA_L4T_BRANCH     ?= r35
+TARGET_TEGRA_L4T_BRANCH     ?= r36
 
 TARGET_TEGRA_AUDIO    ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
 TARGET_TEGRA_CPL      ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
