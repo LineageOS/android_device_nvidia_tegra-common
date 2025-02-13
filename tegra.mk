@@ -51,8 +51,13 @@ include device/nvidia/tegra-common/properties.mk
 # Overlays
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
+ifeq ($(PRODUCT_IS_ATV),true)
+DEVICE_PACKAGE_OVERLAYS += \
+    device/nvidia/tegra-common/overlay-tv
+else
 DEVICE_PACKAGE_OVERLAYS += \
     device/nvidia/tegra-common/overlay
+endif
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += device/nvidia/tegra-common
