@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "329050e5_ad66c26b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2025-02-13T22:04:26Z",
+      "side": 1,
+      "message": "Verified on gki 6.6 kernel on foster, quill, galen, and concord.",
+      "revId": "c16a66e7bf142f77dfc2a58dfbb9f3ffa1c88ad6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
