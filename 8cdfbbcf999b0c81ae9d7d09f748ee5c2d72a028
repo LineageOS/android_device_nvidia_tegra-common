@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b664b0a3_0227ddec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2025-02-13T05:32:10Z",
+      "side": 1,
+      "message": "Verified on concord. Pinner service no longer stack traces on a missing path. Should probably be verified on a tablet target before merge.",
+      "revId": "8cdfbbcf999b0c81ae9d7d09f748ee5c2d72a028",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
