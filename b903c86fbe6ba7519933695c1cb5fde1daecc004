@@ -104,6 +104,24 @@
       "parentUuid": "43cf6c6e_f777f309",
       "revId": "b903c86fbe6ba7519933695c1cb5fde1daecc004",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2bc269d_7ea5f2b2",
+        "filename": "vendor/rel-shield-r/nvcpl/Android.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2025-02-15T20:36:52Z",
+      "side": 1,
+      "message": "I don\u0027t see any evidence that dolby uses this now, or anything else at all for that matter. But if something deps this library that a target not using cpl uses, that can be addressed in a separate patchset.",
+      "parentUuid": "96117e86_d5121c8a",
+      "revId": "b903c86fbe6ba7519933695c1cb5fde1daecc004",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
