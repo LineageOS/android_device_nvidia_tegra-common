@@ -16,6 +16,23 @@
       "message": "mfw not required",
       "revId": "d5afe5a4cb4fe6de0c93512c3587284ded2df7fe",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "647b0101_93f5973a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2025-02-16T18:56:02Z",
+      "side": 1,
+      "message": "No regressions on sif.",
+      "revId": "d5afe5a4cb4fe6de0c93512c3587284ded2df7fe",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
