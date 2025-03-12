@@ -15,6 +15,9 @@ import /vendor/etc/init/hw/init.comms.rc
 on early-init
     mount debugfs debugfs /sys/kernel/debug mode=0755
 
+    # Symlink rtc to the HCTOSYS device
+    symlink /dev/rtc1 /dev/rtc
+
 on init
     mkdir /dev/camera 0755 media camera
 
