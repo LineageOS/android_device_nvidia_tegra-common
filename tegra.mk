@@ -31,8 +31,29 @@ TARGET_TEGRA_HEALTH   ?= aosp
 TARGET_TEGRA_MEMTRACK ?= lineage
 TARGET_TEGRA_POWER    ?= aosp
 else
+TARGET_TEGRA_AUDIO    ?= $(TARGET_TEGRA_DEFAULT_BRANCH)
+TARGET_TEGRA_GPU      ?= mainline
+TARGET_TEGRA_HEALTH   ?= aosp
+TARGET_TEGRA_TOS      ?= software
+TARGET_AUDIO_HAL      ?= none
+TARGET_GRAPHICS       ?= swiftshader
+TARGET_HEALTH_HAL     ?= none
+TARGET_LIGHT_HAL      ?= none
 TARGET_POWER_HAL      ?= perfmgr-lineage
 TARGET_SUPPORTS_USB_ACCESSORY_MODE ?= false
+TARGET_USES_MAINLINE_COMMON_AB_DEFS ?= false
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    audio.timecheck.disabled=true
+
+# GCC Toolchain needed to build bootloaders
+ifeq ($(TARGET_SUPPORTS_64_BIT_APPS),true)
+KERNEL_TOOLCHAIN        := $(shell pwd)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-gnu-11.3/bin
+KERNEL_TOOLCHAIN_PREFIX := aarch64-buildroot-linux-gnu-
+else
+KERNEL_TOOLCHAIN        := $(shell pwd)/prebuilts/gcc/linux-x86/arm/arm-none-linux-gnueabihf-11.3/bin
+KERNEL_TOOLCHAIN_PREFIX := arm-none-linux-gnueabihf-
+endif
 
 include device/mainline/common/optional/options.mk
 include device/mainline/common/mainline_common.mk
@@ -46,11 +67,14 @@ TARGET_TEGRA_MAN_LVL := 6
 else ifeq ($(TARGET_TEGRA_KERNEL),5.15)
 TARGET_TEGRA_MAN_LVL := 7
 else ifeq ($(TARGET_TEGRA_KERNEL),6.1)
-TARGET_TEGRA_MAN_LVL := 8
+TARGET_TEGRA_MAN_LVL := 7
+PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 else ifeq ($(TARGET_TEGRA_KERNEL),6.6)
-TARGET_TEGRA_MAN_LVL := 202404
+TARGET_TEGRA_MAN_LVL := 7
+PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 else ifeq ($(TARGET_TEGRA_KERNEL),6.12)
-TARGET_TEGRA_MAN_LVL := 202504
+TARGET_TEGRA_MAN_LVL := 7
+PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 endif
 endif
 
@@ -346,10 +370,12 @@ endif
 
 # TOS
 ifeq ($(TARGET_TEGRA_TOS),software)
+ifneq ($(filter 3.10 4.9 5.10, $(TARGET_TEGRA_KERNEL)),)
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service.software \
     android.hardware.keymaster@3.0-impl \
     android.hardware.keymaster@3.0-service
+endif
 else ifeq ($(TARGET_TEGRA_TOS),trusty)
 $(call inherit-product, system/core/trusty/trusty-base.mk)
 $(call inherit-product, system/core/trusty/trusty-storage.mk)
