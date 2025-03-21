@@ -52,6 +52,7 @@ endif
 # Graphics
 ifeq ($(TARGET_GRAPHICS),mesa)
 BOARD_MESA3D_GALLIUM_DRIVERS += nouveau tegra
+BOARD_MESA3D_VULKAN_DRIVERS += nouveau
 endif
 
 # HIDL
