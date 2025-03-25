@@ -316,7 +316,7 @@ endif
 else ifneq ($(filter $(TARGET_TEGRA_POWER), aosp lineage),)
 TARGET_POWERHAL_VARIANT := tegra
 PRODUCT_PACKAGES += \
-    vendor.nvidia.hardware.power@1.0-service
+    android.hardware.power-service-nvidia
 endif
 
 # Vendor seccomp policy files for media components:
