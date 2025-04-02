@@ -208,7 +208,7 @@ function fetch_sources() {
                 tar -xf ${TMPDIR}/downloads/${sname}.tbz2 -C ${ESPATH} 1>/dev/null 2>&1;
                 mv ${ESPATH}/Linux_for_Tegra/* ${ESPATH}/;
                 rmdir ${ESPATH}/Linux_for_Tegra;
-                tar -xf ${ESPATH}/nv_tegra/nvidia_drivers.tbz2 -C ${ESPATH}/drivers 1>/dev/null 2>&1;
+                tar -xf ${ESPATH}/nv_tegra/nvidia_drivers.tbz2 -C ${ESPATH}/drivers 1>/dev/null 2>&1 || true;
             elif [ "${type}" == "blob" ]; then
                 # Only extract blob
                 unzip -d ${ESPATH} ${TMPDIR}/downloads/${sname}.zip blob 1>/dev/null 2>&1 || \
