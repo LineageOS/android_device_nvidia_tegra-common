@@ -1,3 +1,9 @@
+# Audio
+ifeq ($(TARGET_TEGRA_AUDIO),tinyhal)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware.audio.primary=tinyhal
+endif
+
 # Bluetooth
 ifneq ($(TARGET_TEGRA_BT),)
 PRODUCT_PROPERTY_OVERRIDES += \
