@@ -22,9 +22,6 @@ ifneq ($(TARGET_TEGRA_AUDIO),)
 ifeq ($(filter audio, $(TARGET_TEGRA_DOLBY)),)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/audio.xml
 endif
-ifeq ($(TARGET_TEGRA_AUDIO),tinyhal)
-BOARD_USES_TINYHAL_AUDIO := true
-endif
 endif
 
 # Bluetooth
