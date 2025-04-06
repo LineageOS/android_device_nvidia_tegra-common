@@ -55,7 +55,7 @@ def main(blobpath, outpath):
 
         # The first magic V2 variant can still be compressed. Only lz4 has been observed in use.
         # This needs to be decompressed and reassembled outside of this script.
-        if (int.from_bytes(blob_file.read(4)) == 0x02214c18):
+        if (int.from_bytes(blob_file.read(4), byteorder='big') == 0x02214c18):
             print("LZ4 compressed blob unsupported")
             return
         else:
