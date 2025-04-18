@@ -221,7 +221,7 @@ endif
 
 # DRM
 PRODUCT_PACKAGES += \
-    android.hardware.drm-service.clearkey
+    android.hardware.drm@latest-service.clearkey
 
 # fastbootd
 PRODUCT_PACKAGES += \
