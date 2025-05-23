@@ -386,3 +386,19 @@ l4t-t194	drivers/usr/lib/aarch64-linux-gnu/tegra/libnvsocsys.so				l4t/lib64/
 l4t-t234	nv_tegra/l4t_deb_packages/nvidia-l4t-nvpmodel_36.4.3-20250107174145_arm64.deb	nvpmodel/nvidia-l4t-nvpmodel_arm64.deb
 l4t-t234	drivers/usr/lib/aarch64-linux-gnu/tegra/libnvos.so				l4t/lib64/
 l4t-t234	drivers/usr/lib/aarch64-linux-gnu/tegra/libnvsocsys.so				l4t/lib64/
+
+external	https://nv-tegra.nvidia.com/r/gitweb?p=tegra/prebuilts-device-nvidia.git;a=blob_plain;f=platform/t210/assets/bmp/charged720.bmp;hb=7e6a6ee18ac4bb2d602f8ee9903c815a36b44379		BMP/charged720.bmp
+external	https://nv-tegra.nvidia.com/r/gitweb?p=tegra/prebuilts-device-nvidia.git;a=blob_plain;f=platform/t210/assets/bmp/charged810.bmp;hb=7e6a6ee18ac4bb2d602f8ee9903c815a36b44379		BMP/charged810.bmp
+external	https://nv-tegra.nvidia.com/r/gitweb?p=tegra/prebuilts-device-nvidia.git;a=blob_plain;f=platform/t210/assets/bmp/charged1200_p.bmp;hb=7e6a6ee18ac4bb2d602f8ee9903c815a36b44379		BMP/charged1200_p.bmp
+external	https://nv-tegra.nvidia.com/r/gitweb?p=tegra/prebuilts-device-nvidia.git;a=blob_plain;f=platform/t210/assets/bmp/charging810.bmp;hb=7e6a6ee18ac4bb2d602f8ee9903c815a36b44379		BMP/charging810.bmp
+external	https://nv-tegra.nvidia.com/r/gitweb?p=tegra/prebuilts-device-nvidia.git;a=blob_plain;f=platform/t210/assets/bmp/charging720.bmp;hb=7e6a6ee18ac4bb2d602f8ee9903c815a36b44379		BMP/charging720.bmp
+external	https://nv-tegra.nvidia.com/r/gitweb?p=tegra/prebuilts-device-nvidia.git;a=blob_plain;f=platform/t210/assets/bmp/charging1200_p.bmp;hb=7e6a6ee18ac4bb2d602f8ee9903c815a36b44379		BMP/charging1200_p.bmp
+external	https://nv-tegra.nvidia.com/r/gitweb?p=tegra/prebuilts-device-nvidia.git;a=blob_plain;f=platform/t210/assets/bmp/fullycharged720.bmp;hb=7e6a6ee18ac4bb2d602f8ee9903c815a36b44379	BMP/fullycharged720.bmp
+external	https://nv-tegra.nvidia.com/r/gitweb?p=tegra/prebuilts-device-nvidia.git;a=blob_plain;f=platform/t210/assets/bmp/fullycharged810.bmp;hb=7e6a6ee18ac4bb2d602f8ee9903c815a36b44379	BMP/fullycharged810.bmp
+external	https://nv-tegra.nvidia.com/r/gitweb?p=tegra/prebuilts-device-nvidia.git;a=blob_plain;f=platform/t210/assets/bmp/fullycharged1200_p.bmp;hb=7e6a6ee18ac4bb2d602f8ee9903c815a36b44379	BMP/fullycharged1200_p.bmp
+external	https://nv-tegra.nvidia.com/r/gitweb?p=tegra/prebuilts-device-nvidia.git;a=blob_plain;f=platform/t210/assets/bmp/lowbat720.bmp;hb=7e6a6ee18ac4bb2d602f8ee9903c815a36b44379		BMP/lowbat720.bmp
+external	https://nv-tegra.nvidia.com/r/gitweb?p=tegra/prebuilts-device-nvidia.git;a=blob_plain;f=platform/t210/assets/bmp/lowbat810.bmp;hb=7e6a6ee18ac4bb2d602f8ee9903c815a36b44379		BMP/lowbat810.bmp
+external	https://nv-tegra.nvidia.com/r/gitweb?p=tegra/prebuilts-device-nvidia.git;a=blob_plain;f=platform/t210/assets/bmp/lowbat1200_p.bmp;hb=7e6a6ee18ac4bb2d602f8ee9903c815a36b44379		BMP/lowbat1200_p.bmp
+external	https://nv-tegra.nvidia.com/r/gitweb?p=tegra/prebuilts-device-nvidia.git;a=blob_plain;f=platform/t210/assets/bmp/nvidia720.bmp;hb=7e6a6ee18ac4bb2d602f8ee9903c815a36b44379		BMP/nvidia720.bmp
+external	https://nv-tegra.nvidia.com/r/gitweb?p=tegra/prebuilts-device-nvidia.git;a=blob_plain;f=platform/t210/assets/bmp/nvidia810.bmp;hb=7e6a6ee18ac4bb2d602f8ee9903c815a36b44379		BMP/nvidia810.bmp
+external	https://nv-tegra.nvidia.com/r/gitweb?p=tegra/prebuilts-device-nvidia.git;a=blob_plain;f=platform/t210/assets/bmp/nvidia1200_p.bmp;hb=7e6a6ee18ac4bb2d602f8ee9903c815a36b44379		BMP/nvidia1200_p.bmp
