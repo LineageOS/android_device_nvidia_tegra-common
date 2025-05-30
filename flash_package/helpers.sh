@@ -33,6 +33,7 @@ for COMMAND_CHECK in 'xxd' 'fdtput'; do
 done;
 
 declare -A APXPRODUCT;
+APXPRODUCT[t124]="7740";
 APXPRODUCT[t210]="7721";
 APXPRODUCT[t210nano]="7f21";
 APXPRODUCT[t186]="7c18";
