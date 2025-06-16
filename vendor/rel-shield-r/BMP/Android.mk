@@ -49,7 +49,7 @@ _bmp_blob_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),$(
 _bmp_blob := $(_bmp_blob_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
 
 $(_bmp_blob):
-	OUT=$(dir $@) TOP=$(BUILD_TOP) python2 $(BUP_PATH)/BUP_generator.py -t bmp -e \
+	OUT=$(dir $@) TOP=$(BUILD_TOP) python3 $(BUP_PATH)/BUP_generator.py -t bmp -e \
 		"$(TEGRA_BOOT_LOGO) \
 		 $(TEGRA_VERITY_IMAGES) \
 		"
