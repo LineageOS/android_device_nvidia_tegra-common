@@ -216,6 +216,14 @@ function patch_nvgpu() {
   echo "";
 }
 
+function patch_tnspec() {
+  echo -n "Patching tnspec python script to support python3...";
+
+  patch --no-backup-if-mismatch -d ${LINEAGE_ROOT}/${OUTDIR} -p1 1>/dev/null 2>&1 < ${LINEAGE_ROOT}/device/nvidia/tegra-common/extract/tnspec-py3.patch
+
+  echo "";
+}
+
 fetch_bcm4356_patchfile;
 chmod_tegraflash;
 patch_nvcontrol;
@@ -230,3 +238,4 @@ patch_nvcamera;
 patch_keymaster;
 patch_widevine;
 patch_nvgpu;
+patch_tnspec;
