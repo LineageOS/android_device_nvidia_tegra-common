@@ -21,7 +21,7 @@ TOS_SCRIPT_PATH := $(call my-dir)
 # 4: Optional tee paramaters
 define tos_rule
 $(PRODUCT_OUT)/$(1).img: $(PRODUCT_OUT)/$(2).bin $(3)
-	@python2 $(TOS_SCRIPT_PATH)/gen_tos_part_img.py --monitor=$(PRODUCT_OUT)/$(2).bin $(4) $(PRODUCT_OUT)/$(1).img
+	@python3 $(TOS_SCRIPT_PATH)/gen_tos_part_img.py --monitor=$(PRODUCT_OUT)/$(2).bin $(4) $(PRODUCT_OUT)/$(1).img
 
 .PHONY: $(1)
 $(1): $(PRODUCT_OUT)/$(1).img
