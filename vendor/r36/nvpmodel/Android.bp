@@ -14,9 +14,43 @@
 // limitations under the License.
 //
 
+soong_namespace {
+    imports: [
+        "vendor/nvidia/common/r36/nvpmodel",
+        "device/nvidia/tegra-common/vendor/r36/l4t",
+    ],
+}
+
 install_symlink {
     name: "nvpmodel_symlink",
     device_specific: true,
     installed_location: "etc/nvpmodel",
     symlink_target: "/data/vendor/nvpmodel",
+}
+
+cc_prebuilt_binary {
+    name: "nvpmodel",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "nvpmodel_64-defaults",
+    ],
+    compile_multilib: "64",
+    relative_install_path: "l4t",
+    soc_specific: true,
+    init_rc: ["etc/init/nvpmodel.rc"],
+    required: [
+        "nvpmodel_script",
+        "nvpmodel_symlink",
+    ],
+}
+
+sh_binary {
+    name: "nvpmodel_script",
+    owner: "lineage",
+    src: "bin/nvpmodel.sh",
+    filename: "nvpmodel",
+    soc_specific: true,
 }

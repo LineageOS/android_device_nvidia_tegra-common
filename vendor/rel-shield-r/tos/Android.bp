@@ -1,0 +1,108 @@
+soong_namespace {
+    imports: [
+        "vendor/nvidia/common/rel-shield-r/tos",
+    ],
+}
+
+cc_prebuilt_binary {
+    name: "android.hardware.keymaster@3.0-service.tegra",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "android.hardware.keymaster@3.0-service.tegra_32-defaults",
+        "android.hardware.keymaster@3.0-service.tegra_64-defaults",
+    ],
+    compile_multilib: "first",
+    relative_install_path: "hw",
+    soc_specific: true,
+    init_rc: ["etc/init/android.hardware.keymaster@3.0-service.tegra.rc"],
+}
+
+sh_binary {     
+    name: "run_ss_status",
+    owner: "nvidia",
+    src: ":run_ss_status-srcs",
+    filename: "run_ss_status.sh",
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "eks2_client",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "eks2_client_32-defaults",
+        "eks2_client_64-defaults",
+    ],
+    compile_multilib: "first",
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "ss_status",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "ss_status_32-defaults",
+        "ss_status_64-defaults",
+    ],
+    compile_multilib: "first",
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "tlk_daemon",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "tlk_daemon_32-defaults",
+        "tlk_daemon_64-defaults",
+    ],
+    compile_multilib: "first",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "gatekeeper.tlk.tegra",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "gatekeeper.tlk.tegra_32-defaults",
+        "gatekeeper.tlk.tegra_64-defaults",
+    ],
+    compile_multilib: "both",
+    relative_install_path: "hw",
+    soc_specific: true,
+    init_rc: ["etc/init/android.hardware.gatekeeper@1.0-service.tegra.rc"],
+}
+
+cc_prebuilt_library_shared {
+    name: "keystore.v0.tegra",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "keystore.v0.tegra_32-defaults",
+        "keystore.v0.tegra_64-defaults",
+    ],
+    compile_multilib: "both",
+    relative_install_path: "hw",
+    soc_specific: true,
+}
+
+cc_library_shared {
+    name: "libkeymaster_shim",
+    srcs: ["src/keymaster_shim.cpp"],
+    soc_specific: true,
+}

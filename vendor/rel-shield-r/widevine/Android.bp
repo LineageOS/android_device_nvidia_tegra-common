@@ -1,0 +1,47 @@
+soong_namespace {
+    imports: [
+        "vendor/nvidia/common/rel-shield-r/widevine",
+    ],
+}
+
+cc_prebuilt_binary {
+    name: "android.hardware.drm@1.3-service.widevine",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "android.hardware.drm@1.3-service.widevine_32-defaults",
+    ],
+    compile_multilib: "32",
+    relative_install_path: "hw",
+    soc_specific: true,
+    init_rc: ["etc/init/android.hardware.drm@1.3-service.widevine.rc"],
+    vintf_fragments: ["widevine.xml"],
+}
+
+cc_prebuilt_library_shared {
+    name: "libwvhidl",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libwvhidl_32-defaults",
+    ],
+    compile_multilib: "32",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "liboemcrypto",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "liboemcrypto_32-defaults",
+    ],
+    compile_multilib: "32",
+    soc_specific: true,
+}

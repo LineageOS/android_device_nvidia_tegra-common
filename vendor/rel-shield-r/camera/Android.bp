@@ -1,0 +1,274 @@
+soong_namespace {
+    imports: [
+        "vendor/nvidia/common/rel-shield-r/camera",
+    ],
+}
+
+cc_prebuilt_binary {
+    name: "vendor.nvidia.hardware.camera.provider@2.4-service",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "vendor.nvidia.hardware.camera.provider@2.4-service_64-defaults",
+    ],
+    compile_multilib: "64",
+    soc_specific: true,
+    init_rc: ["etc/init/vendor.nvidia.hardware.camera.provider@2.4-service.rc"],
+    vintf_fragments: ["vendor.nvidia.hardware.camera.provider@2.4-service.xml"],
+}
+
+cc_prebuilt_library_shared {
+    name: "camera.tegra",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "camera.tegra_64-defaults",
+    ],
+    compile_multilib: "64",
+    relative_install_path: "hw",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "vendor.nvidia.hardware.camera.argus.service@1.0-impl",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "vendor.nvidia.hardware.camera.argus.service@1.0-impl_64-defaults",
+    ],
+    compile_multilib: "64",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "vendor.nvidia.hardware.camera.device@3.2-impl",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "vendor.nvidia.hardware.camera.device@3.2-impl_64-defaults",
+    ],
+    compile_multilib: "64",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "vendor.nvidia.hardware.camera.provider@2.4-impl",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "vendor.nvidia.hardware.camera.provider@2.4-impl_64-defaults",
+    ],
+    compile_multilib: "64",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libnvargus",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libnvargus_64-defaults",
+    ],
+    compile_multilib: "64",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libnvcam_imageencoder",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libnvcam_imageencoder_64-defaults",
+    ],
+    compile_multilib: "64",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libnvcameratools",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libnvcameratools_64-defaults",
+    ],
+    compile_multilib: "64",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libnvcamerautils",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libnvcamerautils_64-defaults",
+    ],
+    compile_multilib: "64",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libnvcamlog",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libnvcamlog_64-defaults",
+    ],
+    compile_multilib: "64",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libnvcamv4l2",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libnvcamv4l2_64-defaults",
+    ],
+    compile_multilib: "64",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libnvcspline",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libnvcspline_64-defaults",
+    ],
+    compile_multilib: "64",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libnvfnet",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libnvfnet_64-defaults",
+    ],
+    compile_multilib: "64",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libnvfnetstorehdfx",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libnvfnetstorehdfx_64-defaults",
+    ],
+    compile_multilib: "64",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libnvisp",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libnvisp_64-defaults",
+    ],
+    compile_multilib: "64",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libnvisp_v3",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libnvisp_v3_64-defaults",
+    ],
+    compile_multilib: "64",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libnvmm_camera_v3",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libnvmm_camera_v3_64-defaults",
+    ],
+    compile_multilib: "64",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libnvodm_imager",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libnvodm_imager_64-defaults",
+    ],
+    compile_multilib: "64",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libnvscf",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libnvscf_64-defaults",
+    ],
+    compile_multilib: "64",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libnvvicsi_v3",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libnvvicsi_v3_64-defaults",
+    ],
+    compile_multilib: "64",
+    soc_specific: true,
+}
+
+prebuilt_etc_xml {
+    name: "model_frontal.xml",
+    src: ":model_frontal-srcs",
+    soc_specific: true,
+}
