@@ -18,6 +18,8 @@ $(error NvGPU on Armv7 is only supported with dolby enabled)
 endif
 endif
 
+NVGPU_HDCP_PATH := vendor/nvidia/common/rel-shield-r/nvgpu
+
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.allocator@2.0-service \
@@ -28,10 +30,13 @@ PRODUCT_PACKAGES += \
     libEGL_tegra \
     libGLESv1_CM_tegra \
     libGLESv2_tegra \
-    hdcp1x \
-    hdcp2x \
-    hdcp2xtest \
     libnvsi_ll_2
+
+# Hdcp
+PRODUCT_COPY_FILES += \
+    $(NVGPU_HDCP_PATH)/etc/hdcpsrm/hdcp1x.srm:$(TARGET_COPY_OUT_VENDOR)/etc/hdcpsrm/hdcp1x.srm \
+    $(NVGPU_HDCP_PATH)/etc/hdcpsrm/hdcp2x.srm:$(TARGET_COPY_OUT_VENDOR)/etc/hdcpsrm/hdcp2x.srm \
+    $(NVGPU_HDCP_PATH)/etc/hdcpsrm/hdcp2xtest.srm:$(TARGET_COPY_OUT_VENDOR)/etc/hdcpsrm/hdcp2xtest.srm
 
 # Overlays
 PRODUCT_PACKAGES += \
