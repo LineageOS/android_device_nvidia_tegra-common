@@ -1,0 +1,3 @@
+cc_defaults {
+  name: "libnvhwcomposer_32-defaults",
+}
