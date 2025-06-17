@@ -1,0 +1,123 @@
+cc_prebuilt_library_shared {
+    name: "ld-linux-aarch64.so.1",
+    suffix: "",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "ld-linux-aarch64.so.1_64-defaults",
+    ],
+    compile_multilib: "64",
+    check_elf_files: false,
+    relative_install_path: "l4t",
+    soc_specific: true,
+    required: ["ld-linux_symlink"],
+}
+
+install_symlink {
+    name: "ld-linux_symlink",
+    soc_specific: true,
+    installed_location: "lib64/l4t/ld-linux-aarch64.so.1",
+    symlink_target: "/vendor/lib64/l4t/ld-linux-aarch64.so.1.so",
+}
+
+cc_prebuilt_library_shared {
+    name: "libc.so.6",
+    suffix: "",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libc.so.6_64-defaults",
+    ],
+    compile_multilib: "64",
+    check_elf_files: false,
+    relative_install_path: "l4t",
+    soc_specific: true,
+    required: ["libc_symlink"],
+}
+
+install_symlink {
+    name: "libc_symlink",
+    soc_specific: true,
+    installed_location: "lib64/l4t/libc.so.6",
+    symlink_target: "/vendor/lib64/l4t/libc.so.6.so",
+}
+
+cc_prebuilt_library_shared {
+    name: "libdl.so.2",
+    suffix: "",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libdl.so.2_64-defaults",
+    ],
+    compile_multilib: "64",
+    check_elf_files: false,
+    relative_install_path: "l4t",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "librt.so.1",
+    suffix: "",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "librt.so.1_64-defaults",
+    ],
+    compile_multilib: "64",
+    check_elf_files: false,
+    relative_install_path: "l4t",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libpthread.so.0",
+    suffix: "",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libpthread.so.0_64-defaults",
+    ],
+    compile_multilib: "64",
+    check_elf_files: false,
+    relative_install_path: "l4t",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libnvos-l4t",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libnvos-l4t_64-defaults",
+    ],
+    compile_multilib: "64",
+    relative_install_path: "l4t",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libnvsocsys-l4t",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libnvsocsys-l4t_64-defaults",
+    ],
+    compile_multilib: "64",
+    relative_install_path: "l4t",
+    soc_specific: true,
+}
