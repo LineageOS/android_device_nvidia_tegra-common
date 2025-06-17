@@ -1,0 +1,16 @@
+cc_prebuilt_binary {
+    name: "vendor.nvidia.hardware.ipprotect@1.0-service",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "vendor.nvidia.hardware.ipprotect@1.0-service_32-defaults",
+        "vendor.nvidia.hardware.ipprotect@1.0-service_64-defaults",
+    ],
+    compile_multilib: "first",
+    relative_install_path: "hw",
+    soc_specific: true,
+    init_rc: ["etc/init/vendor.nvidia.hardware.ipprotect@1.0-service.rc"],
+    vintf_fragments: ["vendor.nvidia.hardware.ipprotect@1.0-service.xml"],
+}
