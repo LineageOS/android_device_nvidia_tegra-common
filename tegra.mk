@@ -198,8 +198,7 @@ PRODUCT_PACKAGES += \
     android.hardware.tv.cec@1.0-impl
 else
 PRODUCT_PACKAGES += \
-    android.hardware.tv.cec@1.0-service \
-    android.hardware.tv.cec@1.0-impl.nvidia
+    android.hardware.tv.cec@1.0-service
 endif
 endif
 
