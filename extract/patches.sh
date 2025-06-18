@@ -224,6 +224,76 @@ function patch_tnspec() {
   echo "";
 }
 
+function patch_hidl() {
+  echo -n "Patching libraries to remove hidltransport and hwbinder dep...";
+
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvphs/lib/vendor.nvidia.hardware.phs@1.0-impl.so
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvphs/lib64/vendor.nvidia.hardware.phs@1.0-impl.so
+
+  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvphs/lib/libnvphsd.so
+  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvphs/lib64/libnvphsd.so
+
+  ${PATCHELF} --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvphs/lib/libnvphs.so
+  ${PATCHELF} --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvphs/lib64/libnvphs.so
+
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/power/lib/hw/powerhal.tegra.so
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/power/lib64/hw/powerhal.tegra.so
+
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/power/bin32/hw/vendor.nvidia.hardware.power@1.0-service
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/power/bin64/hw/vendor.nvidia.hardware.power@1.0-service
+
+  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/bin32/hw/vendor.nvidia.hardware.cpl.service@1.0-service
+  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/bin64/hw/vendor.nvidia.hardware.cpl.service@1.0-service
+
+  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/bin32/hw/vendor.nvidia.hardware.cpl.service_common@1.0-service
+  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/bin64/hw/vendor.nvidia.hardware.cpl.service_common@1.0-service
+
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/lib/libnvcpl_vendor.so
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/lib64/libnvcpl_vendor.so
+
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib/vendor.nvidia.hardware.graphics.mempool@1.0-impl.so
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/vendor.nvidia.hardware.graphics.mempool@1.0-impl.so
+
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib/libmempoollocal.so
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/libmempoollocal.so
+
+  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib/vendor.nvidia.hardware.graphics.display@1.0-impl.so
+  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/vendor.nvidia.hardware.graphics.display@1.0-impl.so
+
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/libnvhwcomposer.so
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib/libnvhwcomposer.dolby.so
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/libnvhwcomposer.dolby.so
+
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib/vendor.nvidia.hardware.graphics.composer@2.0-impl.so
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/vendor.nvidia.hardware.graphics.composer@2.0-impl.so
+
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/bin32/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/bin64/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
+
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/audio/bin32/hw/android.hardware.audio@6.0-service-msd
+
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/ipprotect/bin32/hw/vendor.nvidia.hardware.ipprotect@1.0-service
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/ipprotect/bin64/hw/vendor.nvidia.hardware.ipprotect@1.0-service
+
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/camera/bin64/vendor.nvidia.hardware.camera.provider@2.4-service
+
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/camera/lib64/vendor.nvidia.hardware.camera.argus.service@1.0-impl.so
+
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/camera/lib64/vendor.nvidia.hardware.camera.device@3.2-impl.so
+
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/camera/lib64/vendor.nvidia.hardware.camera.provider@2.4-impl.so
+
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvmm/lib/libnvomx.so
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvmm/lib64/libnvomx.so
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvmm/lib/libnvomx.dolby.so
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvmm/lib64/libnvomx.dolby.so
+
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/tos/bin32/hw/android.hardware.keymaster@3.0-service.tegra
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/tos/bin64/hw/android.hardware.keymaster@3.0-service.tegra
+
+  echo "";
+}
+
 fetch_bcm4356_patchfile;
 chmod_tegraflash;
 patch_nvcontrol;
@@ -239,3 +309,4 @@ patch_keymaster;
 patch_widevine;
 patch_nvgpu;
 patch_tnspec;
+patch_hidl;
