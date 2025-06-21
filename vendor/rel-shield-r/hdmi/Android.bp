@@ -4,6 +4,14 @@ soong_namespace {
     ],
 }
 
+cc_defaults {
+    name: "rel-shield-r-hdmi-enabled",
+    enabled: select(soong_config_variable("target_tegra", "hdmi"), {
+        any @ flag_val: true,
+        default: false,
+    }),
+},
+
 cc_prebuilt_library_shared {
     name: "hdmi_cec.tegra",
     owner: "nvidia",
@@ -11,6 +19,7 @@ cc_prebuilt_library_shared {
         none: true,
     },
     defaults: [
+        "rel-shield-r-hdmi-enabled",
         "hdmi_cec.tegra_32-defaults",
         "hdmi_cec.tegra_64-defaults",
     ],
