@@ -44,14 +44,6 @@ function patch_nvcontrol() {
   echo "";
 }
 
-function patch_audio_msd() {
-  echo -n "Adding json shim to msd audio service...";
-
-  sed -i 's/libjsoncpp.so/libjsonshm.so/' ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/audio/bin32/hw/android.hardware.audio@6.0-service-msd
-
-  echo "";
-}
-
 # BUP tries to write the output file to cwd, let's instead use the already referenced env path var 'OUT'
 # Since 32.6, BUP changed the version field format, however BMP blobs still require the previous version string
 function patch_bup() {
@@ -332,7 +324,6 @@ function patch_raydium() {
 fetch_bcm4356_patchfile;
 chmod_tegraflash;
 patch_nvcontrol;
-patch_audio_msd;
 patch_bup;
 patch_tegrasign_v3;
 patch_tegraflash_dtbcheck;
