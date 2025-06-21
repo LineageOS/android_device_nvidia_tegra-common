@@ -12,9 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH := $(call my-dir)
+ifneq ($(TARGET_TEGRA_VERSION),)
 COMMON_BMP_PATH := $(BUILD_TOP)/vendor/nvidia/common/rel-shield-r/BMP
-
 BUP_PATH := $(BUILD_TOP)/vendor/nvidia/common/r35/tegraflash
 
 TEGRA_BOOT_LOGO ?= \
@@ -40,18 +39,16 @@ TEGRA_VERITY_IMAGES ?= \
 		 $(COMMON_BMP_PATH)/verity_yellow_pause_720.bmp verity_yellow_pause 720; \
 		 $(COMMON_BMP_PATH)/verity_yellow_pause_1080.bmp verity_yellow_pause 1080
 
-include $(CLEAR_VARS)
-LOCAL_MODULE       := bmp.blob
-LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_PATH  := $(PRODUCT_OUT)
-
-_bmp_blob_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),$(LOCAL_MODULE))
-_bmp_blob := $(_bmp_blob_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
-
+_bmp_blob := $(call intermediates-dir-for,ETC,bmp.blob)/bmp.blob
 $(_bmp_blob):
 	OUT=$(dir $@) TOP=$(BUILD_TOP) python3 $(BUP_PATH)/BUP_generator.py -t bmp -e \
 		"$(TEGRA_BOOT_LOGO) \
 		 $(TEGRA_VERITY_IMAGES) \
 		"
 
-include $(BUILD_SYSTEM)/base_rules.mk
+$(PRODUCT_OUT)/bmp.blob: $(_bmp_blob)
+	$(hide) cp $< $@
+
+.PHONY: bmp.blob
+bmp.blob: $(PRODUCT_OUT)/bmp.blob
+endif
