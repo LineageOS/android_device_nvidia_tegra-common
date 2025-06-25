@@ -36,9 +36,7 @@ endif
 
 # Boot Control
 ifneq ($(TARGET_TEGRA_BOOTCTRL),)
-ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \< 8), 1)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/boot.xml
-endif
 endif
 
 # CEC
@@ -47,8 +45,14 @@ DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/cec.xml
 endif
 
 # Graphics
-ifeq ($(TARGET_GRAPHICS),mesa)
-BOARD_MESA3D_GALLIUM_DRIVERS += nouveau tegra
+ifeq ($(TARGET_TEGRA_GPU),drm)
+BOARD_GPU_DRIVERS         ?= nouveau tegra
+BOARD_USES_DRM_HWCOMPOSER := true
+DEVICE_MANIFEST_FILE      += device/nvidia/tegra-common/manifests/drm.xml
+TARGET_USES_HWC2          := true
+else ifeq ($(TARGET_TEGRA_GPU),swiftshader)
+DEVICE_MANIFEST_FILE      += device/nvidia/tegra-common/manifests/drm.xml
+TARGET_USES_HWC2          := true
 endif
 
 # HIDL
@@ -77,12 +81,6 @@ ifneq ($(TARGET_TEGRA_SENSORS),)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/sensors.xml
 endif
 
-# Touch
-ifeq ($(TARGET_TEGRA_TOUCH),rel-29/raydium)
-TARGET_LD_SHIM_LIBS += \
-  /system/vendor/lib/librm_ts_service.so|/system/lib/liblog.so
-endif
-
 # Wifi
 ifneq ($(TARGET_TEGRA_WIFI),)
 # rtl8822ce driver works with bcm userspace
@@ -100,7 +98,3 @@ WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 endif
 
 include device/nvidia/sepolicy/sepolicy.mk
-
-ifeq ($(filter 3.10 4.9 5.10, $(TARGET_TEGRA_KERNEL)),)
-include device/mainline/common/BoardConfigMainlineCommon.mk
-endif

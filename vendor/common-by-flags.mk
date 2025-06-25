@@ -14,73 +14,55 @@
 
 LOCAL_PATH := device/nvidia/tegra-common/vendor
 
-PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)/$(TARGET_TEGRA_L4T_BRANCH)/l4t
-PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)/$(TARGET_TEGRA_L4T_BRANCH)/nvpmodel
-PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/common
+PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)/$(TARGET_TEGRA_L4T_BRANCH)
 
 ifneq ($(TARGET_TEGRA_DOLBY),)
-PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/ipprotect
 include $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/ipprotect/ipprotect.mk
 endif
 
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_AUDIO)/audio/audio.mk)","")
-PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)/$(TARGET_TEGRA_AUDIO)/audio
 include $(LOCAL_PATH)/$(TARGET_TEGRA_AUDIO)/audio/audio.mk
 endif
 
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_CAMERA)/camera/nvcamera.mk)","")
-PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)/$(TARGET_TEGRA_CAMERA)/camera
 include $(LOCAL_PATH)/$(TARGET_TEGRA_CAMERA)/camera/nvcamera.mk
 endif
 
 ifeq ($(NV_ANDROID_FRAMEWORK_ENHANCEMENTS),true)
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_CPL)/nvcpl/nvcpl.mk)","")
-PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)/$(TARGET_TEGRA_CPL)/nvcpl
 include $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/nvcpl/nvcpl.mk
 endif
 endif
 
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_GPU)/nvgpu/nvgpu.mk)","")
-PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)/$(TARGET_TEGRA_GPU)/nvgpu
 include $(LOCAL_PATH)/$(TARGET_TEGRA_GPU)/nvgpu/nvgpu.mk
 endif
 
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_CEC)/hdmi/hdmi.mk)","")
-PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)/$(TARGET_TEGRA_CEC)/hdmi
 include $(LOCAL_PATH)/$(TARGET_TEGRA_CEC)/hdmi/hdmi.mk
 endif
 
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_MEMTRACK)/memtrack/memtrack.mk)","")
-PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)/$(TARGET_TEGRA_MEMTRACK)/memtrack
 include $(LOCAL_PATH)/$(TARGET_TEGRA_MEMTRACK)/memtrack/memtrack.mk
 endif
 
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_OMX)/nvmm/nvmm.mk)","")
-PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)/$(TARGET_TEGRA_OMX)/nvmm
 include $(LOCAL_PATH)/$(TARGET_TEGRA_OMX)/nvmm/nvmm.mk
 endif
 
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_PHS)/nvphs/nvphs.mk)","")
-PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)/$(TARGET_TEGRA_PHS)/nvphs
 include $(LOCAL_PATH)/$(TARGET_TEGRA_PHS)/nvphs/nvphs.mk
 endif
 
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_POWER)/power/power.mk)","")
-PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)/$(TARGET_TEGRA_POWER)/power
 include $(LOCAL_PATH)/$(TARGET_TEGRA_POWER)/power/power.mk
 endif
 
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_TOS)/tos/tos.mk)","")
-PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)/$(TARGET_TEGRA_TOS)/tos
 include $(LOCAL_PATH)/$(TARGET_TEGRA_TOS)/tos/tos.mk
 endif
 
-ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_TOUCH)/touch.mk)","")
-include $(LOCAL_PATH)/$(TARGET_TEGRA_TOUCH)/touch.mk
-endif
-
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_WIDEVINE)/widevine/widevine.mk)","")
-PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)/$(TARGET_TEGRA_WIDEVINE)/widevine
 include $(LOCAL_PATH)/$(TARGET_TEGRA_WIDEVINE)/widevine/widevine.mk
 endif
 

@@ -18,4 +18,4 @@ LF_BCM_PATH := kernel/nvidia/linux-firmware/
 PRODUCT_COPY_FILES += \
     $(LF_BCM_PATH)/cypress/cyfmac4354-sdio.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/brcm/brcmfmac4354-sdio.bin \
     $(LF_BCM_PATH)/cypress/cyfmac4354-sdio.clm_blob:$(TARGET_COPY_OUT_VENDOR)/firmware/brcm/brcmfmac4354-sdio.clm_blob \
-    $(COMMON_BCM_PATH)/bcm4354/BCM4350C0.hcd:$(TARGET_COPY_OUT_VENDOR)/firmware/brcm/BCM4354.hcd
+    $(COMMON_BCM_PATH)/bcm4354/BCM4350C0.hcd:$(TARGET_COPY_OUT_VENDOR)/firmware/BCM4354.hcd

@@ -1,4 +1,4 @@
-# Copyright (C) 2024 The LineageOS Project
+# Copyright (C) 2022 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LF_BCM_PATH := kernel/nvidia/linux-firmware/
+LOCAL_PATH := $(call my-dir)
 
-PRODUCT_COPY_FILES += \
-    $(LF_BCM_PATH)/rtl_nic/rtl8153a-3.fw:$(TARGET_COPY_OUT_VENDOR)/firmware/rtl_nic/rtl8153a-3.fw
+ifeq ($(TARGET_TEGRA_DEFAULT_BRANCH),rel-shield-r)
+include $(CLEAR_VARS)
+LOCAL_MODULE               := public.libraries
+LOCAL_SRC_FILES            := public.libraries.txt
+LOCAL_MODULE_SUFFIX        := .txt
+LOCAL_MODULE_CLASS         := ETC
+LOCAL_MODULE_TAGS          := optional
+LOCAL_MODULE_OWNER         := nvidia
+LOCAL_VENDOR_MODULE        := true
+include $(BUILD_NVIDIA_PREBUILT)
+endif
+
+include $(call all-makefiles-under,$(LOCAL_PATH))

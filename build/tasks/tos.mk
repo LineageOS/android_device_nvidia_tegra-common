@@ -21,7 +21,7 @@ TOS_SCRIPT_PATH := $(call my-dir)
 # 4: Optional tee paramaters
 define tos_rule
 $(PRODUCT_OUT)/$(1).img: $(PRODUCT_OUT)/$(2).bin $(3)
-	@python3 $(TOS_SCRIPT_PATH)/gen_tos_part_img.py --monitor=$(PRODUCT_OUT)/$(2).bin $(4) $(PRODUCT_OUT)/$(1).img
+	@python2 $(TOS_SCRIPT_PATH)/gen_tos_part_img.py --monitor=$(PRODUCT_OUT)/$(2).bin $(4) $(PRODUCT_OUT)/$(1).img
 
 .PHONY: $(1)
 $(1): $(PRODUCT_OUT)/$(1).img
@@ -29,6 +29,4 @@ endef
 
 $(eval $(call tos_rule,tos-mon-only,bl31))
 $(eval $(call tos_rule,tos-trusty,bl31-trusty,$(PRODUCT_OUT)/trusty.bin,--tostype=trusty --os=$(PRODUCT_OUT)/trusty.bin))
-$(eval $(call tos_rule,tos-tlk,bl31-tlk,$(PRODUCT_OUT)/tlk.bin,--tostype=tlk --os=$(PRODUCT_OUT)/tlk.bin))
-$(eval $(call tos_rule,tos-optee,bl31-optee,$(PRODUCT_OUT)/optee.bin,--tostype=optee --os=$(PRODUCT_OUT)/optee.bin))
 endif

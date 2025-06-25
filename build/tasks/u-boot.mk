@@ -17,19 +17,18 @@ TARGET_TEGRA_UBOOT_PATH ?= external/u-boot
 
 BUILD_TOOLS_BINS         := $(BUILD_TOP)/prebuilts/build-tools/$(HOST_PREBUILT_TAG)/bin
 TARGET_KERNEL_CLANG_PATH ?= $(BUILD_TOP)/prebuilts/clang/host/$(HOST_PREBUILT_TAG)/$(LLVM_PREBUILTS_VERSION)
-UBOOT_CROSS_COMPILE      ?= CROSS_COMPILE="$(CCACHE_BIN) $(KERNEL_TOOLCHAIN)/$(KERNEL_TOOLCHAIN_PREFIX)"
 
 _uboot_bin := $(call intermediates-dir-for,EXECUTABLES,u-boot-dtb)/u-boot-dtb.bin
 $(_uboot_bin):
 	@mkdir -p $(dir $@)
-	$(hide) +$(KERNEL_MAKE_CMD) $(UBOOT_CROSS_COMPILE) \
+	$(hide) +$(KERNEL_MAKE_CMD) $(KERNEL_CROSS_COMPILE) \
 		HOSTCC=$(TARGET_KERNEL_CLANG_PATH)/bin/clang HOSTLDFLAGS="-fuse-ld=lld" \
 		YACC=$(BUILD_TOOLS_BINS)/bison LEX=$(BUILD_TOOLS_BINS)/flex M4=$(BUILD_TOOLS_BINS)/m4 \
-		-C $(TARGET_TEGRA_UBOOT_PATH) O=$(dir $(_uboot_bin)) NO_PYTHON=1 $(TARGET_TEGRA_UBOOT_CONFIG)
-	$(hide) +$(KERNEL_MAKE_CMD) $(UBOOT_CROSS_COMPILE) \
+		-C $(TARGET_TEGRA_UBOOT_PATH) O=$(dir $(_uboot_bin)) $(TARGET_TEGRA_UBOOT_CONFIG)_defconfig
+	$(hide) +$(KERNEL_MAKE_CMD) $(KERNEL_CROSS_COMPILE) \
 		HOSTCC=$(TARGET_KERNEL_CLANG_PATH)/bin/clang HOSTLDFLAGS="-fuse-ld=lld" \
 		YACC=$(BUILD_TOOLS_BINS)/bison LEX=$(BUILD_TOOLS_BINS)/flex M4=$(BUILD_TOOLS_BINS)/m4 \
-		-C $(TARGET_TEGRA_UBOOT_PATH) O=$(dir $(_uboot_bin)) NO_PYTHON=1 $(notdir $@)
+		-C $(TARGET_TEGRA_UBOOT_PATH) O=$(dir $(_uboot_bin)) $(notdir $@)
 
 $(PRODUCT_OUT)/u-boot-dtb.bin: $(_uboot_bin)
 	$(hide) cp $< $@

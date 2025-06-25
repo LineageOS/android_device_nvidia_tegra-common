@@ -34,6 +34,4 @@ endef
 
 $(eval $(call atf_rule,$(call intermediates-dir-for,EXECUTABLES,bl31),bl31))
 $(eval $(call atf_rule,$(call intermediates-dir-for,EXECUTABLES,bl31_trusty),bl31-trusty,SPD=trusty))
-$(eval $(call atf_rule,$(call intermediates-dir-for,EXECUTABLES,bl31_tlk),bl31-tlk,SPD=tlkd))
-$(eval $(call atf_rule,$(call intermediates-dir-for,EXECUTABLES,bl31_optee),bl31-optee,SPD=opteed))
 endif

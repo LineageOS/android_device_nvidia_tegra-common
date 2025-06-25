@@ -14,23 +14,5 @@
 // limitations under the License.
 //
 
-sh_binary {
-    name: "wifi_loader",
-    filename: "wifi_loader.sh",
-    src: "wifi_loader.sh",
-    soc_specific: true,
-}
-
-sh_binary {
-    name: "bt_loader",
-    filename: "bt_loader.sh",
-    src: "bt_loader.sh",
-    soc_specific: true,
-}
-
-sh_binary {
-    name: "lkm_loader",
-    filename: "lkm_loader.sh",
-    src: "lkm_loader.sh",
-    soc_specific: true,
+soong_namespace {
 }

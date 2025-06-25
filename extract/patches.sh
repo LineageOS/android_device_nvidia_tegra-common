@@ -44,6 +44,14 @@ function patch_nvcontrol() {
   echo "";
 }
 
+function patch_audio_msd() {
+  echo -n "Adding json shim to msd audio service...";
+
+  sed -i 's/libjsoncpp.so/libjsonshm.so/' ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/audio/bin32/hw/android.hardware.audio@6.0-service-msd
+
+  echo "";
+}
+
 # BUP tries to write the output file to cwd, let's instead use the already referenced env path var 'OUT'
 # Since 32.6, BUP changed the version field format, however BMP blobs still require the previous version string
 function patch_bup() {
@@ -208,122 +216,10 @@ function patch_nvgpu() {
   echo "";
 }
 
-function patch_tnspec() {
-  echo -n "Patching tnspec python script to support python3...";
-
-  patch --no-backup-if-mismatch -d ${LINEAGE_ROOT}/${OUTDIR} -p1 1>/dev/null 2>&1 < ${LINEAGE_ROOT}/device/nvidia/tegra-common/extract/tnspec-py3.patch
-
-  echo "";
-}
-
-function patch_hidl() {
-  echo -n "Patching libraries to remove hidltransport and hwbinder dep...";
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvphs/lib/vendor.nvidia.hardware.phs@1.0-impl.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvphs/lib64/vendor.nvidia.hardware.phs@1.0-impl.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvphs/lib/libnvphsd.so
-  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvphs/lib64/libnvphsd.so
-
-  ${PATCHELF} --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvphs/lib/libnvphs.so
-  ${PATCHELF} --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvphs/lib64/libnvphs.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/power/lib/hw/powerhal.tegra.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/power/lib64/hw/powerhal.tegra.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/power/bin32/hw/vendor.nvidia.hardware.power@1.0-service
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/power/bin64/hw/vendor.nvidia.hardware.power@1.0-service
-
-  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/bin32/hw/vendor.nvidia.hardware.cpl.service@1.0-service
-  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/bin64/hw/vendor.nvidia.hardware.cpl.service@1.0-service
-
-  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/bin32/hw/vendor.nvidia.hardware.cpl.service_common@1.0-service
-  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/bin64/hw/vendor.nvidia.hardware.cpl.service_common@1.0-service
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/lib/libnvcpl_vendor.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/lib64/libnvcpl_vendor.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib/vendor.nvidia.hardware.graphics.mempool@1.0-impl.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/vendor.nvidia.hardware.graphics.mempool@1.0-impl.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib/libmempoollocal.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/libmempoollocal.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib/vendor.nvidia.hardware.graphics.display@1.0-impl.so
-  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/vendor.nvidia.hardware.graphics.display@1.0-impl.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/libnvhwcomposer.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib/libnvhwcomposer.dolby.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/libnvhwcomposer.dolby.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib/vendor.nvidia.hardware.graphics.composer@2.0-impl.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/vendor.nvidia.hardware.graphics.composer@2.0-impl.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/bin32/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/bin64/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/audio/bin32/hw/android.hardware.audio@6.0-service-msd
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/ipprotect/bin32/hw/vendor.nvidia.hardware.ipprotect@1.0-service
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/ipprotect/bin64/hw/vendor.nvidia.hardware.ipprotect@1.0-service
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/camera/bin64/vendor.nvidia.hardware.camera.provider@2.4-service
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/camera/lib64/vendor.nvidia.hardware.camera.argus.service@1.0-impl.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/camera/lib64/vendor.nvidia.hardware.camera.device@3.2-impl.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/camera/lib64/vendor.nvidia.hardware.camera.provider@2.4-impl.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvmm/lib/libnvomx.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvmm/lib64/libnvomx.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvmm/lib/libnvomx.dolby.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvmm/lib64/libnvomx.dolby.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/tos/bin32/hw/android.hardware.keymaster@3.0-service.tegra
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/tos/bin64/hw/android.hardware.keymaster@3.0-service.tegra
-
-  echo "";
-}
-
-# Raydium uses an intrinsic that got moved around in Q, so it needs shimmed
-function patch_raydium() {
-  echo -n "Patching raydium prebuilts for intrinsics changes and libstdc++...";
-
-  sed -i 's/__aeabi_uldivmod/s_aeabi_uldivmod/' ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/librm31080.so
-
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/bin32/rm_ts_server
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/hw/ts.default.so
-  ${PATCHELF} --replace-needed libm.so libw.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/librm31080.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/librm31080.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/librm_ts_service.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_02_00_20.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_02_00_a0.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_02_00_b0.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_03_00_20.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_03_00_a0.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_03_00_b0.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_04_00_b0.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_04_00_c0.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_05_00_c0.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_06_00_b0.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_07_00_b0.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_08_00_20.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_08_00_a0.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_08_00_b0.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_09_00_c0.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_09_01_c0.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_09_02_c0.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_0a_00_b0.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/para_10_0b_00_a0.so
-  ${PATCHELF} --replace-needed libstdc++.so libstdc++_vendor.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-29/raydium/lib/touch_para_10.so
-
-  echo "";
-}
-
 fetch_bcm4356_patchfile;
 chmod_tegraflash;
 patch_nvcontrol;
+patch_audio_msd;
 patch_bup;
 patch_tegrasign_v3;
 patch_tegraflash_dtbcheck;
@@ -334,6 +230,3 @@ patch_nvcamera;
 patch_keymaster;
 patch_widevine;
 patch_nvgpu;
-patch_tnspec;
-patch_hidl;
-patch_raydium;
