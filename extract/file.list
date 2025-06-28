@@ -305,7 +305,9 @@ l4t-t234	bootloader/tegraparser_v2		tegraflash/
 l4t-t234	bootloader/tegrarcm_v2			tegraflash/
 l4t-t234	bootloader/tegrasign_v2			tegraflash/
 l4t-t234	bootloader/tegrasign_v3.py		tegraflash/
+l4t-t234	bootloader/tegrasign_v3_hsm.py		tegraflash/
 l4t-t234	bootloader/tegrasign_v3_internal.py	tegraflash/
+l4t-t234	bootloader/tegrasign_v3_softhsm.py	tegraflash/
 l4t-t234	bootloader/tegrasign_v3_util.py		tegraflash/
 l4t-t234	bootloader/tegraopenssl			tegraflash/
 
@@ -360,6 +362,6 @@ stock-t210	vendor/firmware/brcmfmac4356-pcie.bin	bcm/bcm4356/
 l4t-t194	nv_tegra/l4t_deb_packages/nvidia-l4t-nvpmodel_35.6.2-20250515185434_arm64.deb	nvpmodel/nvidia-l4t-nvpmodel_arm64.deb
 l4t-t194	drivers/usr/lib/aarch64-linux-gnu/tegra/libnvos.so				l4t/lib64/libnvos-l4t.so
 l4t-t194	drivers/usr/lib/aarch64-linux-gnu/tegra/libnvsocsys.so				l4t/lib64/libnvsocsys-l4t.so
-l4t-t234	nv_tegra/l4t_deb_packages/nvidia-l4t-nvpmodel_36.4.3-20250107174145_arm64.deb	nvpmodel/nvidia-l4t-nvpmodel_arm64.deb
+l4t-t234	nv_tegra/l4t_deb_packages/nvidia-l4t-nvpmodel_36.4.4-20250616085344_arm64.deb	nvpmodel/nvidia-l4t-nvpmodel_arm64.deb
 l4t-t234	drivers/usr/lib/aarch64-linux-gnu/tegra/libnvos.so				l4t/lib64/libnvos-l4t.so
 l4t-t234	drivers/usr/lib/aarch64-linux-gnu/tegra/libnvsocsys.so				l4t/lib64/libnvsocsys-l4t.so
