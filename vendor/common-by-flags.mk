@@ -50,6 +50,10 @@ ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_OMX)/nvmm/nvmm.mk)","")
 include $(LOCAL_PATH)/$(TARGET_TEGRA_OMX)/nvmm/nvmm.mk
 endif
 
+ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_PMODEL)/nvpmodel/nvpmodel.mk)","")
+include $(LOCAL_PATH)/$(TARGET_TEGRA_PMODEL)/nvpmodel/nvpmodel.mk
+endif
+
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_PHS)/nvphs/nvphs.mk)","")
 include $(LOCAL_PATH)/$(TARGET_TEGRA_PHS)/nvphs/nvphs.mk
 endif
