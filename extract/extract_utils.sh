@@ -15,11 +15,14 @@
 # limitations under the License.
 #
 
+shopt -s extglob;
+
 declare -a SOURCE_PATHS=();
 declare -A SOURCE_BRANCH=();
 declare -a FILELIST_PATHS=();
 declare -a PATCH_PATHS=();
 declare -a HOOK_PATHS=();
+declare -A MODULES=();
 
 VENDOR_STATE=-1
 
@@ -388,6 +391,13 @@ function copy_files() {
                 else
                     cp ${EXTRACTDIR}/${sname}/${source} ${LINEAGE_ROOT}/vendor/${project}/${SOURCE_BRANCH[$sname]}/${dest};
                 fi;
+
+                if [ "${dest%%/*}" != "BCT" -a "${dest%%/*}" != "firmware" ]; then
+                    elffmt=$(objdump -a "${LINEAGE_ROOT}/vendor/${project}/${SOURCE_BRANCH[$sname]}/${dest}" 2>/dev/null | sed -nE "s|^.+file format (.*)$|\1|p");
+                    if [ "${elffmt}" == "elf64-little" -o "${elffmt}" == "elf32-little" -o "${dest#*.}" == "apk" -o "${dest#*.}" == "sh" -o "${dest#*.}" == "xml" ]; then
+                        MODULES[${project}/${SOURCE_BRANCH[$sname]}/${dest%%/*}]+="${dest#*/} ";
+                    fi;
+                fi;
             elif [ "${sname}" == "external" -a -f "${EXTRACTDIR}/external/$(basename ${dest})" ]; then
                 echo "  * ${project}/external/${dest}";
                 mkdir -p ${LINEAGE_ROOT}/vendor/$(dirname ${project}/external/$dest);
@@ -411,6 +421,67 @@ function copy_files() {
     fi;
 
     echo "Finished copying files.";
+}
+
+#
+# Write blueprint makefiles
+#
+function write_makefiles() {
+    echo "Writing makefiles...";
+
+    for key in "${!MODULES[@]}"; do
+        bp_path=${LINEAGE_ROOT}/vendor/$(dirname $(dirname ${key}))/Android.bp;
+        if [ ! -f ${bp_path} ]; then
+            echo "soong_namespace {" >> ${bp_path};
+            echo "}" >> ${bp_path};
+        fi;
+
+        bp_path=${LINEAGE_ROOT}/vendor/${key}/Android.bp;
+        values=(${MODULES[$key]});
+        for file in "${values[@]}"; do
+            elffmt=$(objdump -a "${LINEAGE_ROOT}/vendor/${key}/${file}" 2>/dev/null | sed -nE "s|^.+file format (.*)$|\1|p");
+            filenp=$(basename ${file%*/});
+            if [ "${elffmt}" == "elf64-little" ]; then
+                echo "filegroup {" >> ${bp_path};
+                echo "  name: \"${filenp%.@(so)}_64-srcs\"," >> ${bp_path};
+                echo "  srcs: [\"${file}\"]," >> ${bp_path};
+                echo "}" >> ${bp_path};
+                echo >> ${bp_path};
+                echo "cc_defaults {" >> ${bp_path};
+                echo "  name: \"${filenp%.@(so)}_64-defaults\"," >> ${bp_path};
+                echo "  target: {" >> ${bp_path};
+                echo "    android_arm64: {" >> ${bp_path};
+                echo "      srcs: [\":${filenp%.@(so)}_64-srcs\"]," >> ${bp_path};
+                echo "      shared_libs: [$(objdump -p "${LINEAGE_ROOT}/vendor/${key}/${file}" 2>/dev/null | sed 's/libprotobuf-cpp-lite-3.9.1/libprotobuf-cpp-lite-3.9.1-vendorcompat/' | sed -n 's/^\s*NEEDED\s*\(.*\)/\1/p' | sed 's/\.so$//' | sed 's/\(.\+\)/"\1",/g' | tr '\n' ' ')]," >> ${bp_path};
+                echo "    }," >> ${bp_path};
+                echo "  }," >> ${bp_path};
+                echo "}" >> ${bp_path};
+            elif [ "${elffmt}" == "elf32-little" ]; then
+                echo "filegroup {" >> ${bp_path};
+                echo "  name: \"${filenp%.@(so)}_32-srcs\"," >> ${bp_path};
+                echo "  srcs: [\"${file}\"]," >> ${bp_path};
+                echo "}" >> ${bp_path};
+                echo >> ${bp_path};
+                echo "cc_defaults {" >> ${bp_path};
+                echo "  name: \"${filenp%.@(so)}_32-defaults\"," >> ${bp_path};
+                echo "  target: {" >> ${bp_path};
+                echo "    android_arm: {" >> ${bp_path};
+                echo "      srcs: [\":${filenp%.@(so)}_32-srcs\"]," >> ${bp_path};
+                echo "      shared_libs: [$(objdump -p "${LINEAGE_ROOT}/vendor/${key}/${file}" 2>/dev/null | sed 's/libprotobuf-cpp-lite-3.9.1/libprotobuf-cpp-lite-3.9.1-vendorcompat/' | sed -n 's/^\s*NEEDED\s*\(.*\)/\1/p' | sed 's/\.so$//' | sed 's/\(.\+\)/"\1",/g' | tr '\n' ' ')]," >> ${bp_path};
+                echo "    }," >> ${bp_path};
+                echo "  }," >> ${bp_path};
+                echo "}" >> ${bp_path};
+            else
+                echo "filegroup {" >> ${bp_path};
+                echo "  name: \"${filenp%.@(apk|blkz|sh|srm|xml)}-srcs\"," >> ${bp_path};
+                echo "  srcs: [\"${file}\"]," >> ${bp_path};
+                echo "}" >> ${bp_path};
+            fi;
+            echo >> ${bp_path};
+        done;
+    done;
+
+    echo "Finished writing makefiles...";
 }
 
 #
@@ -486,4 +557,5 @@ function extract() {
     fetch_sources $SRC;
     copy_files;
     do_patches;
+    write_makefiles;
 }
