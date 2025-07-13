@@ -91,13 +91,22 @@ function fetch_l4t_deps() {
   ar x libc6_2.31-0ubuntu9_arm64.deb data.tar.xz 1>/dev/null 2>&1
   tar -xf data.tar.xz ./lib/aarch64-linux-gnu/ld-2.31.so ./lib/aarch64-linux-gnu/libc-2.31.so ./lib/aarch64-linux-gnu/libdl-2.31.so ./lib/aarch64-linux-gnu/librt-2.31.so ./lib/aarch64-linux-gnu/libpthread-2.31.so 1>/dev/null 2>&1
 
-  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/bin64
   mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64
-  cp lib/aarch64-linux-gnu/ld-2.31.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/bin64/ld-linux-aarch64.so.1
+  cp lib/aarch64-linux-gnu/ld-2.31.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64/ld-linux-aarch64.so.1
   cp lib/aarch64-linux-gnu/libc-2.31.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64/libc.so.6
   cp lib/aarch64-linux-gnu//libdl-2.31.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64/libdl.so.2
   cp lib/aarch64-linux-gnu/librt-2.31.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64/librt.so.1
   cp lib/aarch64-linux-gnu/libpthread-2.31.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64/libpthread.so.0
+
+  MODULES[nvidia/common/r35/l4t]+="lib64/ld-linux-aarch64.so.1 ";
+  MODULES[nvidia/common/r35/l4t]+="lib64/libc.so.6 ";
+  MODULES[nvidia/common/r35/l4t]+="lib64/libdl.so.2 ";
+  MODULES[nvidia/common/r35/l4t]+="lib64/librt.so.1 ";
+  MODULES[nvidia/common/r35/l4t]+="lib64/libpthread.so.0 ";
+
+  ${PATCHELF} --set-soname libnvos-l4t.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64/libnvos-l4t.so 1>/dev/null 2>&1
+  ${PATCHELF} --set-soname libnvsocsys-l4t.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64/libnvsocsys-l4t.so 1>/dev/null 2>&1
+  ${PATCHELF} --replace-needed libnvos.so libnvos-l4t.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64/libnvsocsys-l4t.so 1>/dev/null 2>&1
 
   rm -rf ${LOCALTMPDIR}/*
 
@@ -105,13 +114,22 @@ function fetch_l4t_deps() {
   ar x libc6_2.35-0ubuntu3_arm64.deb data.tar.zst 1>/dev/null 2>&1
   tar -xf data.tar.zst ./lib/aarch64-linux-gnu/ld-linux-aarch64.so.1 ./lib/aarch64-linux-gnu/libc.so.6 ./lib/aarch64-linux-gnu/libdl.so.2 ./lib/aarch64-linux-gnu/librt.so.1 ./lib/aarch64-linux-gnu/libpthread.so.0 1>/dev/null 2>&1
 
-  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/bin64
   mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64
-  cp lib/aarch64-linux-gnu/ld-linux-aarch64.so.1 ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/bin64/ld-linux-aarch64.so.1
+  cp lib/aarch64-linux-gnu/ld-linux-aarch64.so.1 ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64/ld-linux-aarch64.so.1
   cp lib/aarch64-linux-gnu/libc.so.6 ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64/libc.so.6
   cp lib/aarch64-linux-gnu/libdl.so.2 ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64/libdl.so.2
   cp lib/aarch64-linux-gnu/librt.so.1 ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64/librt.so.1
   cp lib/aarch64-linux-gnu/libpthread.so.0 ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64/libpthread.so.0
+
+  MODULES[nvidia/common/r36/l4t]+="lib64/ld-linux-aarch64.so.1 ";
+  MODULES[nvidia/common/r36/l4t]+="lib64/libc.so.6 ";
+  MODULES[nvidia/common/r36/l4t]+="lib64/libdl.so.2 ";
+  MODULES[nvidia/common/r36/l4t]+="lib64/librt.so.1 ";
+  MODULES[nvidia/common/r36/l4t]+="lib64/libpthread.so.0 ";
+
+  ${PATCHELF} --set-soname libnvos-l4t.so ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64/libnvos-l4t.so 1>/dev/null 2>&1
+  ${PATCHELF} --set-soname libnvsocsys-l4t.so ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64/libnvsocsys-l4t.so 1>/dev/null 2>&1
+  ${PATCHELF} --replace-needed libnvos.so libnvos-l4t.so ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64/libnvsocsys-l4t.so 1>/dev/null 2>&1
 
   popd 1>/dev/null 2>&1
   rm -rf ${LOCALTMPDIR}
@@ -131,17 +149,23 @@ function patch_nvpmodel() {
   tar -xf data.tar.zst ./usr/sbin/nvpmodel 1>/dev/null 2>&1
   cp usr/sbin/nvpmodel ${LINEAGE_ROOT}/${OUTDIR}/common/r35/nvpmodel/bin64/nvpmodel
   rm ${LINEAGE_ROOT}/${OUTDIR}/common/r35/nvpmodel/nvidia-l4t-nvpmodel_arm64.deb
-  ${PATCHELF} --set-interpreter /vendor/bin/l4t/ld-linux-aarch64.so.1 ${LINEAGE_ROOT}/${OUTDIR}/common/r35/nvpmodel/bin64/nvpmodel 1>/dev/null 2>&1
+  ${PATCHELF} --set-interpreter /vendor/lib64/l4t/ld-linux-aarch64.so.1 ${LINEAGE_ROOT}/${OUTDIR}/common/r35/nvpmodel/bin64/nvpmodel 1>/dev/null 2>&1
+  ${PATCHELF} --replace-needed libnvsocsys.so libnvsocsys-l4t.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/nvpmodel/bin64/nvpmodel 1>/dev/null 2>&1
   sed -i "s|/var/lib|/odm/etc|g" ${LINEAGE_ROOT}/${OUTDIR}/common/r35/nvpmodel/bin64/nvpmodel
   rm -rf ${LOCALTMPDIR}/*
+
+  MODULES[nvidia/common/r35/nvpmodel]+="bin64/nvpmodel ";
 
   mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/r36/nvpmodel/bin64
   ar x ${LINEAGE_ROOT}/${OUTDIR}/common/r36/nvpmodel/nvidia-l4t-nvpmodel_arm64.deb data.tar.zst 2>&1 1>/dev/null
   tar -xf data.tar.zst ./usr/sbin/nvpmodel 1>/dev/null 2>&1
   cp usr/sbin/nvpmodel ${LINEAGE_ROOT}/${OUTDIR}/common/r36/nvpmodel/bin64/nvpmodel
   rm ${LINEAGE_ROOT}/${OUTDIR}/common/r36/nvpmodel/nvidia-l4t-nvpmodel_arm64.deb
-  ${PATCHELF} --set-interpreter /vendor/bin/l4t/ld-linux-aarch64.so.1 ${LINEAGE_ROOT}/${OUTDIR}/common/r36/nvpmodel/bin64/nvpmodel 1>/dev/null 2>&1
+  ${PATCHELF} --set-interpreter /vendor/lib64/l4t/ld-linux-aarch64.so.1 ${LINEAGE_ROOT}/${OUTDIR}/common/r36/nvpmodel/bin64/nvpmodel 1>/dev/null 2>&1
+  ${PATCHELF} --replace-needed libnvsocsys.so libnvsocsys-l4t.so ${LINEAGE_ROOT}/${OUTDIR}/common/r36/nvpmodel/bin64/nvpmodel 1>/dev/null 2>&1
   sed -i "s|/var/lib|/odm/etc|g" ${LINEAGE_ROOT}/${OUTDIR}/common/r36/nvpmodel/bin64/nvpmodel
+
+  MODULES[nvidia/common/r36/nvpmodel]+="bin64/nvpmodel ";
 
   popd 1>/dev/null 2>&1
   rm -rf ${LOCALTMPDIR}
