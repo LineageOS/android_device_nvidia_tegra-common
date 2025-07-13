@@ -395,7 +395,12 @@ function copy_files() {
                 if [ "${dest%%/*}" != "BCT" -a "${dest%%/*}" != "firmware" ]; then
                     elffmt=$(llvm-objdump -a "${LINEAGE_ROOT}/vendor/${project}/${SOURCE_BRANCH[$sname]}/${dest}" 2>/dev/null | sed -nE "s|^.+file format (.*)$|\1|p");
                     if [ "${elffmt}" == "elf64-littleaarch64" -o "${elffmt}" == "elf32-littlearm" -o "${dest#*.}" == "apk" -o "${dest#*.}" == "sh" -o "${dest#*.}" == "xml" ]; then
-                        MODULES[${project}/${SOURCE_BRANCH[$sname]}/${dest%%/*}]+="${dest#*/} ";
+                        dolbypath=${dest#*/};
+                        if [ "${dolbypath%%/*}" == "dolby" -o "${dolbypath%%/*}" == "nodolby" ]; then
+                            MODULES[${project}/${SOURCE_BRANCH[$sname]}/${dest%%/*}/${dolbypath%%/*}]+="${dolbypath#*/} ";
+                        else
+                            MODULES[${project}/${SOURCE_BRANCH[$sname]}/${dest%%/*}]+="${dest#*/} ";
+                        fi;
                     fi;
                 fi;
             elif [ "${sname}" == "external" -a -f "${EXTRACTDIR}/external/$(basename ${dest})" ]; then
