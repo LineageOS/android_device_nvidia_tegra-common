@@ -42,11 +42,14 @@ PRODUCT_SOURCE_ROOT_DIRS += $(LOCAL_PATH)/$(TARGET_TEGRA_CAMERA)/camera $(VENDOR
 include $(LOCAL_PATH)/$(TARGET_TEGRA_CAMERA)/camera/nvcamera.mk
 endif
 
-ifeq ($(NV_ANDROID_FRAMEWORK_ENHANCEMENTS),true)
+ifneq ($(NV_ANDROID_FRAMEWORK_ENHANCEMENTS),true)
+TARGET_TEGRA_CPL :=
+endif
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_CPL)/nvcpl/nvcpl.mk)","")
 PRODUCT_SOURCE_ROOT_DIRS += $(LOCAL_PATH)/$(TARGET_TEGRA_CPL)/nvcpl $(VENDOR_PATH)/$(TARGET_TEGRA_CPL)/nvcpl
 include $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/nvcpl/nvcpl.mk
-endif
+else
+PRODUCT_SOURCE_ROOT_DIRS += $(LOCAL_PATH)/stubs/nvcpl
 endif
 
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_GPU)/nvgpu/nvgpu.mk)","")
@@ -88,6 +91,8 @@ endif
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_PHS)/nvphs/nvphs.mk)","")
 PRODUCT_SOURCE_ROOT_DIRS += $(LOCAL_PATH)/$(TARGET_TEGRA_PHS)/nvphs $(VENDOR_PATH)/$(TARGET_TEGRA_PHS)/nvphs
 include $(LOCAL_PATH)/$(TARGET_TEGRA_PHS)/nvphs/nvphs.mk
+else
+PRODUCT_SOURCE_ROOT_DIRS += -device/nvidia/tegra-common/nvphs $(LOCAL_PATH)/stubs/nvphs
 endif
 
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_POWER)/power/power.mk)","")
