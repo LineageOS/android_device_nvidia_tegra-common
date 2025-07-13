@@ -40,3 +40,10 @@ sh_binary {
     src: "nvphsd_setup.sh",
     soc_specific: true,
 }
+
+cc_binary {
+    name: "nvphsd",
+    srcs: ["nvphsd.c"],
+    shared_libs: ["libnvphsd"],
+    soc_specific: true,
+}
