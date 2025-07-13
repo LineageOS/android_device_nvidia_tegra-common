@@ -252,9 +252,9 @@ function patch_hidl() {
   ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib/vendor.nvidia.hardware.graphics.display@1.0-impl.so
   ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/vendor.nvidia.hardware.graphics.display@1.0-impl.so
 
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/libnvhwcomposer.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib/libnvhwcomposer.dolby.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/libnvhwcomposer.dolby.so
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/nodolby/lib64/libnvhwcomposer.so
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/dolby/lib/libnvhwcomposer.so
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/dolby/lib64/libnvhwcomposer.so
 
   ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib/vendor.nvidia.hardware.graphics.composer@2.0-impl.so
   ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/vendor.nvidia.hardware.graphics.composer@2.0-impl.so
@@ -275,10 +275,10 @@ function patch_hidl() {
 
   ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/camera/lib64/vendor.nvidia.hardware.camera.provider@2.4-impl.so
 
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvmm/lib/libnvomx.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvmm/lib64/libnvomx.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvmm/lib/libnvomx.dolby.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvmm/lib64/libnvomx.dolby.so
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvmm/nodolby/lib/libnvomx.so
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvmm/nodolby/lib64/libnvomx.so
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvmm/dolby/lib/libnvomx.so
+  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvmm/dolby/lib64/libnvomx.so
 
   ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/tos/bin32/hw/android.hardware.keymaster@3.0-service.tegra
   ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/tos/bin64/hw/android.hardware.keymaster@3.0-service.tegra

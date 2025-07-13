@@ -230,13 +230,13 @@ include $(CLEAR_VARS)
 LOCAL_MODULE               := libnvhwcomposer
 LOCAL_REQUIRED_MODULES     := libcuda
 ifneq ($(filter video, $(TARGET_TEGRA_DOLBY)),)
-LOCAL_SRC_FILES_32         := $(COMMON_NVGPU_PATH)/lib/libnvhwcomposer.dolby.so
-LOCAL_SRC_FILES_64         := $(COMMON_NVGPU_PATH)/lib64/libnvhwcomposer.dolby.so
+LOCAL_SRC_FILES_32         := $(COMMON_NVGPU_PATH)/dolby/lib/libnvhwcomposer.so
+LOCAL_SRC_FILES_64         := $(COMMON_NVGPU_PATH)/dolby/lib64/libnvhwcomposer.so
 LOCAL_REQUIRED_MODULES     += libdolbycontrol
 else
 # 32-bit non-dolby binary doesn't exist, but this needs to be here for parsing purposes
-LOCAL_SRC_FILES_32         := $(COMMON_NVGPU_PATH)/lib/libnvhwcomposer.so
-LOCAL_SRC_FILES_64         := $(COMMON_NVGPU_PATH)/lib64/libnvhwcomposer.so
+LOCAL_SRC_FILES_32         := $(COMMON_NVGPU_PATH)/nodolby/lib/libnvhwcomposer.so
+LOCAL_SRC_FILES_64         := $(COMMON_NVGPU_PATH)/nodolby/lib64/libnvhwcomposer.so
 endif
 LOCAL_MULTILIB             := first
 LOCAL_MODULE_SUFFIX        := .so
