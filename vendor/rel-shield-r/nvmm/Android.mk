@@ -194,11 +194,11 @@ include $(BUILD_NVIDIA_COMMON_PREBUILT)
 include $(CLEAR_VARS)
 LOCAL_MODULE               := libnvmmlite_video
 ifneq ($(filter video, $(TARGET_TEGRA_DOLBY)),)
-LOCAL_SRC_FILES_32         := $(COMMON_NVMM_PATH)/lib/libnvmmlite_video.dolby.so
-LOCAL_SRC_FILES_64         := $(COMMON_NVMM_PATH)/lib64/libnvmmlite_video.dolby.so
+LOCAL_SRC_FILES_32         := $(COMMON_NVMM_PATH)/dolby/lib/libnvmmlite_video.so
+LOCAL_SRC_FILES_64         := $(COMMON_NVMM_PATH)/dolby/lib64/libnvmmlite_video.so
 else
-LOCAL_SRC_FILES_32         := $(COMMON_NVMM_PATH)/lib/libnvmmlite_video.so
-LOCAL_SRC_FILES_64         := $(COMMON_NVMM_PATH)/lib64/libnvmmlite_video.so
+LOCAL_SRC_FILES_32         := $(COMMON_NVMM_PATH)/nodolby/lib/libnvmmlite_video.so
+LOCAL_SRC_FILES_64         := $(COMMON_NVMM_PATH)/nodolby/lib64/libnvmmlite_video.so
 endif
 LOCAL_MULTILIB             := both
 LOCAL_MODULE_SUFFIX        := .so
@@ -211,11 +211,11 @@ include $(BUILD_NVIDIA_COMMON_PREBUILT)
 include $(CLEAR_VARS)
 LOCAL_MODULE               := libnvomx
 ifneq ($(filter video, $(TARGET_TEGRA_DOLBY)),)
-LOCAL_SRC_FILES_32         := $(COMMON_NVMM_PATH)/lib/libnvomx.dolby.so
-LOCAL_SRC_FILES_64         := $(COMMON_NVMM_PATH)/lib64/libnvomx.dolby.so
+LOCAL_SRC_FILES_32         := $(COMMON_NVMM_PATH)/dolby/lib/libnvomx.so
+LOCAL_SRC_FILES_64         := $(COMMON_NVMM_PATH)/dolby/lib64/libnvomx.so
 else
-LOCAL_SRC_FILES_32         := $(COMMON_NVMM_PATH)/lib/libnvomx.so
-LOCAL_SRC_FILES_64         := $(COMMON_NVMM_PATH)/lib64/libnvomx.so
+LOCAL_SRC_FILES_32         := $(COMMON_NVMM_PATH)/nodolby/lib/libnvomx.so
+LOCAL_SRC_FILES_64         := $(COMMON_NVMM_PATH)/nodolby/lib64/libnvomx.so
 endif
 LOCAL_MULTILIB             := both
 LOCAL_MODULE_SUFFIX        := .so
@@ -254,9 +254,9 @@ include $(CLEAR_VARS)
 LOCAL_MODULE               := libstagefrighthw
 LOCAL_VINTF_FRAGMENTS      := android.hardware.media.omx@1.0-service.xml
 ifneq ($(filter video, $(TARGET_TEGRA_DOLBY)),)
-LOCAL_SRC_FILES_32         := $(COMMON_NVMM_PATH)/lib/libstagefrighthw.dolby.so
+LOCAL_SRC_FILES_32         := $(COMMON_NVMM_PATH)/dolby/lib/libstagefrighthw.so
 else
-LOCAL_SRC_FILES_32         := $(COMMON_NVMM_PATH)/lib/libstagefrighthw.so
+LOCAL_SRC_FILES_32         := $(COMMON_NVMM_PATH)/nodolby/lib/libstagefrighthw.so
 endif
 LOCAL_MULTILIB             := 32
 LOCAL_MODULE_SUFFIX        := .so
