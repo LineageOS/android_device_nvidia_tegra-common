@@ -18,8 +18,8 @@ COMMON_L4T_PATH := ../../../../../../vendor/nvidia/common/r35/l4t
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := ld-linux-aarch64.so.1
-LOCAL_SRC_FILES            := $(COMMON_L4T_PATH)/bin64/ld-linux-aarch64.so.1
-LOCAL_MODULE_CLASS         := EXECUTABLES
+LOCAL_SRC_FILES            := $(COMMON_L4T_PATH)/lib64/ld-linux-aarch64.so.1
+LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
 LOCAL_MODULE_TARGET_ARCH   := arm64
 LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := gnu
@@ -78,8 +78,7 @@ include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := libnvos-l4t
-LOCAL_MODULE_STEM          := libnvos
-LOCAL_SRC_FILES            := $(COMMON_L4T_PATH)/lib64/libnvos.so
+LOCAL_SRC_FILES            := $(COMMON_L4T_PATH)/lib64/libnvos-l4t.so
 LOCAL_MODULE_SUFFIX        := .so
 LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
 LOCAL_MODULE_TARGET_ARCH   := arm64
@@ -93,9 +92,8 @@ include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := libnvsocsys-l4t
-LOCAL_MODULE_STEM          := libnvsocsys
 LOCAL_MODULE_SUFFIX        := .so
-LOCAL_SRC_FILES            := $(COMMON_L4T_PATH)/lib64/libnvsocsys.so
+LOCAL_SRC_FILES            := $(COMMON_L4T_PATH)/lib64/libnvsocsys-l4t.so
 LOCAL_MODULE_CLASS         := SHARED_LIBRARIES
 LOCAL_MODULE_TARGET_ARCH   := arm64
 LOCAL_MODULE_TAGS          := optional
