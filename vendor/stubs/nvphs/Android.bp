@@ -1,0 +1,6 @@
+cc_library_shared {
+    name: "libnvphs",
+    srcs: ["src/nvphs_stub.c"],
+    cflags: ["-Wno-unused-parameter"],
+    soc_specific: true,
+}

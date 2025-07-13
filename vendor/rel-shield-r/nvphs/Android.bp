@@ -192,3 +192,10 @@ cc_prebuilt_library_shared {
     compile_multilib: "both",
     soc_specific: true,
 }
+
+cc_binary {
+    name: "nvphsd",
+    srcs: ["src/nvphsd.c"],
+    shared_libs: ["libnvphsd"],
+    soc_specific: true,
+}
