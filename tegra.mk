@@ -153,10 +153,13 @@ endif
 endif
 
 ifneq ($(filter btlinux, $(TARGET_TEGRA_BT)),)
-PRODUCT_COPY_FILES += \
-    device/nvidia/tegra-common/comms/android.hardware.bluetooth-service.default-tegra.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.bluetooth-service.default-tegra.rc
+ifeq ($(TARGET_TEGRA_BT),btlinux)
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth-service.default
+else
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth-service.tegra
+endif
 endif
 endif
 
