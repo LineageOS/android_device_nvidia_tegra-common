@@ -27,3 +27,29 @@ install_symlink {
     installed_location: "lib64/android.hardware.bluetooth@1.0-impl.so",
     symlink_target: "hw/android.hardware.bluetooth@1.0-impl.so",
 }
+
+cc_binary {
+    name: "android.hardware.bluetooth-service.tegra",
+    overrides: ["android.hardware.bluetooth-service.default"],
+    relative_install_path: "hw",
+    init_rc: ["bluetooth-service-tegra.rc"],
+    vendor: true,
+    defaults: ["android.hardware.bluetooth-service-build-defaults"],
+    srcs: [
+        "bluetooth-service-tegra.cpp",
+    ],
+    include_dirs: [
+        "hardware/interfaces/bluetooth/aidl/default",
+    ],
+    shared_libs: [
+        "android.hardware.bluetooth-V1-ndk",
+        "libbase",
+        "libbinder_ndk",
+        "libhidlbase",
+        "libutils",
+        "liblog",
+    ],
+    static_libs: [
+        "libbluetoothhcihalimpl",
+    ],
+}
