@@ -1,5 +1,4 @@
-service vendor.bluetooth-default /vendor/bin/hw/android.hardware.bluetooth-service.default
-    override
+service vendor.bluetooth-default /vendor/bin/hw/android.hardware.bluetooth-service.tegra
     class hal
     capabilities BLOCK_SUSPEND NET_ADMIN SYS_NICE
     user bluetooth
