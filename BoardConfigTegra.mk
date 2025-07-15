@@ -30,6 +30,9 @@ BOARD_HAVE_BLUETOOTH := true
 
 ifneq ($(filter bcm, $(TARGET_TEGRA_BT)),)
 BOARD_HAVE_BLUETOOTH_BCM := true
+endif
+# Don't include on multi-variant builds
+ifeq ($(TARGET_TEGRA_BT),bcm)
 DEVICE_MANIFEST_FILE += device/nvidia/tegra-common/manifests/bluetooth.xml
 endif
 endif
