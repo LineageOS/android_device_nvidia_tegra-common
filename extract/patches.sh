@@ -283,6 +283,9 @@ function patch_hidl() {
   ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/tos/bin32/hw/android.hardware.keymaster@3.0-service.tegra
   ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/tos/bin64/hw/android.hardware.keymaster@3.0-service.tegra
 
+  ${PATCHELF} --replace-needed android.hardware.graphics.common-V1-ndk_platform.so android.hardware.graphics.common-V1-ndk.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib/libnvrmvkif.so
+  ${PATCHELF} --replace-needed android.hardware.graphics.common-V1-ndk_platform.so android.hardware.graphics.common-V1-ndk.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/libnvrmvkif.so
+
   echo "";
 }
 
