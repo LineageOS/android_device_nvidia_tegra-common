@@ -31,3 +31,21 @@ cc_library_static {
         },
     },
 }
+
+cc_binary {
+    name: "init_tegra",
+    init_rc: ["init_tegra.rc"],
+    srcs: [
+        "init_tegra_vendor.cpp",
+        "vendor_tegra.cpp",
+    ],
+    shared_libs: [
+        "libcutils",
+        "liblog",
+    ],
+    whole_static_libs: select(soong_config_variable("libinit", "vendor_init_lib"), {
+        any @ flag_val: [flag_val + "_vendor"],
+        default: [],
+    }),
+    soc_specific: true,
+}
