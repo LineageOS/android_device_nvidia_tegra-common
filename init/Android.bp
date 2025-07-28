@@ -43,9 +43,10 @@ cc_binary {
         "libcutils",
         "liblog",
     ],
-    whole_static_libs: select(soong_config_variable("libinit", "vendor_init_lib"), {
-        any @ flag_val: [flag_val + "_vendor"],
-        default: [],
+    whole_static_libs: select((soong_config_variable("TARGET_TEGRA", "VARIANT"),
+                               soong_config_variable("libinit", "vendor_init_lib")), {
+        (any @ dummy_val, any @ flag_val): [flag_val + "_vendor"],
+        (default, default): [],
     }),
     soc_specific: true,
 }
