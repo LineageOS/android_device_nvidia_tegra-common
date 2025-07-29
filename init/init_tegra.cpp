@@ -210,6 +210,13 @@ void tegra_init::set_fingerprints(build_version fp_version)
                   fp_version.android_release + "/" +
                   fp_version.nvidia_version +
                   ":user/release-keys").c_str());
+    property_set("ro.vendor_dlkm.build.fingerprint",
+                 ("NVIDIA/" + chosen_device->name + "/" +
+                  chosen_device->device + ":" +
+                  fp_version.android_version + "/" +
+                  fp_version.android_release + "/" +
+                  fp_version.nvidia_version +
+                  ":user/release-keys").c_str());
     property_set("ro.build.description",
                  (chosen_device->name + "-user " +
                   fp_version.android_version + " " +
@@ -255,6 +262,10 @@ void tegra_init::set_properties()
     property_set("ro.product.system_ext.name",   chosen_device->name);
     property_set("ro.product.system_ext.device", chosen_device->device);
     property_set("ro.product.system_ext.model",  chosen_device->model);
+
+    property_set("ro.product.vendor_dlkm.name",   chosen_device->name);
+    property_set("ro.product.vendor_dlkm.device", chosen_device->device);
+    property_set("ro.product.vendor_dlkm.model",  chosen_device->model);
 }
 
 void tegra_init::check_safe_mode_adb()
