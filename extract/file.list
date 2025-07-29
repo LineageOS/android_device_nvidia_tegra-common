@@ -338,6 +338,9 @@ stock-t210	bmp/verity_eio_continue_1080.bmp	BMP/
 
 # Wireless
 # Realtek
+l4t-t186	drivers/lib/firmware/rtl8822cu_config		realtek/rtl8822cu/
+l4t-t186	drivers/lib/firmware/rtl8822cu_fw		realtek/rtl8822cu/
+l4t-t186	drivers/lib/firmware/rtl8822_setting.bin	realtek/rtl8822cu/
 l4t-t194	drivers/lib/firmware/rtl8822cu_config		realtek/rtl8822cu/
 l4t-t194	drivers/lib/firmware/rtl8822cu_fw		realtek/rtl8822cu/
 l4t-t194	drivers/lib/firmware/rtl8822_setting.bin	realtek/rtl8822cu/
