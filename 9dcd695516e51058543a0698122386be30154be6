@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25f2062d_375d8032",
+        "filename": "extract/patches.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2025-08-13T21:42:20Z",
+      "side": 1,
+      "message": "nvos is what needs removed?",
+      "revId": "9dcd695516e51058543a0698122386be30154be6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
