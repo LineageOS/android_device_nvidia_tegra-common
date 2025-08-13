@@ -38,8 +38,8 @@ function chmod_tegraflash() {
 function patch_nvcontrol() {
   echo -n "Removing nvos reference from nvcpl jni...";
 
-  sed -i 's/libnvos.so/libjpeg.so/' ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/lib64/libnvcontrol_jni.so
-  sed -i 's/libnvos.so/libjpeg.so/' ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/lib/libnvcontrol_jni.so
+  ${PATCHELF} --remove-needed "libnvos.so" ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/lib64/libnvcontrol_jni.so
+  ${PATCHELF} --remove-needed "libnvos.so" ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/lib/libnvcontrol_jni.so
 
   echo "";
 }
