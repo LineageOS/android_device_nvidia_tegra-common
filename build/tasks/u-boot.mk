@@ -13,7 +13,7 @@
 # limitations under the License.
 
 ifneq ($(TARGET_TEGRA_UBOOT_CONFIG),)
-TARGET_TEGRA_UBOOT_PATH ?= external/u-boot
+TARGET_TEGRA_UBOOT_PATH ?= hardware/nvidia/u-boot
 
 BUILD_TOOLS_BINS         := $(BUILD_TOP)/prebuilts/build-tools/$(HOST_PREBUILT_TAG)/bin
 TARGET_KERNEL_CLANG_PATH ?= $(BUILD_TOP)/prebuilts/clang/host/$(HOST_PREBUILT_TAG)/$(LLVM_PREBUILTS_VERSION)
