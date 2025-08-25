@@ -29,6 +29,7 @@ function chmod_tegraflash() {
   find ${LINEAGE_ROOT}/${OUTDIR}/common/r32/tegraflash -type f -exec chmod 755 {} \;
   find ${LINEAGE_ROOT}/${OUTDIR}/common/r35/tegraflash -type f -exec chmod 755 {} \;
   find ${LINEAGE_ROOT}/${OUTDIR}/common/r36/tegraflash -type f -exec chmod 755 {} \;
+  find ${LINEAGE_ROOT}/${OUTDIR}/common/r39/tegraflash -type f -exec chmod 755 {} \;
   find ${LINEAGE_ROOT}/${OUTDIR}/common/rel-24/tegraflash -type f -exec chmod 755 {} \;
 
   echo "";
@@ -47,6 +48,10 @@ function patch_bup() {
   sed -i 's/= bup_magic/= "NVIDIA__BLOB__V2" if args.blob_type == "bmp" else bup_magic/' ${LINEAGE_ROOT}/${OUTDIR}/common/r36/tegraflash/BUP_generator.py
   sed -i 's/self.gen_version/0x00020000 if args.blob_type == "bmp" else self.gen_version/' ${LINEAGE_ROOT}/${OUTDIR}/common/r36/tegraflash/BUP_generator.py
 
+  sed -i 's/payload_obj.outfile/os.path.join(os.environ.get("OUT"), payload_obj.outfile)/' ${LINEAGE_ROOT}/${OUTDIR}/common/r39/tegraflash/BUP_generator.py
+  sed -i 's/= bup_magic/= "NVIDIA__BLOB__V2" if args.blob_type == "bmp" else bup_magic/' ${LINEAGE_ROOT}/${OUTDIR}/common/r39/tegraflash/BUP_generator.py
+  sed -i 's/self.gen_version/0x00020000 if args.blob_type == "bmp" else self.gen_version/' ${LINEAGE_ROOT}/${OUTDIR}/common/r39/tegraflash/BUP_generator.py
+
   echo "";
 }
 
@@ -63,6 +68,13 @@ function patch_tegrasign_v3() {
 
   sed -i "s|current_dir_path + '/|'|" ${LINEAGE_ROOT}/${OUTDIR}/common/r36/tegraflash/tegrasign_v3_internal.py
   sed -i "/current_dir_path/d" ${LINEAGE_ROOT}/${OUTDIR}/common/r36/tegraflash/tegrasign_v3_internal.py
+
+  sed -i "s|current_dir_path + '/|'|" ${LINEAGE_ROOT}/${OUTDIR}/common/r39/tegraflash/tegrasign_v3_internal.py
+  sed -i "/current_dir_path/d" ${LINEAGE_ROOT}/${OUTDIR}/common/r39/tegraflash/tegrasign_v3_internal.py
+
+  sed -i "/^bin_dir =/d" ${LINEAGE_ROOT}/${OUTDIR}/common/r39/tegraflash/tegrasign_v3_util.py
+  sed -i "s/script_dir=/bin_dir =/" ${LINEAGE_ROOT}/${OUTDIR}/common/r39/tegraflash/tegrasign_v3_util.py
+  sed -i "/^bin_dir =/i script_dir = os.getcwd()" ${LINEAGE_ROOT}/${OUTDIR}/common/r39/tegraflash/tegrasign_v3_util.py
 
   patch --no-backup-if-mismatch -d ${LINEAGE_ROOT}/${OUTDIR} -p1 1>/dev/null 2>&1 < ${LINEAGE_ROOT}/device/nvidia/tegra-common/extract/tegrasign.patch
 

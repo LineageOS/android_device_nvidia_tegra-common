@@ -5,6 +5,7 @@ nv-tegra-t210-rel24	tnspec.py	tegraflash/
 # Bootloader update generators
 l4t-t194	bootloader/BUP_generator.py			tegraflash/
 l4t-t234	bootloader/BUP_generator.py			tegraflash/
+l4t-t264	bootloader/BUP_generator.py			tegraflash/
 
 # Tegraflash
 l4t-t186	bootloader/tegraflash.py		tegraflash/
@@ -66,6 +67,29 @@ l4t-t234	bootloader/tegrasign_v3_internal.py	tegraflash/
 l4t-t234	bootloader/tegrasign_v3_softhsm.py	tegraflash/
 l4t-t234	bootloader/tegrasign_v3_util.py		tegraflash/
 l4t-t234	bootloader/tegraopenssl			tegraflash/
+l4t-t264	bootloader/tegraflash.py		tegraflash/
+l4t-t264	bootloader/tegraflash_impl_t234.py	tegraflash/
+l4t-t264	bootloader/tegraflash_impl_t264.py	tegraflash/
+l4t-t264	bootloader/tegraflash_internal.py	tegraflash/
+l4t-t264	bootloader/sw_memcfg_overlay.pl		tegraflash/
+l4t-t264	bootloader/pyfdt/dtbdump.py		tegraflash/pyfdt/
+l4t-t264	bootloader/pyfdt/fdtmerge.py		tegraflash/pyfdt/
+l4t-t264	bootloader/pyfdt/__init__.py		tegraflash/pyfdt/
+l4t-t264	bootloader/pyfdt/jsonfdtdump.py		tegraflash/pyfdt/
+l4t-t264	bootloader/pyfdt/pyfdt.py		tegraflash/pyfdt/
+l4t-t264	bootloader/dtbcheck.py			tegraflash/
+l4t-t264	bootloader/t234.py			tegraflash/
+l4t-t264	bootloader/tegrabct_v2			tegraflash/
+l4t-t264	bootloader/tegradevflash_v2		tegraflash/
+l4t-t264	bootloader/tegrahost_v2			tegraflash/
+l4t-t264	bootloader/tegraparser_v2		tegraflash/
+l4t-t264	bootloader/tegrarcm_v2			tegraflash/
+l4t-t264	bootloader/tegrasign_v3.py		tegraflash/
+l4t-t264	bootloader/tegrasign_v3_hsm.py		tegraflash/
+l4t-t264	bootloader/tegrasign_v3_internal.py	tegraflash/
+l4t-t264	bootloader/tegrasign_v3_softhsm.py	tegraflash/
+l4t-t264	bootloader/tegrasign_v3_util.py		tegraflash/
+l4t-t264	bootloader/tegraopenssl			tegraflash/
 
 # Bootloader images
 stock-foster	bmp/nvidia480.bmp			BMP/
