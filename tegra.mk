@@ -279,13 +279,8 @@ endif
 
 # Memtrack
 ifeq ($(TARGET_TEGRA_MEMTRACK),lineage)
-ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \>= 6), 1)
 PRODUCT_PACKAGES += \
     android.hardware.memtrack-service-nvidia
-else
-PRODUCT_PACKAGES += \
-    android.hardware.memtrack@1.0-service-nvidia
-endif
 endif
 
 # OMX
