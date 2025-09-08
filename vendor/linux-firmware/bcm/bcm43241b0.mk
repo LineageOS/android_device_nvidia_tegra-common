@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LF_BCM_PATH := kernel/nvidia/linux-firmware/
-
-PRODUCT_COPY_FILES += \
-    $(LF_BCM_PATH)/brcm/brcmfmac43241b0-sdio.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/brcm/brcmfmac43241b0-sdio.bin
+PRODUCT_PACKAGES += \
+    linux_firmware_brcm-bcm43241 \
+    wireless-regdb_regulatory.db \
+    wireless-regdb_regulatory.db.p7s

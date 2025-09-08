@@ -13,9 +13,11 @@
 # limitations under the License.
 
 COMMON_BCM_PATH := vendor/nvidia/common/rel-shield-r/bcm
-LF_BCM_PATH := kernel/nvidia/linux-firmware/
+
+PRODUCT_PACKAGES += \
+    linux_firmware_cypress-bcm4356 \
+    wireless-regdb_regulatory.db \
+    wireless-regdb_regulatory.db.p7s
 
 PRODUCT_COPY_FILES += \
-    $(LF_BCM_PATH)/cypress/cyfmac4356-pcie.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/brcm/brcmfmac4356-pcie.bin \
-    $(LF_BCM_PATH)/cypress/cyfmac4356-pcie.clm_blob:$(TARGET_COPY_OUT_VENDOR)/firmware/brcm/brcmfmac4356-pcie.clm_blob \
     $(COMMON_BCM_PATH)/bcm4356/BCM4356A3.hcd:$(TARGET_COPY_OUT_VENDOR)/firmware/brcm/BCM4356.hcd

@@ -15,6 +15,10 @@
 LOCAL_PATH := device/nvidia/tegra-common/vendor
 VENDOR_PATH := vendor/nvidia/common
 
+ifeq ($(TARGET_TEGRA_FIRMWARE_BRANCH),"linux-firmware")
+PRODUCT_SOONG_NAMESPACES += external/linux-firmware-mainline
+endif
+
 PRODUCT_SOURCE_ROOT_DIRS += $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/common $(VENDOR_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/common
 
 ifneq ($(TARGET_TEGRA_DOLBY),)
