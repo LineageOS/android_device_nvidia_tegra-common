@@ -142,6 +142,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml
 
 ifneq ($(filter bcm, $(TARGET_TEGRA_BT)),)
+PRODUCT_SOONG_NAMESPACES += hardware/broadcom/libbt
 PRODUCT_PACKAGES += \
     libbt-vendor \
     android.hardware.bluetooth@1.1-service
