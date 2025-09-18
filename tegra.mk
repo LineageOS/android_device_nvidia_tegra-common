@@ -341,6 +341,10 @@ PRODUCT_PACKAGES += \
 TARGET_TEGRA_SENSOR_FEATURES ?= accelerometer gyroscope
 PRODUCT_COPY_FILES += \
     $(foreach feature,$(TARGET_TEGRA_SENSOR_FEATURES),frameworks/native/data/etc/android.hardware.sensor.$(feature).xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.$(feature).xml)
+
+ifneq ($(filter iio, $(TARGET_TEGRA_SENSORS)),)
+PRODUCT_SOONG_NAMESPACES += hardware/intel/sensors-iio
+endif
 endif
 
 # Thermal
