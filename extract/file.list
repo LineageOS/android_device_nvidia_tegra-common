@@ -264,6 +264,19 @@ l4t-t194	bootloader/BUP_generator.py			tegraflash/
 l4t-t234	bootloader/BUP_generator.py			tegraflash/
 
 # Tegraflash
+l4t-t186	bootloader/tegraflash.py		tegraflash/
+l4t-t186	bootloader/tegraflash_internal.py	tegraflash/
+l4t-t186	bootloader/sw_memcfg_overlay.pl		tegraflash/
+l4t-t186	bootloader/tegrabct_v2			tegraflash/
+l4t-t186	bootloader/tegradevflash_v2		tegraflash/
+l4t-t186	bootloader/tegrahost_v2			tegraflash/
+l4t-t186	bootloader/tegraparser_v2		tegraflash/
+l4t-t186	bootloader/tegrarcm_v2			tegraflash/
+l4t-t186	bootloader/tegrasign_v2			tegraflash/
+l4t-t186	bootloader/tegrasign_v3.py		tegraflash/
+l4t-t186	bootloader/tegrasign_v3_internal.py	tegraflash/
+l4t-t186	bootloader/tegrasign_v3_util.py		tegraflash/
+l4t-t186	bootloader/tegraopenssl			tegraflash/
 l4t-t194	bootloader/tegraflash.py		tegraflash/
 l4t-t194	bootloader/tegraflash_impl_t234.py	tegraflash/
 l4t-t194	bootloader/tegraflash_internal.py	tegraflash/
