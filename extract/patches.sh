@@ -26,6 +26,7 @@ function fetch_bcm4356_patchfile() {
 function chmod_tegraflash() {
   echo -n "Making tegraflash host binaries executable...";
 
+  find ${LINEAGE_ROOT}/${OUTDIR}/common/r32/tegraflash -type f -exec chmod 755 {} \;
   find ${LINEAGE_ROOT}/${OUTDIR}/common/r35/tegraflash -type f -exec chmod 755 {} \;
   find ${LINEAGE_ROOT}/${OUTDIR}/common/r36/tegraflash -type f -exec chmod 755 {} \;
   find ${LINEAGE_ROOT}/${OUTDIR}/common/rel-24/tegraflash -type f -exec chmod 755 {} \;
@@ -64,6 +65,9 @@ function patch_bup() {
 # Remove dependency on yaml as it's not available in the aosp python prebuilts
 function patch_tegrasign_v3() {
   echo -n "Patching tegrasign_v3...";
+
+  sed -i "s|current_dir_path + '/|'|" ${LINEAGE_ROOT}/${OUTDIR}/common/r32/tegraflash/tegrasign_v3_internal.py
+  sed -i "/current_dir_path/d" ${LINEAGE_ROOT}/${OUTDIR}/common/r32/tegraflash/tegrasign_v3_internal.py
 
   sed -i "s|current_dir_path + '/|'|" ${LINEAGE_ROOT}/${OUTDIR}/common/r35/tegraflash/tegrasign_v3_internal.py
   sed -i "/current_dir_path/d" ${LINEAGE_ROOT}/${OUTDIR}/common/r35/tegraflash/tegrasign_v3_internal.py
