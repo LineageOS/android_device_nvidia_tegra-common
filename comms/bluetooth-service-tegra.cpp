@@ -16,7 +16,6 @@
 
 #define LOG_TAG "aidl.android.hardware.bluetooth.service.tegra"
 
-#include <aidl/android/hardware/bluetooth/IBluetoothHci.h>
 #include <android/binder_manager.h>
 #include <android/binder_process.h>
 #include <hidl/HidlSupport.h>
@@ -24,6 +23,7 @@
 
 #include "BluetoothHci.h"
 
+using ::aidl::android::hardware::bluetooth::hal::IBluetoothHci_addService;
 using ::aidl::android::hardware::bluetooth::impl::BluetoothHci;
 using ::android::hardware::configureRpcThreadpool;
 using ::android::hardware::joinRpcThreadpool;
@@ -35,15 +35,7 @@ int main(int /* argc */, char** /* argv */) {
     return 1;
   }
 
-  std::shared_ptr<BluetoothHci> service =
-      ndk::SharedRefBase::make<BluetoothHci>();
-  std::string instance = std::string() + BluetoothHci::descriptor + "/default";
-  auto result =
-      AServiceManager_addService(service->asBinder().get(), instance.c_str());
-  if (result == STATUS_OK) {
-    ABinderProcess_joinThreadPool();
-  } else {
-    ALOGE("Could not register as a service!");
-  }
+  IBluetoothHci_addService(new BluetoothHci());
+  ABinderProcess_joinThreadPool();
   return 0;
 }
