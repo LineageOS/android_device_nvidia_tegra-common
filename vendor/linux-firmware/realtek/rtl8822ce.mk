@@ -15,5 +15,4 @@
 PRODUCT_PACKAGES += \
     linux_firmware_btusb-r8822cu \
     linux_firmware_rtw88-rtw8822c \
-    wireless-regdb_regulatory.db \
-    wireless-regdb_regulatory.db.p7s
+    wireless-regdb

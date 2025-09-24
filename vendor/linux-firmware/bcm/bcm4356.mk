@@ -16,8 +16,7 @@ COMMON_BCM_PATH := vendor/nvidia/common/rel-shield-r/bcm
 
 PRODUCT_PACKAGES += \
     linux_firmware_cypress-bcm4356 \
-    wireless-regdb_regulatory.db \
-    wireless-regdb_regulatory.db.p7s
+    wireless-regdb
 
 PRODUCT_COPY_FILES += \
     $(COMMON_BCM_PATH)/bcm4356/BCM4356A3.hcd:$(TARGET_COPY_OUT_VENDOR)/firmware/brcm/BCM4356.hcd

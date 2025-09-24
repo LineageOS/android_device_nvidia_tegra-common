@@ -14,5 +14,4 @@
 
 PRODUCT_PACKAGES += \
     linux_firmware_brcm-bcm43241 \
-    wireless-regdb_regulatory.db \
-    wireless-regdb_regulatory.db.p7s
+    wireless-regdb
