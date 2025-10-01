@@ -33,5 +33,6 @@ $(2): $(PRODUCT_OUT)/$(2).bin
 endef
 
 $(eval $(call atf_rule,$(call intermediates-dir-for,EXECUTABLES,bl31),bl31))
+$(eval $(call atf_rule,$(call intermediates-dir-for,EXECUTABLES,bl31_optee),bl31-optee,SPD=opteed))
 $(eval $(call atf_rule,$(call intermediates-dir-for,EXECUTABLES,bl31_trusty),bl31-trusty,SPD=trusty))
 endif

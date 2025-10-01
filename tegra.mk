@@ -183,6 +183,24 @@ ifneq ($(TARGET_SUPPORTS_HARDWARE_BACKED_SECURITY),)
 ifeq ($(TARGET_SECURITY_KEYMINT_HAL),trusty)
 $(call inherit-product, system/core/trusty/trusty-base.mk)
 $(call inherit-product, system/core/trusty/trusty-storage.mk)
+else ifeq ($(TARGET_SECURITY_KEYMINT_HAL),optee)
+OPTEE_PLATFORM ?= tegra
+OPTEE_PLATFORM_FLAVOR ?= $(TARGET_TEGRA_VERSION)
+OPTEE_CFG_ARM64_CORE ?= y
+OPTEE_TA_TARGETS ?= ta_arm64
+OPTEE_OS_DIR ?= hardware/nvidia/optee/os
+BUILD_OPTEE_MK ?= $(OPTEE_OS_DIR)/mk/aosp_optee.mk
+CROSS_COMPILE64 ?= $(KERNEL_TOOLCHAIN)/$(KERNEL_TOOLCHAIN_PREFIX)
+OPTEE_EXTRA_FLAGS ?= NV_CCC_PREBUILT=$(abspath $(OPTEE_OS_DIR)/prebuilt/$(OPTEE_PLATFORM_FLAVOR)/libcommon_crypto.a) CFG_WITH_STMM_SP=y CFG_STMM_PATH=$(abspath $(PRODUCT_OUT)/obj/EXECUTABLES/tianocore_intermediates/standalonemmoptee.fv) CFG_IN_TREE_EARLY_TAS=avb/023f8f1a-292a-432b-8fc4-de8471358067
+
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper-service.optee \
+    4d573443-6a56-4272-ac6f-2425af9ef9bb.ta \
+    android.hardware.security.keymint-service.optee \
+    dba51a17-0563-11e7-93b1-6fa7b0071a51.ta \
+    tee-supplicant
+PRODUCT_COPY_FILES += \
+    device/nvidia/tegra-common/initfiles/tee-supplicant.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/tee-supplicant.rc
 endif
 endif
 

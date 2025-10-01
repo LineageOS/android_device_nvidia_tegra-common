@@ -1,0 +1,16 @@
+on init
+	chmod 666 /dev/tee0
+	chmod 666 /dev/teepriv0
+	start vendor.tee_supplicant
+
+on post-fs
+	restorecon_recursive /mnt/vendor/tee
+
+on post-fs-data
+	start vendor.tee_supplicant
+
+service vendor.tee_supplicant /vendor/bin/tee-supplicant
+	class core
+	user root
+	group system
+	seclabel u:r:tee:s0

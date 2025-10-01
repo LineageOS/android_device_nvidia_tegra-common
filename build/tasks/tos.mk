@@ -14,6 +14,7 @@
 
 ifneq ($(TARGET_TEGRA_VERSION),)
 TOS_SCRIPT_PATH := $(call my-dir)
+TOS_TEGRA_ARCH := $(shell tegra_ver="$(TARGET_TEGRA_VERSION)" && echo tegra$${tegra_ver:1:3})
 
 # 1: Target base filename
 # 2: Target bl31 base filename
@@ -28,5 +29,6 @@ $(1): $(PRODUCT_OUT)/$(1).img
 endef
 
 $(eval $(call tos_rule,tos-mon-only,bl31))
+$(eval $(call tos_rule,tos-optee,bl31-optee,$(PRODUCT_OUT)/optee.bin $(PRODUCT_OUT)/kernel,--tostype=optee --os=$(PRODUCT_OUT)/optee.bin --dtb=$(KERNEL_OUT)/$(TOS_TEGRA_ARCH)-optee.dtb))
 $(eval $(call tos_rule,tos-trusty,bl31-trusty,$(PRODUCT_OUT)/trusty.bin,--tostype=trusty --os=$(PRODUCT_OUT)/trusty.bin))
 endif
