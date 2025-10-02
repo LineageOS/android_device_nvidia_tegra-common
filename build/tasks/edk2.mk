@@ -76,8 +76,12 @@ $(1): $(DTC_HOST)
 			-DBUILDID_STRING="$(shell BUILD_TOP=$(abspath $(TIANOCORE_PATH)/../..) python $(SCRIPTS_PATH)/get_branch_name.py)-$(shell git -C $(TIANOCORE_PATH)/edk2-nvidia rev-parse --short HEAD)" && \
 		$(abspath $(dir $1))/edk2/BaseTools/BinWrappers/PosixLike/build -q -a $(EDK2_ARCH) -t $(EDK2_TOOLCHAIN) \
 			-p $(abspath $(dir $1))/edk2-nvidia/Platform/NVIDIA/DeviceTree/DeviceTree.dsc -b $(EDK2_BUILD_TYPE) \
-			-DBUILD_NAME="DeviceTree" -DBUILD_GUID="4a17d121-7753-4341-b4e4-009550283be0"
+			-DBUILD_NAME="DeviceTree" -DBUILD_GUID="4a17d121-7753-4341-b4e4-009550283be0" && \
+		$(abspath $(dir $1))/edk2/BaseTools/BinWrappers/PosixLike/build -q -a $(EDK2_ARCH) -t $(EDK2_TOOLCHAIN) \
+			-p $(abspath $(dir $1))/edk2-nvidia/Platform/NVIDIA/StandaloneMmOptee/StandaloneMmOptee.dsc -b $(EDK2_BUILD_TYPE) \
+			-DBUILD_NAME="StandaloneMmOptee" -DBUILD_GUID="fb0e2152-1441-49e0-b376-5f8593d66678"
 	@python $(dir $1)/edk2-nvidia/Silicon/NVIDIA/edk2nv/FormatUefiBinary.py $(dir $1)/Build/LineageTegra/$(EDK2_BUILD_TYPE)_$(EDK2_TOOLCHAIN)/FV/UEFI_NS.Fv $1
+	@cp $(dir $1)/Build/StandaloneMmOptee/$(EDK2_BUILD_TYPE)_$(EDK2_TOOLCHAIN)/FV/UEFI_MM.Fv $(dir $1)/standalonemmoptee.fv
 
 $(PRODUCT_OUT)/$(2).bin: $(1)
 	$(hide) cp $(1) $(PRODUCT_OUT)/$(2).bin
