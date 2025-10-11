@@ -16,6 +16,24 @@
       "message": "The only user of this is nx, since the tegra ack targets use the mainline/common snippets instead. But probably good to update this as well.",
       "revId": "917e897f6dd20df11f5d3bf2ad2e445e7daa0b87",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92519c06_2a70eddb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2025-10-11T17:37:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c1eb6be_9c3e3593",
+      "revId": "917e897f6dd20df11f5d3bf2ad2e445e7daa0b87",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ],
   "submitRequirementResults": []
