@@ -377,6 +377,17 @@ $(call inherit-product, system/core/trusty/trusty-base.mk)
 $(call inherit-product, system/core/trusty/trusty-storage.mk)
 endif
 
+# TV Input
+ifeq ($(PRODUCT_IS_ATV),true)
+ifeq ($(shell expr $(TARGET_TEGRA_MAN_LVL) \>= 7), 1)
+PRODUCT_PACKAGES += \
+    android.hardware.tv.input-service.example
+else
+PRODUCT_PACKAGES += \
+    android.hardware.tv.input@1.0-impl
+endif
+endif
+
 # Update Engine
 ifeq ($(AB_OTA_UPDATER),true)
 PRODUCT_PACKAGES += \
