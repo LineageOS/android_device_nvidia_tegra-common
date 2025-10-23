@@ -130,19 +130,6 @@ on shutdown
     # Let go all console messages during reboot/shutdown
     write /proc/sys/kernel/printk "8 4 1 7"
 
-# bugreport is triggered by the VOLUME-DOWN and VOLUME-UP keys
-service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
-    class main
-    disabled
-    oneshot
-    keycodes 116 115 114
-
-# nvidiafeedback triggered by nvidiafeedback app
-service nvidiafeedback /system/bin/dumpstate -n -z -o /data/anr/nvfeedback
-    class main
-    disabled
-    oneshot
-
 # unified scaling setup
 import /vendor/etc/init/hw/init.nvphsd_setup.rc
 
