@@ -20,21 +20,25 @@ service tlk_daemon /vendor/bin/tlk_daemon --storagedir /data/vendor
     class main
     group keystore
     disabled
+    user root
 
 service tlk_daemon_non_treble /vendor/bin/tlk_daemon --storagedir /data
     class main
     group keystore
     disabled
+    user root
 
 service storageproxyd /vendor/bin/storageproxyd -d /dev/trusty-ipc-dev0 -p /data/vendor/ss -r /dev/mmcblk0rpmb
     class core
     group keystore
     disabled
+    user root
 
 service storageproxyd_hv /vendor/bin/storageproxyd -d /dev/trusty-ipc-dev0 -p /data/vendor/ss -r /dev/block/vblkdev1
     class core
     group keystore
     disabled
+    user root
 
 #
 # ss_status
@@ -62,6 +66,7 @@ service ss_status_non_treble /vendor/bin/run_ss_status.sh /data/ss/slog
 service eks2_client /vendor/bin/eks2_client --eks2_path /vendor/app/eks2/eks2.dat
     class main
     oneshot
+    user root
 
 # Post treble, all vendor data should reside in /data/vendor
 on post-fs-data
