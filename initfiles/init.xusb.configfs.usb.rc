@@ -13,6 +13,7 @@ on boot
     mkdir /config/usb_gadget/g1/functions/audio_source.gs2
     mkdir /config/usb_gadget/g1/functions/ecm.ecm0
     mkdir /config/usb_gadget/g1/functions/ffs.adb
+    mkdir /config/usb_gadget/g1/functions/midi.gs5
     mkdir /config/usb_gadget/g1/functions/mtp.gs0
     mkdir /config/usb_gadget/g1/functions/ncm.ncm0
     mkdir /config/usb_gadget/g1/functions/ptp.gs1
@@ -254,3 +255,22 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=ecm,adb && property:s
     write /config/usb_gadget/g1/bDeviceProtocol 0x0
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
+
+# MIDI configuration
+on property:sys.usb.config=midi && property:sys.usb.configfs=1
+    write /config/usb_gadget/g1/os_desc/use 1
+    write /config/usb_gadget/g1/idVendor 0x${ro.vendor.nv.usb.vid}
+    write /config/usb_gadget/g1/idProduct 0x${ro.vendor.nv.usb.pid.midi}
+    write /config/usb_gadget/g1/configs/b.1/bmAttributes 0xc0
+    write /config/usb_gadget/g1/bDeviceClass 0x0
+    write /config/usb_gadget/g1/bDeviceSubClass 0x0
+    write /config/usb_gadget/g1/bDeviceProtocol 0x0
+
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=midi,adb && property:sys.usb.configfs=1
+    write /config/usb_gadget/g1/os_desc/use 1
+    write /config/usb_gadget/g1/idVendor 0x${ro.vendor.nv.usb.vid}
+    write /config/usb_gadget/g1/idProduct 0x${ro.vendor.nv.usb.pid.midi.adb}
+    write /config/usb_gadget/g1/configs/b.1/bmAttributes 0xc0
+    write /config/usb_gadget/g1/bDeviceClass 0x0
+    write /config/usb_gadget/g1/bDeviceSubClass 0x0
+    write /config/usb_gadget/g1/bDeviceProtocol 0x0
