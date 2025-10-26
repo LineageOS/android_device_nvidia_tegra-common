@@ -37,6 +37,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8264b550_02843d9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2025-10-26T23:27:44Z",
+      "side": 1,
+      "message": "add permission declaration here in tegra.mk\n\nAlso, please V+1 (means it works), and CR+1 (means ready to merge)",
+      "revId": "11822bb3e7b6422a5058dccc33f4c31d59cfbfda",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f002d784_fc05e79d",
         "filename": "initfiles/init.xusb.configfs.usb.rc",
         "patchSetId": 3
