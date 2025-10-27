@@ -72,6 +72,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "81380633_2c869848",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 36115
+      },
+      "writtenOn": "2025-10-27T12:38:50Z",
+      "side": 1,
+      "message": "\u003e please V+1\n\nShould I V+1 even if I can\u0027t verified with a full build and install?\n\n\u003e Guarded for non-ATV only, no?\n\nDoes Android TV not support USB gadget mode? (I have no experience with it.)",
+      "parentUuid": "120248c5_b652f2f0",
+      "revId": "11822bb3e7b6422a5058dccc33f4c31d59cfbfda",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f002d784_fc05e79d",
         "filename": "initfiles/init.xusb.configfs.usb.rc",
         "patchSetId": 3
