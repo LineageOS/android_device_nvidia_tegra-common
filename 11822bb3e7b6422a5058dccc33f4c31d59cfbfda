@@ -106,6 +106,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e48390d6_ac8ec13b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2025-10-27T13:06:56Z",
+      "side": 1,
+      "message": "MIDI is not only physical I/O, but also loopback devices and apps exposing themselves as MIDI I/O devices (including MIDI clients doing the opposite as well)",
+      "parentUuid": "888df378_c6b3242f",
+      "revId": "11822bb3e7b6422a5058dccc33f4c31d59cfbfda",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f002d784_fc05e79d",
