@@ -54,6 +54,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "120248c5_b652f2f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-10-27T09:38:22Z",
+      "side": 1,
+      "message": "Guarded for non-ATV only, no?",
+      "parentUuid": "8264b550_02843d9a",
+      "revId": "11822bb3e7b6422a5058dccc33f4c31d59cfbfda",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f002d784_fc05e79d",
         "filename": "initfiles/init.xusb.configfs.usb.rc",
         "patchSetId": 3
