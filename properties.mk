@@ -91,7 +91,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 endif
 
 # WiFi
-ifneq ($(TARGET_TEGRA_WIFI),)
+ifneq ($(filter $(TARGET_TEGRA_WIFI), bcm),)
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.direct.interface=p2p-dev-wlan0 \
     wifi.interface=wlan0
