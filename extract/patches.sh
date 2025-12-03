@@ -34,17 +34,6 @@ function chmod_tegraflash() {
   echo "";
 }
 
-# Nvos is a vendor lib while nvcontrol_jni is a system lib, thus the build system errors due to treble rules.
-# Nvos isn't actually used, so the lib can be replaced with any random thing that matches the length.
-function patch_nvcontrol() {
-  echo -n "Removing nvos reference from nvcpl jni...";
-
-  ${PATCHELF} --remove-needed "libnvos.so" ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/lib64/libnvcontrol_jni.so
-  ${PATCHELF} --remove-needed "libnvos.so" ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/lib/libnvcontrol_jni.so
-
-  echo "";
-}
-
 # BUP tries to write the output file to cwd, let's instead use the already referenced env path var 'OUT'
 # Since 32.6, BUP changed the version field format, however BMP blobs still require the previous version string
 function patch_bup() {
@@ -86,97 +75,6 @@ function patch_tegraflash_dtbcheck() {
   patch --no-backup-if-mismatch -d ${LINEAGE_ROOT}/${OUTDIR}/common -p1 1>/dev/null 2>&1 < ${LINEAGE_ROOT}/device/nvidia/tegra-common/extract/tegraflash-dtbcheck.patch
 }
 
-function fetch_l4t_deps() {
-  echo -n "Fetching dependencies for nvpmodel...";
-
-  LOCALTMPDIR=$(mktemp -d)
-  pushd ${LOCALTMPDIR} 1>/dev/null 2>&1
-  wget -q http://ports.ubuntu.com/pool/main/g/glibc/libc6_2.31-0ubuntu9_arm64.deb
-  ar x libc6_2.31-0ubuntu9_arm64.deb data.tar.xz 1>/dev/null 2>&1
-  tar -xf data.tar.xz ./lib/aarch64-linux-gnu/ld-2.31.so ./lib/aarch64-linux-gnu/libc-2.31.so ./lib/aarch64-linux-gnu/libdl-2.31.so ./lib/aarch64-linux-gnu/librt-2.31.so ./lib/aarch64-linux-gnu/libpthread-2.31.so 1>/dev/null 2>&1
-
-  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64
-  cp lib/aarch64-linux-gnu/ld-2.31.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64/ld-linux-aarch64.so.1
-  cp lib/aarch64-linux-gnu/libc-2.31.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64/libc.so.6
-  cp lib/aarch64-linux-gnu//libdl-2.31.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64/libdl.so.2
-  cp lib/aarch64-linux-gnu/librt-2.31.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64/librt.so.1
-  cp lib/aarch64-linux-gnu/libpthread-2.31.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64/libpthread.so.0
-
-  MODULES[nvidia/common/r35/l4t]+="lib64/ld-linux-aarch64.so.1 ";
-  MODULES[nvidia/common/r35/l4t]+="lib64/libc.so.6 ";
-  MODULES[nvidia/common/r35/l4t]+="lib64/libdl.so.2 ";
-  MODULES[nvidia/common/r35/l4t]+="lib64/librt.so.1 ";
-  MODULES[nvidia/common/r35/l4t]+="lib64/libpthread.so.0 ";
-
-  ${PATCHELF} --set-soname libnvos-l4t.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64/libnvos-l4t.so 1>/dev/null 2>&1
-  ${PATCHELF} --set-soname libnvsocsys-l4t.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64/libnvsocsys-l4t.so 1>/dev/null 2>&1
-  ${PATCHELF} --replace-needed libnvos.so libnvos-l4t.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/l4t/lib64/libnvsocsys-l4t.so 1>/dev/null 2>&1
-
-  rm -rf ${LOCALTMPDIR}/*
-
-  wget -q http://ports.ubuntu.com/pool/main/g/glibc/libc6_2.35-0ubuntu3_arm64.deb
-  ar x libc6_2.35-0ubuntu3_arm64.deb data.tar.zst 1>/dev/null 2>&1
-  tar -xf data.tar.zst ./lib/aarch64-linux-gnu/ld-linux-aarch64.so.1 ./lib/aarch64-linux-gnu/libc.so.6 ./lib/aarch64-linux-gnu/libdl.so.2 ./lib/aarch64-linux-gnu/librt.so.1 ./lib/aarch64-linux-gnu/libpthread.so.0 1>/dev/null 2>&1
-
-  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64
-  cp lib/aarch64-linux-gnu/ld-linux-aarch64.so.1 ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64/ld-linux-aarch64.so.1
-  cp lib/aarch64-linux-gnu/libc.so.6 ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64/libc.so.6
-  cp lib/aarch64-linux-gnu/libdl.so.2 ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64/libdl.so.2
-  cp lib/aarch64-linux-gnu/librt.so.1 ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64/librt.so.1
-  cp lib/aarch64-linux-gnu/libpthread.so.0 ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64/libpthread.so.0
-
-  MODULES[nvidia/common/r36/l4t]+="lib64/ld-linux-aarch64.so.1 ";
-  MODULES[nvidia/common/r36/l4t]+="lib64/libc.so.6 ";
-  MODULES[nvidia/common/r36/l4t]+="lib64/libdl.so.2 ";
-  MODULES[nvidia/common/r36/l4t]+="lib64/librt.so.1 ";
-  MODULES[nvidia/common/r36/l4t]+="lib64/libpthread.so.0 ";
-
-  ${PATCHELF} --set-soname libnvos-l4t.so ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64/libnvos-l4t.so 1>/dev/null 2>&1
-  ${PATCHELF} --set-soname libnvsocsys-l4t.so ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64/libnvsocsys-l4t.so 1>/dev/null 2>&1
-  ${PATCHELF} --replace-needed libnvos.so libnvos-l4t.so ${LINEAGE_ROOT}/${OUTDIR}/common/r36/l4t/lib64/libnvsocsys-l4t.so 1>/dev/null 2>&1
-
-  popd 1>/dev/null 2>&1
-  rm -rf ${LOCALTMPDIR}
-
-  echo "";
-}
-
-# Kludge l4t nvpmodel into running on android
-function patch_nvpmodel() {
-  echo -n "Setting up nvpmodel...";
-
-  LOCALTMPDIR=$(mktemp -d)
-  pushd ${LOCALTMPDIR} 1>/dev/null 2>&1
-
-  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/r35/nvpmodel/bin64
-  ar x ${LINEAGE_ROOT}/${OUTDIR}/common/r35/nvpmodel/nvidia-l4t-nvpmodel_arm64.deb data.tar.zst 2>&1 1>/dev/null
-  tar -xf data.tar.zst ./usr/sbin/nvpmodel 1>/dev/null 2>&1
-  cp usr/sbin/nvpmodel ${LINEAGE_ROOT}/${OUTDIR}/common/r35/nvpmodel/bin64/nvpmodel
-  rm ${LINEAGE_ROOT}/${OUTDIR}/common/r35/nvpmodel/nvidia-l4t-nvpmodel_arm64.deb
-  ${PATCHELF} --set-interpreter /vendor/lib64/l4t/ld-linux-aarch64.so.1 ${LINEAGE_ROOT}/${OUTDIR}/common/r35/nvpmodel/bin64/nvpmodel 1>/dev/null 2>&1
-  ${PATCHELF} --replace-needed libnvsocsys.so libnvsocsys-l4t.so ${LINEAGE_ROOT}/${OUTDIR}/common/r35/nvpmodel/bin64/nvpmodel 1>/dev/null 2>&1
-  sed -i "s|/var/lib|/odm/etc|g" ${LINEAGE_ROOT}/${OUTDIR}/common/r35/nvpmodel/bin64/nvpmodel
-  rm -rf ${LOCALTMPDIR}/*
-
-  MODULES[nvidia/common/r35/nvpmodel]+="bin64/nvpmodel ";
-
-  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/common/r36/nvpmodel/bin64
-  ar x ${LINEAGE_ROOT}/${OUTDIR}/common/r36/nvpmodel/nvidia-l4t-nvpmodel_arm64.deb data.tar.zst 2>&1 1>/dev/null
-  tar -xf data.tar.zst ./usr/sbin/nvpmodel 1>/dev/null 2>&1
-  cp usr/sbin/nvpmodel ${LINEAGE_ROOT}/${OUTDIR}/common/r36/nvpmodel/bin64/nvpmodel
-  rm ${LINEAGE_ROOT}/${OUTDIR}/common/r36/nvpmodel/nvidia-l4t-nvpmodel_arm64.deb
-  ${PATCHELF} --set-interpreter /vendor/lib64/l4t/ld-linux-aarch64.so.1 ${LINEAGE_ROOT}/${OUTDIR}/common/r36/nvpmodel/bin64/nvpmodel 1>/dev/null 2>&1
-  ${PATCHELF} --replace-needed libnvsocsys.so libnvsocsys-l4t.so ${LINEAGE_ROOT}/${OUTDIR}/common/r36/nvpmodel/bin64/nvpmodel 1>/dev/null 2>&1
-  sed -i "s|/var/lib|/odm/etc|g" ${LINEAGE_ROOT}/${OUTDIR}/common/r36/nvpmodel/bin64/nvpmodel
-
-  MODULES[nvidia/common/r36/nvpmodel]+="bin64/nvpmodel ";
-
-  popd 1>/dev/null 2>&1
-  rm -rf ${LOCALTMPDIR}
-
-  echo "";
-}
-
 # Some bootloader images need to be converted to BMP3
 function convert_bmp() {
   # Thanks im7, for changing the established calling conventions
@@ -200,42 +98,6 @@ function convert_bmps() {
   echo "";
 }
 
-function patch_nvcamera() {
-  echo -n "Patching nvcamera prebuilts for renamed symbols...";
-
-  sed -i 's/_ZN7android8hardware6camera6device4V1_014implementation12CameraDeviceC1ENS_2spINS1_6common4V1_06helper12CameraModuleEEERKNSt3__112basic_stringIcNSC_11char_traitsIcEENSC_9allocatorIcEEEERKNS_12SortedVectorINSC_4pairISI_SI_EEEE/_ZN7android8hardware6camera6device4V1_014implementation12CameraDeviceC1ENS_2spINS1_6common6helper12CameraModuleEEERKNSt3__112basic_stringIcNSB_11char_traitsIcEENSB_9allocatorIcEEEERKNS_12SortedVectorINSB_4pairISH_SH_EEEE\x0\x0\x0\x0\x0/' ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/camera/lib64/vendor.nvidia.hardware.camera.provider@2.4-impl.so
-
-  echo "";
-}
-
-function patch_keymaster() {
-  echo -n "Patching keymaster prebuilts for missing symbols...";
-
-  ${PATCHELF} --add-needed libkeymaster_shim.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/tos/bin32/hw/android.hardware.keymaster@3.0-service.tegra
-  ${PATCHELF} --add-needed libkeymaster_shim.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/tos/bin64/hw/android.hardware.keymaster@3.0-service.tegra
-
-  echo "";
-}
-
-function patch_widevine() {
-  echo -n "Patching widevine prebuilts for missing symbols...";
-
-  ${PATCHELF} --add-needed libcrypto_shim.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/widevine/lib/libwvhidl.so
-
-  echo "";
-}
-
-function patch_nvgpu() {
-  echo -n "Patching nvgpu prebuilts for old composer utils...";
-
-  ${PATCHELF} --replace-needed android.hardware.graphics.composer@2.1-resources.so android.hardware.graphics.composer@2.1-resources-v34.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/bin32/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
-  ${PATCHELF} --replace-needed android.hardware.graphics.composer@2.1-resources.so android.hardware.graphics.composer@2.1-resources-v34.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/bin64/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
-  ${PATCHELF} --replace-needed android.hardware.graphics.composer@2.1-resources.so android.hardware.graphics.composer@2.1-resources-v34.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib/vendor.nvidia.hardware.graphics.composer@2.0-impl.so
-  ${PATCHELF} --replace-needed android.hardware.graphics.composer@2.1-resources.so android.hardware.graphics.composer@2.1-resources-v34.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/vendor.nvidia.hardware.graphics.composer@2.0-impl.so
-
-  echo "";
-}
-
 function patch_tnspec() {
   echo -n "Patching tnspec python script to support python3...";
 
@@ -244,91 +106,10 @@ function patch_tnspec() {
   echo "";
 }
 
-function patch_hidl() {
-  echo -n "Patching libraries to remove hidltransport and hwbinder dep...";
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvphs/lib/vendor.nvidia.hardware.phs@1.0-impl.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvphs/lib64/vendor.nvidia.hardware.phs@1.0-impl.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvphs/lib/libnvphsd.so
-  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvphs/lib64/libnvphsd.so
-
-  ${PATCHELF} --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvphs/lib/libnvphs.so
-  ${PATCHELF} --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvphs/lib64/libnvphs.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/power/lib/hw/powerhal.tegra.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/power/lib64/hw/powerhal.tegra.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/power/bin32/hw/vendor.nvidia.hardware.power@1.0-service
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/power/bin64/hw/vendor.nvidia.hardware.power@1.0-service
-
-  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/bin32/hw/vendor.nvidia.hardware.cpl.service@1.0-service
-  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/bin64/hw/vendor.nvidia.hardware.cpl.service@1.0-service
-
-  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/bin32/hw/vendor.nvidia.hardware.cpl.service_common@1.0-service
-  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/bin64/hw/vendor.nvidia.hardware.cpl.service_common@1.0-service
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/lib/libnvcpl_vendor.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvcpl/lib64/libnvcpl_vendor.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib/vendor.nvidia.hardware.graphics.mempool@1.0-impl.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/vendor.nvidia.hardware.graphics.mempool@1.0-impl.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib/libmempoollocal.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/libmempoollocal.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib/vendor.nvidia.hardware.graphics.display@1.0-impl.so
-  ${PATCHELF} --remove-needed libhidltransport.so --remove-needed libhwbinder.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/vendor.nvidia.hardware.graphics.display@1.0-impl.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/nodolby/lib64/libnvhwcomposer.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/dolby/lib/libnvhwcomposer.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/dolby/lib64/libnvhwcomposer.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib/vendor.nvidia.hardware.graphics.composer@2.0-impl.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/vendor.nvidia.hardware.graphics.composer@2.0-impl.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/bin32/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/bin64/hw/vendor.nvidia.hardware.graphics.composer@2.0-service
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/audio/bin32/hw/android.hardware.audio@6.0-service-msd
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/ipprotect/bin32/hw/vendor.nvidia.hardware.ipprotect@1.0-service
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/ipprotect/bin64/hw/vendor.nvidia.hardware.ipprotect@1.0-service
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/camera/bin64/vendor.nvidia.hardware.camera.provider@2.4-service
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/camera/lib64/vendor.nvidia.hardware.camera.argus.service@1.0-impl.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/camera/lib64/vendor.nvidia.hardware.camera.device@3.2-impl.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/camera/lib64/vendor.nvidia.hardware.camera.provider@2.4-impl.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvmm/nodolby/lib/libnvomx.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvmm/nodolby/lib64/libnvomx.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvmm/dolby/lib/libnvomx.so
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvmm/dolby/lib64/libnvomx.so
-
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/tos/bin32/hw/android.hardware.keymaster@3.0-service.tegra
-  ${PATCHELF} --remove-needed libhidltransport.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/tos/bin64/hw/android.hardware.keymaster@3.0-service.tegra
-
-  ${PATCHELF} --replace-needed android.hardware.graphics.common-V1-ndk_platform.so android.hardware.graphics.common-V1-ndk.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib/libnvrmvkif.so
-  ${PATCHELF} --replace-needed android.hardware.graphics.common-V1-ndk_platform.so android.hardware.graphics.common-V1-ndk.so ${LINEAGE_ROOT}/${OUTDIR}/common/rel-shield-r/nvgpu/lib64/libnvrmvkif.so
-
-  echo "";
-}
-
 fetch_bcm4356_patchfile;
 chmod_tegraflash;
-patch_nvcontrol;
 patch_bup;
 patch_tegrasign_v3;
 patch_tegraflash_dtbcheck;
-fetch_l4t_deps;
-patch_nvpmodel;
 convert_bmps;
-patch_nvcamera;
-patch_keymaster;
-patch_widevine;
-patch_nvgpu;
 patch_tnspec;
-patch_hidl;

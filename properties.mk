@@ -1,11 +1,5 @@
-# Audio
-ifeq ($(TARGET_TEGRA_AUDIO),tinyhal)
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hardware.audio.primary=tinyhal
-endif
-
 # Bluetooth
-ifneq ($(TARGET_TEGRA_BT),)
+ifneq ($(TARGET_BLUETOOTH_HAL),)
 PRODUCT_PROPERTY_OVERRIDES += \
     bluetooth.profile.asha.central.enabled?=true \
     bluetooth.profile.a2dp.source.enabled?=true \
@@ -24,14 +18,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     bluetooth.profile.pbap.server.enabled?=true \
     bluetooth.profile.sap.server.enabled?=true
 endif
-ifneq ($(filter bcm, $(TARGET_TEGRA_BT)),)
-PRODUCT_PROPERTY_OVERRIDES += \
-    bluetooth.core.gap.le.privacy.enabled=false
-endif
 endif
 
 # CEC
-ifneq ($(TARGET_TEGRA_CEC),)
+ifneq ($(TARGET_TV_HDMI_CEC_HAL),)
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hdmi.device_type=4 \
     persist.sys.hdmi.keep_awake=0 \
@@ -57,30 +47,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196610
 endif
 
-# LMKD
+# Media
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lmk.kill_heaviest_task=true
-
-# Sensors
-ifeq ($(words $(TARGET_TEGRA_SENSORS)),1)
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hardware.sensors=$(TARGET_TEGRA_SENSORS)
-endif
+    media.c2.hal.selection=aidl \
+    debug.stagefright.c2inputsurface=-1
 
 # USB
-ifneq ($(filter $(TARGET_KERNEL_VERSION), 3.4 3.10),)
-PRODUCT_PROPERTY_OVERRIDES += \
-    sys.usb.ffs.aio_compat=1 \
-    persist.adb.nonblocking_ffs=0 \
-    ro.adb.nonblocking_ffs=0
-else
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.lineage.tegra.configfs=1
-endif
-
-# WiFi
-ifneq ($(filter $(TARGET_TEGRA_WIFI), bcm),)
-PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.direct.interface=p2p-dev-wlan0 \
-    wifi.interface=wlan0
-endif

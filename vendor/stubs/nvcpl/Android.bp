@@ -1,7 +1,0 @@
-cc_library_shared {
-    name: "libnvcpl_vendor",
-    srcs: ["src/nvcpl_stub.c"],
-    cflags: ["-Wno-unused-parameter"],
-    shared_libs: ["libcutils"],
-    soc_specific: true,
-}

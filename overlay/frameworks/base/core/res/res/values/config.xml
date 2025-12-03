@@ -37,7 +37,4 @@
     <!-- Bytes that the PinnerService will pin for WebView -->
     <integer name="config_pinnerWebviewPinBytes">20971520</integer>
 
-     <!-- AOSP WFD -->
-    <bool name="config_enableWifiDisplay">true</bool>
-
 </resources>
