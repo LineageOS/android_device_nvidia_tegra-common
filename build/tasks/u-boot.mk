@@ -25,11 +25,11 @@ $(_uboot_bin):
 	$(hide) +$(KERNEL_MAKE_CMD) $(UBOOT_CROSS_COMPILE) \
 		HOSTCC=$(TARGET_KERNEL_CLANG_PATH)/bin/clang HOSTLDFLAGS="-fuse-ld=lld" \
 		YACC=$(BUILD_TOOLS_BINS)/bison LEX=$(BUILD_TOOLS_BINS)/flex M4=$(BUILD_TOOLS_BINS)/m4 \
-		-C $(TARGET_TEGRA_UBOOT_PATH) O=$(dir $(_uboot_bin)) NO_PYTHON=1 $(TARGET_TEGRA_UBOOT_CONFIG)
+		-C $(TARGET_TEGRA_UBOOT_PATH) O=$(dir $(abspath $(_uboot_bin))) NO_PYTHON=1 $(TARGET_TEGRA_UBOOT_CONFIG)
 	$(hide) +$(KERNEL_MAKE_CMD) $(UBOOT_CROSS_COMPILE) \
 		HOSTCC=$(TARGET_KERNEL_CLANG_PATH)/bin/clang HOSTLDFLAGS="-fuse-ld=lld" \
 		YACC=$(BUILD_TOOLS_BINS)/bison LEX=$(BUILD_TOOLS_BINS)/flex M4=$(BUILD_TOOLS_BINS)/m4 \
-		-C $(TARGET_TEGRA_UBOOT_PATH) O=$(dir $(_uboot_bin)) NO_PYTHON=1 $(notdir $@)
+		-C $(TARGET_TEGRA_UBOOT_PATH) O=$(dir $(abspath $(_uboot_bin))) NO_PYTHON=1 $(notdir $@)
 
 $(PRODUCT_OUT)/u-boot-dtb.bin: $(_uboot_bin)
 	$(hide) cp $< $@
