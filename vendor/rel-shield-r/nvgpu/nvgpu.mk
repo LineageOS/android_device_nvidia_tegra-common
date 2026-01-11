@@ -20,6 +20,12 @@ endif
 
 NVGPU_HDCP_PATH := vendor/nvidia/common/rel-shield-r/nvgpu
 
+# Soong namespace for gralloc workaround
+PRODUCT_SOONG_NAMESPACES += hardware/interfaces
+
+# Enable gralloc mutex unlock workaround for nvgpu driver deadlock fix
+$(call soong_config_set_bool,tegra_gralloc,unlock_before_hal_free,true)
+
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.allocator@2.0-service \
@@ -73,7 +79,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.vsync_event_phase_offset_ns=100000 \
     ro.surface_flinger.vsync_sf_event_phase_offset_ns=100000 \
     debug.sf.high_fps_late_app_phase_offset_ns=100000 \
-    debug.sf.high_fps_late_sf_phase_offset_ns=100000
+    debug.sf.high_fps_late_sf_phase_offset_ns=100000 \
+    debug.sf.buffer_dequeue_timeout_ms=500 \
+    debug.sf.fence_timeout_ms=1000
 
 ifneq ($(filter video, $(TARGET_TEGRA_DOLBY)),)
 PRODUCT_PROPERTY_OVERRIDES += \
