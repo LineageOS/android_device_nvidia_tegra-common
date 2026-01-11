@@ -20,6 +20,12 @@ endif
 
 NVGPU_HDCP_PATH := vendor/nvidia/common/rel-shield-r/nvgpu
 
+# Soong namespace for gralloc workaround
+PRODUCT_SOONG_NAMESPACES += hardware/interfaces
+
+# Enable gralloc mutex unlock workaround for nvgpu driver deadlock fix
+$(call soong_config_set_bool,tegra_gralloc,unlock_before_hal_free,true)
+
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.allocator@2.0-service \
@@ -52,6 +58,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196610 \
+    ro.hardware.gralloc.tegra_dequeue_workaround=true \
     persist.vendor.tegra.compression=off \
     persist.vendor.tegra.decompression=cde-client \
     ro.vendor.tegra.AF73C63E=0x80007ffd \
