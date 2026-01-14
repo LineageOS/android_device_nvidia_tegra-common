@@ -176,7 +176,7 @@ function fetch_sources() {
             fi;
             if [ ! -f ${TMPDIR}/downloads/${sname}.${fileext} ]; then
                 echo -n "Downloading source ${sname} from ${url}...";
-                wget ${url} -O ${TMPDIR}/downloads/${sname}.${fileext} --retry-on-http-error=429 --wait 10 --random-wait 1>/dev/null 2>&1;
+                wget ${url} -O ${TMPDIR}/downloads/${sname}.${fileext} --retry-on-http-error=429 1>/dev/null 2>&1;
 
                 if [ "${type}" == "gitiles" ]; then
                     mv ${TMPDIR}/downloads/${sname}.sh ${TMPDIR}/downloads/${sname}.base64;
