@@ -1,14 +1,18 @@
 [
  {
+   "repository": "android_device_mainline_common",
+   "target_path": "device/mainline/common"
+ },
+ {
    "repository": "android_device_nvidia_sepolicy",
    "target_path": "device/nvidia/sepolicy"
  },
  {
-   "repository": "android_hardware_dolby_interfaces",
-   "target_path": "hardware/dolby/interfaces"
+   "repository": "android_hardware_baylibre_audio",
+   "target_path": "hardware/baylibre/audio"
  },
  {
-   "repository": "android_hardware_nvidia_arm-trusted-firmware",
-   "target_path": "hardware/nvidia/arm-trusted-firmware"
+   "repository": "android_hardware_baylibre_hdmi",
+   "target_path": "hardware/baylibre/hdmi"
  }
 ]
