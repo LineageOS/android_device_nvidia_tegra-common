@@ -79,8 +79,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.high_fps_late_sf_phase_offset_ns=100000
 
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
-    ro.lib_gui.buffer_dequeue_timeout_ms=500 \
-    ro.lib_gui.fence_timeout_ms=1000
+    ro.lib_gui.buffer_dequeue_timeout_ms=20 \
+    ro.lib_gui.fence_timeout_ms=20
 
 ifneq ($(filter video, $(TARGET_TEGRA_DOLBY)),)
 PRODUCT_PROPERTY_OVERRIDES += \
