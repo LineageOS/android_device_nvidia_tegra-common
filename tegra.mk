@@ -146,7 +146,6 @@ PRODUCT_GMS_CLIENTID_BASE ?= android-nvidia
 # Graphics
 ifneq ($(TARGET_GRAPHICS),)
 PRODUCT_PACKAGES += \
-    disable_configstore \
     SimpleSettingsNvgpuOverlay \
     TvSettingsNvgpuOverlay
 
