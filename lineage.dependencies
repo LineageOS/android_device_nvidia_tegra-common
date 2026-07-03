@@ -14,5 +14,9 @@
  {
    "repository": "android_hardware_baylibre_hdmi",
    "target_path": "hardware/baylibre/hdmi"
+ },
+ {
+   "repository": "android_hardware_linaro_libpm",
+   "target_path": "hardware/linaro/libpm"
  }
 ]

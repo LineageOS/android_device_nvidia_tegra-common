@@ -52,6 +52,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.c2.hal.selection=aidl \
     debug.stagefright.c2inputsurface=-1
 
+# Thermal
+ifeq ($(TARGET_THERMAL_HAL),linaro-libpm)
+PRODUCT_VENDOR_PROPERTIES += \
+    vendor.thermal.config=thermal-$(TARGET_TEGRA_VERSION).json
+endif
+
 # USB
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.lineage.tegra.configfs=1

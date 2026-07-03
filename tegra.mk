@@ -19,6 +19,7 @@ TARGET_GRAPHICS               ?= mesa
 TARGET_GRAPHICS_ALLOCATOR_HAL ?= minigbm
 TARGET_LIGHT_HAL              ?= none
 TARGET_POWER_HAL              ?= perfmgr-lineage
+TARGET_THERMAL_HAL            ?= linaro-libpm
 TARGET_TV_HDMI_CEC_HAL        ?= baylibre
 
 MAINLINE_COMMON_DISABLE_COMMON_PRODUCT_DEFS ?= true
@@ -171,7 +172,11 @@ endif
 ifeq ($(TARGET_THERMAL_HAL),tegra)
 PRODUCT_PACKAGES += \
     android.hardware.thermal-service-nvidia
+else ifeq ($(TARGET_THERMAL_HAL),linaro-libpm)
+PRODUCT_PACKAGES += \
+    thermal-$(TARGET_TEGRA_VERSION).json
 endif
+
 
 # TOS
 ifneq ($(TARGET_SUPPORTS_HARDWARE_BACKED_SECURITY),)
