@@ -151,7 +151,7 @@ PRODUCT_PACKAGES += \
 
 ifeq ($(TARGET_GRAPHICS),mesa)
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.software.opengles.deqp.level-2025-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.opengles.deqp.level.xml
+    frameworks/native/data/etc/android.software.opengles.deqp.level-2026-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.opengles.deqp.level.xml
 endif
 endif
 
