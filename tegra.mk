@@ -125,6 +125,10 @@ else ifeq ($(TARGET_BOOT_HAL),efi)
 PRODUCT_PACKAGES += \
     android.hardware.boot-service.nvidia-efi \
     android.hardware.boot-service.nvidia-efi.recovery
+else ifeq ($(TARGET_BOOT_HAL),msc)
+PRODUCT_PACKAGES += \
+    android.hardware.boot-service.nvidia-msc \
+    android.hardware.boot-service.nvidia-msc.recovery
 endif
 endif
 
