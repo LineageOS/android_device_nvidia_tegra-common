@@ -203,9 +203,9 @@ function generate_tnspec_dtbo()
   if [ -z "${1}" ]; then return -1; fi;
 
   local TNSPEC=$(printf "p%04d-%04d+p%04d-%04d.android\0" ${MODULEINFO[boardid]} ${MODULEINFO[sku]} ${CARRIERINFO[boardid]} ${CARRIERINFO[sku]} |xxd -p |sed 's/../& /g');
-  fdtput -p -t bx ${1} /fragment@0/__overlay__/firmware/uefi/variables/gNVIDIAPublicVariableGuid/TegraPlatformSpec data ${TNSPEC};
-  fdtput -p ${1} /fragment@0/__overlay__/firmware/uefi/variables/gNVIDIAPublicVariableGuid/TegraPlatformSpec runtime;
-  fdtput -p ${1} /fragment@0/__overlay__/firmware/uefi/variables/gNVIDIAPublicVariableGuid/TegraPlatformSpec locked;
+  fdtput -p -t bx ${1} /fragment@0/__overlay__/firmware/uefi/variables/gNVIDIAPublicVariableGuid/TegraPlatformCompatSpec data ${TNSPEC};
+  fdtput -p ${1} /fragment@0/__overlay__/firmware/uefi/variables/gNVIDIAPublicVariableGuid/TegraPlatformCompatSpec runtime;
+  fdtput -p ${1} /fragment@0/__overlay__/firmware/uefi/variables/gNVIDIAPublicVariableGuid/TegraPlatformCompatSpec locked;
 
   return 0;
 }
