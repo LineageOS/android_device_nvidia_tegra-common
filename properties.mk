@@ -57,7 +57,3 @@ ifeq ($(TARGET_THERMAL_HAL),linaro-libpm)
 PRODUCT_VENDOR_PROPERTIES += \
     vendor.thermal.config=thermal-$(TARGET_TEGRA_VERSION).json
 endif
-
-# USB
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.lineage.tegra.configfs=1

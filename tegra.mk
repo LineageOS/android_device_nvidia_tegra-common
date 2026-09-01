@@ -26,7 +26,6 @@ TARGET_TV_HDMI_CEC_HAL        ?= baylibre
 
 MAINLINE_COMMON_DISABLE_COMMON_PRODUCT_DEFS ?= true
 TARGET_HAS_VIBRATOR                         ?= false
-TARGET_SUPPORTS_USB_ACCESSORY_MODE          ?= false
 TARGET_USES_MAINLINE_COMMON_AB_DEFS         ?= false
 
 ifeq ($(TARGET_GRAPHICS),mesa)
@@ -86,14 +85,11 @@ PRODUCT_COPY_FILES += \
     device/nvidia/tegra-common/initfiles/init.comms.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.comms.rc \
     device/nvidia/tegra-common/initfiles/init.hdcp.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.hdcp.rc \
     device/nvidia/tegra-common/initfiles/init.none.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.none.rc \
-    device/nvidia/tegra-common/initfiles/init.nv_dev_board.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.nv_dev_board.usb.rc \
     device/nvidia/tegra-common/initfiles/init.sata.configs.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.sata.configs.rc \
     device/nvidia/tegra-common/initfiles/init.tegra.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.tegra.rc \
     device/nvidia/tegra-common/initfiles/init.tegra_emmc.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.tegra_emmc.rc \
     device/nvidia/tegra-common/initfiles/init.tegra_sata.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.tegra_sata.rc \
-    device/nvidia/tegra-common/initfiles/init.tegra_sd.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.tegra_sd.rc \
-    device/nvidia/tegra-common/initfiles/init.xusb.configfs.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.xusb.configfs.usb.rc \
-    device/nvidia/tegra-common/initfiles/init.recovery.usb.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.usb.rc
+    device/nvidia/tegra-common/initfiles/init.tegra_sd.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.tegra_sd.rc
 
 # Permissions
 PRODUCT_COPY_FILES += \

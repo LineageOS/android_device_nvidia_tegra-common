@@ -6,8 +6,7 @@
 #documentation without an express license agreement from NVIDIA Corporation
 #is strictly prohibited.
 
-import /vendor/etc/init/hw/init.nv_dev_board.usb.rc
-import /vendor/etc/init/hw/init.xusb.configfs.usb.rc
+import /vendor/etc/init/hw/init.mainline.usb.rc
 import /vendor/etc/init/hw/init.sata.configs.rc
 import /vendor/etc/init/hw/init.${ro.boot.modem}.rc
 import /vendor/etc/init/hw/init.comms.rc
